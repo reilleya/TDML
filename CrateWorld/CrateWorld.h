@@ -1,0 +1,1 @@
+extern TDML::object& character;

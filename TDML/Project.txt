@@ -1,0 +1,241 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ ______         ____                             __        
+/\__  _\       /\  _`\           /'\_/`\        /\ \       
+\/_/\ \/       \/\ \/\ \        /\      \       \/\ \      
+   \/\ \        \/\ \ \ \       \/\ \__\ \       \/\ \  __ 
+    \/\ \    __  \/\ \_\ \   __  \/\ \_/\ \    __ \/\ \L\ \   __
+     \/\_\  /\_\  \/\____/  /\_\  \/\_\\/\_\  /\_\ \/\____/  /\_\
+      \/_/  \/_/   \/___/   \/_/   \/_/ \/_/  \/_/  \/___/   \/_/
+       	                                
+Created by Andrew Reilley
+Development began 7/26/12
+Do not redistribute, modify, or claim ownership of this library!
+If you use this library, please credit Andrew Reilley or eggplantanimation.com
+Contact email: areill1337@gmail.com
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Last Updated: 1/11/2013
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Official TODO List:
+
+	Collisions:
+		Convex Hulls:
+			Generation
+			Algorithm
+			Collisions
+		Make a 'bool collide(obj1, obj2)' function:
+			First runs BS collide, then Convex Hull
+		Test!
+
+	Lighting:
+		Make a per-world switch between ambient and local lighting
+			Put it in .WOR files
+		Light Objects:
+			Make a class to store light properties
+			Add an array to worlds to hold lights
+		Implement openGL backend
+
+	Worlds:
+		Allow for wildcard '*' name searches:
+			If you have objects "cube1", "cube2", "cube3", "house1", "house2", and "cup1", searching for entity
+				"cube1" will return cube1 as expected. However, if you search for "cube*", it will return "cube1",
+				"cube2", and "cube3". Likewise, if you search for "house*", you will get "house1" and "house2". If
+				you search for "cu*" you will get "cube1", "cube2", "cube3", AND "cup1".
+
+		Heightmaps:
+			Generation:
+				Perlin-Noise random terrain generation
+			Interface:
+				int getHeightAtPos(int x, int z):
+					Clamp x to the closest x array index
+					Clamp z to the closest z array index
+					Return 'heightmap[x][z]'
+
+		Rotation order:
+			Is YXZ the best?
+			Default order.
+			Make a switcher function for changing the rotation order.
+
+	Textures:
+		Animated Textures
+			Change .MDF to support loading and allocating multiple .PNG textures
+			Allow object's material's to hold more than one texture id
+			Create a "change frame" function to let objects be animated 
+		Texure Caching
+			Don't load the same texture twice!
+			Algorithm?
+
+	Particles:
+		Start them
+
+	Menus:
+		Make special menu worlds
+
+	Speed:
+		Look into optimizing VBO's and textures.
+		Make a visibility cull
+
+	Support:
+		Camera:
+			Lookat function
+			Pan and rotate functions
+			Orbit function
+
+	Sound:
+		Research a library: OPENAL
+
+	General:
+		Make all code use standard math functions
+		Turn load____ functions into constructors
+		Clean up your crap Andrew (Purge directories of outdated files)
+		Finish the docs for file types
+		Write function docs
+		Remove all obsolete functions
+		Move everything into their own files
+
+	Windowing:
+		Icon changing
+
+	Objects:
+		Allow each object to have a custom update function
+		Caching
+			Don't load the same object twice
+			Algorithm
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+.TDM File Specification
+	Use: 
+		Storing object geometry
+	Format:
+		x1 y1 z1 r1 g1 b1 ?
+		x2 y2 z2 r2 g2 b2 ?
+		x3 y3 z3 r3 g3 b3 ?
+		[
+	Description:
+		Each field above will be filled with a float.
+		The '?' marks the end of a line. The '[' marks the end of a polygon.
+		Polygons must contain 3 points like the above example to be valid.
+		The (r,g,b) section is obsolete and will be removed soon.
+		Normals will soon be added on a per-face basis.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.MDF File Specification
+	Use:
+		Storing Material information and UV coordinates
+	Format:
+		IMAGE_NAME.png ?
+		u1 v1 ?
+		u2 v2 ?
+		u3 v3 ?
+		[
+	Description:
+		The 'u' and 'v' fields are filled with floats.
+		The IMAGE_NAME field contains a string that is the name of the image for the texture.
+		The '?' marks the end of a line. The "[" marks the end of a face.
+		The 'u' and 'v' fields are the percent of the way across the image that the desired triangle is.
+		Though they usually only are between 0.0 and 1.0, they can go beyond 1.0 if the texture is to loop on the face.
+		The number of faces and the number of points per face must correspond to the geometry defined in a .TDM file.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+.WOR File Specification
+	Use:
+		Storing World information, like object positions and properties.
+	Format:
+		GEOMETRY.tdm ?
+		WIREFRAME ?
+		OUTLINE ?
+		X ? Y ? Z ?
+		X_ANGLE ? Y_ANGLE ? Z_ANGLE ?
+		X_SCALE ? Y_SCALE ? Z_SCALE ?
+		NAME ?
+		BEHAVIOR.beh ?
+		MATERIAL.mdf ?
+		[
+	Description:
+		The fields GEOMETRY, BEHAVIOR, and MATERIAL hold strings that are the names of the files for the object.
+		The fields WIREFRAME and OUTLINE hold boolean (0,1) values that represent the property named. 
+			They are currently broken.
+		The fields X, Y, Z, X_ANGLE, Y_ANGLE, Z_ANGLE, X_SCALE, Y_SCALE, and Z_SCALE hold floats that correspond to
+			the name of the field.
+		The field NAME holds a string that is the object's unique identifier.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.BEH File Specification
+	Use:
+		Storing behavior information for objects.
+	Format(s):
+		ikjhbiu
+	Description:
+		dfgddfg
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+'Point' Class Documentation
+	Use:
+		Points objects store information about each individual vertex that makes up an object. They aren't very useful on
+			their own, but make up the basis for all objects.
+	Methods:
+		float getX();
+			Returns the relative X coordinate of the point.
+		void setX(float newX);
+			Sets the relative X coordinate of the point.
+		float getY();
+			Returns the relative Y coordinate of the point.
+		void setY(float newY);
+			Sets the relative Y coordinate of the point.
+		float getZ();
+			Returns the relative Z coordinate of the point.
+		void setZ(float newZ);
+			Sets the relative Z coordinate of the point.
+		void setPos(float newX, float newY, float newZ);
+			Set the relative X, Y, and Z coordinates of the point.
+		void moveX(float value);
+			Moves the relative X coordinate of the point by 'value'.
+		void moveY(float value);
+			Moves the relative Y coordinate of the point by 'value'.
+		void moveZ(float value);
+			Moves the relative Z coordinate of the point by 'value'.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+'Poly' Class Documentation:
+	Use:
+		This class is a container for point objects. It is assumed to only contain 3.
+	Methods:
+		poly();
+			Constructor for a poly
+		std::vector<point> getPoints();
+			Returns the points that make up the polygon. This method will soon be replaced with one that returns an array of 3 point objects to increase speed
+		void addPoint(float x,float y,float z);
+			Creates and adds a new point object to the polygon.
+		void draw(std::vector<std::vector<float> >* coords, int materialid, bool wireframe, bool outline, float sx, float sy, float sz);
+			OBSOLETE: Uses openGL immediate mode to render the polygon. Very slow.
+		int getvboid();
+			OBSOLETE: Returns the ID for the polygon's display list.
+		void setvboid(int nvboid);
+			OBSOLETE: Sets the ID for the polygon's display list.
+		void calcNormals();
+			Calculates the polygon's normals. Currently not functioning.
+		float getNormalX();
+			Returns the X normal of the polygon. Currently not functioning.
+		float getNormalY();
+			Returns the Y normal of the polygon. Currently not functioning.
+		float getNormalZ();
+			Returns the Z normal of the polygon. Currently not functioning.
+		void removePoints();
+			Resets the points of the polygon.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Notes:
+    Use the 32 bit version of freeglut both system32 AND sysWOW64
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

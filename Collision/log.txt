@@ -1,0 +1,40 @@
+Creating OBJ from data file: cube.tdm | Data length: #:
+	Loading point data.
+		Number of Polys: #
+	Loading wireframe data.
+	Loading outline data.
+	Loading position data.
+	Loading angle data.
+	Loading scale data.
+	Loading name.
+	Loading behaviors.
+	Loading behaviors from: static.beh
+	Loaded behavior data. Parsing...
+	Loading texture data.
+		Loading Material Data from file: cube.mdf
+			Loading texture image...
+				Loading texture from file: map.png
+			Loaded texture image, TexID is #
+	Object created.
+
+Creating OBJ from data file: Monkey.tdm | Data length: #:
+	Loading point data.
+		Number of Polys: #
+	Loading wireframe data.
+	Loading outline data.
+	Loading position data.
+	Loading angle data.
+	Loading scale data.
+	Loading name.
+	Loading behaviors.
+	Loading behaviors from: static.beh
+	Loaded behavior data. Parsing...
+	Loading texture data.
+		Loading Material Data from file: Monkey.mdf
+			Loading texture image...
+				Loading texture from file: monkey.png
+			Loaded texture image, TexID is #
+	Object created.
+
+Adding Object: cube1
+Adding Object: cube2

@@ -1,0 +1,2255 @@
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+0 ? 1 ? 0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop0 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 0 ? 0 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside1 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 0 ? 2 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside2 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 0 ? 4 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside3 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 0 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside4 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+0 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside5 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+2 ? 1 ? 0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop6 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+3 ? 0 ? 2 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside7 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+3 ? 0 ? 4 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside8 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+2 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside9 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+4 ? 1 ? 0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop10 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 0 ? 1 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside11 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside12 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside13 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+6 ? 1 ? 0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop14 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 0 ? 1 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside15 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside16 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside17 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+8 ? 1 ? 0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop18 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 0 ? 1 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside19 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside20 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside21 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+10 ? 1 ? 0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop22 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 0 ? 1 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside23 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside24 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside25 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop26 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 0 ? 0 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside27 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 2 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop28 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 0 ? 2 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside29 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 0 ? 2 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside30 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 4 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop31 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 0 ? 4 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside32 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 0 ? 4 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside33 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop34 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 8 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop35 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 0 ? 8 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside36 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 0 ? 8 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside37 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 10 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop38 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 0 ? 10 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside39 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 0 ? 10 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside40 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 12 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop41 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 0 ? 12 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside42 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 0 ? 12 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside43 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 1 ? 14 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop44 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 0 ? 14 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside45 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 0 ? 14 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside46 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+12 ? 0 ? 15 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside47 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+15 ? 0 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside48 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside49 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside50 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+19 ? 0 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside51 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+17 ? 0 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside52 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside53 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside54 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+23 ? 0 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside55 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+21 ? 0 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside56 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside57 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside58 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 0 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside59 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 0 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside60 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 0 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside61 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 0 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside62 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 0 ? 10 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside63 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 0 ? 10 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside64 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 0 ? 9 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside65 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 0 ? 12 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside66 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 0 ? 12 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside67 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 0 ? 13 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside68 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+0 ? 3 ? 2 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop69 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 2 ? 2 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside70 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+0 ? 2 ? 1 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside71 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 2 ? 4 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside72 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 2 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside73 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+0 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside74 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+2 ? 3 ? 2 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop75 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+3 ? 2 ? 2 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside76 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+2 ? 2 ? 1 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside77 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+3 ? 2 ? 4 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside78 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+2 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside79 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside80 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside81 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside82 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside83 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside84 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside85 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 2 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside86 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside87 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside88 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+15 ? 2 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside89 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 2 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside90 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside91 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside92 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+19 ? 2 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside93 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+17 ? 2 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside94 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside95 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside96 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+23 ? 2 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside97 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+21 ? 2 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside98 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside99 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside100 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 2 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside101 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 2 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside102 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 2 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside103 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 2 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside104 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 2 ? 10 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside105 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 2 ? 10 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside106 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 2 ? 9 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside107 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 2 ? 12 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside108 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 2 ? 12 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside109 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 2 ? 13 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside110 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+0 ? 5 ? 4 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop111 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 4 ? 4 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside112 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+0 ? 4 ? 3 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside113 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 4 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside114 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+0 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside115 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+2 ? 5 ? 4 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop116 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+3 ? 4 ? 4 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside117 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+2 ? 4 ? 3 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside118 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+2 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside119 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside120 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside121 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside122 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside123 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside124 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside125 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+11 ? 4 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside126 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside127 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside128 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+15 ? 4 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside129 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+13 ? 4 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside130 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside131 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside132 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+19 ? 4 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside133 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+17 ? 4 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside134 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside135 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside136 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+23 ? 4 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside137 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+21 ? 4 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside138 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside139 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside140 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 4 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside141 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 4 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside142 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 4 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside143 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 4 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside144 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 4 ? 10 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside145 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 4 ? 10 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside146 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 4 ? 9 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside147 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 4 ? 12 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside148 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 4 ? 12 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside149 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 4 ? 13 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside150 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+0 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop151 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+-1 ? 6 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside152 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+0 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside153 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+0 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside154 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+2 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop155 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+2 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside156 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+2 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside157 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+4 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop158 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside159 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+4 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside160 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+6 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop161 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside162 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+6 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside163 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+8 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop164 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside165 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+8 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside166 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+10 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop167 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside168 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+10 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside169 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+12 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop170 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+12 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside171 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+12 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside172 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+14 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop173 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+15 ? 6 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside174 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside175 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+14 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside176 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+18 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop177 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+19 ? 6 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside178 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+17 ? 6 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside179 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside180 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+18 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside181 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+22 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop182 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+23 ? 6 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside183 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+21 ? 6 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside184 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside185 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+22 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside186 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+26 ? 7 ? 6 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop187 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 6 ? 6 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside188 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 6 ? 6 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside189 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 6 ? 7 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside190 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 6 ? 5 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside191 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+26 ? 7 ? 10 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop192 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 6 ? 10 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside193 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 6 ? 10 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside194 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 6 ? 9 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside195 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 6 ? 12 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside196 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 6 ? 12 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside197 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 6 ? 13 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside198 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Top/model.tdm ?
+0 ?
+0 ?
+26 ? 9 ? 12 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+cratetop199 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Top/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+27 ? 8 ? 12 ?
+0.0 ? 90.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside200 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+25 ? 8 ? 12 ?
+0.0 ? 270.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside201 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 8 ? 13 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside202 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Crate/Side/model.tdm ?
+0 ?
+0 ?
+26 ? 8 ? 11 ?
+0.0 ? 180.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+crateside203 ?
+crate ?
+Resources/Common/static.beh ?
+Resources/Common/Crate/Side/material1.mdf ?
+[
+Resources/Common/Character/model.tdm ?
+0 ?
+0 ?
+0.0 ? 0.0 ? 0.0 ?
+0.0 ? 0.0 ? 0.0 ?
+1.0 ? 1.0 ? 1.0 ?
+Character ?
+Character ?
+Resources/Common/static.beh ?
+Resources/Common/Character/material.mdf ?
+[
