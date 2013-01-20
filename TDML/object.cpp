@@ -31,17 +31,31 @@ namespace TDML
 				glNormalPointer(GL_FLOAT, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));
 				if(wireframe) glDrawArrays(GL_LINE_LOOP, 0, npolys*3);
 				else glDrawArrays(GL_TRIANGLES, 0, npolys*3);
-				glBegin(GL_LINE_LOOP);
-					glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
-					glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
-					glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
-					glVertex3f(adjustedminx, adjustedminy, adjustedminz);
-					glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
-					glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
-					glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
-					glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
-				glEnd();
+				//glBegin(GL_LINE_LOOP);
+				//	glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
+				//	glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
+				//	glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
+				//	glVertex3f(adjustedminx, adjustedminy, adjustedminz);
+				//	glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
+				//	glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
+				//	glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
+				//	glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
+				//glEnd();
 			}
+		}
+
+		void object::drawBB()
+		{
+			glBegin(GL_LINE_LOOP);
+				glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
+				glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
+				glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
+				glVertex3f(adjustedminx, adjustedminy, adjustedminz);
+				glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
+				glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
+				glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
+				glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
+			glEnd();
 		}
 
 		void object::update(int time, int timedelta)
@@ -224,12 +238,46 @@ namespace TDML
 
 		void object::recalcBoundingBox()
 		{
-			adjustedmaxx=maxx;
-			adjustedminx=minx;
-			adjustedmaxy=maxy;
-			adjustedminy=miny;
-			adjustedmaxz=maxz;
-			adjustedminz=minz;
+			if(yangle==270)
+			{
+				Log.output(yangle); Log.output("\n");
+				adjustedmaxx=minz;
+				adjustedminx=maxz;
+				adjustedmaxy=maxy;
+				adjustedminy=miny;
+				adjustedmaxz=minx;
+				adjustedminz=maxx;
+			}
+			else if(yangle==180)
+			{
+				Log.output(yangle); Log.output("\n");
+				adjustedmaxx=minx;
+				adjustedminx=maxx;
+				adjustedmaxy=maxy;
+				adjustedminy=miny;
+				adjustedmaxz=minz;
+				adjustedminz=maxz;
+			}
+			 else if(yangle==90)
+			{
+				Log.output(yangle); Log.output("\n");
+				adjustedmaxx=maxz;
+				adjustedminx=minz;
+				adjustedmaxy=maxy;
+				adjustedminy=miny;
+				adjustedmaxz=maxx;
+				adjustedminz=minx;
+			}
+			else
+			{
+				Log.output(yangle); Log.output("\n");
+				adjustedmaxx=maxx;
+				adjustedminx=minx;
+				adjustedmaxy=maxy;
+				adjustedminy=miny;
+				adjustedmaxz=maxz;
+				adjustedminz=minz;
+			}
 		}
 
 		void object::createBoundingSphere()
@@ -419,12 +467,12 @@ namespace TDML
 			type=newType;
 		}
 
-		string object::getName()
+		string& object::getName()
 		{
 			return name;
 		}
 
-		string object::getType()
+		string& object::getType()
 		{
 			return type;
 		}

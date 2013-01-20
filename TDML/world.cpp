@@ -77,6 +77,7 @@ namespace TDML
 				glRotatef(-camzangle, 0, 0, 1);
 				glTranslatef(-camx, -camy, -camz);
 				glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
+				objects[obj].drawBB();
 				glRotatef(objects[obj].getYangle(), 0, 1, 0);
 				glRotatef(objects[obj].getXangle(), 1, 0, 0);
 				glRotatef(objects[obj].getZangle(), 0, 0, 1);

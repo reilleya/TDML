@@ -73,6 +73,7 @@ namespace TDML
 		public:
 			object();
 			void display();
+			void drawBB();
 			void update(int time, int timedelta);
 			void addBehavior(behavior newBehavior);
 			void setMaterial(texture newTexture);
@@ -112,8 +113,8 @@ namespace TDML
 			void generateVBO();
 			int getVBOId();
 			void setVBOId(int newId);
-			std::string getName();
-			std::string getType();
+			std::string& getName();
+			std::string& getType();
 			float getMaxX();
 			float getMinX();
 			float getMaxY();
