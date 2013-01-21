@@ -20,8 +20,11 @@ namespace TDML
 		vector3d(float x1, float y1, float z1, float x2, float y2, float z2);
 		vector3d operator + (vector3d v2);
 		vector3d operator - (vector3d v2);
-		vector3d operator * (vector3d v2);
+		float operator * (vector3d v2);
 		vector3d operator * (float s);
 		vector3d operator ^ (vector3d v2);
+		float magnitude();
+		float angle_to(vector3d v2);
+		void print();
 	};
 }

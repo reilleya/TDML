@@ -95,6 +95,7 @@ Official TODO List:
 		Write function docs
 		Remove all obsolete functions
 		Move everything into their own files
+		Proper exit behavior
 
 	Windowing:
 		Icon changing

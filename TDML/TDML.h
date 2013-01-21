@@ -14,9 +14,10 @@ using namespace std;
 #define UP 101
 #define DOWN 103
 #define SPACE 32
+#define GLEW_STATIC
 
 #include "LodePNG.h"
-#include "glew.h"
+#include <glew.h>
 #include <Gl/freeglut.h>
 #include <gl/gl.h>
 #include <gl/glu.h> 
