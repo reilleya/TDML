@@ -25,6 +25,7 @@ namespace TDML
 		vector3d operator ^ (vector3d v2);
 		float magnitude();
 		float angle_to(vector3d v2);
+		void normalize();
 		void print();
 	};
 }

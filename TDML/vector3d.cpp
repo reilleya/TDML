@@ -79,6 +79,14 @@ namespace TDML
 		return Math.arccos(((x * v2.x)+(y * v2.y)+(z * v2.z))/(magnitude()*v2.magnitude()));
 	}
 
+	void vector3d::normalize()
+	{
+		float m = magnitude();
+		x = x / m;
+		y = y / m;
+		z = z / m;
+	}
+
 	void vector3d::print()
 	{
 		Log.output("(");

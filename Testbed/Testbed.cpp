@@ -24,9 +24,11 @@ int main(int argc, char** argv)
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Vector Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::vector3d test1 = TDML::vector3d(50, 30, 20);
 	test1.print();
-	TDML::vector3d test2 = TDML::vector3d(28, 3, 23);
-	test2.print();
-	TDML::Log.output(test1.angle_to(test2));
+	test1.normalize();
+	test1.print();
+	//TDML::vector3d test2 = TDML::vector3d(28, 3, 23);
+	//test2.print();
+	//TDML::Log.output(test1.angle_to(test2));
 	//TDML::vector3d test3 = test1^test2;
 	//test3.print();
 	TDML::start();
