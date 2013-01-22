@@ -15,6 +15,8 @@ namespace TDML
 	vector<string> cachedTexName;
 	vector<GLuint> cachedVBOId;
 	vector<string> cachedVBOName;
+	vector<object> cachedObjs;
+	vector<string> cachedObjName;
 
 	unsigned int appTime = 0;
 	unsigned int applastTime = 0;
@@ -24,6 +26,7 @@ namespace TDML
 	{
 		id = 0;	
 	}
+
 	/*struct behavior
 	{
 		string type;
@@ -33,39 +36,55 @@ namespace TDML
 		float speed;
 	};*/
 
-
-
 	object loadObject(string fileName)
 	{
-		object newobj;
-		ifstream infile;
-		vector<float> pointd;
-		vector<poly> polys(1);
-		poly cpol;
-		string word;
-		infile.open(fileName, ios::in);
-		while (infile >> word) 
+		bool cachedFound = false;
+		for(int ob = 0; ob < cachedObjName.size(); ob++)
 		{
-			if(word=="[")
+			if(cachedObjName[ob] == fileName)
 			{
-				polys.resize(polys.size()+1);
-			}
-			else if(word=="?")
-			{
-				polys[polys.size()-1].addPoint(pointd[0],pointd[1],pointd[2],pointd[3],pointd[4],pointd[5]);
-				pointd.resize(0);
-			}
-			else
-			{
-				pointd.resize(pointd.size()+1);
-				pointd[pointd.size()-1] = atof(word.c_str());
+				Log.output("Found!\n");
+				cachedFound = true;
+				return cachedObjs[ob];
 			}
 		}
-		for(int polyg = 0; polyg < (int)polys.size(); polyg++)
+		if(cachedFound==false)
 		{
-			newobj.addPoly(polys[polyg]);
+			Log.output("Not Found!\n");
+			object newobj;
+			ifstream infile;
+			vector<float> pointd;
+			vector<poly> polys(1);
+			poly cpol;
+			string word;
+			infile.open(fileName, ios::in);
+			while (infile >> word) 
+			{
+				if(word=="[")
+				{
+					polys.resize(polys.size()+1);
+				}
+				else if(word=="?")
+				{
+					polys[polys.size()-1].addPoint(pointd[0],pointd[1],pointd[2],pointd[3],pointd[4],pointd[5]);
+					pointd.resize(0);
+				}
+				else
+				{
+					pointd.resize(pointd.size()+1);
+					pointd[pointd.size()-1] = atof(word.c_str());
+				}
+			}
+			for(int polyg = 0; polyg < (int)polys.size(); polyg++)
+			{
+				newobj.addPoly(polys[polyg]);
+			}
+			cachedObjs.resize(cachedObjs.size()+1);
+			cachedObjs[cachedObjs.size()-1] = newobj;
+			cachedObjName.resize(cachedObjName.size()+1);
+			cachedObjName[cachedObjName.size()-1] = fileName;
+			return newobj;
 		}
-		return newobj;
 	}
 
 	terrain loadTerrain(std::string fileName, std::string textureName, int scaleXZ, int scaleY)

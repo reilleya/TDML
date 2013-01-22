@@ -49,6 +49,8 @@ namespace TDML
 	extern std::vector<std::string> cachedTexName;
 	extern std::vector<GLuint> cachedVBOId;
 	extern std::vector<std::string> cachedVBOName;
+	extern std::vector<object> cachedObjs;
+	extern std::vector<std::string> cachedObjName;
 
 	object loadObject(std::string fileName);
 	terrain loadTerrain(std::string imageName, std::string textureName, int scaleXZ, int scaleY);

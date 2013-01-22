@@ -15,7 +15,7 @@ Contact email: areill1337@gmail.com
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-Last Updated: 1/11/2013
+Last Updated: 1/21/2013
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -64,9 +64,6 @@ Official TODO List:
 			Change .MDF to support loading and allocating multiple .PNG textures
 			Allow object's material's to hold more than one texture id
 			Create a "change frame" function to let objects be animated 
-		Texure Caching
-			Don't load the same texture twice!
-			Algorithm?
 
 	Particles:
 		Start them
@@ -88,23 +85,15 @@ Official TODO List:
 		Research a library: OPENAL
 
 	General:
-		Make all code use standard math functions
+		Make behaviors use standard math functions
 		Turn load____ functions into constructors
 		Clean up your crap Andrew (Purge directories of outdated files)
 		Finish the docs for file types
 		Write function docs
 		Remove all obsolete functions
-		Move everything into their own files
-		Proper exit behavior
 
 	Windowing:
 		Icon changing
-
-	Objects:
-		Allow each object to have a custom update function
-		Caching
-			Don't load the same object twice
-			Algorithm
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
