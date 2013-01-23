@@ -14,6 +14,14 @@ using namespace std;
 #define UP 101
 #define DOWN 103
 #define SPACE 32
+
+#define XYZ 0
+#define XZY 1
+#define ZYX 2
+#define ZXY 3
+#define YXZ 4
+#define YZX 5
+
 #define GLEW_STATIC
 
 #include "LodePNG.h"

@@ -240,7 +240,6 @@ namespace TDML
 		{
 			if(yangle==270)
 			{
-				Log.output(yangle); Log.output("\n");
 				adjustedmaxx=minz;
 				adjustedminx=maxz;
 				adjustedmaxy=maxy;
@@ -250,17 +249,15 @@ namespace TDML
 			}
 			else if(yangle==180)
 			{
-				Log.output(yangle); Log.output("\n");
-				adjustedmaxx=minx;
-				adjustedminx=maxx;
+				adjustedmaxx=maxx;
+				adjustedminx=minx;
 				adjustedmaxy=maxy;
 				adjustedminy=miny;
-				adjustedmaxz=minz;
-				adjustedminz=maxz;
+				adjustedmaxz=maxz;
+				adjustedminz=minz;
 			}
 			 else if(yangle==90)
 			{
-				Log.output(yangle); Log.output("\n");
 				adjustedmaxx=maxz;
 				adjustedminx=minz;
 				adjustedmaxy=maxy;
@@ -270,7 +267,6 @@ namespace TDML
 			}
 			else
 			{
-				Log.output(yangle); Log.output("\n");
 				adjustedmaxx=maxx;
 				adjustedminx=minx;
 				adjustedmaxy=maxy;
