@@ -34,5 +34,6 @@ namespace TDML
 			void centerWindow();
 			void hideCursor();
 			void showCursor();
+			void setSkyColor(float SkyRed, float SkyGreen, float SkyBlue);
 	};
 }

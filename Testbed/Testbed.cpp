@@ -17,14 +17,17 @@ void display ()
 
 void animate()
 {
-
+	if(TDML::Input.getMouseKeyPressed(0))
+	{
+		TDML::Window.setSkyColor(0.5, 0.8, 1.0);
+	}
 }
 
 int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(true);
-	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Vector Testbed", 0.5, 0.8, 1.0, display, animate, exit);
-	testmenu1 = TDML::loadMenu("test.mnu");
+	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Vector Testbed", 1.0, 1.0, 1.0, display, animate, exit);
+	testmenu1 = TDML::loadMenu("test2.mnu");
 	testmenu1.dispInfo();
 	//TDML::vector3d test1 = TDML::vector3d(50, 30, 20);
 	///test1.print();

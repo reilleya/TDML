@@ -86,4 +86,9 @@ namespace TDML
 	{
 		ShowCursor(true); 
 	}
+
+	void window::setSkyColor(float SkyRed, float SkyGreen, float SkyBlue)
+	{
+		glClearColor(SkyRed, SkyGreen, SkyBlue, 1.0);
+	}
 }

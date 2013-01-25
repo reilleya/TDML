@@ -31,9 +31,11 @@ namespace TDML
 		glLoadIdentity();
 		for(int i = 0; i < nobjs; i++)
 		{
+			//Log.output(i); Log.output("\n");
 			glTranslatef(objects[i].getPosX(), (-objects[i].getPosY())+Window.getHeight(), 0);
 			glScalef(objects[i].getWidth(), -objects[i].getHeight(), 0);
 			objects[i].draw();
+			glLoadIdentity();
 		}
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
