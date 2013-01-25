@@ -15,9 +15,9 @@ namespace TDML
 	{
 		posx = 0;
 		posy = 0;
-		width = 256;
-		height = 64;
-		texname = "play_button.png"; 
+		width = 0;
+		height = 0;
+		texname = ""; 
 		texid = 0;
 	}
 
@@ -53,5 +53,30 @@ namespace TDML
 	int menuobject::getHeight()
 	{
 		return height;
+	}
+
+	void menuobject::setTexture(string newTex)
+	{
+		texname = newTex;
+	}
+
+	void menuobject::setPosX(int newPosX)
+	{
+		posx = newPosX;
+	}
+	 
+	void menuobject::setPosY(int newPosY)
+	{
+		posy = newPosY;
+	}
+
+	void menuobject::setWidth(int newWidth)
+	{
+		width = newWidth;
+	}
+	 
+	void menuobject::setHeight(int newHeight)
+	{
+		height = newHeight;
 	}
 }

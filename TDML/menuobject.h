@@ -23,6 +23,7 @@ namespace TDML
 
 		public:
 			menuobject();
+			//void dispInfo();
 			void draw();
 			void loadTexture();
 			int getPosX();
@@ -31,5 +32,8 @@ namespace TDML
 			int getHeight();
 			void setPosX(int posX);
 			void setPosY(int posY);
+			void setWidth(int newWidth);
+			void setHeight(int newHeight);
+			void setTexture(std::string newTex);
 	};
 }

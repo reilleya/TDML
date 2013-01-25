@@ -15,7 +15,7 @@ Contact email: areill1337@gmail.com
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-Last Updated: 1/21/2013
+Last Updated: 1/25/2013
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,6 +91,7 @@ Official TODO List:
 		Finish the docs for file types
 		Write function docs
 		Remove all obsolete functions
+		Make "DISPINFO" functions for all objects
 
 	Windowing:
 		Icon changing

@@ -13,8 +13,13 @@ namespace TDML
 {
 	menu::menu()
 	{
-		objects.resize(1);
-		nobjs = 1;
+		objects.resize(0);
+		nobjs = 0;
+	}
+
+	void menu::dispInfo()
+	{
+		Log.output(nobjs); Log.output("\n");
 	}
 
 	void menu::draw()
@@ -37,8 +42,18 @@ namespace TDML
 		glLoadIdentity();
 	}
 
-	void menu::testlod()
+	void menu::loadTextures()
 	{
-		objects[0].loadTexture();
+		for(int obj = 0; obj < nobjs; obj++)
+		{
+			objects[obj].loadTexture();
+		}
+	}
+
+	void menu::addObject(menuobject newobj)
+	{
+		nobjs++;
+		objects.resize(nobjs);
+		objects[nobjs-1] = newobj;
 	}
 }

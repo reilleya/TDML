@@ -64,6 +64,7 @@ namespace TDML
 	terrain loadTerrain(std::string imageName, std::string textureName, int scaleXZ, int scaleY);
 	std::vector<behavior> loadBehaviors(std::string fileName);
 	world loadWorld(std::string fileName);
+	menu loadMenu(std::string fileName);
 	int loadTextureData(std::string fileName);
 	texture loadTexture(std::string fileName);
 

@@ -185,7 +185,6 @@ namespace TDML
 		ifstream infile;
 		vector<string> objd(1);
 		vector<object> objs(0);
-		poly cpol;
 		string word;
 		infile.open(fileName, ios::in);
 		while (infile >> word) 
@@ -270,6 +269,55 @@ namespace TDML
 			//std::cout << "Adding"<<endl;
 		}
 		return newworld;
+	}
+
+	menu loadMenu(string fileName)
+	{
+		menu newmenu;
+		ifstream infile;
+		vector<string> menud(1);
+		vector<menuobject> menus(0);
+		string word;
+		infile.open(fileName, ios::in);
+		while (infile >> word) 
+		{
+			std::cout << word << endl;
+			if(word=="[")
+			{
+				//Log.output("Creating MenuOBJ from data file: "); Log.output(menud[0]); Log.output("| Data length: "); Log.output(menu.size()); Log.output(":\n");
+				menus.resize(menus.size()+1);
+				menus[menus.size()-1].setTexture(menud[0]);
+				menus[menus.size()-1].setPosX(atof(menud[1].c_str()));
+				menus[menus.size()-1].setPosY(atof(menud[2].c_str()));
+				menus[menus.size()-1].setWidth(atof(menud[3].c_str()));
+				menus[menus.size()-1].setHeight(atof(menud[4].c_str()));
+				menud[0]="";
+				menud.resize(1);
+				Log.output("\tObject created.\n\n");
+			}
+			else if(word=="?")
+			{
+				menud.resize(menud.size()+1);
+			}
+			else
+			{
+				if(menud.size()-1 == 0)
+				{
+					menud[menud.size()-1].append(word+" ");
+				}
+				else
+				{
+					menud[menud.size()-1].append(word);
+				}
+			}
+		}
+		for(int objc = 0; objc < (int)menus.size(); objc++)
+		{
+			//Log.output("Adding Object: "); Log.output(menus[objc].get
+			newmenu.addObject(menus[objc]);
+		}
+		newmenu.loadTextures();
+		return newmenu;
 	}
 
 	int loadTextureData(string fileName)

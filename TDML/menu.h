@@ -19,7 +19,9 @@ namespace TDML
 
 		public:
 			menu();
+			void dispInfo();
 			void draw();
-			void testlod();
+			void loadTextures();
+			void addObject(menuobject newobj);
 	};
 }
