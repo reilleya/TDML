@@ -11,6 +11,48 @@ using namespace std;
 
 namespace TDML
 {
+		void world::cameraRotate()
+		{
+			switch(crotorder)
+				{
+					case 0:
+						glRotatef(-camxangle, 1, 0, 0);
+						glRotatef(-camyangle, 0, 1, 0);
+						glRotatef(-camzangle, 0, 0, 1);
+						break;
+
+					case 1:
+						glRotatef(-camxangle, 1, 0, 0);
+						glRotatef(-camzangle, 0, 0, 1);
+						glRotatef(-camyangle, 0, 1, 0);
+						break;
+
+					case 2:
+						glRotatef(-camzangle, 0, 0, 1);
+						glRotatef(-camyangle, 0, 1, 0);
+						glRotatef(-camxangle, 1, 0, 0);
+						break;
+
+					case 3:
+						glRotatef(-camzangle, 0, 0, 1);
+						glRotatef(-camxangle, 1, 0, 0);
+						glRotatef(-camyangle, 0, 1, 0);
+						break;
+
+					case 4:
+						glRotatef(-camyangle, 0, 1, 0);
+						glRotatef(-camxangle, 1, 0, 0);
+						glRotatef(-camzangle, 0, 0, 1);
+						break;
+
+					case 5:
+						glRotatef(-camyangle, 0, 1, 0);
+						glRotatef(-camzangle, 0, 0, 1);
+						glRotatef(-camxangle, 1, 0, 0);
+						break;
+				}
+		}
+
 		world::world()
 		{
 			lastTime=glutGet(GLUT_ELAPSED_TIME);
@@ -57,9 +99,7 @@ namespace TDML
 		{
 			//glDrawArrays(GL_LINE_LOOP, 0, 4);
 			//std::cout << camx << endl;
-			glRotatef(-camyangle, 0, 1, 0);
-			glRotatef(-camxangle, 1, 0, 0);
-			glRotatef(-camzangle, 0, 0, 1);
+			cameraRotate();
 			glTranslatef(-camx, -camy, -camz);
 			if(hasterrain)
 			{
@@ -72,9 +112,7 @@ namespace TDML
 			glLoadIdentity();
 			for(int obj = 0; obj < (int)nobjs; obj++)
 			{
-				glRotatef(-camxangle, 1, 0, 0);
-				glRotatef(-camzangle, 0, 0, 1);
-				glRotatef(-camyangle, 0, 1, 0);
+				cameraRotate();
 				glTranslatef(-camx, -camy, -camz);
 				glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
 				//objects[obj].drawBB();

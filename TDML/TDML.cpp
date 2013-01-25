@@ -406,6 +406,8 @@ namespace TDML
 
 	bool running = true;
 
+	int crotorder = 1;
+
 	input Input;
 	TDMLmath Math;
 	window Window;

@@ -69,6 +69,8 @@ namespace TDML
 
 	extern bool running;
 
+	extern int crotorder;
+
 	extern input Input;
 	extern TDMLmath Math;
 	extern window Window;
@@ -102,6 +104,7 @@ namespace TDML
 	void exit();
 
 	void enableCulling(bool state);
+	void setRotationOrder(int order);
 
 	void setPause(bool state);
 }
