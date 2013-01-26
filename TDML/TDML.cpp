@@ -87,7 +87,7 @@ namespace TDML
 		}
 	}
 
-	terrain loadTerrain(std::string fileName, std::string textureName, int scaleXZ, int scaleY)
+	terrain loadTerrain(std::string fileName, std::string textureName, float scaleXZ, float scaleY)
 	{
 		terrain newterrain;
 		ifstream infile;
@@ -360,6 +360,7 @@ namespace TDML
 		glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 		glTexImage2D(GL_TEXTURE_2D, 0, 4, u2, v2, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image2[0]);
 		int intid = (int) id; 
+		Log.output(intid); Log.output("\n");
 		return id;
 	}
 

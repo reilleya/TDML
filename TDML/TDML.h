@@ -61,7 +61,7 @@ namespace TDML
 	extern std::vector<std::string> cachedObjName;
 
 	object loadObject(std::string fileName);
-	terrain loadTerrain(std::string imageName, std::string textureName, int scaleXZ, int scaleY);
+	terrain loadTerrain(std::string imageName, std::string textureName, float scaleXZ, float scaleY);
 	std::vector<behavior> loadBehaviors(std::string fileName);
 	world loadWorld(std::string fileName);
 	menu loadMenu(std::string fileName);

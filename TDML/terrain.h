@@ -16,19 +16,18 @@ namespace TDML
 		private:
 			std::vector<std::vector<float>> heightmap;
 			int dimensions;
-			int scalexz;
-			int scaley;
+			float scalexz;
+			float scaley;
 			GLuint vboid;
 			GLuint texid;
-			texture material;
 
 		public:
 			void setHeightMap(std::vector<std::vector<float>> newheightmap);
 			void setDimensions(int dim);
 			void setTextureId(int textureid);
-			void setScale(int xz, int y);
-			int getScaleXZ();
-			int getScaleY();
+			void setScale(float xz, float y);
+			float getScaleXZ();
+			float getScaleY();
 			float getHeightMapAt(float x, float z);
 			void generateVBO();
 			void display();

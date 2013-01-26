@@ -543,7 +543,7 @@ namespace TDML
 
 		float object::getMinX()
 		{
-			return x+adjustedminx;
+			return x+adjustedminx;//Probs the source of some probs
 		}
 
 		float object::getMaxY()

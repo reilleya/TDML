@@ -47,17 +47,7 @@ Official TODO List:
 
 		Heightmaps:
 			Generation:
-				Perlin-Noise random terrain generation
-			Interface:
-				int getHeightAtPos(int x, int z):
-					Clamp x to the closest x array index
-					Clamp z to the closest z array index
-					Return 'heightmap[x][z]'
-
-		Rotation order:
-			Is YXZ the best?
-			Default order.
-			Make a switcher function for changing the rotation order.
+				Perlin-Noise random terrain generation.
 
 	Textures:
 		Animated Textures
