@@ -15,6 +15,10 @@ using namespace std;
 #define DOWN 103
 #define SPACE 32
 
+#define LEFTMOUSE 0
+#define RIGHTMOUSE 2
+#define MIDDLEMOUSE 1
+
 #define XYZ 0
 #define XZY 1
 #define ZYX 2

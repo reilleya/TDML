@@ -238,6 +238,76 @@ namespace TDML
 
 		void object::recalcBoundingBox()
 		{
+			/*point* points[8];
+			points[0] = new point();
+			points[0]->setX(maxx);
+			points[0]->setX(maxy);
+			points[0]->setX(maxz);
+
+			points[1] = new point();
+			points[1]->setX(maxx);
+			points[1]->setX(maxy);
+			points[1]->setX(minz);
+
+			points[2] = new point();
+			points[2]->setX(maxx);
+			points[2]->setX(miny);
+			points[2]->setX(maxz);
+
+			points[3] = new point();
+			points[3]->setX(maxx);
+			points[3]->setX(miny);
+			points[3]->setX(minz);
+
+			points[4] = new point();
+			points[4]->setX(minx);
+			points[4]->setX(maxy);
+			points[4]->setX(maxz);
+
+			points[5] = new point();
+			points[5]->setX(minx);
+			points[5]->setX(maxy);
+			points[5]->setX(minz);
+
+			points[6] = new point();
+			points[6]->setX(minx);
+			points[6]->setX(miny);
+			points[6]->setX(maxz);
+
+			points[7] = new point();
+			points[7]->setX(minx);
+			points[7]->setX(miny);
+			points[7]->setX(minz);
+
+			for(int q = 0; q < 8; q++)
+			{
+				points[q]->setX(points[q]->getX()*Math.cos(yangle) + points[q]->getZ()*Math.sin(yangle));
+				points[q]->setZ(points[q]->getZ()*Math.cos(yangle) - points[q]->getX()*Math.sin(yangle));
+
+				points[q]->setY(points[q]->getY()*Math.cos(xangle) - points[q]->getZ()*Math.sin(xangle));
+				points[q]->setZ(points[q]->getZ()*Math.cos(xangle) + points[q]->getY()*Math.sin(xangle));
+
+				points[q]->setX(points[q]->getX()*Math.cos(zangle) - points[q]->getY()*Math.sin(zangle));
+				points[q]->setY(points[q]->getY()*Math.cos(zangle) + points[q]->getX()*Math.sin(zangle));
+			}
+
+			adjustedmaxx=0;
+			adjustedminx=0;
+			adjustedmaxy=0;
+			adjustedminy=0;
+			adjustedmaxz=0;
+			adjustedminz=0;
+
+			for(int q = 0; q < 8; q++)
+			{
+				if(points[q]->getX()*scalex>adjustedmaxx) adjustedmaxx = points[q]->getX()*scalex;
+				if(points[q]->getX()*scalex<adjustedminx) adjustedminx = points[q]->getX()*scalex;
+				if(points[q]->getY()*scaley>adjustedmaxy) adjustedmaxy = points[q]->getY()*scaley;
+				if(points[q]->getY()*scaley<adjustedminy) adjustedminy = points[q]->getY()*scaley;
+				if(points[q]->getZ()*scalez>adjustedmaxz) adjustedmaxz = points[q]->getZ()*scalez;
+				if(points[q]->getX()*scalez<adjustedminz) adjustedminz = points[q]->getZ()*scalez;
+			}*/
+
 			if(yangle==270)
 			{
 				adjustedmaxx=minz;

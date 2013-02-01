@@ -19,4 +19,11 @@ for (path, dirs, files) in os.walk("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model 
                 print f
                 totlength+=simplecount("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/TDML/"+f)
 
+for (path, dirs, files) in os.walk("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/Tools"):
+    for f in files:
+        if not f in exceptions:
+            if ".py" in f:
+                print f
+                totlength+=simplecount("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/Tools/"+f)
+
 print "Total lines of code: "+str(totlength)

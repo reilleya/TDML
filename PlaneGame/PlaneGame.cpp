@@ -4,10 +4,11 @@
 using namespace std;
 
 TDML::world World1;
-TDML::terrain testterrain1;
+TDML::terrain Terrain1;
 
-float rad = 0.01745;
 float speed = 0.008;
+
+bool dead = false;
 
 void exit()
 {
@@ -19,29 +20,25 @@ void display ()
 	World1.draw();
 }
 
+void respawn()
+{
+	TDML::object& plane = World1.getObjectRef("plane");
+	dead = false;
+	plane.setPosition(0, 100, 0);
+	plane.setAngle(0,0,0);
+	plane.setVisible(true);
+}
+
 void animate()
 {
 	World1.update();
-	//World1.getHeightMapAt(World1.getObjAttribute("plane","x"),World1.getObjAttribute("plane","z"));
-	//TDML::Log.output(World1.getHeightMapAt(World1.getObjAttribute("plane","x"),World1.getObjAttribute("plane","z"))); TDML::Log.output(":"); TDML::Log.output(World1.getObjAttribute("plane", "y"));TDML::Log.output("\n");
-	if(TDML::Input.getSpecialKeyState(LEFT)) 
+	TDML::object& plane = World1.getObjectRef("plane");
+	if(World1.getHeightMapAt(plane.getX(),plane.getZ())>plane.getMinY())
 	{
-		World1.setObjAttribute("plane", "zangle", World1.getObjAttribute("plane","zangle")+0.025*World1.getTimeDelta());
+		TDML::Log.output("Underground!\n");
+		plane.setVisible(false);
+		dead = true;
 	}
-	if(TDML::Input.getSpecialKeyState(RIGHT))
-	{
-		World1.setObjAttribute("plane", "zangle", World1.getObjAttribute("plane","zangle")-0.025*World1.getTimeDelta());
-	}
-	if(TDML::Input.getSpecialKeyState(UP))
-	{
-		World1.setObjAttribute("plane", "xangle", World1.getObjAttribute("plane","xangle")+0.02*World1.getTimeDelta());
-	}
-	if(TDML::Input.getSpecialKeyState(DOWN))
-	{
-		World1.setObjAttribute("plane", "xangle", World1.getObjAttribute("plane","xangle")-0.02*World1.getTimeDelta());
-	}
-
-	World1.setObjAttribute("plane", "yangle", World1.getObjAttribute("plane","yangle")+(World1.getObjAttribute("plane","zangle")/5000)*World1.getTimeDelta());
 
 	/*if(World1.getObjAttribute("plane","yangle") > 360) World1.setObjAttribute("plane", "yangle", World1.getObjAttribute("plane","yangle")-360);
 	if(World1.getObjAttribute("plane","yangle") < 0) World1.setObjAttribute("plane", "yangle", 360+World1.getObjAttribute("plane","yangle"));
@@ -50,27 +47,60 @@ void animate()
 	if(World1.getObjAttribute("plane","zangle") > 360) World1.setObjAttribute("plane", "zangle", World1.getObjAttribute("plane","zangle")-360);
 	if(World1.getObjAttribute("plane","zangle") < 0) World1.setObjAttribute("plane", "zangle", 360+World1.getObjAttribute("plane","zangle"));
 	*/
-	World1.setObjAttribute("plane", "x", World1.getObjAttribute("plane","x")-World1.getTimeDelta()*speed*(sinf(rad*World1.getObjAttribute("plane","yangle"))*cosf(rad*World1.getObjAttribute("plane","xangle"))));
-	World1.setObjAttribute("plane", "z", World1.getObjAttribute("plane","z")-World1.getTimeDelta()*speed*(cosf(rad*World1.getObjAttribute("plane","yangle"))*cosf(rad*World1.getObjAttribute("plane","xangle"))));
-	World1.setObjAttribute("plane", "y", World1.getObjAttribute("plane","y")+World1.getTimeDelta()*speed*(sinf(rad*World1.getObjAttribute("plane","xangle"))));
-	World1.setObjAttribute("plane", "y", World1.getObjAttribute("plane","y")-(World1.getTimeDelta()/1000));
+	if(!dead)
+	{
+		if(TDML::Input.getSpecialKeyState(LEFT)) 
+		{
+			plane.setZangle(plane.getZangle()+0.025*World1.getTimeDelta());
+		}
+		if(TDML::Input.getSpecialKeyState(RIGHT))
+		{
+			plane.setZangle(plane.getZangle()-0.025*World1.getTimeDelta());
+		}
+		if(TDML::Input.getSpecialKeyState(UP))
+		{
+			plane.setXangle(plane.getXangle()+0.02*World1.getTimeDelta());
+		}
+		if(TDML::Input.getSpecialKeyState(DOWN))
+		{
+			plane.setXangle(plane.getXangle()-0.02*World1.getTimeDelta());
+		}
 
-	World1.setCamX((World1.getObjAttribute("plane", "x"))+3*sinf(0.01745*World1.getObjAttribute("plane","yangle")));
-	World1.setCamZ(World1.getObjAttribute("plane","z")+3*cosf(0.01745*World1.getObjAttribute("plane","yangle")));
-	World1.setCamY(World1.getObjAttribute("plane","y"));
-	World1.setCamAngleY(World1.getObjAttribute("plane","yangle"));
+		plane.setYangle(plane.getYangle()+((plane.getZangle()/5000)*World1.getTimeDelta()));
+		plane.setX(plane.getX()-World1.getTimeDelta()*speed*TDML::Math.sin(plane.getYangle())*TDML::Math.cos(plane.getXangle()));
+		plane.setZ(plane.getZ()-World1.getTimeDelta()*speed*TDML::Math.cos(plane.getYangle())*TDML::Math.cos(plane.getXangle()));
+		plane.setY(plane.getY()+World1.getTimeDelta()*speed*TDML::Math.sin(plane.getXangle()));
+		plane.setY(plane.getY()-(World1.getTimeDelta()/1000));
+		
+		World1.setCamX(plane.getX()+3*TDML::Math.sin(plane.getYangle()));
+		World1.setCamZ(plane.getZ()+3*TDML::Math.cos(plane.getYangle()));
+		World1.setCamY(plane.getY());
+		World1.setCamAngleY(plane.getYangle());
+		if(World1.getHeightMapAt(World1.getCamX(), World1.getCamZ())>World1.getCamY())
+		{
+			World1.setCamY(World1.getHeightMapAt(World1.getCamX(), World1.getCamZ()));
+		}
+	}
+	else
+	{
+		if(TDML::Input.getMouseKeyPressed(LEFTMOUSE))
+		{
+			respawn();
+		}
+	}
+	
 }
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(true);
+	TDML::Log.setDebugMode(false);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(true);
 	TDML::Log.outputWindow("Loading, please wait.");
 	TDML::Log.output("Loading World\n");
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
-	testterrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/test.hgt", "Resources/Common/Textures/height.png", 2500, 2);
-	World1.setTerrain(testterrain1);
+	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/test.hgt", "Resources/Common/Textures/height.png", 2500, 3);
+	World1.setTerrain(Terrain1);
 	TDML::Log.output("Done.\n");
 	TDML::Window.centerWindow();
 	TDML::start();
