@@ -22,6 +22,7 @@ namespace TDML
 			float normalz;
 
 		public:
+			void dispInfo();
 			float getX();
 			void setX(float newX);
 			float getY();

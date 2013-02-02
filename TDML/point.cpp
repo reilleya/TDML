@@ -11,6 +11,12 @@ using namespace std;
 
 namespace TDML
 {
+	void point::dispInfo()
+	{
+		Log.output("Point:\n");
+		Log.output("\tCoordinates: "); Log.output(x); Log.output(", "); Log.output(y); Log.output(", "); Log.output(z); Log.output(";\n");
+		Log.output("\tNormal: "); Log.output(normalx); Log.output(", "); Log.output(normaly); Log.output(", "); Log.output(normalz); Log.output(";\n");
+	}
 	float point::getX()
 	{
 		return x;

@@ -16,6 +16,17 @@ namespace TDML
 		npoints=0;
 	}
 
+	void poly::dispInfo()
+	{
+		Log.output("Polygon:\n");
+		Log.output("\tVertices: "); Log.output(npoints); Log.output("\n");
+		for(int v = 0; v < npoints; v++)
+		{
+			Log.output("\tCoordinates: "); Log.output(points[v]->getX()); Log.output(", "); Log.output(points[v]->getY()); Log.output(", "); Log.output(points[v]->getZ()); Log.output(";\n");
+			Log.output("\tNormal: "); Log.output(points[v]->getNormalX()); Log.output(", "); Log.output(points[v]->getNormalY()); Log.output(", "); Log.output(points[v]->getNormalZ()); Log.output(";\n");
+		}
+	}
+
 	/*point* poly::getPoints()
 	{
 		return points;

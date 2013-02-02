@@ -22,11 +22,6 @@ namespace TDML
 	unsigned int applastTime = 0;
 	unsigned int apptimeElapsed = 0;
 
-	texture::texture()
-	{
-		id = 0;	
-	}
-
 	/*struct behavior
 	{
 		string type;
@@ -268,6 +263,7 @@ namespace TDML
 			newworld.addObject(objs[objc]);
 			//std::cout << "Adding"<<endl;
 		}
+		Log.output("Done Loading World!\n");
 		return newworld;
 	}
 
@@ -378,6 +374,7 @@ namespace TDML
 		string word;
 		infile.open(fileName, ios::in);
 		GLuint id = 0;
+		bool textureline = true;
 		while (infile >> word) 
 		{
 			//std::cout << word << endl;
@@ -391,10 +388,11 @@ namespace TDML
 			{
 				//std::cout << pointd[0]<<","<<pointd[1]<<","<<pointd[2]<<","<<pointd[3]<<","<<pointd[4]<<","<<pointd[5]<<endl;
 				
-				if(line == 0)
+				if(textureline)
 				{
 					//std::cout << "\t Read image file name, setting" << endl;
 					texd.resize(0);
+					textureline = false;
 				}
 				else
 				{
@@ -416,7 +414,7 @@ namespace TDML
 			}
 			else
 			{
-				if(line == 0)
+				if(word.find(".png") != word.npos)
 				{
 					Log.output("\t\t\tLoading texture image...\n");
 					Log.output("\t\t\t\tChecking Cache...\n");
@@ -427,19 +425,20 @@ namespace TDML
 						{
 							found = true;
 							Log.output("\t\t\t\t\tFound...\n");
-							t.id = cachedTexId[search];
+							t.addNewId(cachedTexId[search]);
 						}
 					}
 					if(!found)
 					{
 						Log.output("\t\t\t\t\tNot Found...\n");
-						t.id = loadTextureData(word);
+						t.addNewId(loadTextureData(word));
 						cachedTexName.resize(cachedTexName.size()+1);
 						cachedTexName[cachedTexName.size()-1] = word;
 						cachedTexId.resize(cachedTexId.size()+1);
-						cachedTexId[cachedTexId.size()-1] = t.id;
+						cachedTexId[cachedTexId.size()-1] = t.getID(t.getLastID());
 					}
-					Log.output("\t\t\tLoaded texture image, TexID is "); Log.output(t.id); Log.output("\n"); // << t.id << "." <<endl; 
+					Log.output("\t\t\tLoaded texture image, TexID is "); Log.output(t.getID(t.getLastID())); Log.output("\n"); // << t.id << "." <<endl; 
+					textureline = true;
 				}
 				else
 				{

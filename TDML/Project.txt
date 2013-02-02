@@ -49,12 +49,6 @@ Official TODO List:
 			Generation:
 				Perlin-Noise random terrain generation.
 
-	Textures:
-		Animated Textures
-			Change .MDF to support loading and allocating multiple .PNG textures
-			Allow object's material's to hold more than one texture id
-			Create a "change frame" function to let objects be animated 
-
 	Particles:
 		Start them
 

@@ -27,6 +27,7 @@ void respawn()
 	plane.setPosition(0, 100, 0);
 	plane.setAngle(0,0,0);
 	plane.setVisible(true);
+	plane.dispInfo();
 }
 
 void animate()
@@ -47,6 +48,15 @@ void animate()
 	if(World1.getObjAttribute("plane","zangle") > 360) World1.setObjAttribute("plane", "zangle", World1.getObjAttribute("plane","zangle")-360);
 	if(World1.getObjAttribute("plane","zangle") < 0) World1.setObjAttribute("plane", "zangle", 360+World1.getObjAttribute("plane","zangle"));
 	*/
+
+	/*if(plane.getZangle()>90)
+	{
+		plane.setZangle(-90);
+	}
+	if(plane.getZangle()<-90)
+	{
+		plane.setZangle(90);
+	}*/
 	if(!dead)
 	{
 		if(TDML::Input.getSpecialKeyState(LEFT)) 
@@ -93,7 +103,7 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(false);
+	TDML::Log.setDebugMode(true);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(true);
 	TDML::Log.outputWindow("Loading, please wait.");

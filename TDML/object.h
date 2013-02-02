@@ -21,18 +21,12 @@ namespace TDML
 		float speed;
 	};
 
-	struct texture
-	{
-		int id;
-		std::vector<std::vector<std::vector<float> > > coords;
-		texture();
-	};
-
 	class object
 	{
 		private:
 			std::vector<poly> polygons;
 			texture material;
+			int frame;
 			bool wireframe;
 			bool visible;
 			float x;
@@ -72,6 +66,7 @@ namespace TDML
 
 		public:
 			object();
+			void dispInfo();
 			void display();
 			void drawBB();
 			void update(int time, int timedelta);
@@ -122,6 +117,8 @@ namespace TDML
 			float getMaxZ();
 			float getMinZ();
 			float getRadius();
+			int getFrame();
+			void setFrame(int newFrame);
 			void setUpdateFunction(void (*newupdatefunction)(object* me));
 			void setFileName(std::string newFileName);
 			std::string getFileName();

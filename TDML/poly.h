@@ -20,6 +20,7 @@ namespace TDML
 
 		public:
 			poly();
+			void dispInfo();
 			//point* getPoints();
 			void addPoint(float x,float y,float z, float nX, float nY, float nZ);
 			float getX(int point);

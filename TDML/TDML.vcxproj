@@ -104,6 +104,7 @@
     <ClInclude Include="poly.h" />
     <ClInclude Include="TDML.h" />
     <ClInclude Include="terrain.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="vector3d.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="world.h" />
@@ -121,6 +122,7 @@
     <ClCompile Include="poly.cpp" />
     <ClCompile Include="TDML.cpp" />
     <ClCompile Include="terrain.cpp" />
+    <ClCompile Include="texture.cpp" />
     <ClCompile Include="vector3d.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="world.cpp" />

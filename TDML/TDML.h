@@ -42,6 +42,7 @@ using namespace std;
 #include <fstream>
 #include <ostream>
 
+#include "texture.h"
 #include "point.h"
 #include "poly.h"
 #include "object.h"
