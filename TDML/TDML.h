@@ -28,7 +28,8 @@ using namespace std;
 
 #define GLEW_STATIC
 
-#include "LodePNG.h"
+#include "LodePNG.h" //Warnings are not my problem...
+
 #include <glew.h>
 #include <Gl/freeglut.h>
 #include <gl/gl.h>

@@ -19,7 +19,7 @@ namespace TDML
 
 	void menu::dispInfo()
 	{
-		Log.output(nobjs); Log.output("\n");
+		Log.output((float)nobjs); Log.output("\n");
 	}
 
 	void menu::draw()
@@ -32,8 +32,8 @@ namespace TDML
 		for(int i = 0; i < nobjs; i++)
 		{
 			//Log.output(i); Log.output("\n");
-			glTranslatef(objects[i].getPosX(), (-objects[i].getPosY())+Window.getHeight(), 0);
-			glScalef(objects[i].getWidth(), -objects[i].getHeight(), 0);
+			glTranslatef((GLfloat)objects[i].getPosX(), (GLfloat)(-objects[i].getPosY())+Window.getHeight(), 0);
+			glScalef((GLfloat)objects[i].getWidth(), (GLfloat)-objects[i].getHeight(), 0);
 			objects[i].draw();
 			glLoadIdentity();
 		}

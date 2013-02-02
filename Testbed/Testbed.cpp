@@ -3,6 +3,7 @@
 using namespace std;
 
 TDML::world world1;
+TDML::menu menu1;
 
 void exit()
 {
@@ -12,6 +13,7 @@ void exit()
 void display ()
 {
 	world1.draw();
+	menu1.draw();
 }
 
 
@@ -33,6 +35,7 @@ int main(int argc, char** argv)
 	TDML::enableCulling(false);
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Texture Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	world1 = TDML::loadWorld("world.wor");
+	menu1 = TDML::loadMenu("test2.mnu");
 	world1.setCamPosition(0, 0, 15);
 	TDML::start();
 	return 0;

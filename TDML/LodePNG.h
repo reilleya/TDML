@@ -23,6 +23,8 @@ freely, subject to the following restrictions:
     distribution.
 */
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #ifndef LODEPNG_H
 #define LODEPNG_H
 

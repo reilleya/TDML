@@ -52,9 +52,6 @@ Official TODO List:
 	Particles:
 		Start them
 
-	Menus:
-		Make special menu worlds
-
 	Speed:
 		Look into optimizing VBO's and textures.
 		Make a visibility cull

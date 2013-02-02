@@ -72,8 +72,8 @@ namespace TDML
 
 	void window::centerWindow()
 	{
-		posx = (int)((float)glutGet(GLUT_SCREEN_WIDTH)/2)-((float)width/2);
-		posy = (int)((float)glutGet(GLUT_SCREEN_HEIGHT)/2)-((float)height/2);
+		posx = (int)(((float)glutGet(GLUT_SCREEN_WIDTH)/2)-((float)width/2));
+		posy = (int)(((float)glutGet(GLUT_SCREEN_HEIGHT)/2)-((float)height/2));
 		correct();
 	}
 

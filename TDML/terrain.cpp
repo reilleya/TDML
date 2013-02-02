@@ -53,25 +53,25 @@ namespace TDML
 		nx*=dimensions;
 		nz*=dimensions;
 		//Log.output(nx); Log.output(","); Log.output(nz); Log.output(":"); Log.output(heightmap[nx][nz]); Log.output("\n");
-		int roundedNewX = Math.simpleRoundDown(nx);
-		int roundedNewZ = Math.simpleRoundDown(nz);
+		int roundedNewX = (int)Math.simpleRoundDown(nx);
+		int roundedNewZ = (int)Math.simpleRoundDown(nz);
 		float partx = nx-roundedNewX;
 		float partz = nz-roundedNewZ;
 		//Log.output(partx); Log.output(","); Log.output(partz); 
 		if(partx+partz>1)
 		{
 			//Log.output(":Bottom Right!\n\n");
-			float h = heightmap[nx+1][nz+1];
-			h+=(heightmap[nx][nz+1]-heightmap[nx+1][nz+1])*(1-partx);
-			h+=(heightmap[nx+1][nz]-heightmap[nx+1][nz+1])*(1-partz);
+			float h = heightmap[(unsigned int)nx+1][(unsigned int)nz+1];
+			h+=(heightmap[(unsigned int)nx][(unsigned int)nz+1]-heightmap[(unsigned int)nx+1][(unsigned int)nz+1])*(1-partx);
+			h+=(heightmap[(unsigned int)nx+1][(unsigned int)nz]-heightmap[(unsigned int)nx+1][(unsigned int)nz+1])*(1-partz);
 			return (h-128)*scaley;
 		}
-		if(partx+partz<1)
+		else
 		{
 			//Log.output(":Top Left!\n\n");
-			float h = heightmap[nx][nz];
-			h+=(heightmap[nx+1][nz]-heightmap[nx][nz])*partx;
-			h+=(heightmap[nx][nz+1]-heightmap[nx][nz])*partz;
+			float h = heightmap[(unsigned int)nx][(unsigned int)nz];
+			h+=(heightmap[(unsigned int)nx+1][(unsigned int)nz]-heightmap[(unsigned int)nx][(unsigned int)nz])*partx;
+			h+=(heightmap[(unsigned int)nx][(unsigned int)nz+1]-heightmap[(unsigned int)nx][(unsigned int)nz])*partz;
 			return (h-128)*scaley;
 		}
 	}
@@ -89,10 +89,10 @@ namespace TDML
 		}
 		for(int v = 0; v < dimensions; v++)
 		{
-			cout << v << ":" << (v-(dimensions/2.0))/(dimensions/2.0) <<endl;
+			//cout << v << ":" << (v-(dimensions/2.0))/(dimensions/2.0) <<endl;
 			for(int v0 = 0; v0 < dimensions; v0++)
 			{
-				points[v][v0].setPos((v-(dimensions/2.0))/(dimensions/2.0), heightmap[v][v0]-128, (v0-(dimensions/2.0))/(dimensions/2.0));
+				points[v][v0].setPos((float)(v-(dimensions/2))/(dimensions/2), (float)heightmap[v][v0]-128, (float)(v0-(dimensions/2))/(dimensions/2));
 				//points[v][v0].setPos((v*0.03125)-(0.25*dimensions*0.03125), heightmap[v][v0]-128, (v0*0.03125)-(0.25*dimensions*0.03125));
 			}
 		}
@@ -123,7 +123,7 @@ namespace TDML
 				normals[(p*18)+1] = 1;
 				normals[(p*18)+2] = 0;
 				coords[(p*12)] = 0;
-				coords[(p*12)+1] = TDML::Math.smaller(1.0, (-((points[v1][v2].getY()-128.0)/256.0)));
+				coords[(p*12)+1] = TDML::Math.smaller(1, (-((points[v1][v2].getY()-128)/256)));
 
 				geometry[(p*18)+3] = points[v1][v2+1].getX();
 				geometry[(p*18)+4] = points[v1][v2+1].getY();
@@ -133,7 +133,7 @@ namespace TDML
 				normals[(p*18)+4] = 1;
 				normals[(p*18)+5] = 0;
 				coords[(p*12)+2] = 0;
-				coords[(p*12)+3] = TDML::Math.larger(0.0, (-((points[v1][v2+1].getY()-128.0)/256.0)));
+				coords[(p*12)+3] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
 
 				geometry[(p*18)+6] = points[v1+1][v2].getX();
 				geometry[(p*18)+7] = points[v1+1][v2].getY();
@@ -143,7 +143,7 @@ namespace TDML
 				normals[(p*18)+7] = 1;
 				normals[(p*18)+8] = 0;
 				coords[(p*12)+4] = 1;
-				coords[(p*12)+5] = TDML::Math.smaller(1.0, (-((points[v1+1][v2].getY()-128.0)/256.0)));
+				coords[(p*12)+5] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
 
 				geometry[(p*18)+9] = points[v1+1][v2].getX();
 				geometry[(p*18)+10] = points[v1+1][v2].getY();
@@ -153,7 +153,7 @@ namespace TDML
 				normals[(p*18)+10] = 1;
 				normals[(p*18)+11] = 0;
 				coords[(p*12)+6] = 1;
-				coords[(p*12)+7] = TDML::Math.smaller(1.0, (-((points[v1+1][v2].getY()-128.0)/256.0)));
+				coords[(p*12)+7] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
 
 				geometry[(p*18)+12] = points[v1][v2+1].getX();
 				geometry[(p*18)+13] = points[v1][v2+1].getY();
@@ -163,7 +163,7 @@ namespace TDML
 				normals[(p*18)+13] = 1;
 				normals[(p*18)+14] = 0;
 				coords[(p*12)+8] = 0;
-				coords[(p*12)+9] = TDML::Math.larger(0.0, (-((points[v1][v2+1].getY()-128.0)/256.0)));
+				coords[(p*12)+9] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
 
 				geometry[(p*18)+15] = points[v1+1][v2+1].getX();
 				geometry[(p*18)+16] = points[v1+1][v2+1].getY();
@@ -173,7 +173,7 @@ namespace TDML
 				normals[(p*18)+16] = 1;
 				normals[(p*18)+17] = 0;
 				coords[(p*12)+10] = 1;
-				coords[(p*12)+11] = TDML::Math.larger(0.0, (-((points[v1][v2+1].getY()-128.0)/256.0)));
+				coords[(p*12)+11] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
 
 				p++;
 			}

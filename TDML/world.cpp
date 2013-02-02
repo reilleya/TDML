@@ -55,7 +55,7 @@ namespace TDML
 
 	world::world()
 	{
-		lastTime=glutGet(GLUT_ELAPSED_TIME);
+		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
 		timeElapsed = 0;
 		nobjs=0;
 		camx=0;
@@ -70,13 +70,13 @@ namespace TDML
 	void world::update()
 	{
 		timeElapsed = glutGet(GLUT_ELAPSED_TIME)-lastTime;
-		lastTime=glutGet(GLUT_ELAPSED_TIME);
+		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
 		//output(1000.0/timeElapsed);
 		//output("\n");
-		timer+=timeElapsed;
+		timer+=(int)timeElapsed;
 		for(int updater = 0; updater < nobjs; updater++)
 		{
-			objects[updater].update(timer, timeElapsed);
+			objects[updater].update(timer, (int)timeElapsed);
 		}
 	}
 

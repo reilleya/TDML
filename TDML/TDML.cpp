@@ -34,13 +34,14 @@ namespace TDML
 	object loadObject(string fileName)
 	{
 		bool cachedFound = false;
-		for(int ob = 0; ob < cachedObjName.size(); ob++)
+		int cachedobjid=0;
+		for(unsigned int ob = 0; ob < cachedObjName.size(); ob++)
 		{
 			if(cachedObjName[ob] == fileName)
 			{
 				Log.output("Found!\n");
 				cachedFound = true;
-				return cachedObjs[ob];
+				cachedobjid = ob;
 			}
 		}
 		if(cachedFound==false)
@@ -67,7 +68,7 @@ namespace TDML
 				else
 				{
 					pointd.resize(pointd.size()+1);
-					pointd[pointd.size()-1] = atof(word.c_str());
+					pointd[pointd.size()-1] = (float)atof(word.c_str());
 				}
 			}
 			for(int polyg = 0; polyg < (int)polys.size(); polyg++)
@@ -79,6 +80,10 @@ namespace TDML
 			cachedObjName.resize(cachedObjName.size()+1);
 			cachedObjName[cachedObjName.size()-1] = fileName;
 			return newobj;
+		}
+		else
+		{
+			return cachedObjs[cachedobjid];
 		}
 	}
 
@@ -103,7 +108,7 @@ namespace TDML
 			{
 				//cout << word << endl;
 				line.resize(line.size()+1);
-				line[line.size()-1] = atof(word.c_str());
+				line[line.size()-1] = (float)atof(word.c_str());
 			}
 		}
 		newterrain.setHeightMap(heightmap);
@@ -137,20 +142,20 @@ namespace TDML
 				//std::cout << behd[0] << endl;
 				if(behd[0]!="visible" && behd[0]!="outline" && behd[0]!="wireframe")
 				{
-					newBehaviors[newBehaviors.size()-1].speed = atof(behd[1].c_str());
+					newBehaviors[newBehaviors.size()-1].speed = (float)atof(behd[1].c_str());
 					if(behd[2]=="{")
 					{
 						newBehaviors[newBehaviors.size()-1].repeat = true;
 						newBehaviors[newBehaviors.size()-1].relative = false;
-						newBehaviors[newBehaviors.size()-1].min = atof(behd[3].c_str());
-						newBehaviors[newBehaviors.size()-1].max = atof(behd[5].c_str());
+						newBehaviors[newBehaviors.size()-1].min = (float)atof(behd[3].c_str());
+						newBehaviors[newBehaviors.size()-1].max = (float)atof(behd[5].c_str());
 					}
 					else if(behd[2]=="[")
 					{
 						newBehaviors[newBehaviors.size()-1].repeat = true;
 						newBehaviors[newBehaviors.size()-1].relative = true;
-						newBehaviors[newBehaviors.size()-1].min = atof(behd[3].c_str());
-						newBehaviors[newBehaviors.size()-1].max = atof(behd[5].c_str());
+						newBehaviors[newBehaviors.size()-1].min = (float)atof(behd[3].c_str());
+						newBehaviors[newBehaviors.size()-1].max = (float)atof(behd[5].c_str());
 					}
 					else
 					{
@@ -160,8 +165,8 @@ namespace TDML
 				else
 				{
 					//std::cout << "in"<<endl;
-					newBehaviors[newBehaviors.size()-1].min = atof(behd[1].c_str());
-					newBehaviors[newBehaviors.size()-1].max = atof(behd[1].c_str());
+					newBehaviors[newBehaviors.size()-1].min = (float)atof(behd[1].c_str());
+					newBehaviors[newBehaviors.size()-1].max = (float)atof(behd[1].c_str());
 				}
 				behd.resize(0);
 			}
@@ -187,21 +192,21 @@ namespace TDML
 			//std::cout << word << endl;
 			if(word=="[")
 			{
-				Log.output("Creating OBJ from data file: "); Log.output(objd[0]); Log.output("| Data length: "); Log.output(objd.size()); Log.output(":\n");
+				Log.output("Creating OBJ from data file: "); Log.output(objd[0]); Log.output("| Data length: "); Log.output((float)objd.size()); Log.output(":\n");
 				objs.resize(objs.size()+1);
 				Log.output("\tLoading point data.\n");
 				objs[objs.size()-1] = loadObject(objd[0]);
-				Log.output("\t\tNumber of Polys: "); Log.output(objs[objs.size()-1].getSize()); Log.output("\n"); //<< objs[objs.size()-1].getSize()<<endl;
+				Log.output("\t\tNumber of Polys: "); Log.output((float)objs[objs.size()-1].getSize()); Log.output("\n");
 				Log.output("\tLoading wireframe data.\n");
 				objs[objs.size()-1].setWireframe(atof(objd[1].c_str())!=0);
 				Log.output("\tLoading outline data.\n");
 				//objs[objs.size()-1].setOutline(atof(objd[2].c_str())!=0);
 				Log.output("\tLoading position data.\n");
-				objs[objs.size()-1].setPosition(atof(objd[3].c_str()), atof(objd[4].c_str()), atof(objd[5].c_str()));
+				objs[objs.size()-1].setPosition((float)atof(objd[3].c_str()), (float)atof(objd[4].c_str()), (float)atof(objd[5].c_str()));
 				Log.output("\tLoading angle data.\n");
-				objs[objs.size()-1].setAngle(atof(objd[6].c_str()),atof(objd[7].c_str()),atof(objd[8].c_str()));
+				objs[objs.size()-1].setAngle((float)atof(objd[6].c_str()), (float)atof(objd[7].c_str()), (float)atof(objd[8].c_str()));
 				Log.output("\tLoading scale data.\n");
-				objs[objs.size()-1].setScale(atof(objd[9].c_str()),atof(objd[10].c_str()),atof(objd[11].c_str()));
+				objs[objs.size()-1].setScale((float)atof(objd[9].c_str()), (float)atof(objd[10].c_str()), (float)atof(objd[11].c_str()));
 				Log.output("\tLoading name.\n");
 				objs[objs.size()-1].setName(objd[12]);
 				Log.output("\tLoading type.\n");
@@ -240,7 +245,7 @@ namespace TDML
 			Log.output("Adding Object: "); Log.output(objs[objc].getName()); Log.output("\n");
 			Log.output("\tChecking Cache...\n");
 			bool found = false;
-			for(int search = 0; search < cachedVBOId.size(); search++)
+			for(unsigned int search = 0; search < cachedVBOId.size(); search++)
 			{
 				if(objs[objc].getFileName() == cachedVBOName[search])
 				{
@@ -283,10 +288,10 @@ namespace TDML
 				//Log.output("Creating MenuOBJ from data file: "); Log.output(menud[0]); Log.output("| Data length: "); Log.output(menu.size()); Log.output(":\n");
 				menus.resize(menus.size()+1);
 				menus[menus.size()-1].setTexture(menud[0]);
-				menus[menus.size()-1].setPosX(atof(menud[1].c_str()));
-				menus[menus.size()-1].setPosY(atof(menud[2].c_str()));
-				menus[menus.size()-1].setWidth(atof(menud[3].c_str()));
-				menus[menus.size()-1].setHeight(atof(menud[4].c_str()));
+				menus[menus.size()-1].setPosX(atoi(menud[1].c_str()));
+				menus[menus.size()-1].setPosY(atoi(menud[2].c_str()));
+				menus[menus.size()-1].setWidth(atoi(menud[3].c_str()));
+				menus[menus.size()-1].setHeight(atoi(menud[4].c_str()));
 				menud[0]="";
 				menud.resize(1);
 				Log.output("\tObject created.\n\n");
@@ -356,7 +361,7 @@ namespace TDML
 		glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 		glTexImage2D(GL_TEXTURE_2D, 0, 4, u2, v2, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image2[0]);
 		int intid = (int) id; 
-		Log.output(intid); Log.output("\n");
+		Log.output((float)intid); Log.output("\n");
 		return id;
 	}
 
@@ -419,7 +424,7 @@ namespace TDML
 					Log.output("\t\t\tLoading texture image...\n");
 					Log.output("\t\t\t\tChecking Cache...\n");
 					bool found = false;
-					for(int search = 0; search < cachedTexId.size(); search++)
+					for(unsigned int search = 0; search < cachedTexId.size(); search++)
 					{
 						if(word == cachedTexName[search])
 						{
@@ -437,13 +442,13 @@ namespace TDML
 						cachedTexId.resize(cachedTexId.size()+1);
 						cachedTexId[cachedTexId.size()-1] = t.getID(t.getLastID());
 					}
-					Log.output("\t\t\tLoaded texture image, TexID is "); Log.output(t.getID(t.getLastID())); Log.output("\n"); // << t.id << "." <<endl; 
+					Log.output("\t\t\tLoaded texture image, TexID is "); Log.output((float)t.getID(t.getLastID())); Log.output("\n");
 					textureline = true;
 				}
 				else
 				{
 					texd.resize(texd.size()+1);
-					texd[texd.size()-1] = atof(word.c_str());
+					texd[texd.size()-1] = (float)atof(word.c_str());
 				}
 			}
 		}

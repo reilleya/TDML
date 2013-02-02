@@ -26,7 +26,7 @@ namespace TDML
 		Log.output("Object:\n");
 		Log.output("\tName: "); Log.output(name); Log.output("\n");
 		Log.output("\tType: "); Log.output(type); Log.output("\n");
-		Log.output("\tPolys: "); Log.output(npolys); Log.output("\n");
+		Log.output("\tPolys: "); Log.output((float)npolys); Log.output("\n");
 		Log.output("\tPosition: "); Log.output(x); Log.output(", "); Log.output(y); Log.output(", "); Log.output(z); Log.output("\n"); 
 	}
 

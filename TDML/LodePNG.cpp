@@ -3433,7 +3433,7 @@ static unsigned get_color_profile(ColorProfile* profile,
       if(!profile->greybits_done)
       {
         /*assuming 8-bit r, this test does not care about 16-bit*/
-        unsigned bits = getValueRequiredBits(r);
+        unsigned bits = getValueRequiredBits((unsigned char)r);
         if(bits > profile->greybits) profile->greybits = bits;
         if(profile->greybits >= 8) profile->greybits_done = 1;
       }
@@ -3441,17 +3441,17 @@ static unsigned get_color_profile(ColorProfile* profile,
       if(!profile->numcolors_done)
       {
         /*assuming 8-bit rgba, this test does not care about 16-bit*/
-        if(!color_tree_has(&profile->tree, r, g, b, a))
+        if(!color_tree_has(&profile->tree, (unsigned char)r, (unsigned char)g, (unsigned char)b, (unsigned char)a))
         {
-          color_tree_add(&profile->tree, r, g, b, a, profile->numcolors);
+          color_tree_add(&profile->tree, (unsigned char) r, (unsigned char) g, (unsigned char) b, (unsigned char) a, profile->numcolors);
           if(profile->numcolors < 256)
           {
             unsigned char* p = profile->palette;
             unsigned i = profile->numcolors;
-            p[i * 4 + 0] = r;
-            p[i * 4 + 1] = g;
-            p[i * 4 + 2] = b;
-            p[i * 4 + 3] = a;
+            p[i * 4 + 0] = (unsigned char) r;
+            p[i * 4 + 1] = (unsigned char) g;
+            p[i * 4 + 2] = (unsigned char) b;
+            p[i * 4 + 3] = (unsigned char) a;
           }
           profile->numcolors++;
           if(profile->numcolors >= profile->maxnumcolors) profile->numcolors_done = 1;

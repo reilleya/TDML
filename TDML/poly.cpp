@@ -19,7 +19,7 @@ namespace TDML
 	void poly::dispInfo()
 	{
 		Log.output("Polygon:\n");
-		Log.output("\tVertices: "); Log.output(npoints); Log.output("\n");
+		Log.output("\tVertices: "); Log.output((float)npoints); Log.output("\n");
 		for(int v = 0; v < npoints; v++)
 		{
 			Log.output("\tCoordinates: "); Log.output(points[v]->getX()); Log.output(", "); Log.output(points[v]->getY()); Log.output(", "); Log.output(points[v]->getZ()); Log.output(";\n");

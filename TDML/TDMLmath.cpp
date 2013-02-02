@@ -107,6 +107,6 @@ namespace TDML
 
 	void TDMLmath::setupRandom()
 	{
-		srand(time(NULL));
+		srand((unsigned int)time(NULL));
 	}
 }
