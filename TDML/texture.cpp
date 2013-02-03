@@ -18,7 +18,6 @@ namespace TDML
 
 	void texture::addNewId(int newID)
 	{
-		Log.output((float)newID);
 		id.resize(ids+1);
 		id[ids] = newID;
 		ids++;

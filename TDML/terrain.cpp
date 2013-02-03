@@ -78,7 +78,6 @@ namespace TDML
 
 	void terrain::generateVBO()
 	{
-		cout << "Size: " << dimensions << endl;
 		std::vector<std::vector<point> > points;
 		points.resize(dimensions+1);
 		//cout << "Size: " << points.size() << endl;

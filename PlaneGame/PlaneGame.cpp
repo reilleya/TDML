@@ -106,12 +106,9 @@ int main(int argc, char** argv)
 	TDML::Log.setDebugMode(true);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(true);
-	TDML::Log.outputWindow("Loading, please wait.");
-	TDML::Log.output("Loading World\n");
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
 	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/test.hgt", "Resources/Common/Textures/height.png", 2500, 3);
 	World1.setTerrain(Terrain1);
-	TDML::Log.output("Done.\n");
 	TDML::Window.centerWindow();
 	TDML::start();
 	return 0;

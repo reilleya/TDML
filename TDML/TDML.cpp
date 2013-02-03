@@ -39,14 +39,14 @@ namespace TDML
 		{
 			if(cachedObjName[ob] == fileName)
 			{
-				Log.output("Found!\n");
+				Log.output("\t\tFound!\n");
 				cachedFound = true;
 				cachedobjid = ob;
 			}
 		}
 		if(cachedFound==false)
 		{
-			Log.output("Not Found!\n");
+			Log.output("\t\tNot Found!\n");
 			object newobj;
 			ifstream infile;
 			vector<float> pointd;
@@ -93,9 +93,10 @@ namespace TDML
 		ifstream infile;
 		std::vector<float> line;
 		std::vector<std::vector<float>> heightmap;
-		Log.output("\tLoading terrain texture from file: "); Log.output(fileName); Log.output("\n");		
+		Log.output("Loading terrain heightmap from file: "); Log.output(fileName); Log.output("\n");		
 		string word;
 		infile.open(fileName, ios::in);
+		Log.output("\tLoading height data\n");
 		while (infile >> word) 
 		{
 			if(word=="?")
@@ -111,17 +112,25 @@ namespace TDML
 				line[line.size()-1] = (float)atof(word.c_str());
 			}
 		}
+		Log.output("\tSetting properties\n");
+		Log.output("\t\tSetting heightmap\n");
 		newterrain.setHeightMap(heightmap);
+		Log.output("\t\tSetting dimensions\n");
 		newterrain.setDimensions(heightmap.size());
+		Log.output("\t\tSetting texture\n");
+		Log.output("\t\t\tLoading texture image\n");
 		newterrain.setTextureId(loadTextureData(textureName));
+		Log.output("\t\tSetting scale\n");
 		newterrain.setScale(scaleXZ, scaleY);
+		Log.output("\tGenerating VBO\n");
 		newterrain.generateVBO();
+		Log.output("Done Loading Terrain\n\n");
 		return newterrain;
 	}
 
 	vector<behavior> loadBehaviors(string fileName)
 	{
-		Log.output("\tLoading behaviors from: "+fileName+"\n");
+		Log.output("\t\t\tLoading behaviors from: "+fileName+"\n");
 		vector<behavior> newBehaviors;
 		ifstream infile;
 		vector<string> behd;
@@ -181,6 +190,7 @@ namespace TDML
 
 	world loadWorld(string fileName)
 	{
+		Log.output("Loading world from file: "); Log.output(fileName); Log.output(":\n");
 		world newworld;
 		ifstream infile;
 		vector<string> objd(1);
@@ -192,36 +202,36 @@ namespace TDML
 			//std::cout << word << endl;
 			if(word=="[")
 			{
-				Log.output("Creating OBJ from data file: "); Log.output(objd[0]); Log.output("| Data length: "); Log.output((float)objd.size()); Log.output(":\n");
+				Log.output("\tCreating OBJ from data file: "); Log.output(objd[0]); Log.output("| Data length: "); Log.output((float)objd.size()); Log.output(":\n");
 				objs.resize(objs.size()+1);
-				Log.output("\tLoading point data.\n");
+				Log.output("\t\tLoading point data.\n");
 				objs[objs.size()-1] = loadObject(objd[0]);
-				Log.output("\t\tNumber of Polys: "); Log.output((float)objs[objs.size()-1].getSize()); Log.output("\n");
-				Log.output("\tLoading wireframe data.\n");
+				Log.output("\t\t\tNumber of Polys: "); Log.output((float)objs[objs.size()-1].getSize()); Log.output("\n");
+				Log.output("\t\tLoading wireframe data.\n");
 				objs[objs.size()-1].setWireframe(atof(objd[1].c_str())!=0);
-				Log.output("\tLoading outline data.\n");
+				Log.output("\t\tLoading outline data.\n");
 				//objs[objs.size()-1].setOutline(atof(objd[2].c_str())!=0);
-				Log.output("\tLoading position data.\n");
+				Log.output("\t\tLoading position data.\n");
 				objs[objs.size()-1].setPosition((float)atof(objd[3].c_str()), (float)atof(objd[4].c_str()), (float)atof(objd[5].c_str()));
-				Log.output("\tLoading angle data.\n");
+				Log.output("\t\tLoading angle data.\n");
 				objs[objs.size()-1].setAngle((float)atof(objd[6].c_str()), (float)atof(objd[7].c_str()), (float)atof(objd[8].c_str()));
-				Log.output("\tLoading scale data.\n");
+				Log.output("\t\tLoading scale data.\n");
 				objs[objs.size()-1].setScale((float)atof(objd[9].c_str()), (float)atof(objd[10].c_str()), (float)atof(objd[11].c_str()));
-				Log.output("\tLoading name.\n");
+				Log.output("\t\tLoading name.\n");
 				objs[objs.size()-1].setName(objd[12]);
-				Log.output("\tLoading type.\n");
+				Log.output("\t\tLoading type.\n");
 				objs[objs.size()-1].setType(objd[13]);
-				Log.output("\tSetting filename\n");
+				Log.output("\t\tSetting filename\n");
 				objs[objs.size()-1].setFileName(objd[0]);
-				Log.output("\tLoading behaviors.\n");
+				Log.output("\t\tLoading behaviors.\n");
 				vector<behavior> behaviors = loadBehaviors(objd[14]);
-				Log.output("\tLoaded behavior data. Parsing...\n");
+				Log.output("\t\tLoaded behavior data. Parsing...\n");
 				for(std::size_t be = 0; be < behaviors.size(); be++) objs[objs.size()-1].addBehavior(behaviors[be]);
-				Log.output("\tLoading texture data.\n");
+				Log.output("\t\tLoading texture data.\n");
 				objs[objs.size()-1].setMaterial(loadTexture(objd[15]));
 				objd[0]="";
 				objd.resize(1);
-				Log.output("\tObject created.\n\n");
+				Log.output("\t\tObject created.\n\n");
 			}
 			else if(word=="?")
 			{
@@ -242,21 +252,21 @@ namespace TDML
 		for(int objc = 0; objc < (int)objs.size(); objc++)
 		{
 			//std::cout << "FIrst:" <<endl;
-			Log.output("Adding Object: "); Log.output(objs[objc].getName()); Log.output("\n");
-			Log.output("\tChecking Cache...\n");
+			Log.output("\tAdding Object: "); Log.output(objs[objc].getName()); Log.output("\n");
+			Log.output("\t\tChecking Cache...\n");
 			bool found = false;
 			for(unsigned int search = 0; search < cachedVBOId.size(); search++)
 			{
 				if(objs[objc].getFileName() == cachedVBOName[search])
 				{
 					found = true;
-					Log.output("\t\tFound...\n");
+					Log.output("\t\t\tFound...\n");
 					objs[objc].setVBOId(cachedVBOId[search]);
 				}
 			}
 			if(!found)
 			{
-				Log.output("\t\tNot Found...\n");
+				Log.output("\t\t\tNot Found...\n");
 				objs[objc].generateVBO();
 				cachedVBOName.resize(cachedVBOName.size()+1);
 				cachedVBOName[cachedVBOName.size()-1] = objs[objc].getFileName();
@@ -268,7 +278,7 @@ namespace TDML
 			newworld.addObject(objs[objc]);
 			//std::cout << "Adding"<<endl;
 		}
-		Log.output("Done Loading World!\n");
+		Log.output("Done Loading World!\n\n");
 		return newworld;
 	}
 
@@ -361,7 +371,6 @@ namespace TDML
 		glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 		glTexImage2D(GL_TEXTURE_2D, 0, 4, u2, v2, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image2[0]);
 		int intid = (int) id; 
-		Log.output((float)intid); Log.output("\n");
 		return id;
 	}
 
