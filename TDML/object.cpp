@@ -72,6 +72,22 @@ namespace TDML
 	void object::update(int time, int timedelta)
 	{
 		if(updateFuncSet) updatefunction(this);
+		if(framedelay!=0)
+		{
+			frametime -= timedelta;
+			if(frametime <= 0)
+			{
+				if(frame < material.getLastID())
+				{
+					frame++;
+				}
+				else
+				{
+					frame = 0;
+				}
+				frametime = framedelay;
+			}
+		}
 		for(int b = 0; b < nbehaviors; b++)
 		{
 			if(behaviors[b].type=="x")
@@ -655,6 +671,17 @@ namespace TDML
 	int object::getFrame()
 	{
 		return frame;
+	}
+
+	float object::getFrameDelay()
+	{
+		return framedelay;
+	}
+			
+	void object::setFrameDelay(float newFrameDelay)
+	{
+		framedelay = newFrameDelay;
+		frametime = newFrameDelay;
 	}
 
 	void object::setFrame(int newFrame)

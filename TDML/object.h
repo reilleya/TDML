@@ -27,6 +27,8 @@ namespace TDML
 			std::vector<poly> polygons;
 			texture material;
 			int frame;
+			float framedelay;
+			float frametime;
 			bool wireframe;
 			bool visible;
 			float x;
@@ -118,6 +120,8 @@ namespace TDML
 			float getMinZ();
 			float getRadius();
 			int getFrame();
+			float getFrameDelay();
+			void setFrameDelay(float newFrameDelay);
 			void setFrame(int newFrame);
 			void setUpdateFunction(void (*newupdatefunction)(object* me));
 			void setFileName(std::string newFileName);
