@@ -18,6 +18,8 @@ using namespace std;
 #define LEFTMOUSE 0
 #define RIGHTMOUSE 2
 #define MIDDLEMOUSE 1
+#define WHEELUP 3
+#define WHEELDOWN 4
 
 #define XYZ 0
 #define XZY 1
@@ -53,6 +55,7 @@ using namespace std;
 #include "vector3d.h"
 #include "input.h"
 #include "window.h"
+#include "config.h"
 #include "menuobject.h"
 #include "menu.h"
 #include "TDMLmath.h"
@@ -82,6 +85,7 @@ namespace TDML
 	extern TDMLmath Math;
 	extern window Window;
 	extern log Log;
+	extern config Config;
 
 	extern void (*theirdisplayfunction)();
 	extern void (*theirupdatefunction)();

@@ -92,6 +92,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="config.h" />
     <ClInclude Include="glew.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="LodePNG.h" />
@@ -110,6 +111,7 @@
     <ClInclude Include="world.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="config.cpp" />
     <ClCompile Include="glew.c" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="LodePNG.cpp" />

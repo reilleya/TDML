@@ -639,7 +639,12 @@ namespace TDML
 	void stop()
 	{
 		//glutDestroyWindow(0);
+		for(unsigned int buf = 0; buf < cachedVBOId.size(); buf++)
+		{
+			glDeleteBuffers(1, &cachedVBOId[buf]);
+		}
 		glutLeaveMainLoop();
+		
 		exit();
 	}
 

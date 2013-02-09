@@ -17,10 +17,10 @@ namespace TDML
 		for(int k = 0; k < 256; k++) keys[k] = false;
 		specialkeys = new bool[256];
 		for(int sk = 0; sk < 256; sk++) specialkeys[sk] = false;
-		mousekeys = new bool[3];
-		for(int mk = 0; mk < 3; mk++) mousekeys[mk] = false;
-		mousekeypresses = new bool[3];
-		for(int mkp = 0; mkp < 3; mkp++) mousekeypresses[mkp] = false;
+		mousekeys = new bool[5];
+		for(int mk = 0; mk < 5; mk++) mousekeys[mk] = false;
+		mousekeypresses = new bool[5];
+		for(int mkp = 0; mkp < 5; mkp++) mousekeypresses[mkp] = false;
 		xpos=0;
 		ypos=0;
 	}
@@ -77,9 +77,20 @@ namespace TDML
 
 	void input::MouseKeyFunc(int button, int state, int x, int y)
 	{
-		state=!state;
-		mousekeys[button]=state!=0;
-		mousekeypresses[button]=state!=0;
+		state =! state;
+		if(button != 3 && button != 4)
+		{
+			mousekeypresses[button] = (state != 0);
+			mousekeys[button] = (state != 0);
+		}
+		else
+		{
+			if(!mousekeypresses[button])
+			{
+				mousekeypresses[button] = true;
+				mousekeys[button] = true;
+			}
+		}
 	}
 
 	void input::MousePosFunc(int x, int y)
@@ -90,9 +101,13 @@ namespace TDML
 
 	void input::resetMouseKeyPressed()
 	{
-		mousekeypresses[0]=false;
-		mousekeypresses[1]=false;
-		mousekeypresses[2]=false;
+		mousekeypresses[0] = false;
+		mousekeypresses[1] = false;
+		mousekeypresses[2] = false;
+		mousekeypresses[3] = false;
+		mousekeypresses[4] = false;
+		mousekeys[3] = false;
+		mousekeys[4] = false;
 	}
 
 	void input::setCursorPosition(int x, int y)
