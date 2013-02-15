@@ -476,6 +476,7 @@ namespace TDML
 	TDMLmath Math;
 	window Window;
 	log Log;
+	config Config;
 	void (*theirdisplayfunction)();
 	void (*theirupdatefunction)();
 	void (*theirexitfunction)();
@@ -569,7 +570,7 @@ namespace TDML
 		glViewport(0, 0, (GLsizei) w, (GLsizei) h);              
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();  
-		gluPerspective(45.0f, w/h, 1.000f, 1000000.0f);
+		gluPerspective(Config.getFOV(), w/h, 1.000f, 1000000.0f);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		Window.updatePos(glutGet(GLUT_WINDOW_X), glutGet(GLUT_WINDOW_Y));
@@ -581,14 +582,21 @@ namespace TDML
 		float w = (float) width;
 		float h = (float) height;
 		glutInit(argc, argv);     
-		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_MULTISAMPLE);
+		if(Config.getAA())
+		{
+			glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_MULTISAMPLE);
+		}
+		else
+		{
+			glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+		}
 		glutInitWindowSize(width, height);
 		glutInitWindowPosition (30, 30);
 		glutCreateWindow(title);
 		glClearColor(SkyRed, SkyGreen, SkyBlue, 1.0);               
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();  
-		gluPerspective(45.0f, w/h, 1.0f, 10000.0f);
+		gluPerspective(Config.getFOV(), w/h, 1.0f, 10000.0f);
 		glClearDepth(1.0f);
 		glDepthFunc(GL_LESS);
 		glEnable(GL_DEPTH_TEST);

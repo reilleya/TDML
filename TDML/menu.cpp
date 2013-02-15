@@ -39,7 +39,7 @@ namespace TDML
 		}
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(45.0f, (float)Window.getWidth()/(float)Window.getHeight(), 1.0f, 10000.0f);
+		gluPerspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.0f, 10000.0f);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 	}
