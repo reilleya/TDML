@@ -28,6 +28,7 @@ namespace TDML
 			float camyangle;
 			float camzangle;
 			void cameraRotate();
+			void objectRotate(float x, float y, float z);
 
 		public:
 			world();

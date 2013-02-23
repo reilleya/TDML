@@ -66,7 +66,7 @@ void load()
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
 	}
-	for(int t = 0; t < 500; t++)
+	for(int t = 0; t < 250; t++)
 	{
 		TDML::object newrock = TDML::loadObject("Resources/World1/Rock/model.tdm");
 		newrock.setMaterial(TDML::loadTexture("Resources/World1/Rock/material.mdf"));
@@ -208,6 +208,7 @@ void animate()
 int main(int argc, char** argv)
 {
 	//TDML::Log.setDebugMode(true);
+	//TDML::setObjectRotationOrder(YZX);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(true);
 	//MainMenu = TDML::loadMenu("Resources/MainMenu/menu.mnu");

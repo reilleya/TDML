@@ -53,6 +53,48 @@ namespace TDML
 			}
 	}
 
+	void world::objectRotate(float x, float y, float z)
+	{
+		switch(orotorder)
+			{
+				case 0:
+					glRotatef(x, 1, 0, 0);
+					glRotatef(y, 0, 1, 0);
+					glRotatef(z, 0, 0, 1);
+					break;
+
+				case 1:
+					glRotatef(x, 1, 0, 0);
+					glRotatef(z, 0, 0, 1);
+					glRotatef(y, 0, 1, 0);
+					break;
+
+				case 2:
+					glRotatef(z, 0, 0, 1);
+					glRotatef(y, 0, 1, 0);
+					glRotatef(x, 1, 0, 0);
+					break;
+
+				case 3:
+					glRotatef(z, 0, 0, 1);
+					glRotatef(x, 1, 0, 0);
+					glRotatef(y, 0, 1, 0);
+					break;
+
+				case 4:
+					glRotatef(y, 0, 1, 0);
+					glRotatef(x, 1, 0, 0);
+					glRotatef(z, 0, 0, 1);
+					break;
+
+				case 5:
+					glRotatef(y, 0, 1, 0);
+					glRotatef(z, 0, 0, 1);
+					glRotatef(x, 1, 0, 0);
+					break;
+			}
+	}
+
 	world::world()
 	{
 		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
@@ -116,9 +158,10 @@ namespace TDML
 			glTranslatef(-camx, -camy, -camz);
 			glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
 			//objects[obj].drawBB();
-			glRotatef(objects[obj].getYangle(), 0, 1, 0);
-			glRotatef(objects[obj].getXangle(), 1, 0, 0);
-			glRotatef(objects[obj].getZangle(), 0, 0, 1);
+			//glRotatef(objects[obj].getYangle(), 0, 1, 0);
+			//glRotatef(objects[obj].getXangle(), 1, 0, 0);
+			//glRotatef(objects[obj].getZangle(), 0, 0, 1);
+			objectRotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle());
 			glScalef(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
 			objects[obj].display();
 			glLoadIdentity();

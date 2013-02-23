@@ -80,6 +80,7 @@ namespace TDML
 	extern bool running;
 
 	extern int crotorder;
+	extern int orotorder;
 
 	extern input Input;
 	extern TDMLmath Math;
@@ -115,7 +116,8 @@ namespace TDML
 	void exit();
 
 	void enableCulling(bool state);
-	void setRotationOrder(int order);
+	void setCameraRotationOrder(int order);
+	void setObjectRotationOrder(int order);
 
 	void setPause(bool state);
 }

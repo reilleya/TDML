@@ -471,6 +471,7 @@ namespace TDML
 	bool running = true;
 
 	int crotorder = 1;
+	int orotorder = 4;
 
 	input Input;
 	TDMLmath Math;
@@ -706,5 +707,15 @@ namespace TDML
 	void setPause(bool state)
 	{
 		running = !state;
+	}
+
+	void setCameraRotationOrder(int order)
+	{
+		crotorder = order;
+	}
+
+	void setObjectRotationOrder(int order)
+	{
+		orotorder = order;
 	}
 };
