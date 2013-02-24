@@ -97,6 +97,7 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="LodePNG.h" />
     <ClInclude Include="log.h" />
+    <ClInclude Include="matrix3x3.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menuobject.h" />
     <ClInclude Include="TDMLmath.h" />
@@ -116,6 +117,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="LodePNG.cpp" />
     <ClCompile Include="log.cpp" />
+    <ClCompile Include="matrix3x3.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menuobject.cpp" />
     <ClCompile Include="TDMLmath.cpp" />

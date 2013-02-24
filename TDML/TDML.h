@@ -53,6 +53,7 @@ using namespace std;
 #include "world.h"
 #include "log.h"
 #include "vector3d.h"
+#include "matrix3x3.h"
 #include "input.h"
 #include "window.h"
 #include "config.h"
