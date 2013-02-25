@@ -31,7 +31,7 @@ void load()
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
 	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
-	for(int t = 0; t < 5000; t++)
+	for(int t = 0; t < 0; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
 		newtree.setMaterial(TDML::loadTexture("Resources/World1/Tree/material.mdf"));
@@ -66,7 +66,7 @@ void load()
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
 	}
-	for(int t = 0; t < 250; t++)
+	for(int t = 0; t < 0; t++)
 	{
 		TDML::object newrock = TDML::loadObject("Resources/World1/Rock/model.tdm");
 		newrock.setMaterial(TDML::loadTexture("Resources/World1/Rock/material.mdf"));
@@ -140,7 +140,7 @@ void animate()
 
 		if(World1.getHeightMapAt(plane.getX(),plane.getZ())>plane.getMinY())
 		{
-			TDML::Log.output("Underground!\n");
+			//TDML::Log.output("Underground!\n");
 			plane.setVisible(false);
 			dead = true;
 		}
@@ -207,7 +207,7 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	//TDML::Log.setDebugMode(true);
+	TDML::Log.setDebugMode(true);
 	//TDML::setObjectRotationOrder(YZX);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(true);

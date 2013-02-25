@@ -96,6 +96,19 @@ namespace TDML
 
 	vector3d matrix3x3::apply(vector3d original)
 	{
-		return original;
+		vector3d temp = vector3d(0,0,0);
+		temp.x = (p11*original.x)+(p12*original.y)+(p13*original.z);
+		temp.y = (p21*original.x)+(p22*original.y)+(p23*original.z);
+		temp.z = (p31*original.x)+(p32*original.y)+(p33*original.z);
+		return temp;
+	}
+
+	point matrix3x3::apply(point original)
+	{
+		point temp;
+		temp.setX((p11*original.getX())+(p12*original.getY())+(p13*original.getZ()));
+		temp.setY((p21*original.getX())+(p22*original.getY())+(p23*original.getZ()));
+		temp.setZ((p31*original.getX())+(p32*original.getY())+(p33*original.getZ()));
+		return temp;
 	}
 }

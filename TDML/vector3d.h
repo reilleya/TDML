@@ -19,6 +19,7 @@ namespace TDML
 			float z;
 			vector3d(float nx, float ny, float nz);
 			vector3d(float x1, float y1, float z1, float x2, float y2, float z2);
+			void dispInfo();
 			vector3d operator + (vector3d v2);
 			vector3d operator - (vector3d v2);
 			float operator * (vector3d v2);

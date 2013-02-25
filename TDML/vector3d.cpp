@@ -25,6 +25,12 @@ namespace TDML
 		z = z1-z2;
 	}
 
+	void vector3d::dispInfo()
+	{
+		Log.output("3D Vector:\n");
+		Log.output(x); Log.output(","); Log.output(y); Log.output(","); Log.output(z); Log.output("\n");
+ 	}
+
 	vector3d vector3d::operator + (vector3d v2)
 	{
 		vector3d temp = vector3d(0,0,0);

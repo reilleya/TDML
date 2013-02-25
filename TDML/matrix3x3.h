@@ -33,5 +33,6 @@ namespace TDML
 			void yRotFromAngle(float angle);
 			void zRotFromAngle(float angle);
 			vector3d apply(vector3d original);
+			point apply(point original);
 	};
 }

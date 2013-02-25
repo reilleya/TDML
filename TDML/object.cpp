@@ -59,13 +59,30 @@ namespace TDML
 	{
 		glBegin(GL_LINE_LOOP);
 			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
+			glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
+			glVertex3f(adjustedmaxx, adjustedminy, adjustedminz);
+			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
 			glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
 			glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
 			glVertex3f(adjustedminx, adjustedminy, adjustedminz);
 			glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
-			glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+			glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
+			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
 			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
 			glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+			glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
+			glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
+			glVertex3f(adjustedmaxx, adjustedminy, adjustedminz);
+			glVertex3f(adjustedminx, adjustedminy, adjustedminz);
 		glEnd();
 	}
 
@@ -249,12 +266,18 @@ namespace TDML
 		{
 			for(int p1 = 0; p1<3; p1++)
 			{
-				if(polygons[p].getX(p1)*scalex>maxx) maxx = polygons[p].getX(p1)*scalex;
+				/*if(polygons[p].getX(p1)*scalex>maxx) maxx = polygons[p].getX(p1)*scalex;
 				if(polygons[p].getX(p1)*scalex<minx) minx = polygons[p].getX(p1)*scalex;
 				if(polygons[p].getY(p1)*scaley>maxy) maxy = polygons[p].getY(p1)*scaley;
 				if(polygons[p].getY(p1)*scaley<miny) miny = polygons[p].getY(p1)*scaley;
 				if(polygons[p].getZ(p1)*scalez>maxz) maxz = polygons[p].getZ(p1)*scalez;
-				if(polygons[p].getZ(p1)*scalez<minz) minz = polygons[p].getZ(p1)*scalez;
+				if(polygons[p].getZ(p1)*scalez<minz) minz = polygons[p].getZ(p1)*scalez;*/
+				if(polygons[p].getX(p1)>maxx) maxx = polygons[p].getX(p1);
+				if(polygons[p].getX(p1)<minx) minx = polygons[p].getX(p1);
+				if(polygons[p].getY(p1)>maxy) maxy = polygons[p].getY(p1);
+				if(polygons[p].getY(p1)<miny) miny = polygons[p].getY(p1);
+				if(polygons[p].getZ(p1)>maxz) maxz = polygons[p].getZ(p1);
+				if(polygons[p].getZ(p1)<minz) minz = polygons[p].getZ(p1);
 			}
 		}
 		xsize = maxx - minx;
@@ -265,57 +288,69 @@ namespace TDML
 
 	void object::recalcBoundingBox()
 	{
-		/*point* points[8];
+		point* points[8];
 		points[0] = new point();
 		points[0]->setX(maxx);
-		points[0]->setX(maxy);
-		points[0]->setX(maxz);
+		points[0]->setY(maxy);
+		points[0]->setZ(maxz);
 
 		points[1] = new point();
 		points[1]->setX(maxx);
-		points[1]->setX(maxy);
-		points[1]->setX(minz);
+		points[1]->setY(maxy);
+		points[1]->setZ(minz);
 
 		points[2] = new point();
 		points[2]->setX(maxx);
-		points[2]->setX(miny);
-		points[2]->setX(maxz);
+		points[2]->setY(miny);
+		points[2]->setZ(maxz);
 
 		points[3] = new point();
 		points[3]->setX(maxx);
-		points[3]->setX(miny);
-		points[3]->setX(minz);
+		points[3]->setY(miny);
+		points[3]->setZ(minz);
 
 		points[4] = new point();
 		points[4]->setX(minx);
-		points[4]->setX(maxy);
-		points[4]->setX(maxz);
+		points[4]->setY(maxy);
+		points[4]->setZ(maxz);
 
 		points[5] = new point();
 		points[5]->setX(minx);
-		points[5]->setX(maxy);
-		points[5]->setX(minz);
+		points[5]->setY(maxy);
+		points[5]->setZ(minz);
 
 		points[6] = new point();
 		points[6]->setX(minx);
-		points[6]->setX(miny);
-		points[6]->setX(maxz);
+		points[6]->setY(miny);
+		points[6]->setZ(maxz);
 
 		points[7] = new point();
 		points[7]->setX(minx);
-		points[7]->setX(miny);
-		points[7]->setX(minz);
+		points[7]->setY(miny);
+		points[7]->setZ(minz);
+
+		matrix3x3 xrot = matrix3x3();
+		xrot.xRotFromAngle(xangle);
+
+		matrix3x3 yrot = matrix3x3();
+		yrot.yRotFromAngle(yangle);
+
+		matrix3x3 zrot = matrix3x3();
+		zrot.zRotFromAngle(zangle);
+
+		matrix3x3 rot = (yrot*xrot) * zrot;
+
+		//rot.dispInfo();
 
 		for(int q = 0; q < 8; q++)
 		{
-			points[q]->setX(points[q]->getX()*Math.cos(yangle) + points[q]->getZ()*Math.sin(yangle));
-			points[q]->setZ(points[q]->getZ()*Math.cos(yangle) - points[q]->getX()*Math.sin(yangle));
-
-			points[q]->setY(points[q]->getY()*Math.cos(xangle) - points[q]->getZ()*Math.sin(xangle));
-			points[q]->setZ(points[q]->getZ()*Math.cos(xangle) + points[q]->getY()*Math.sin(xangle));
-
-			points[q]->setX(points[q]->getX()*Math.cos(zangle) - points[q]->getY()*Math.sin(zangle));
-			points[q]->setY(points[q]->getY()*Math.cos(zangle) + points[q]->getX()*Math.sin(zangle));
+			vector3d temp = vector3d(points[q]->getX(), points[q]->getY(), points[q]->getZ());
+			//temp.dispInfo();
+			temp = rot.apply(temp);
+			points[q]->setX(temp.x);
+			points[q]->setY(temp.y);
+			points[q]->setZ(temp.z);
+			//temp.dispInfo();
 		}
 
 		adjustedmaxx=0;
@@ -332,10 +367,10 @@ namespace TDML
 			if(points[q]->getY()*scaley>adjustedmaxy) adjustedmaxy = points[q]->getY()*scaley;
 			if(points[q]->getY()*scaley<adjustedminy) adjustedminy = points[q]->getY()*scaley;
 			if(points[q]->getZ()*scalez>adjustedmaxz) adjustedmaxz = points[q]->getZ()*scalez;
-			if(points[q]->getX()*scalez<adjustedminz) adjustedminz = points[q]->getZ()*scalez;
-		}*/
-
-		if(yangle==270)
+			if(points[q]->getZ()*scalez<adjustedminz) adjustedminz = points[q]->getZ()*scalez;
+		}
+		//Log.output("\n");
+		/*if(yangle==270)
 		{
 			adjustedmaxx=minz;
 			adjustedminx=maxz;
@@ -370,7 +405,7 @@ namespace TDML
 			adjustedminy=miny;
 			adjustedmaxz=maxz;
 			adjustedminz=minz;
-		}
+		}*/
 	}
 
 	void object::createBoundingSphere()
