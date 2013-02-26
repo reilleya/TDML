@@ -42,47 +42,37 @@ namespace TDML
 			glNormalPointer(GL_FLOAT, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));
 			if(wireframe) glDrawArrays(GL_LINE_LOOP, 0, npolys*3);
 			else glDrawArrays(GL_TRIANGLES, 0, npolys*3);
-			//glBegin(GL_LINE_LOOP);
-			//	glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
-			//	glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
-			//	glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
-			//	glVertex3f(adjustedminx, adjustedminy, adjustedminz);
-			//	glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
-			//	glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
-			//	glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
-			//	glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
-			//glEnd();
 		}
 	}
 
 	void object::drawBB()
 	{
 		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
-			glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
-			glVertex3f(adjustedmaxx, adjustedminy, adjustedminz);
-			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
+			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedminz*scalez);
+			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
 		glEnd();
 
 		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
-			glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
-			glVertex3f(adjustedminx, adjustedminy, adjustedminz);
-			glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
+			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedminz*scalez);
+			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
 		glEnd();
 
 		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedminx, adjustedmaxy, adjustedmaxz);
-			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedmaxz);
-			glVertex3f(adjustedmaxx, adjustedmaxy, adjustedminz);
-			glVertex3f(adjustedminx, adjustedmaxy, adjustedminz);
+			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
+			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
 		glEnd();
 
 		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedminx, adjustedminy, adjustedmaxz);
-			glVertex3f(adjustedmaxx, adjustedminy, adjustedmaxz);
-			glVertex3f(adjustedmaxx, adjustedminy, adjustedminz);
-			glVertex3f(adjustedminx, adjustedminy, adjustedminz);
+			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
+			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedminz*scalez);
+			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedminz*scalez);
 		glEnd();
 	}
 
@@ -362,12 +352,12 @@ namespace TDML
 
 		for(int q = 0; q < 8; q++)
 		{
-			if(points[q]->getX()*scalex>adjustedmaxx) adjustedmaxx = points[q]->getX()*scalex;
-			if(points[q]->getX()*scalex<adjustedminx) adjustedminx = points[q]->getX()*scalex;
-			if(points[q]->getY()*scaley>adjustedmaxy) adjustedmaxy = points[q]->getY()*scaley;
-			if(points[q]->getY()*scaley<adjustedminy) adjustedminy = points[q]->getY()*scaley;
-			if(points[q]->getZ()*scalez>adjustedmaxz) adjustedmaxz = points[q]->getZ()*scalez;
-			if(points[q]->getZ()*scalez<adjustedminz) adjustedminz = points[q]->getZ()*scalez;
+			if(points[q]->getX()>adjustedmaxx) adjustedmaxx = points[q]->getX();
+			if(points[q]->getX()<adjustedminx) adjustedminx = points[q]->getX();
+			if(points[q]->getY()>adjustedmaxy) adjustedmaxy = points[q]->getY();
+			if(points[q]->getY()<adjustedminy) adjustedminy = points[q]->getY();
+			if(points[q]->getZ()>adjustedmaxz) adjustedmaxz = points[q]->getZ();
+			if(points[q]->getZ()<adjustedminz) adjustedminz = points[q]->getZ();
 		}
 		//Log.output("\n");
 		/*if(yangle==270)
@@ -670,32 +660,32 @@ namespace TDML
 
 	float object::getMaxX()
 	{
-		return x+adjustedmaxx;
+		return x+(adjustedmaxx*scalex);
 	}
 
 	float object::getMinX()
 	{
-		return x+adjustedminx;//Probs the source of some probs
+		return x+(adjustedminx*scalex);
 	}
 
 	float object::getMaxY()
 	{
-		return y+adjustedmaxy;
+		return y+(adjustedmaxy*scaley);
 	}
 
 	float object::getMinY()
 	{
-		return y+adjustedminy;
+		return y+(adjustedminy*scaley);
 	}
 
 	float object::getMaxZ()
 	{
-		return z+adjustedmaxz;
+		return z+(adjustedmaxz*scalez);
 	}
 
 	float object::getMinZ()
 	{
-		return z+adjustedminz;
+		return z+(adjustedminz*scalez);
 	}
 
 	float object::getRadius()

@@ -157,7 +157,7 @@ namespace TDML
 			cameraRotate();
 			glTranslatef(-camx, -camy, -camz);
 			glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
-			objects[obj].drawBB();
+			//objects[obj].drawBB();
 			glScalef(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
 			objectRotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle());
 			objects[obj].display();

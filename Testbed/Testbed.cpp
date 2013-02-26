@@ -20,6 +20,7 @@ void display ()
 void animate()
 {
 	TDML::object& cube = world1.getObjectRef("tv");
+	//cube.setWireframe(true);
 	cube.setXangle(cube.getXangle()+0.2);
 	cube.setYangle(cube.getYangle()+0.1);
 	cube.setZangle(cube.getZangle()-0.3);
@@ -27,6 +28,14 @@ void animate()
 	{
 		if(cube.getFrame()==2) cube.setFrame(0);
 		else cube.setFrame(cube.getFrame()+1);
+	}
+	if(TDML::Input.getMouseKeyState(LEFTMOUSE))
+	{
+		cube.setScale(1.5, 1.5, 1.5);
+	}
+	else
+	{
+		cube.setScale(1, 1, 1);
 	}
 	world1.update();
 	TDML::Log.output(cube.getYangle()); TDML::Log.output("\n");
