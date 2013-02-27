@@ -73,6 +73,12 @@
     <ClInclude Include="matrix3x3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="particlesystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TDML.cpp">
@@ -127,6 +133,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="matrix3x3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="particlesystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -109,4 +109,29 @@ namespace TDML
 	{
 		srand((unsigned int)time(NULL));
 	}
+
+	bool randomBool(int percentTrue)
+	{
+		if(Math.randomRange(0, 100)<=percentTrue)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	float plusOrMinus(float value)
+	{
+		value = abs(value);
+		if(randomBool(50))
+		{
+			return -1*value;
+		}
+		else
+		{
+			return value;
+		}
+	}
 }

@@ -45,15 +45,17 @@ using namespace std;
 #include <fstream>
 #include <ostream>
 
-#include "texture.h"
 #include "point.h"
+#include "vector3d.h"
+#include "matrix3x3.h"
+#include "texture.h"
 #include "poly.h"
 #include "object.h"
 #include "terrain.h"
+#include "particle.h"
+#include "particlesystem.h"
 #include "world.h"
 #include "log.h"
-#include "vector3d.h"
-#include "matrix3x3.h"
 #include "input.h"
 #include "window.h"
 #include "config.h"

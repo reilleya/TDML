@@ -11,6 +11,13 @@ using namespace std;
 
 namespace TDML
 {
+	vector3d::vector3d()
+	{
+		x = 0;
+		y = 0;
+		z = 0;
+	}
+
 	vector3d::vector3d(float nx, float ny, float nz)
 	{
 		x = nx;

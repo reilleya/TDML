@@ -38,7 +38,7 @@ void animate()
 		cube.setScale(1, 1, 1);
 	}
 	world1.update();
-	TDML::Log.output(cube.getYangle()); TDML::Log.output("\n");
+	//TDML::Log.output(cube.getYangle()); TDML::Log.output("\n");
 }
 
 int main(int argc, char** argv)

@@ -113,8 +113,6 @@ namespace TDML
 	{
 		timeElapsed = glutGet(GLUT_ELAPSED_TIME)-lastTime;
 		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
-		//output(1000.0/timeElapsed);
-		//output("\n");
 		timer+=(int)timeElapsed;
 		for(int updater = 0; updater < nobjs; updater++)
 		{
@@ -182,7 +180,6 @@ namespace TDML
 
 	void world::setCamAngleX(float newXangle)
 	{
-		//std::cout << newXangle<<endl;
 		camxangle = newXangle; 
 	}
 

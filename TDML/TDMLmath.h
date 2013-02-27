@@ -31,5 +31,7 @@ namespace TDML
 			float pi();
 			void setupRandom();
 			int randomRange(int min, int max);
+			bool randomBool(int percentTrue);
+			float plusOrMinus(float value);
 	};
 }

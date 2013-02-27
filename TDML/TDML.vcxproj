@@ -100,6 +100,8 @@
     <ClInclude Include="matrix3x3.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menuobject.h" />
+    <ClInclude Include="particle.h" />
+    <ClInclude Include="particlesystem.h" />
     <ClInclude Include="TDMLmath.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="point.h" />
@@ -120,6 +122,8 @@
     <ClCompile Include="matrix3x3.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menuobject.cpp" />
+    <ClCompile Include="particle.cpp" />
+    <ClCompile Include="particlesystem.cpp" />
     <ClCompile Include="TDMLmath.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="point.cpp" />
