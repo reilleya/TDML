@@ -11,6 +11,8 @@
 
 namespace TDML
 {
+	class world;
+
 	class particle
 	{
 		private:
@@ -19,13 +21,16 @@ namespace TDML
 			vector3d accel;
 			float life;
 			GLuint vboid;
+			bool alive;
 
 		public:
-			particle(vector3d pos, vector3d dir, vector3d accel, float life);
-			void display();
-			void update();
+			particle();
+			particle(vector3d Pos, vector3d Dir, vector3d Accel, float Life);
+			void display(GLuint texid, world& World);
+			void update(float timedelta);
 			vector3d getPos();
 			vector3d getDir();
 			vector3d getAccel();
+			bool getAlive();
 	};
 }

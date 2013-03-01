@@ -33,5 +33,6 @@ namespace TDML
 			int randomRange(int min, int max);
 			bool randomBool(int percentTrue);
 			float plusOrMinus(float value);
+			void rotate(vector3d& vector, float angleX,float angleY,float angleZ);
 	};
 }

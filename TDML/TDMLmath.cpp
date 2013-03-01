@@ -1,4 +1,4 @@
-//math.cpp
+//TDMLmath.cpp
 //Created by Andrew Reilley
 //Development began 7/26/12
 //Do not redistribute, modify, or claim ownership of this library!
@@ -134,4 +134,20 @@ namespace TDML
 			return value;
 		}
 	}
+
+	void rotate(vector3d& vector, float angleX, float angleY, float angleZ)
+	{
+		matrix3x3 xrot = matrix3x3();
+		xrot.xRotFromAngle(angleX);
+
+		matrix3x3 yrot = matrix3x3();
+		yrot.yRotFromAngle(angleY);
+
+		matrix3x3 zrot = matrix3x3();
+		zrot.zRotFromAngle(angleZ);
+
+		matrix3x3 rot = (yrot*xrot) * zrot;
+		vector = rot.apply(vector);
+	}
+
 }

@@ -47,6 +47,13 @@ namespace TDML
 		return temp;
 	}
 
+	void vector3d::operator += (vector3d v2)
+	{
+		x += v2.x;
+		y += v2.y;
+		z += v2.z;
+	}
+
 	vector3d vector3d::operator - (vector3d v2)
 	{
 		vector3d temp = vector3d(0,0,0);

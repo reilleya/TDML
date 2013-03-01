@@ -256,12 +256,6 @@ namespace TDML
 		{
 			for(int p1 = 0; p1<3; p1++)
 			{
-				/*if(polygons[p].getX(p1)*scalex>maxx) maxx = polygons[p].getX(p1)*scalex;
-				if(polygons[p].getX(p1)*scalex<minx) minx = polygons[p].getX(p1)*scalex;
-				if(polygons[p].getY(p1)*scaley>maxy) maxy = polygons[p].getY(p1)*scaley;
-				if(polygons[p].getY(p1)*scaley<miny) miny = polygons[p].getY(p1)*scaley;
-				if(polygons[p].getZ(p1)*scalez>maxz) maxz = polygons[p].getZ(p1)*scalez;
-				if(polygons[p].getZ(p1)*scalez<minz) minz = polygons[p].getZ(p1)*scalez;*/
 				if(polygons[p].getX(p1)>maxx) maxx = polygons[p].getX(p1);
 				if(polygons[p].getX(p1)<minx) minx = polygons[p].getX(p1);
 				if(polygons[p].getY(p1)>maxy) maxy = polygons[p].getY(p1);
@@ -330,17 +324,13 @@ namespace TDML
 
 		matrix3x3 rot = (yrot*xrot) * zrot;
 
-		//rot.dispInfo();
-
 		for(int q = 0; q < 8; q++)
 		{
 			vector3d temp = vector3d(points[q]->getX(), points[q]->getY(), points[q]->getZ());
-			//temp.dispInfo();
 			temp = rot.apply(temp);
 			points[q]->setX(temp.x);
 			points[q]->setY(temp.y);
 			points[q]->setZ(temp.z);
-			//temp.dispInfo();
 		}
 
 		adjustedmaxx=0;
@@ -359,43 +349,6 @@ namespace TDML
 			if(points[q]->getZ()>adjustedmaxz) adjustedmaxz = points[q]->getZ();
 			if(points[q]->getZ()<adjustedminz) adjustedminz = points[q]->getZ();
 		}
-		//Log.output("\n");
-		/*if(yangle==270)
-		{
-			adjustedmaxx=minz;
-			adjustedminx=maxz;
-			adjustedmaxy=maxy;
-			adjustedminy=miny;
-			adjustedmaxz=minx;
-			adjustedminz=maxx;
-		}
-		else if(yangle==180)
-		{
-			adjustedmaxx=maxx;
-			adjustedminx=minx;
-			adjustedmaxy=maxy;
-			adjustedminy=miny;
-			adjustedmaxz=maxz;
-			adjustedminz=minz;
-		}
-			else if(yangle==90)
-		{
-			adjustedmaxx=maxz;
-			adjustedminx=minz;
-			adjustedmaxy=maxy;
-			adjustedminy=miny;
-			adjustedmaxz=maxx;
-			adjustedminz=minx;
-		}
-		else
-		{
-			adjustedmaxx=maxx;
-			adjustedminx=minx;
-			adjustedmaxy=maxy;
-			adjustedminy=miny;
-			adjustedmaxz=maxz;
-			adjustedminz=minz;
-		}*/
 	}
 
 	void object::createBoundingSphere()
@@ -639,9 +592,6 @@ namespace TDML
 			coords[(p*6)+5] = material.coords[p][2][1];
 		}
 		glBindBuffer(GL_ARRAY_BUFFER, vboid);
-		//glBufferData(GL_ARRAY_BUFFER, sizeof(float)*6*numverts, NULL, GL_STATIC_DRAW);
-		//glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*3*numverts, geometry);
-		//glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*3*numverts, sizeof(float)*2*numverts, coords);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*8*numverts, NULL, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*3*numverts, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*3*numverts, sizeof(float)*2*numverts, coords);

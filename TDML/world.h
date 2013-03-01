@@ -8,6 +8,7 @@
 #pragma once
 
 #include "TDML.h"
+#include "particlesystem.h"
 
 namespace TDML
 {
@@ -20,6 +21,7 @@ namespace TDML
 			float lastTime;
 			float timeElapsed;
 			std::vector<object> objects;
+			std::vector<particlesystem> particlesystems;
 			terrain map;
 			float camx;
 			float camy;

@@ -110,7 +110,6 @@ namespace TDML
 		normals = new GLfloat[3*numverts];
 		coords = new GLfloat[2*numverts];
 		int p = 0;
-		float* intpart;
 		for(int v1 = 0; v1 < dimensions-1; v1++)
 		{
 			for(int v2 = 0; v2 < dimensions-1; v2++)

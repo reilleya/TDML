@@ -11,6 +11,8 @@
 
 namespace TDML
 {
+	class particle;
+	class world;
 	class particlesystem
 	{
 		private:
@@ -26,16 +28,20 @@ namespace TDML
 			int nparts;
 			float timeTo;
 			float spawnDelay;
+			GLuint texid;
 
 		public:
+			particlesystem();
 			particlesystem(
+				std::string FileName,
 				vector3d Pos, vector3d PosVariation,
 				vector3d Dir, vector3d DirVariation,
 				vector3d Accel, vector3d AccelVariation,
-				float Life, float LifeVariation
+				float Life, float LifeVariation, 
+				float SpawnDelay
 				);
-			void update();
-			void display();
+			void update(float timedelta);
+			void display(world& World);
 			vector3d getPos();
 			vector3d getPosVariation();
 			vector3d getDir();

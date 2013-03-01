@@ -11,7 +11,12 @@ using namespace std;
 
 namespace TDML
 {
-	particlesystem::particlesystem(vector3d Pos, vector3d PosVariation,vector3d Dir, vector3d DirVariation,vector3d Accel, vector3d AccelVariation,float Life, float LifeVariation)
+	particlesystem::particlesystem()
+	{
+		
+	}
+
+	particlesystem::particlesystem(string FileName, vector3d Pos, vector3d PosVariation,vector3d Dir, vector3d DirVariation,vector3d Accel, vector3d AccelVariation,float Life, float LifeVariation, float SpawnDelay)
 	{
 		pos = Pos;
 		posVariation = PosVariation;
@@ -21,27 +26,36 @@ namespace TDML
 		accelVariation = AccelVariation;
 		life = Life;
 		lifeVariation = LifeVariation;
+		spawnDelay = SpawnDelay;
+		timeTo = SpawnDelay;
+		texid = loadTextureData(FileName);
+		Log.output("Created particle system\n");
+		nparts = 0;
 	}
 
-	void particlesystem::update()
+	void particlesystem::update(float timedelta)
 	{
-		timeTo -= 0; //TIME SINCE LAST FRAME;
+		if(timedelta>=0)
+		{
+			timeTo -= timedelta;
+		}
 		if(timeTo<=0)
 		{
-			//creat a montage... of particles...
+			nparts++;
+			particles.resize(nparts);
 			timeTo = spawnDelay;
 		}
 		for(int n = 0; n<nparts; n++)
 		{
-			particles[n].update();
+			particles[n].update(timedelta);
 		}
 	}
 
-	void particlesystem::display()
+	void particlesystem::display(world& World)
 	{
 		for(int n = 0; n<nparts; n++)
 		{
-			particles[n].display();
+			particles[n].display(texid, World);
 		}
 	}
 }
