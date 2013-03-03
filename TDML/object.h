@@ -55,6 +55,7 @@ namespace TDML
 			float adjustedminy;
 			float adjustedmaxz;
 			float adjustedminz;
+			bool adjustBB;
 			float radius;
 			std::string name;
 			std::string type;
@@ -77,6 +78,8 @@ namespace TDML
 			void addPoly(poly Polygon);
 			void createBoundingBox();
 			void recalcBoundingBox();
+			void setAdjustBB(bool adjust);
+			bool getAdjustBB();
 			void createBoundingSphere();
 			int getSize();
 			void removePolygons();

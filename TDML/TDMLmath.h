@@ -30,7 +30,9 @@ namespace TDML
 			float arctan(float value);
 			float pi();
 			void setupRandom();
+			float randomFloat();
 			int randomRange(int min, int max);
+			float randomRange(float min, float max);
 			bool randomBool(int percentTrue);
 			float plusOrMinus(float value);
 			void rotate(vector3d& vector, float angleX,float angleY,float angleZ);

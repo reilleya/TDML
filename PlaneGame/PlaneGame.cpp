@@ -6,6 +6,7 @@ using namespace std;
 TDML::world World1;
 TDML::menu MainMenu;
 TDML::terrain Terrain1;
+TDML::particlesystem ps1;
 
 float speed = 0.032;
 int framed = 0;
@@ -28,9 +29,16 @@ void spin(TDML::object* me)
 
 void load()
 {
+	ps1 = TDML::particlesystem("smoke", "Resources/Common/Textures/part.png", //image
+						   TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//pos
+						   TDML::vector3d(0,0.0005,0), TDML::vector3d(-0.001,0,-0.001), TDML::vector3d(0.001,0.0005,0.001),//dir
+						   TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//accel
+						   10000, 0, 0,//Life
+						   1); //Spawn Delay
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
 	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
+	World1.addParticleSystem(ps1);
 	for(int t = 0; t < 0; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
@@ -53,6 +61,7 @@ void load()
 		newtree.setFileName("Resources/World1/Tree/model.tdm");
 		newtree.setWireframe(false);
 		newtree.setVisible(true);
+		newtree.setAdjustBB(false);
 		if(!treeloadedID)
 		{
 			newtree.generateVBO();
@@ -88,6 +97,7 @@ void load()
 		newrock.setFileName("Resources/World1/Rock/model.tdm");
 		newrock.setWireframe(false);
 		newrock.setVisible(true);
+		newrock.setAdjustBB(false);
 		if(!rockloadedID)
 		{
 			newrock.generateVBO();
@@ -137,7 +147,9 @@ void animate()
 	{
 		World1.update();
 		TDML::object& plane = World1.getObjectRef("plane");
-
+		TDML::particlesystem& ps1 = World1.getParticleSystemRef("smoke");
+		//plane.setVisible(false);
+		
 		if(World1.getHeightMapAt(plane.getX(),plane.getZ())>plane.getMinY())
 		{
 			//TDML::Log.output("Underground!\n");
@@ -194,6 +206,7 @@ void animate()
 				respawn();
 			}
 		}
+		ps1.setPos(TDML::vector3d(plane.getX(), plane.getY(), plane.getZ()));
 	}
 	else
 	{
@@ -210,7 +223,7 @@ int main(int argc, char** argv)
 	TDML::Log.setDebugMode(true);
 	//TDML::setObjectRotationOrder(YZX);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
-	TDML::enableCulling(true);
+	TDML::enableCulling(false);
 	//MainMenu = TDML::loadMenu("Resources/MainMenu/menu.mnu");
 	load();
 	//TDML::Log.output("Loaded menu\n");

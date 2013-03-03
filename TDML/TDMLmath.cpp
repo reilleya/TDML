@@ -100,9 +100,19 @@ namespace TDML
 		return (float)3.14159265359;
 	}
 
+	float TDMLmath::randomFloat()
+	{
+		return (((float)rand())/((float)RAND_MAX));
+	}
+
 	int TDMLmath::randomRange(int min, int max)
 	{
 		return min + (rand()%(max-min));
+	}
+
+	float TDMLmath::randomRange(float min, float max)
+	{
+		return min + (randomFloat()*(max-min));
 	}
 
 	void TDMLmath::setupRandom()
@@ -110,7 +120,7 @@ namespace TDML
 		srand((unsigned int)time(NULL));
 	}
 
-	bool randomBool(int percentTrue)
+	bool TDMLmath::randomBool(int percentTrue)
 	{
 		if(Math.randomRange(0, 100)<=percentTrue)
 		{
@@ -122,7 +132,7 @@ namespace TDML
 		}
 	}
 
-	float plusOrMinus(float value)
+	float TDMLmath::plusOrMinus(float value)
 	{
 		value = abs(value);
 		if(randomBool(50))
@@ -135,7 +145,7 @@ namespace TDML
 		}
 	}
 
-	void rotate(vector3d& vector, float angleX, float angleY, float angleZ)
+	void TDMLmath::rotate(vector3d& vector, float angleX, float angleY, float angleZ)
 	{
 		matrix3x3 xrot = matrix3x3();
 		xrot.xRotFromAngle(angleX);

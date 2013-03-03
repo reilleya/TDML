@@ -19,6 +19,7 @@ namespace TDML
 		frame = 0;
 		visible = true;
 		updateFuncSet = false;
+		adjustBB = true;
 	}
 
 	void object::dispInfo()
@@ -351,6 +352,16 @@ namespace TDML
 		}
 	}
 
+	void object::setAdjustBB(bool adjust)
+	{
+		adjustBB=adjust;
+	}
+
+	bool object::getAdjustBB()
+	{
+		return adjustBB;
+	}
+
 	void object::createBoundingSphere()
 	{
 		radius = 0;
@@ -448,7 +459,7 @@ namespace TDML
 		if(newXangle!=xangle)
 		{
 			xangle = newXangle;
-			recalcBoundingBox();
+			if(adjustBB)recalcBoundingBox();
 		}
 	}
 
@@ -462,7 +473,7 @@ namespace TDML
 		if(newYangle!=yangle)
 		{
 			yangle = newYangle;
-			recalcBoundingBox();
+			if(adjustBB)recalcBoundingBox();
 		}
 	}
 
@@ -476,7 +487,7 @@ namespace TDML
 		if(newZangle!=zangle)
 		{
 			zangle = newZangle;
-			recalcBoundingBox();
+			if(adjustBB)recalcBoundingBox();
 		}
 	}
 
@@ -487,7 +498,7 @@ namespace TDML
 			xangle = newXangle;
 			yangle = newYangle;
 			zangle = newZangle;
-			recalcBoundingBox();
+			if(adjustBB)recalcBoundingBox();
 		}
 	}
 

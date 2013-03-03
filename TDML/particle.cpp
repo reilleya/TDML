@@ -14,9 +14,10 @@ namespace TDML
 	particle::particle()
 	{
 		pos = vector3d(0,0,0);
-		dir = vector3d(0,0,0);
+		dir = vector3d(0.005,0.005,-0.005);
 		accel = vector3d(0,0,0);
 		life = 1000;
+		alive = true;
 	}
 
 	particle::particle(vector3d Pos, vector3d Dir, vector3d Accel, float Life)
@@ -25,31 +26,52 @@ namespace TDML
 		dir = Dir;
 		accel = Accel;
 		life = Life;
+		alive = true;
 	}
 
-	void particle::display(GLuint texid, world& World)
+	void particle::display(GLuint texid, world* World)
 	{
-		Log.output("dispin\n");
-		glLoadIdentity();
-		glRotatef(World.getCamAngleY(), 0, 1, 0);
-		glRotatef(World.getCamAngleX(), 1, 0, 0);
-		glRotatef(World.getCamAngleZ(), 0, 0, 1);
-		glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
-		glBindTexture(GL_TEXTURE_2D, texid);
-		glVertexPointer(3, GL_FLOAT, 0, 0);
-		glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(12 * sizeof(GLfloat)));
-		glDrawArrays(GL_QUADS, 0, 4);
-		glLoadIdentity();
-	}
-
-	void particle::update(float timedelta)
-	{
-		pos += dir;
-		dir += accel;
-		life -= timedelta;
-		if(life <= 0)
+		if(alive)
 		{
+			//pos.dispInfo();
+			glTranslatef(pos.x-0.5, pos.y-0.5, pos.z-0.5);
+			glScalef(0.25, 0.25, 0.25);
+			//int zangle = Math.randomRange(0, 360);
+			glRotatef(World->getCamAngleY(), 0, 1, 0);
+			glRotatef(World->getCamAngleX(), 1, 0, 0);
+			glRotatef(World->getCamAngleZ(), 0, 0, 1);
+			///glRotatef(zangle, 1, 0, 0);
+			//glRotatef(World->getCamAngleZ(), 0, 0, 1);
+			glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
+			glBindTexture(GL_TEXTURE_2D, texid);
+			glVertexPointer(3, GL_FLOAT, 0, 0);
+			glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(12 * sizeof(GLfloat)));
+			glDrawArrays(GL_QUADS, 0, 4);
+			glRotatef(-World->getCamAngleY(), 0, 1, 0);
+			glRotatef(-World->getCamAngleX(), 1, 0, 0);
+			glRotatef(-World->getCamAngleZ(), 0, 0, 1);
+			//glRotatef(-zangle, 1, 0, 0);
+			glScalef(4,4,4);
+			glTranslatef(-(pos.x-0.5), -(pos.y-0.5), -(pos.z-0.5));
+		}
+	}
 
+	bool particle::update(particlesystem* ps, float timedelta)
+	{
+		if(alive)
+		{
+			pos += dir*timedelta;
+			dir += accel*timedelta;
+			life -= timedelta;
+			if(life <= 0)
+			{
+				alive = false;
+			}
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

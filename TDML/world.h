@@ -18,6 +18,7 @@ namespace TDML
 			bool hasterrain;
 			unsigned int timer;
 			int nobjs;
+			int nparts;
 			float lastTime;
 			float timeElapsed;
 			std::vector<object> objects;
@@ -41,6 +42,7 @@ namespace TDML
 			void draw();
 			void addObject(object Obj);
 			void setTerrain(terrain newterrain);
+			void addParticleSystem(particlesystem newsystem);
 			void setCamAngleX(float newXangle);
 			void setCamAngleY(float newYangle);
 			void setCamAngleZ(float newZangle);
@@ -62,6 +64,7 @@ namespace TDML
 			std::vector<object> getObjects();
 			object getObjectById(int id);
 			object& getObjectRef(std::string Name);
+			particlesystem& getParticleSystemRef(std::string Name);
 			//vector<object*>* getObjectsById(int* ids);
 			float getHeightMapAt(float x, float z);
 			float getObjAttribute(std::string name, std::string attr);

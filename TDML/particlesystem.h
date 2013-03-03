@@ -16,37 +16,48 @@ namespace TDML
 	class particlesystem
 	{
 		private:
+			std::string name;
 			std::vector<particle> particles;
+			std::vector<int> recyclables;
 			vector3d pos;
-			vector3d posVariation;
+			vector3d posMin;
+			vector3d posMax;
 			vector3d dir;
-			vector3d dirVariation;
+			vector3d dirMin;
+			vector3d dirMax;
 			vector3d accel;
-			vector3d accelVariation;
+			vector3d accelMin;
+			vector3d accelMax;
 			float life;
-			float lifeVariation;
+			float lifeMin;
+			float lifeMax;
 			int nparts;
 			float timeTo;
 			float spawnDelay;
 			GLuint texid;
+			void createParticle();
 
 		public:
 			particlesystem();
 			particlesystem(
-				std::string FileName,
-				vector3d Pos, vector3d PosVariation,
-				vector3d Dir, vector3d DirVariation,
-				vector3d Accel, vector3d AccelVariation,
-				float Life, float LifeVariation, 
+				std::string name, std::string FileName,
+				vector3d Pos, vector3d PosMin, vector3d PosMax,
+				vector3d Dir, vector3d DirMin, vector3d DirMax,
+				vector3d Accel, vector3d AccelMin, vector3d AccelMax,
+				float Life, float LifeMin, float LifeMax,
 				float SpawnDelay
 				);
 			void update(float timedelta);
-			void display(world& World);
+			void display(world* World);
+			std::string getName();
+			void setName(std::string Name);
+			void setPos(vector3d Pos);
 			vector3d getPos();
 			vector3d getPosVariation();
 			vector3d getDir();
 			vector3d getDirVariation();
 			vector3d getAccel();
 			vector3d getAccelVariation();
+			void markRecyclable(int id);
 	};
 }

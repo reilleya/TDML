@@ -26,8 +26,8 @@ namespace TDML
 		public:
 			particle();
 			particle(vector3d Pos, vector3d Dir, vector3d Accel, float Life);
-			void display(GLuint texid, world& World);
-			void update(float timedelta);
+			void display(GLuint texid, world* World);
+			bool update(particlesystem* ps, float timedelta);
 			vector3d getPos();
 			vector3d getDir();
 			vector3d getAccel();

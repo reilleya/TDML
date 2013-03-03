@@ -100,6 +100,7 @@ namespace TDML
 		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
 		timeElapsed = 0;
 		nobjs=0;
+		nparts=0;
 		camx=0;
 		camy=0;
 		camz=0;
@@ -117,6 +118,11 @@ namespace TDML
 		for(int updater = 0; updater < nobjs; updater++)
 		{
 			objects[updater].update(timer, (int)timeElapsed);
+		}
+
+		for(int updater = 0; updater < nparts; updater++)
+		{
+			particlesystems[updater].update(timeElapsed);
 		}
 	}
 
@@ -150,6 +156,9 @@ namespace TDML
 
 		//glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 		glLoadIdentity();
+		//
+		
+		//
 		for(int obj = 0; obj < (int)nobjs; obj++)
 		{
 			cameraRotate();
@@ -161,7 +170,17 @@ namespace TDML
 			objects[obj].display();
 			glLoadIdentity();
 		}
-			
+
+		glDisable(GL_DEPTH_TEST);
+		for(int par = 0; par < (int)nparts; par++)
+		{
+			glLoadIdentity();
+			cameraRotate();
+			glTranslatef(-camx, -camy, -camz);
+			particlesystems[par].display(this);
+			glLoadIdentity();
+		}
+		glEnable(GL_DEPTH_TEST);
 		//glLoadIdentity();
 	}
 
@@ -170,6 +189,13 @@ namespace TDML
 		objects.resize(objects.size()+1);
 		objects[objects.size()-1]=Obj;
 		nobjs++;
+	}
+
+	void world::addParticleSystem(particlesystem newsystem)
+	{
+		particlesystems.resize(particlesystems.size()+1);
+		particlesystems[particlesystems.size()-1]=newsystem;
+		nparts++;
 	}
 
 	void world::setTerrain(terrain newterrain)
@@ -314,6 +340,20 @@ namespace TDML
 	object& world::getObjectRef(std::string Name)
 	{
 		return objects.at(getFirstIDByName(Name));
+	}
+
+	particlesystem& world::getParticleSystemRef(std::string Name)
+	{
+		int id = 0;
+		for(int ps = 0; ps<nparts; ps++)
+		{
+			if(particlesystems[ps].getName()==Name)
+			{
+				id = ps;
+				break;
+			}
+		}
+		return particlesystems.at(id);
 	}
 
 	float world::getHeightMapAt(float x, float z)
