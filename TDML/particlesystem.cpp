@@ -38,7 +38,8 @@ namespace TDML
 				accel.x+Math.randomRange(accelMin.x, accelMax.x), 
 				accel.y+Math.randomRange(accelMin.y, accelMax.y), 
 				accel.z+Math.randomRange(accelMin.z, accelMax.z)),
-				life + Math.randomRange(lifeMin, lifeMax)
+				life + Math.randomRange(lifeMin, lifeMax),
+				size + Math.randomRange(sizeMin, sizeMax)
 			);
 	}
 
@@ -51,7 +52,9 @@ namespace TDML
 		vector3d Pos, vector3d PosMin,  vector3d PosMax, 
 		vector3d Dir, vector3d DirMin, vector3d DirMax, 
 		vector3d Accel, vector3d AccelMin, vector3d AccelMax, 
-		float Life, float LifeMin, float LifeMax, float SpawnDelay)
+		float Life, float LifeMin, float LifeMax, 
+		float Size, float SizeMin, float SizeMax,
+		float SpawnDelay, float SpawnQuan)
 	{
 		pos = Pos;
 		posMin = PosMin;
@@ -65,11 +68,16 @@ namespace TDML
 		life = Life;
 		lifeMin = LifeMin;
 		lifeMax = LifeMax;
+		size = Size;
+		sizeMin = SizeMin;
+		sizeMax = SizeMax;
 		spawnDelay = SpawnDelay;
 		timeTo = SpawnDelay;
+		spawnQuan = SpawnQuan;
 		texid = loadTextureData(FileName);
 		Log.output("Created particle system\n");
 		nparts = 0;
+		spawning = true;
 	}
 
 	void particlesystem::update(float timedelta)
@@ -80,7 +88,13 @@ namespace TDML
 		}
 		if(timeTo<=0)
 		{
-			for(int i = 0; i < 30; i++) createParticle();
+			if(spawning)
+			{
+				for(int i = 0; i < spawnQuan; i++)
+				{
+					createParticle();
+				}
+			}
 			timeTo = spawnDelay;
 		}
 		for(int n = 0; n<nparts; n++)
@@ -124,5 +138,10 @@ namespace TDML
 	{
 		recyclables.resize(recyclables.size()+1);
 		recyclables[recyclables.size()-1]=id;
+	}
+
+	void particlesystem::setSpawning(bool creating)
+	{
+		spawning = creating;
 	}
 }

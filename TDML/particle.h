@@ -22,10 +22,12 @@ namespace TDML
 			float life;
 			GLuint vboid;
 			bool alive;
+			float zangle;
+			float size;
 
 		public:
 			particle();
-			particle(vector3d Pos, vector3d Dir, vector3d Accel, float Life);
+			particle(vector3d Pos, vector3d Dir, vector3d Accel, float Life, float Size);
 			void display(GLuint texid, world* World);
 			bool update(particlesystem* ps, float timedelta);
 			vector3d getPos();

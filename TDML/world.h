@@ -64,7 +64,13 @@ namespace TDML
 			std::vector<object> getObjects();
 			object getObjectById(int id);
 			object& getObjectRef(std::string Name);
+			void removeObjectById(int id);
+			void removeObjectByName(std::string Name);
+			void removeObjectByType(std::string Type);
+			int getParticleSystemNameById(std::string Name);
 			particlesystem& getParticleSystemRef(std::string Name);
+			void removeParticleSystemById(int id);
+			void removeParticleSystemByName(std::string Name);
 			//vector<object*>* getObjectsById(int* ids);
 			float getHeightMapAt(float x, float z);
 			float getObjAttribute(std::string name, std::string attr);

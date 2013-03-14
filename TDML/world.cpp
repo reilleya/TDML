@@ -115,14 +115,15 @@ namespace TDML
 		timeElapsed = glutGet(GLUT_ELAPSED_TIME)-lastTime;
 		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
 		timer+=(int)timeElapsed;
-		for(int updater = 0; updater < nobjs; updater++)
-		{
-			objects[updater].update(timer, (int)timeElapsed);
-		}
-
+		
 		for(int updater = 0; updater < nparts; updater++)
 		{
 			particlesystems[updater].update(timeElapsed);
+		}
+
+		for(int updater = 0; updater < nobjs; updater++)
+		{
+			objects[updater].update(timer, (int)timeElapsed);
 		}
 	}
 
@@ -342,10 +343,26 @@ namespace TDML
 		return objects.at(getFirstIDByName(Name));
 	}
 
-	particlesystem& world::getParticleSystemRef(std::string Name)
+	void world::removeObjectById(int id)
 	{
-		int id = 0;
-		for(int ps = 0; ps<nparts; ps++)
+		objects.erase(objects.begin()+id);
+		nobjs--;
+	}
+
+	void world::removeObjectByName(string Name)
+	{
+		removeObjectById(getFirstIDByName(Name));
+	}
+
+	void world::removeObjectByType(string Type)
+	{
+		//TODO
+	}
+
+	int world::getParticleSystemNameById(string Name)
+	{
+		int id = -1;
+		for(int ps = 0; ps < nparts; ps++)
 		{
 			if(particlesystems[ps].getName()==Name)
 			{
@@ -353,7 +370,20 @@ namespace TDML
 				break;
 			}
 		}
-		return particlesystems.at(id);
+		return id;
+	}
+
+	particlesystem& world::getParticleSystemRef(std::string Name)
+	{
+		int id = getParticleSystemNameById(Name);
+		if(id!=-1)
+		{
+			return particlesystems.at(id);
+		}
+		else
+		{
+			Error.message("ERRAR! TRIED TO GIT PARTICL SAYSTEM THAT DUN'T EXIST. YUR FAULT?", "ERRAR");
+		}
 	}
 
 	float world::getHeightMapAt(float x, float z)

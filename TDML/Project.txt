@@ -15,7 +15,7 @@ Contact email: areill1337@gmail.com
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-Last Updated: 2/28/2013
+Last Updated: 3/9/2013
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -49,12 +49,15 @@ Official TODO List:
 				Perlin-Noise random terrain generation.
 
 	Particles:
-		Start them
+		Rotation
+
+	Text Rendering:
+		Research
 
 	Speed:
 		Look into optimizing VBO's and textures.
 		Make a visibility cull
-
+		 
 	Support:
 		Camera:
 			Lookat function

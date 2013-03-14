@@ -388,84 +388,106 @@ namespace TDML
 		ifstream infile;
 		vector<float> texd;
 		string word;
-		infile.open(fileName, ios::in);
-		GLuint id = 0;
-		bool textureline = true;
-		while (infile >> word) 
+		if(fileExists(fileName))
 		{
-			//std::cout << word << endl;
-			if(word=="[")
+			infile.open(fileName, ios::in);
+			GLuint id = 0;
+			bool textureline = true;
+			while (infile >> word) 
 			{
-				//std::cout << "\t Expanding Polygon table" << endl;
-				coords.resize(coords.size()+1);
-				coords[coords.size()-1].resize(1);
-			}
-			else if(word=="?")
-			{
-				//std::cout << pointd[0]<<","<<pointd[1]<<","<<pointd[2]<<","<<pointd[3]<<","<<pointd[4]<<","<<pointd[5]<<endl;
+				//std::cout << word << endl;
+				if(word=="[")
+				{
+					//std::cout << "\t Expanding Polygon table" << endl;
+					coords.resize(coords.size()+1);
+					coords[coords.size()-1].resize(1);
+				}
+				else if(word=="?")
+				{
+					//std::cout << pointd[0]<<","<<pointd[1]<<","<<pointd[2]<<","<<pointd[3]<<","<<pointd[4]<<","<<pointd[5]<<endl;
 				
-				if(textureline)
-				{
-					//std::cout << "\t Read image file name, setting" << endl;
-					texd.resize(0);
-					textureline = false;
+					if(textureline)
+					{
+						//std::cout << "\t Read image file name, setting" << endl;
+						texd.resize(0);
+						textureline = false;
+					}
+					else
+					{
+						//std::cout << "\t Adding point to polygon table" << endl;
+						//std::cout << "\t" << texd[0] << "," << texd[1] << endl;
+						coords[coords.size()-1][coords[coords.size()-1].size()-1].resize(2);
+						//std::cout << "\t\t Resized" << endl;
+						coords[coords.size()-1][coords[coords.size()-1].size()-1][0] = texd[0];
+						//std::cout << "\t\t Added 1" << endl;
+						coords[coords.size()-1][coords[coords.size()-1].size()-1][1] = texd[1];
+						//std::cout << "\t\t Added 2" << endl;
+						coords[coords.size()-1].resize(coords[coords.size()-1].size()+1);
+						//std::cout << "\t Resized point table" << endl;
+						texd.resize(0);
+						//std::cout << "\t Reset coordinate buffer" << endl;
+					}
+					line++;
+					//std::cout << "out" << endl;
 				}
 				else
 				{
-					//std::cout << "\t Adding point to polygon table" << endl;
-					//std::cout << "\t" << texd[0] << "," << texd[1] << endl;
-					coords[coords.size()-1][coords[coords.size()-1].size()-1].resize(2);
-					//std::cout << "\t\t Resized" << endl;
-					coords[coords.size()-1][coords[coords.size()-1].size()-1][0] = texd[0];
-					//std::cout << "\t\t Added 1" << endl;
-					coords[coords.size()-1][coords[coords.size()-1].size()-1][1] = texd[1];
-					//std::cout << "\t\t Added 2" << endl;
-					coords[coords.size()-1].resize(coords[coords.size()-1].size()+1);
-					//std::cout << "\t Resized point table" << endl;
-					texd.resize(0);
-					//std::cout << "\t Reset coordinate buffer" << endl;
-				}
-				line++;
-				//std::cout << "out" << endl;
-			}
-			else
-			{
-				if(word.find(".png") != word.npos)
-				{
-					Log.output("\t\t\tLoading texture image...\n");
-					Log.output("\t\t\t\tChecking Cache...\n");
-					bool found = false;
-					for(unsigned int search = 0; search < cachedTexId.size(); search++)
+					if(word.find(".png") != word.npos)
 					{
-						if(word == cachedTexName[search])
+						Log.output("\t\t\tLoading texture image...\n");
+						Log.output("\t\t\t\tChecking Cache...\n");
+						bool found = false;
+						for(unsigned int search = 0; search < cachedTexId.size(); search++)
 						{
-							found = true;
-							Log.output("\t\t\t\t\tFound...\n");
-							t.addNewId(cachedTexId[search]);
+							if(word == cachedTexName[search])
+							{
+								found = true;
+								Log.output("\t\t\t\t\tFound...\n");
+								t.addNewId(cachedTexId[search]);
+							}
 						}
+						if(!found)
+						{
+							Log.output("\t\t\t\t\tNot Found...\n");
+							t.addNewId(loadTextureData(word));
+							cachedTexName.resize(cachedTexName.size()+1);
+							cachedTexName[cachedTexName.size()-1] = word;
+							cachedTexId.resize(cachedTexId.size()+1);
+							cachedTexId[cachedTexId.size()-1] = t.getID(t.getLastID());
+						}
+						Log.output("\t\t\tLoaded texture image, TexID is "); Log.output((float)t.getID(t.getLastID())); Log.output("\n");
+						textureline = true;
 					}
-					if(!found)
+					else
 					{
-						Log.output("\t\t\t\t\tNot Found...\n");
-						t.addNewId(loadTextureData(word));
-						cachedTexName.resize(cachedTexName.size()+1);
-						cachedTexName[cachedTexName.size()-1] = word;
-						cachedTexId.resize(cachedTexId.size()+1);
-						cachedTexId[cachedTexId.size()-1] = t.getID(t.getLastID());
+						texd.resize(texd.size()+1);
+						texd[texd.size()-1] = (float)atof(word.c_str());
 					}
-					Log.output("\t\t\tLoaded texture image, TexID is "); Log.output((float)t.getID(t.getLastID())); Log.output("\n");
-					textureline = true;
-				}
-				else
-				{
-					texd.resize(texd.size()+1);
-					texd[texd.size()-1] = (float)atof(word.c_str());
 				}
 			}
+			//std::cout << imname << endl;
+			t.coords = coords;
+			return t;
 		}
-		//std::cout << imname << endl;
-		t.coords = coords;
-		return t;
+		else
+		{
+			Error.message("Unable to locate material data file: " + fileName, "Loading Error");
+		}
+	}
+
+	bool fileExists(string fileName)
+	{
+		ifstream testfile(fileName);
+		if(testfile) 
+		{
+			testfile.close();
+			return true;
+		}
+		else
+		{
+			testfile.close();
+			return false;
+		}
 	}
 
 	bool running = true;
@@ -473,6 +495,8 @@ namespace TDML
 	int crotorder = 1;
 	int orotorder = 4;
 
+	version Version;
+	error Error;
 	input Input;
 	TDMLmath Math;
 	window Window;
@@ -614,6 +638,8 @@ namespace TDML
 		Window.setPos(30, 30);
 		Window.setSize(width, height);
 		Window.setFullscreen(false);
+		//wstring stemp = wstring(title.begin(), title.end());
+		//windowhandle = FindWindow(NULL, title)
 		//glEnable (GL_LIGHTING);
 		//glEnable(GL_NORMALIZE);
 		//glEnable (GL_LIGHT0);

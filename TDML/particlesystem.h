@@ -31,11 +31,16 @@ namespace TDML
 			float life;
 			float lifeMin;
 			float lifeMax;
+			float size;
+			float sizeMin;
+			float sizeMax;
 			int nparts;
 			float timeTo;
 			float spawnDelay;
 			GLuint texid;
 			void createParticle();
+			bool spawning;
+			float spawnQuan;
 
 		public:
 			particlesystem();
@@ -45,7 +50,8 @@ namespace TDML
 				vector3d Dir, vector3d DirMin, vector3d DirMax,
 				vector3d Accel, vector3d AccelMin, vector3d AccelMax,
 				float Life, float LifeMin, float LifeMax,
-				float SpawnDelay
+				float Size, float SizeMin, float SizeMax,
+				float SpawnDelay, float SpawnQuan
 				);
 			void update(float timedelta);
 			void display(world* World);
@@ -59,5 +65,6 @@ namespace TDML
 			vector3d getAccel();
 			vector3d getAccelVariation();
 			void markRecyclable(int id);
+			void setSpawning(bool creating);
 	};
 }

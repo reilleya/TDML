@@ -37,6 +37,7 @@ using namespace std;
 #include <gl/gl.h>
 #include <gl/glu.h> 
 #include <windows.h>
+#include <WinUser.h>
 #include <vector>
 #include <string>
 #include <math.h>
@@ -45,6 +46,8 @@ using namespace std;
 #include <fstream>
 #include <ostream>
 
+#include "version.h"
+#include "error.h"
 #include "point.h"
 #include "vector3d.h"
 #include "matrix3x3.h"
@@ -79,12 +82,16 @@ namespace TDML
 	menu loadMenu(std::string fileName);
 	int loadTextureData(std::string fileName);
 	texture loadTexture(std::string fileName);
+	bool fileExists(std::string fileName);
 
 	extern bool running;
+	//extern HWND windowhandle;
 
 	extern int crotorder;
 	extern int orotorder;
 
+	extern version Version;
+	extern error Error;
 	extern input Input;
 	extern TDMLmath Math;
 	extern window Window;

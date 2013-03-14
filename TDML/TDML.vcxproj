@@ -86,6 +86,10 @@
     <ProjectReference>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
+    <PreBuildEvent>
+      <Command>python "C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/Tools/Versionator.py"
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Project.txt" />
@@ -93,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />
+    <ClInclude Include="error.h" />
     <ClInclude Include="glew.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="LodePNG.h" />
@@ -110,11 +115,13 @@
     <ClInclude Include="terrain.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="vector3d.h" />
+    <ClInclude Include="version.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="world.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="config.cpp" />
+    <ClCompile Include="error.cpp" />
     <ClCompile Include="glew.c" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="LodePNG.cpp" />
@@ -132,6 +139,7 @@
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vector3d.cpp" />
+    <ClCompile Include="version.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="world.cpp" />
   </ItemGroup>
