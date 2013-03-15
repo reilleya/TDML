@@ -13,13 +13,28 @@ namespace TDML
 {
 	error::error()
 	{
-		palcehoolme = 0;
+		logErrors = true;
 	}
 	
-	void error::message(string MessageText, string TitleText)
+	void error::setLogErrors(bool LogErrors)
+	{
+		logErrors = LogErrors;
+	}
+
+	void error::errorMessage(string MessageText, string TitleText)
 	{
 		wstring mtemp = wstring(MessageText.begin(), MessageText.end());
 		wstring ttemp = wstring(TitleText.begin(), TitleText.end());
-		Log.output(MessageBox(0, mtemp.c_str(), ttemp.c_str(), MB_OK | MB_ICONERROR)); 
+		//LPCWSTR mstr = mtemp.c_str();
+		int output = MessageBox(0,  mtemp.c_str(), ttemp.c_str(), MB_OKCANCEL | MB_ICONERROR); 
+		Log.output(output); Log.output("\n");
+		if(output == IDOK)
+		{
+			//IDK what tah do? U bwoke it?
+		}
+		else
+		{
+			std::exit(EXIT_FAILURE);
+		}
 	}
 }

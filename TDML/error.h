@@ -14,9 +14,11 @@ namespace TDML
 	class error
 	{
 		private:
-			int palcehoolme;
+			bool logErrors;
+
 		public:
 			error();
-			void message(std::string MessageText, std::string TitleText);
+			void setLogErrors(bool LogErrors);
+			void errorMessage(std::string MessageText, std::string TitleText);
 	};
 }

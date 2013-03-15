@@ -40,7 +40,10 @@ int main(int argc, char** argv)
 							   1, 15); //Spawn Delay
 	world1.setCamPosition(0, 0, 8);
 	world1.addParticleSystem(ps1);
-	TDML::loadTexture("dofinadofin.mdf");
+	//TDML::loadTexture("dofinadofin.mdf");
+	//TDML::loadTextureData("dofinadofin.png");
+	//TDML::loadWorld("dofinadofin.wor");
+	TDML::loadObject("dofinadofin.tdm");
 	TDML::start();
 	return 0;
 }

@@ -382,7 +382,7 @@ namespace TDML
 		}
 		else
 		{
-			Error.message("ERRAR! TRIED TO GIT PARTICL SAYSTEM THAT DUN'T EXIST. YUR FAULT?", "ERRAR");
+			Error.errorMessage("ERRAR! TRIED TO GIT PARTICL SAYSTEM THAT DUN'T EXIST. YUR FAULT?", "ERRAR");
 		}
 	}
 

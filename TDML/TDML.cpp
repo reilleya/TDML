@@ -47,39 +47,49 @@ namespace TDML
 		if(cachedFound==false)
 		{
 			Log.output("\t\tNot Found!\n");
-			object newobj;
-			ifstream infile;
-			vector<float> pointd;
-			vector<poly> polys(1);
-			poly cpol;
-			string word;
-			infile.open(fileName, ios::in);
-			while (infile >> word) 
+			if(fileExists(fileName))
 			{
-				if(word=="[")
+				object newobj;
+				ifstream infile;
+				vector<float> pointd;
+				vector<poly> polys(1);
+				poly cpol;
+				string word;
+				infile.open(fileName, ios::in);
+				while (infile >> word) 
 				{
-					polys.resize(polys.size()+1);
+					if(word=="[")
+					{
+						polys.resize(polys.size()+1);
+					}
+					else if(word=="?")
+					{
+						polys[polys.size()-1].addPoint(pointd[0],pointd[1],pointd[2],pointd[3],pointd[4],pointd[5]);
+						pointd.resize(0);
+					}
+					else
+					{
+						pointd.resize(pointd.size()+1);
+						pointd[pointd.size()-1] = (float)atof(word.c_str());
+					}
 				}
-				else if(word=="?")
+				for(int polyg = 0; polyg < (int)polys.size(); polyg++)
 				{
-					polys[polys.size()-1].addPoint(pointd[0],pointd[1],pointd[2],pointd[3],pointd[4],pointd[5]);
-					pointd.resize(0);
+					newobj.addPoly(polys[polyg]);
 				}
-				else
-				{
-					pointd.resize(pointd.size()+1);
-					pointd[pointd.size()-1] = (float)atof(word.c_str());
-				}
+				cachedObjs.resize(cachedObjs.size()+1);
+				cachedObjs[cachedObjs.size()-1] = newobj;
+				cachedObjName.resize(cachedObjName.size()+1);
+				cachedObjName[cachedObjName.size()-1] = fileName;
+				return newobj;
 			}
-			for(int polyg = 0; polyg < (int)polys.size(); polyg++)
+			else
 			{
-				newobj.addPoly(polys[polyg]);
+				Error.errorMessage("Error loading object file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
+				object o;
+				return o;
+			
 			}
-			cachedObjs.resize(cachedObjs.size()+1);
-			cachedObjs[cachedObjs.size()-1] = newobj;
-			cachedObjName.resize(cachedObjName.size()+1);
-			cachedObjName[cachedObjName.size()-1] = fileName;
-			return newobj;
 		}
 		else
 		{
@@ -191,97 +201,106 @@ namespace TDML
 	world loadWorld(string fileName)
 	{
 		Log.output("Loading world from file: "); Log.output(fileName); Log.output(":\n");
-		world newworld;
-		ifstream infile;
-		vector<string> objd(1);
-		vector<object> objs(0);
-		string word;
-		infile.open(fileName, ios::in);
-		while (infile >> word) 
+		if(fileExists(fileName))
 		{
-			//std::cout << word << endl;
-			if(word=="[")
+			world newworld;
+			ifstream infile;
+			vector<string> objd(1);
+			vector<object> objs(0);
+			string word;
+			infile.open(fileName, ios::in);
+			while (infile >> word) 
 			{
-				Log.output("\tCreating OBJ from data file: "); Log.output(objd[0]); Log.output("| Data length: "); Log.output((float)objd.size()); Log.output(":\n");
-				objs.resize(objs.size()+1);
-				Log.output("\t\tLoading point data.\n");
-				objs[objs.size()-1] = loadObject(objd[0]);
-				Log.output("\t\t\tNumber of Polys: "); Log.output((float)objs[objs.size()-1].getSize()); Log.output("\n");
-				Log.output("\t\tLoading wireframe data.\n");
-				objs[objs.size()-1].setWireframe(atof(objd[1].c_str())!=0);
-				Log.output("\t\tLoading visible data.\n");
-				objs[objs.size()-1].setVisible(atof(objd[2].c_str())!=0);
-				Log.output("\t\tLoading framedelay data.\n");
-				objs[objs.size()-1].setFrameDelay(atof(objd[3].c_str()));
-				Log.output("\t\tLoading position data.\n");
-				objs[objs.size()-1].setPosition((float)atof(objd[4].c_str()), (float)atof(objd[5].c_str()), (float)atof(objd[6].c_str()));
-				Log.output("\t\tLoading angle data.\n");
-				objs[objs.size()-1].setAngle((float)atof(objd[7].c_str()), (float)atof(objd[8].c_str()), (float)atof(objd[9].c_str()));
-				Log.output("\t\tLoading scale data.\n");
-				objs[objs.size()-1].setScale((float)atof(objd[10].c_str()), (float)atof(objd[11].c_str()), (float)atof(objd[12].c_str()));
-				Log.output("\t\tLoading name.\n");
-				objs[objs.size()-1].setName(objd[13]);
-				Log.output("\t\tLoading type.\n");
-				objs[objs.size()-1].setType(objd[14]);
-				Log.output("\t\tSetting filename\n");
-				objs[objs.size()-1].setFileName(objd[0]);
-				Log.output("\t\tLoading behaviors.\n");
-				vector<behavior> behaviors = loadBehaviors(objd[15]);
-				Log.output("\t\tLoaded behavior data. Parsing...\n");
-				for(std::size_t be = 0; be < behaviors.size(); be++) objs[objs.size()-1].addBehavior(behaviors[be]);
-				Log.output("\t\tLoading texture data.\n");
-				objs[objs.size()-1].setMaterial(loadTexture(objd[16]));
-				objd[0]="";
-				objd.resize(1);
-				Log.output("\t\tObject created.\n\n");
-			}
-			else if(word=="?")
-			{
-				objd.resize(objd.size()+1);
-			}
-			else
-			{
-				if(objd.size()-1 == 0)
+				//std::cout << word << endl;
+				if(word=="[")
 				{
-					objd[objd.size()-1].append(word+" ");
+					Log.output("\tCreating OBJ from data file: "); Log.output(objd[0]); Log.output("| Data length: "); Log.output((float)objd.size()); Log.output(":\n");
+					objs.resize(objs.size()+1);
+					Log.output("\t\tLoading point data.\n");
+					objs[objs.size()-1] = loadObject(objd[0]);
+					Log.output("\t\t\tNumber of Polys: "); Log.output((float)objs[objs.size()-1].getSize()); Log.output("\n");
+					Log.output("\t\tLoading wireframe data.\n");
+					objs[objs.size()-1].setWireframe(atof(objd[1].c_str())!=0);
+					Log.output("\t\tLoading visible data.\n");
+					objs[objs.size()-1].setVisible(atof(objd[2].c_str())!=0);
+					Log.output("\t\tLoading framedelay data.\n");
+					objs[objs.size()-1].setFrameDelay(atof(objd[3].c_str()));
+					Log.output("\t\tLoading position data.\n");
+					objs[objs.size()-1].setPosition((float)atof(objd[4].c_str()), (float)atof(objd[5].c_str()), (float)atof(objd[6].c_str()));
+					Log.output("\t\tLoading angle data.\n");
+					objs[objs.size()-1].setAngle((float)atof(objd[7].c_str()), (float)atof(objd[8].c_str()), (float)atof(objd[9].c_str()));
+					Log.output("\t\tLoading scale data.\n");
+					objs[objs.size()-1].setScale((float)atof(objd[10].c_str()), (float)atof(objd[11].c_str()), (float)atof(objd[12].c_str()));
+					Log.output("\t\tLoading name.\n");
+					objs[objs.size()-1].setName(objd[13]);
+					Log.output("\t\tLoading type.\n");
+					objs[objs.size()-1].setType(objd[14]);
+					Log.output("\t\tSetting filename\n");
+					objs[objs.size()-1].setFileName(objd[0]);
+					Log.output("\t\tLoading behaviors.\n");
+					vector<behavior> behaviors = loadBehaviors(objd[15]);
+					Log.output("\t\tLoaded behavior data. Parsing...\n");
+					for(std::size_t be = 0; be < behaviors.size(); be++) objs[objs.size()-1].addBehavior(behaviors[be]);
+					Log.output("\t\tLoading texture data.\n");
+					objs[objs.size()-1].setMaterial(loadTexture(objd[16]));
+					objd[0]="";
+					objd.resize(1);
+					Log.output("\t\tObject created.\n\n");
+				}
+				else if(word=="?")
+				{
+					objd.resize(objd.size()+1);
 				}
 				else
 				{
-					objd[objd.size()-1].append(word);
+					if(objd.size()-1 == 0)
+					{
+						objd[objd.size()-1].append(word+" ");
+					}
+					else
+					{
+						objd[objd.size()-1].append(word);
+					}
 				}
 			}
-		}
-		for(int objc = 0; objc < (int)objs.size(); objc++)
-		{
-			//std::cout << "FIrst:" <<endl;
-			Log.output("\tAdding Object: "); Log.output(objs[objc].getName()); Log.output("\n");
-			Log.output("\t\tChecking Cache...\n");
-			bool found = false;
-			for(unsigned int search = 0; search < cachedVBOId.size(); search++)
+			for(int objc = 0; objc < (int)objs.size(); objc++)
 			{
-				if(objs[objc].getFileName() == cachedVBOName[search])
+				//std::cout << "FIrst:" <<endl;
+				Log.output("\tAdding Object: "); Log.output(objs[objc].getName()); Log.output("\n");
+				Log.output("\t\tChecking Cache...\n");
+				bool found = false;
+				for(unsigned int search = 0; search < cachedVBOId.size(); search++)
 				{
-					found = true;
-					Log.output("\t\t\tFound...\n");
-					objs[objc].setVBOId(cachedVBOId[search]);
+					if(objs[objc].getFileName() == cachedVBOName[search])
+					{
+						found = true;
+						Log.output("\t\t\tFound...\n");
+						objs[objc].setVBOId(cachedVBOId[search]);
+					}
 				}
+				if(!found)
+				{
+					Log.output("\t\t\tNot Found...\n");
+					objs[objc].generateVBO();
+					cachedVBOName.resize(cachedVBOName.size()+1);
+					cachedVBOName[cachedVBOName.size()-1] = objs[objc].getFileName();
+					cachedVBOId.resize(cachedVBOId.size()+1);
+					cachedVBOId[cachedVBOId.size()-1] = objs[objc].getVBOId();
+				}
+				objs[objc].createBoundingBox();
+				objs[objc].createBoundingSphere();
+				newworld.addObject(objs[objc]);
+				//std::cout << "Adding"<<endl;
 			}
-			if(!found)
-			{
-				Log.output("\t\t\tNot Found...\n");
-				objs[objc].generateVBO();
-				cachedVBOName.resize(cachedVBOName.size()+1);
-				cachedVBOName[cachedVBOName.size()-1] = objs[objc].getFileName();
-				cachedVBOId.resize(cachedVBOId.size()+1);
-				cachedVBOId[cachedVBOId.size()-1] = objs[objc].getVBOId();
-			}
-			objs[objc].createBoundingBox();
-			objs[objc].createBoundingSphere();
-			newworld.addObject(objs[objc]);
-			//std::cout << "Adding"<<endl;
+			Log.output("Done Loading World!\n\n");
+			return newworld;
 		}
-		Log.output("Done Loading World!\n\n");
-		return newworld;
+		else
+		{
+			Error.errorMessage("Error loading world file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
+			world newworld;
+			return newworld;
+		}
 	}
 
 	menu loadMenu(string fileName)
@@ -335,45 +354,53 @@ namespace TDML
 
 	int loadTextureData(string fileName)
 	{
-		Log.output("\t\t\t\tLoading texture from file: "); Log.output(fileName); Log.output("\n");		
-		std::vector<unsigned char> image;
-		unsigned width, height;
-		unsigned error = lodepng::decode(image, width, height, fileName);
-		if(error != 0)
+		Log.output("\t\t\t\tLoading texture from file: "); Log.output(fileName); Log.output("\n");	
+		if(fileExists(fileName))
 		{
-			Log.output("PNG Loading error: "); Log.output(lodepng_error_text(error)); Log.output("\n");
-		}
-		size_t u2 = 1; 
-		while(u2 < width) u2 *= 2;
-		size_t v2 = 1; 
-		while(v2 < height) v2 *= 2;
-		
-		double u3 = (double)width / u2;
-		double v3 = (double)height / v2;
-
-		std::vector<unsigned char> image2(u2 * v2 * 4);
-		for(size_t y = 0; y < height; y++)
-		{
-			for(size_t x = 0; x < width; x++)
+			std::vector<unsigned char> image;
+			unsigned width, height;
+			unsigned error = lodepng::decode(image, width, height, fileName);
+			if(error != 0)
 			{
-				for(size_t c = 0; c < 4; c++)
+				Log.output("PNG Loading error: "); Log.output(lodepng_error_text(error)); Log.output("\n");
+			}
+			size_t u2 = 1; 
+			while(u2 < width) u2 *= 2;
+			size_t v2 = 1; 
+			while(v2 < height) v2 *= 2;
+		
+			double u3 = (double)width / u2;
+			double v3 = (double)height / v2;
+
+			std::vector<unsigned char> image2(u2 * v2 * 4);
+			for(size_t y = 0; y < height; y++)
+			{
+				for(size_t x = 0; x < width; x++)
 				{
-					image2[4 * u2 * y + 4 * x + c] = image[4 * width * y + 4 * x + c];
+					for(size_t c = 0; c < 4; c++)
+					{
+						image2[4 * u2 * y + 4 * x + c] = image[4 * width * y + 4 * x + c];
+					}
 				}
 			}
+			unsigned int id = 0;
+			glEnable(GL_TEXTURE_2D);
+			glGenTextures(1, &id);
+			glBindTexture(GL_TEXTURE_2D, id);
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); //GL_NEAREST = no smoothing
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+			//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+			//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+			glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+			glTexImage2D(GL_TEXTURE_2D, 0, 4, u2, v2, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image2[0]);
+			int intid = (int) id; 
+			return id;
 		}
-		unsigned int id = 0;
-		glEnable(GL_TEXTURE_2D);
-		glGenTextures(1, &id);
-		glBindTexture(GL_TEXTURE_2D, id);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); //GL_NEAREST = no smoothing
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-		//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-		glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-		glTexImage2D(GL_TEXTURE_2D, 0, 4, u2, v2, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image2[0]);
-		int intid = (int) id; 
-		return id;
+		else
+		{
+			Error.errorMessage("Error loading texture file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
+			return -1;
+		}
 	}
 
 	texture loadTexture(string fileName)
@@ -471,7 +498,9 @@ namespace TDML
 		}
 		else
 		{
-			Error.message("Unable to locate material data file: " + fileName, "Loading Error");
+			Error.errorMessage("Error loading material data file: " + fileName + "\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
+			texture t;
+			return t;
 		}
 	}
 
