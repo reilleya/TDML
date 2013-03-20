@@ -3,7 +3,9 @@
 using namespace std;
 
 TDML::world world1;
-TDML::particlesystem ps1;
+float xpos = 0;
+float zpos = 0;
+
 
 void exit()
 {
@@ -18,9 +20,39 @@ void display ()
 
 void animate()
 {
+	world1.setCamPosition(xpos, world1.getHeightMapAt(xpos,zpos)+1, zpos);
+
+	if(TDML::Input.getKeyState('w'))
+	{
+		zpos-=world1.getAdjustedTime(0.1, 5);
+
+	}
+	if(TDML::Input.getKeyState('s'))
+	{
+		zpos+=world1.getAdjustedTime(0.1, 5);
+	}
+	if(TDML::Input.getKeyState('a'))
+	{
+		xpos-=world1.getAdjustedTime(0.1, 5);
+	}
+	if(TDML::Input.getKeyState('d'))
+	{
+		xpos+=world1.getAdjustedTime(0.1, 5);
+	}
+
+
+	if(TDML::Input.getKeyState('b'))
+	{
+		TDML::stop();
+	}
+	TDML::Log.output(TDML::Input.getMouseX()-((float)TDML::Window.getWidth()/2)); TDML::Log.output("\n");
+	//TDML::Log.output(TDML::Input.getMouseY()-((float)TDML::Window.getHeight()/2)); TDML::Log.output("\n");
+	world1.setCamAngleY(world1.getCamAngleY()-(TDML::Input.getMouseX()-((float)TDML::Window.getWidth()/2)));
+	world1.setCamAngleX(world1.getCamAngleX()+(TDML::Input.getMouseY()-((float)TDML::Window.getHeight()/2)));
+	//if(!TDML::Input.getKeyState('r'))TDML::Input.centerCursor();
 	world1.update();
-	//world1.getParticleSystemRef("baofbndo");
-	//world1.setCamAngleX(world1.getCamAngleX());
+	//world1.setCamAngleY((((float)TDML::Input.getMouseX()/(float)TDML::Window.getWidth())-0.5)*180.0);
+	//world1.setCamAngleX((((float)TDML::Input.getMouseY()/(float)TDML::Window.getHeight())-0.5)*180.0);
 }
 
 int main(int argc, char** argv)
@@ -30,20 +62,8 @@ int main(int argc, char** argv)
 	TDML::Log.output("Hello, Worlds!\n");
 	TDML::Log.output(TDML::Version.getFullVersion());
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Particle Testbed", 0.5, 0.8, 1.0, display, animate, exit);
-	//world1 = TDML::loadWorld("world.wor");
-	ps1 = TDML::particlesystem("ps1","part.png", //image
-							   TDML::vector3d(0,0,0), TDML::vector3d(-0.5,-0.5,-0.5), TDML::vector3d(0.5,0.5,0.5),//pos
-							   TDML::vector3d(0,0.0025,0), TDML::vector3d(-0.001,0,-0.001), TDML::vector3d(0.001,0.0005,0.001),//dir
-							   TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//accel
-							   0.025, -0.005, 0.005,
-							   1000, 0, 0,//Life
-							   1, 15); //Spawn Delay
-	world1.setCamPosition(0, 0, 8);
-	world1.addParticleSystem(ps1);
-	//TDML::loadTexture("dofinadofin.mdf");
-	//TDML::loadTextureData("dofinadofin.png");
-	//TDML::loadWorld("dofinadofin.wor");
-	TDML::loadObject("dofinadofin.tdm");
+	world1.setCamPosition(0,0,0);
+	world1.setTerrain(TDML::loadTerrain("terrible.hgt", "height1.png", 500, 0.25));
 	TDML::start();
 	return 0;
 }

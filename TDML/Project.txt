@@ -15,7 +15,7 @@ Contact email: areill1337@gmail.com
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-Last Updated: 3/9/2013
+Last Updated: 3/19/2013
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -63,6 +63,8 @@ Official TODO List:
 			Lookat function
 			Pan and rotate functions
 			Orbit function
+		Math:
+			Rotate about point function.
 
 	Sound:
 		Research a library: OPENAL
@@ -85,16 +87,16 @@ Official TODO List:
 	Use: 
 		Storing object geometry
 	Format:
-		x1 y1 z1 r1 g1 b1 ?
-		x2 y2 z2 r2 g2 b2 ?
-		x3 y3 z3 r3 g3 b3 ?
+		x1 y1 z1 nx1 ny1 nz1 ?
+		x2 y2 z2 nx2 ny2 nz2 ?
+		x3 y3 z3 nx3 ny3 nz3 ?
 		[
 	Description:
 		Each field above will be filled with a float.
 		The '?' marks the end of a line. The '[' marks the end of a polygon.
 		Polygons must contain 3 points like the above example to be valid.
-		The (r,g,b) section is obsolete and will be removed soon.
-		Normals will soon be added on a per-face basis.
+		Each (x,y,z) section defines the position for one point in the triangle.
+		Each (nx,ny,nz) section gives the normal for that vertex.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,18 +104,23 @@ Official TODO List:
 	Use:
 		Storing Material information and UV coordinates
 	Format:
-		IMAGE_NAME.png ?
+		IMAGE_NAME_1.png ?
+		IMAGE_NAME_2.png ?
+		IMAGE_NAME_3.png ?
+		IMAGE_NAME_N.png ?
 		u1 v1 ?
 		u2 v2 ?
 		u3 v3 ?
 		[
 	Description:
 		The 'u' and 'v' fields are filled with floats.
-		The IMAGE_NAME field contains a string that is the name of the image for the texture.
+		The IMAGE_NAME field(s) contain a string that is the name of the image for the texture.
+			There can be multiple textures as shown above. If so, the material will be animated.
 		The '?' marks the end of a line. The "[" marks the end of a face.
 		The 'u' and 'v' fields are the percent of the way across the image that the desired triangle is.
 		Though they usually only are between 0.0 and 1.0, they can go beyond 1.0 if the texture is to loop on the face.
 		The number of faces and the number of points per face must correspond to the geometry defined in a .TDM file.
+			Because of this, there must be 3 "uv" pairs per face.
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -123,21 +130,24 @@ Official TODO List:
 	Format:
 		GEOMETRY.tdm ?
 		WIREFRAME ?
-		OUTLINE ?
+		VISIBLE ?
+		FRAMEDELAY ?
 		X ? Y ? Z ?
 		X_ANGLE ? Y_ANGLE ? Z_ANGLE ?
 		X_SCALE ? Y_SCALE ? Z_SCALE ?
 		NAME ?
+		TYPE ?
 		BEHAVIOR.beh ?
 		MATERIAL.mdf ?
 		[
 	Description:
 		The fields GEOMETRY, BEHAVIOR, and MATERIAL hold strings that are the names of the files for the object.
-		The fields WIREFRAME and OUTLINE hold boolean (0,1) values that represent the property named. 
-			They are currently broken.
+		The fields WIREFRAME and VISIBLE hold boolean (0,1) values that represent the property named. 
+		The FRAMEDELAY field should be a float that corresponds to the amount of time between material frames.
 		The fields X, Y, Z, X_ANGLE, Y_ANGLE, Z_ANGLE, X_SCALE, Y_SCALE, and Z_SCALE hold floats that correspond to
 			the name of the field.
 		The field NAME holds a string that is the object's unique identifier.
+		The field TYPE contains a string that is the object's shared type identifier.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -149,6 +159,26 @@ Official TODO List:
 	Description:
 		dfgddfg
 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+.MNU File Specification
+	Use:
+		Storing menu layout information.
+	Format:
+		ikjhbiu
+	Description:
+		dfdggfg
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.HGT File Specification
+	Use:
+		Storing terrain heightmap information.
+	Format:
+		ikjhbiu
+	Description:
+		dfdggfg
+
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 'Point' Class Documentation
@@ -156,6 +186,8 @@ Official TODO List:
 		Points objects store information about each individual vertex that makes up an object. They aren't very useful on
 			their own, but make up the basis for all objects.
 	Methods:
+		void dispInfo();
+			Prints out a summary of the object's properties to the log output.
 		float getX();
 			Returns the relative X coordinate of the point.
 		void setX(float newX);
@@ -168,6 +200,8 @@ Official TODO List:
 			Returns the relative Z coordinate of the point.
 		void setZ(float newZ);
 			Sets the relative Z coordinate of the point.
+		void setNormals(float newX, float newY, float newZ);
+			Sets the normal for this point.
 		void setPos(float newX, float newY, float newZ);
 			Set the relative X, Y, and Z coordinates of the point.
 		void moveX(float value);
@@ -176,6 +210,12 @@ Official TODO List:
 			Moves the relative Y coordinate of the point by 'value'.
 		void moveZ(float value);
 			Moves the relative Z coordinate of the point by 'value'.
+		float getNormalX();
+			Returns the X component of the normal vector.
+		float getNormalY();
+			Returns the Y component of the normal vector.
+		float getNormalZ();
+			Returns the X component of the normal vector.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -185,26 +225,261 @@ Official TODO List:
 	Methods:
 		poly();
 			Constructor for a poly
+		void dispInfo();
+			Prints out a summary of the object's properties to the log output.
 		std::vector<point> getPoints();
-			Returns the points that make up the polygon. This method will soon be replaced with one that returns an array of 3 point objects to increase speed
-		void addPoint(float x,float y,float z);
+			Returns the points that make up the polygon. This method will return a reference to improve speed
+		void addPoint(float x, float y, float z, float nx, float ny, float nz);
 			Creates and adds a new point object to the polygon.
-		void draw(std::vector<std::vector<float> >* coords, int materialid, bool wireframe, bool outline, float sx, float sy, float sz);
-			OBSOLETE: Uses openGL immediate mode to render the polygon. Very slow.
-		int getvboid();
-			OBSOLETE: Returns the ID for the polygon's display list.
-		void setvboid(int nvboid);
-			OBSOLETE: Sets the ID for the polygon's display list.
-		void calcNormals();
-			Calculates the polygon's normals. Currently not functioning.
-		float getNormalX();
-			Returns the X normal of the polygon. Currently not functioning.
-		float getNormalY();
-			Returns the Y normal of the polygon. Currently not functioning.
-		float getNormalZ();
-			Returns the Z normal of the polygon. Currently not functioning.
+		float getX(int point);
+			Get the X coordinate of the point with ID "point".
+		float getY(int point);
+			Get the Y coordinate of the point with ID "point".
+		float getZ(int point);
+			Get the Z coordinate of the point with ID "point".
+		float getNormalX(int point);
+			Get the X component of the normal vector of the point with ID "point".
+		float getNormalY(int point);
+			Get the Y component of the normal vector of the point with ID "point".
+		float getNormalZ(int point);
+			Get the Z component of the normal vector of the point with ID "point".
 		void removePoints();
 			Resets the points of the polygon.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+'Object' Class Documentation:
+	Use:
+		This class is an organizer for the properties of one object within the game world. It handles its own drawing 
+			and updating.
+	Methods:
+		object();
+			Constructor for an object.
+		void dispInfo();
+			Prints out a summary of the object's properties to the log output.
+		void display();
+			Draws the object at the current origin.
+		void drawBB();
+			Draws the object's bounding box at the current origin.
+		void update(int time, int timedelta);
+			Updates the objects properties. "time" is the global engine time, and "timedelta" is the number of milli-
+				seconds since the last frame. This also calls the object's custom update function and updates all 
+				behaviors.
+		void addBehavior(behavior newBehavior);
+			Adds a new behavior to the object's list.
+		void setMaterial(texture newTexture);
+			Sets the material for the object.
+		void addPoly(poly Polygon);
+			Adds a new polygon to the object.
+		void createBoundingBox();
+			Generates a bounding box for the object, then adjusts it to account for current rotation.
+		void recalcBoundingBox();
+			Adjusts the object's bounding box to account for current rotation.
+		void setAdjustBB(bool adjust);
+			Changes whether or not the object should automatically adjust its bounding box or not.
+		bool getAdjustBB();
+			Returns whether or not the object automatically adjusts its bounding box.
+		void createBoundingSphere();
+			Generates a bounding sphere for the object for use in rough collision detection.
+		int getSize();
+			Returns the number of polygons that the object has.
+		void removePolygons();
+			Removes all polygons from the object.
+		void setWireframe(bool wframe);
+			Sets whether or not the object is displayed in wireframe mode.
+		bool getWireframe();
+			Returns whether or not the object is drawn in wireframe mode.
+		void setVisible(bool vis);
+			Sets if the object is visible or not.
+		bool getVisible();
+			Returns the visibility status of the object.
+		float getX();
+			Returns the object's position on the X axis.
+		void setX(float newX);
+			Sets the object's position on the X axis.
+		float getY();
+			Returns the object's position on the Y axis.
+		void setY(float newY);
+			Sets the object's position on the Y axis.
+		float getZ();
+			Returns the object's position on the Z axis.
+		void setZ(float newZ);
+			Sets the object's position on the Z axis.
+		void setPosition(float newX, float newY, float newZ);
+			Sets the object's position.
+		float getXangle();
+			Returns the object's rotation about the X axis.
+		void setXangle(float newXangle);
+			Sets the object's rotation about the X axis.
+		float getYangle();
+			Returns the object's rotation about the Y axis.
+		void setYangle(float newYangle);
+			Sets the object's rotation about the Y axis.
+		float getZangle();
+			Returns the object's rotation about the Z axis.
+		void setZangle(float newZangle);
+			Sets the object's rotation about the Z axis.
+		void setAngle(float newXangle, float newYangle, float newZangle);
+			Sets the object's rotation about all three axes.
+		float getScaleX();
+			Returns the scaling of the object on the X axis.
+		void setScaleX(float newScaleX);
+			Sets the scaling of the object on the X axis.
+		float getScaleY();
+			Returns the scaling of the object on the Y axis.
+		void setScaleY(float newScaleY);
+			Sets the scaling of the object on the Y axis.
+		float getScaleZ();
+			Returns the scaling of the object on the Z axis.
+		void setScaleZ(float newScaleZ);
+			Sets the scaling of the object on the Z axis.
+		void setScale(float newScaleX, float newScaleY, float newScaleZ);
+			Changes the scaling that is applied to the object.
+		void setName(std::string newName);
+			Sets the object's unique identifier.
+		void setType(std::string newType);
+			Sets the object's shared identifier.
+		void generateVBO();
+			Generates and populates a Vertex Buffer Object for the object's geometry and stores its ID.
+		int getVBOId();
+			Returns the ID of the object's VBO.
+		void setVBOId(int newId);
+			Modifies the ID of the VBO that the object owns.
+		std::string& getName();
+			Returns a reference to the unique identifier of the object.
+		std::string& getType();
+			Returns a reference to the shared identifier of the object.
+		float getMaxX();
+			Returns the maximum relative X for the object, adjusted for scale.
+		float getMinX();
+			Returns the minimum relative X for the object, adjusted for scale.
+		float getMaxY();
+			Returns the maximum relative Y for the object, adjusted for scale.
+		float getMinY();
+			Returns the minimum relative Y for the object, adjusted for scale.
+		float getMaxZ();
+			Returns the maximum relative Z for the object, adjusted for scale.
+		float getMinZ();
+			Returns the minimum relative Z for the object, adjusted for scale.
+		float getRadius();
+			Returns the radius the of the object's bounding sphere.
+		int getFrame();
+			Returns the frame number that the object's material is currently using.
+		float getFrameDelay();
+			Returns the time between material frame changes.
+		void setFrameDelay(float newFrameDelay);
+			Sets the time between material frame changes.
+		void setFrame(int newFrame);
+			Sets the material frame that the object should use.
+		void setUpdateFunction(void (*newupdatefunction)(object* me));
+			Sets a custom update function that the object will call every frame. The object reference "me" will contain
+				a reference to the object itself.
+		void setFileName(std::string newFileName);
+			Sets the filename from which the object was originally loaded.
+		std::string getFileName();
+			Returns the name of the file from which the object was orginally loaded.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+'World' Class Documentation:
+	Use:
+		This class holds, organizes, and facilitates interactions between many objects. It is likely what an application
+			using TDML will interface with most.
+	Methods:
+		PRIVATE: void cameraRotate();
+			Applies the current camera rotation to the MODELVIEW matrix.
+		PRIVATE: void objectRotate(float x, float y, float z);
+			Applies the object rotation (x,y,z) to the MODELVIEW matrix.
+		world();
+			Constructor for a world object.
+		void update();
+			Updates a world and all of its objects. ---WHEN IS IT BEST TO CALL THIS??????
+		float getTimeDelta();
+			Returns the amount of time since the world's update function was last called.
+		float getAdjustedTime(float value, float targetTimeStep);
+			Scales "value" from "targetTimeStep" to the actual framerate.
+		unsigned int getTimer();
+			Returns the world time.
+		void draw();
+			Draws the world.
+		void addObject(object Obj);
+			Adds a new object to the world.
+		void setTerrain(terrain newterrain);
+			Sets the terrain of the world.
+		void addParticleSystem(particlesystem newsystem);
+			Adds a new particle system to the world.
+		void setCamAngleX(float newXangle);
+			Sets the X angle of the world's camera.
+		void setCamAngleY(float newYangle);
+			Sets the Y angle of the world's camera.
+		void setCamAngleZ(float newZangle);
+			Sets the Z angle of the world's camera.
+		void setCamAngle(float newXangle, float newYangle, float newZangle);
+			Sets the rotation of the world's camera about all three axes.
+		void setCamPosition(float newX, float newY, float newZ);
+			Sets the position of the camera in the world.
+		float getCamAngleX();
+			Returns the X angle of the world's camera.
+		float getCamAngleY();
+			Returns the Y angle of the world's camera.
+		float getCamAngleZ();
+			Returns the Z angle of the world's camera.
+		void setCamX(float newX);
+			Sets the position of the world's camera along the X axis.
+		void setCamY(float newY);
+			Sets the position of the world's camera along the Y axis.
+		void setCamZ(float newZ);
+			Sets the position of the world's camera along the Z axis.
+		float getCamX();
+			Returns the position of the world's camera along the X axis.
+		float getCamY();
+			Returns the position of the world's camera along the Y axis.
+		float getCamZ();
+			Returns the position of the world's camera along the Z axis.
+		int getFirstIDByName(std::string name);
+			Returns the ID of the first object in the world with a name matching "name".
+		object getFirstObjByName(std::string name);
+			Returns the first object in the world which is named "name". ----SHOULD USE A REFERENCE
+		//vector<int> getIDsByName(std::string name);
+			DISABLED
+		//vector<object*>* getObjsByName(std::string name);
+			DISABLED
+		std::vector<object> getObjects();
+			Returns the list of objects in the world. ----SHOULD USE A REFERENCE
+		object getObjectById(int id);
+			Returns an object by its ID. ----SHOULD USE A REFERENCE
+		object& getObjectRef(std::string Name);
+			Returns a reference to an object by its name.
+		void removeObjectById(int id);
+			Removes the object with ID "id".
+		void removeObjectByName(std::string Name);
+			Removes the object with name "Name".
+		void removeObjectByType(std::string Type);
+			Removes all objects with type "Type".
+		int getParticleSystemNameById(std::string Name);
+			Returns the ID of a particle system with name "Name".
+		particlesystem& getParticleSystemRef(std::string Name);
+			Returns a reference to the particle system with name "Name".
+		void removeParticleSystemById(int id);
+			Removes the particle system with ID "id". 
+		void removeParticleSystemByName(std::string Name);
+			Removes the particle system with name "Name".
+		//vector<object*>* getObjectsById(int* ids);
+			DISABLED
+		float getHeightMapAt(float x, float z);
+			Returns the height of the world's terrain at the point (x,z), if it has terrain. If it doesn't, 0 is returned.
+		float getObjAttribute(std::string name, std::string attr);
+			Returns the value of the attribute "attr" of the object with name "name". This method is being phased out.
+		void setObjAttribute(std::string name, std::string attr, float value);
+			Sets the value of the attribute "attr" of the object with name "name" to "value".
+		float getDistance(std::string firstName, std::string secondName);
+			Returns the distance between two objects with names "firstName" and "secondName".
+		bool getBBCollideName(std::string firstName, std::string secondName);
+			Returns whether two objects, with names "firstName" and "secondName", collide.
+		bool getBBCollideType(std::string name, std::string type);
+			Returns whether an object with name "name" collides with any object of type "type".
+		bool getBoundingSphereCollide(std::string firstName, std::string secondName);
+			Returns whether or not the bounding spheres of the objects named "firstName" and "secondName" collide.
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

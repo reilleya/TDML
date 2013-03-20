@@ -388,7 +388,14 @@ namespace TDML
 
 	float world::getHeightMapAt(float x, float z)
 	{
-		return map.getHeightMapAt(x,z);
+		if(hasterrain)
+		{
+			return map.getHeightMapAt(x,z);
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 	float world::getObjAttribute(string name, string attr)
