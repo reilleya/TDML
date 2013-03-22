@@ -28,6 +28,7 @@ void display ()
 void animate()
 {
 	TDML::object& character = World.getObjectRef("Character");
+	//character.setAdjustBB(true);
 	World.update();
 	if(vely < 0.05) vely += World.getAdjustedTime((float)0.00025, 2);
 	character.setY(character.getY() - World.getAdjustedTime(vely,2));

@@ -483,6 +483,100 @@ Official TODO List:
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+'Terrain' Class Documentation:
+	Use:
+		A terrain objects keeps track of a heightmap, a height texture, and scaling information. It has functions to get
+			the height of the terrain at a specific point and to draw itself.
+	Methods:
+		void setHeightMap(std::vector<std::vector<float>> newheightmap);
+			Sets the heightmap associated with the object.
+		void setDimensions(int dim);
+			Changes the dimensions of the heightmap (Not the same thing as terrain scale!).
+		void setTextureId(int textureid);
+			Sets the ID of the terrain's texture.
+		void setScale(float xz, float y);
+			Modifies the scaling applied to the terrain.
+		float getScaleXZ();
+			Returns the scaling of the terrain on the X and Z axes.
+		float getScaleY();
+			Returns the scaling on the terrain along the Y axis.
+		float getHeightMapAt(float x, float z);
+			Returns the Y coordinate of the point at (x, z).
+		void generateVBO();
+			Generates a VBO for the terrain and stores the ID of the VBO.
+		void display();
+			Draws the terrain.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+'Texture' Class Documentation:
+	Use:
+		Stores a list of texture ID's and an array of UV coordinates.
+	Methods:
+		texture();
+			Constructor for a texture.
+		void addNewId(int newID);
+			Adds a new texture ID to the list.
+		int getID(int frame);
+			Returns the texture ID of the frame requested.
+		int getLastID();
+			Returns the ID of the last frame 
+		std::vector<std::vector<std::vector<float> > > coords;
+			A two dimensional array holding the UV coordinates for the texture.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+'Input' Class Documentation:
+	Use:
+		Provides an easy interface with the computer's input devices, specifically the mouse and keyboard. While the
+			class 'TDML::input' can be accessed, any applications using TDML should use the instance 'TDML::Input'.
+	Methods:
+		input();
+			Constructor for input objects.
+		bool getKeyState(char key);
+			Returns the status of a key. For example, if you want to find if the "w" key is pressed, pass 'w' as the
+				argument.
+		bool getSpecialKeyState(int key);
+			Gets the status of a special key. Special keys are ones that do not have a single character symbol, such as
+				the arrow keys. Possible arguments:
+					RIGHT
+					LEFT
+					UP
+					DOWN
+					SPACE
+		bool getMouseKeyState(int key);
+			Returns the status of a mouse
+		bool getMouseKeyPressed(int key);
+
+		int getMouseX();
+
+		int getMouseY();
+
+		void KeyDownFunc(unsigned char key, int x, int y);
+
+		void KeyUpFunc(unsigned char key, int x, int y);
+
+		void SpecialKeyDownFunc(int key, int x, int y);
+
+		void SpecialKeyUpFunc(int key, int x, int y);
+
+		void MouseKeyFunc(int button, int state, int x, int y);
+
+		void MousePosFunc(int x, int y);
+
+		void resetMouseKeyPressed();
+			Uhhh... IDK
+		void setCursorPosition(int x, int y);
+			Sets the position of the cursor to (x,y).
+		void centerCursor();
+			Centers the cursor on the screen.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 Notes:
     Use the 32 bit version of freeglut both system32 AND sysWOW64
 

@@ -69,6 +69,7 @@ while running:
                                 if level[f+1][y][x]==0:
                                     r.write("Resources/Common/Crate/Top/model.tdm ?\n")
                                     r.write("0 ?\n")
+                                    r.write("1 ?\n")
                                     r.write("0 ?\n")
                                     r.write(str(y*2)+" ? "+str(1+(2*f))+" ? "+str(x*2)+" ?\n")
                                     r.write("0.0 ? 0.0 ? 0.0 ?\n")
@@ -83,6 +84,7 @@ while running:
                                 if level[f][y+1][x]==0:
                                     r.write("Resources/Common/Crate/Side/model.tdm ?\n")
                                     r.write("0 ?\n")
+                                    r.write("1 ?\n")
                                     r.write("0 ?\n")
                                     r.write(str((y*2)+1)+" ? "+str(2*f)+" ? "+str(x*2)+" ?\n")
                                     r.write("0.0 ? 90.0 ? 0.0 ?\n")
@@ -97,6 +99,7 @@ while running:
                                 if level[f][y-1][x]==0:
                                     r.write("Resources/Common/Crate/Side/model.tdm ?\n")
                                     r.write("0 ?\n")
+                                    r.write("1 ?\n")
                                     r.write("0 ?\n")
                                     r.write(str((y*2)-1)+" ? "+str(2*f)+" ? "+str(x*2)+" ?\n")
                                     r.write("0.0 ? 270.0 ? 0.0 ?\n")
@@ -112,6 +115,7 @@ while running:
                                     if level[f][y][x+1]==0:
                                         r.write("Resources/Common/Crate/Side/model.tdm ?\n")
                                         r.write("0 ?\n")
+                                        r.write("1 ?\n")
                                         r.write("0 ?\n")
                                         r.write(str(y*2)+" ? "+str(2*f)+" ? "+str((x*2)+1)+" ?\n")
                                         r.write("0.0 ? 0.0 ? 0.0 ?\n")
@@ -127,6 +131,7 @@ while running:
                                     if level[f][y][x-1]==0:
                                         r.write("Resources/Common/Crate/Side/model.tdm ?\n")
                                         r.write("0 ?\n")
+                                        r.write("1 ?\n")
                                         r.write("0 ?\n")
                                         r.write(str(y*2)+" ? "+str(2*f)+" ? "+str((x*2)-1)+" ?\n")
                                         r.write("0.0 ? 180.0 ? 0.0 ?\n")
@@ -140,6 +145,7 @@ while running:
                                         
                 r.write("Resources/Common/Character/model.tdm ?\n")
                 r.write("0 ?\n")
+                r.write("1 ?\n")
                 r.write("0 ?\n")
                 r.write("0.0 ? 0.0 ? 0.0 ?\n")
                 r.write("0.0 ? 0.0 ? 0.0 ?\n")
