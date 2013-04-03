@@ -153,9 +153,11 @@ namespace TDML
 			glScalef(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
 			map.display();
 		}
-		//GLfloat lightpos[] = {-1.0, 1.0, 0.0, 1.0};
 
-		//glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+		/*
+		GLfloat lightpos[] = {0.0, 0.0, 1.0, 0.25};
+		glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+		*/
 		glLoadIdentity();
 		//
 		
@@ -382,7 +384,7 @@ namespace TDML
 		}
 		else
 		{
-			Error.errorMessage("ERRAR! TRIED TO GIT PARTICL SAYSTEM THAT DUN'T EXIST. YUR FAULT?", "ERRAR");
+			Message.errorMessage("ERRAR! TRIED TO GIT PARTICL SAYSTEM THAT DUN'T EXIST. YUR FAULT?", "ERRAR");
 		}
 	}
 
@@ -472,11 +474,10 @@ namespace TDML
 	{
 		int fid = getFirstIDByName(firstName);
 		int sid = getFirstIDByName(secondName);
-		float distance = sqrt(
-								pow(objects[fid].getX()-objects[sid].getX(),2)+
-								pow(objects[fid].getY()-objects[sid].getY(),2)+
-								pow(objects[fid].getZ()-objects[sid].getZ(),2)
-							);
+		float xdist = objects[fid].getX()-objects[sid].getX();
+		float ydist = objects[fid].getY()-objects[sid].getY();
+		float zdist = objects[fid].getZ()-objects[sid].getZ();
+		float distance = sqrt((xdist*xdist)+(ydist*ydist)+(zdist*zdist));
 		return distance;
 	}
 

@@ -91,4 +91,16 @@ namespace TDML
 	{
 		glClearColor(SkyRed, SkyGreen, SkyBlue, 1.0);
 	}
+
+	void window::minimize()
+	{
+		Input.resetMouseKeyPressed();
+		Input.resetKeysPressed();
+		glutIconifyWindow();
+	}
+
+	void window::maximize()
+	{
+		glutShowWindow();
+	}
 }

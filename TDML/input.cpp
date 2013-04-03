@@ -17,6 +17,10 @@ namespace TDML
 		for(int k = 0; k < 256; k++) keys[k] = false;
 		specialkeys = new bool[256];
 		for(int sk = 0; sk < 256; sk++) specialkeys[sk] = false;
+		keyspressed = new bool[256];
+		for(int k = 0; k < 256; k++) keyspressed[k] = false;
+		specialkeyspressed = new bool[256];
+		for(int sk = 0; sk < 256; sk++) specialkeyspressed[sk] = false;
 		mousekeys = new bool[5];
 		for(int mk = 0; mk < 5; mk++) mousekeys[mk] = false;
 		mousekeypresses = new bool[5];
@@ -33,6 +37,16 @@ namespace TDML
 	bool input::getSpecialKeyState(int key)
 	{
 		return specialkeys[key];
+	}
+
+	bool input::getKeyPressed(char key)
+	{
+		return keyspressed[key];
+	}
+
+	bool input::getSpecialKeyPressed(int key)
+	{
+		return specialkeyspressed[key];
 	}
 
 	bool input::getMouseKeyState(int key)
@@ -58,6 +72,7 @@ namespace TDML
 	void input::KeyDownFunc(unsigned char key, int x, int y)
 	{
 		keys[key] = true;
+		keyspressed[key] = true;
 	}
 
 	void input::KeyUpFunc(unsigned char key, int x, int y)
@@ -67,7 +82,8 @@ namespace TDML
 
 	void input::SpecialKeyDownFunc(int key, int x, int y)
 	{
-		specialkeys[key]=true;
+		specialkeys[key] = true;
+		specialkeyspressed[key] = true;
 	}
 
 	void input::SpecialKeyUpFunc(int key, int x, int y)
@@ -108,6 +124,12 @@ namespace TDML
 		mousekeypresses[4] = false;
 		mousekeys[3] = false;
 		mousekeys[4] = false;
+	}
+
+	void input::resetKeysPressed()
+	{
+		for(int k = 0; k < 256; k++) keyspressed[k] = false;
+		for(int sk = 0; sk < 256; sk++) specialkeyspressed[sk] = false;
 	}
 
 	void input::setCursorPosition(int x, int y)

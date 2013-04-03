@@ -370,9 +370,9 @@ namespace TDML
 			for(int p1 = 0; p1<3; p1++)
 			{
 				float dist = sqrt(
-									pow(polygons[p].getX(p1)*scalex,2)+
-									pow(polygons[p].getY(p1)*scaley,2)+
-									pow(polygons[p].getZ(p1)*scalez,2)
+									(polygons[p].getX(p1)*scalex*polygons[p].getX(p1)*scalex)+
+									(polygons[p].getY(p1)*scaley*polygons[p].getY(p1)*scaley)+
+									(polygons[p].getZ(p1)*scalez*polygons[p].getZ(p1)*scalez)
 								);
 				if(dist > radius)
 				{

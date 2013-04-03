@@ -14,6 +14,9 @@ using namespace std;
 #define UP 101
 #define DOWN 103
 #define SPACE 32
+#define LSHIFT 112
+#define RSHIFT 113
+#define LCONTROL 114
 
 #define LEFTMOUSE 0
 #define RIGHTMOUSE 2
@@ -47,7 +50,7 @@ using namespace std;
 #include <ostream>
 
 #include "version.h"
-#include "error.h"
+#include "message.h"
 #include "point.h"
 #include "vector3d.h"
 #include "matrix3x3.h"
@@ -85,13 +88,13 @@ namespace TDML
 	bool fileExists(std::string fileName);
 
 	extern bool running;
-	//extern HWND windowhandle;
+	extern HWND windowhandle;
 
 	extern int crotorder;
 	extern int orotorder;
 
 	extern version Version;
-	extern error Error;
+	extern message Message;
 	extern input Input;
 	extern TDMLmath Math;
 	extern window Window;

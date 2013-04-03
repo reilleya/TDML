@@ -3,9 +3,6 @@
 using namespace std;
 
 TDML::world world1;
-float xpos = 0;
-float zpos = 0;
-
 
 void exit()
 {
@@ -20,39 +17,23 @@ void display ()
 
 void animate()
 {
-	world1.setCamPosition(xpos, world1.getHeightMapAt(xpos,zpos)+1, zpos);
-
-	if(TDML::Input.getKeyState('w'))
+	world1.setCamPosition(0, 0, 10);
+	TDML::object& tv = world1.getObjectRef("tv");
+	tv.setYangle(tv.getYangle()+world1.getAdjustedTime(0.05, 2));
+	tv.setZangle(tv.getZangle()+world1.getAdjustedTime(0.025, 2));
+	if(TDML::Input.getMouseKeyPressed(WHEELUP))
 	{
-		zpos-=world1.getAdjustedTime(0.1, 5);
-
+		tv.setScale(tv.getScaleX()*1.25, tv.getScaleY()*1.25, tv.getScaleZ()*1.25);
 	}
-	if(TDML::Input.getKeyState('s'))
+	if(TDML::Input.getMouseKeyPressed(WHEELDOWN))
 	{
-		zpos+=world1.getAdjustedTime(0.1, 5);
+		tv.setScale(tv.getScaleX()*0.8, tv.getScaleY()*0.8, tv.getScaleZ()*0.8);
 	}
-	if(TDML::Input.getKeyState('a'))
+	if(TDML::Input.getSpecialKeyState(UP))
 	{
-		xpos-=world1.getAdjustedTime(0.1, 5);
+		TDML::Log.output("boooonananananana\n");
 	}
-	if(TDML::Input.getKeyState('d'))
-	{
-		xpos+=world1.getAdjustedTime(0.1, 5);
-	}
-
-
-	if(TDML::Input.getKeyState('b'))
-	{
-		TDML::stop();
-	}
-	TDML::Log.output(TDML::Input.getMouseX()-((float)TDML::Window.getWidth()/2)); TDML::Log.output("\n");
-	//TDML::Log.output(TDML::Input.getMouseY()-((float)TDML::Window.getHeight()/2)); TDML::Log.output("\n");
-	world1.setCamAngleY(world1.getCamAngleY()-(TDML::Input.getMouseX()-((float)TDML::Window.getWidth()/2)));
-	world1.setCamAngleX(world1.getCamAngleX()+(TDML::Input.getMouseY()-((float)TDML::Window.getHeight()/2)));
-	//if(!TDML::Input.getKeyState('r'))TDML::Input.centerCursor();
 	world1.update();
-	//world1.setCamAngleY((((float)TDML::Input.getMouseX()/(float)TDML::Window.getWidth())-0.5)*180.0);
-	//world1.setCamAngleX((((float)TDML::Input.getMouseY()/(float)TDML::Window.getHeight())-0.5)*180.0);
 }
 
 int main(int argc, char** argv)
@@ -61,9 +42,8 @@ int main(int argc, char** argv)
 	TDML::enableCulling(false);
 	TDML::Log.output("Hello, Worlds!\n");
 	TDML::Log.output(TDML::Version.getFullVersion());
-	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Particle Testbed", 0.5, 0.8, 1.0, display, animate, exit);
-	world1.setCamPosition(0,0,0);
-	world1.setTerrain(TDML::loadTerrain("terrible.hgt", "height1.png", 500, 0.25));
+	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Lighting Testbed", 0.5, 0.8, 1.0, display, animate, exit);
+	world1 = TDML::loadWorld("world.wor");
 	TDML::start();
 	return 0;
 }

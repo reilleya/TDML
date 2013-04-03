@@ -85,7 +85,7 @@ namespace TDML
 			}
 			else
 			{
-				Error.errorMessage("Error loading object file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
+				Message.errorMessage("Error loading object file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
 				object o;
 				return o;
 			
@@ -297,7 +297,7 @@ namespace TDML
 		}
 		else
 		{
-			Error.errorMessage("Error loading world file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
+			Message.errorMessage("Error loading world file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
 			world newworld;
 			return newworld;
 		}
@@ -398,7 +398,7 @@ namespace TDML
 		}
 		else
 		{
-			Error.errorMessage("Error loading texture file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
+			Message.errorMessage("Error loading texture file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
 			return -1;
 		}
 	}
@@ -498,7 +498,7 @@ namespace TDML
 		}
 		else
 		{
-			Error.errorMessage("Error loading material data file: " + fileName + "\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
+			Message.errorMessage("Error loading material data file: " + fileName + "\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
 			texture t;
 			return t;
 		}
@@ -525,7 +525,7 @@ namespace TDML
 	int orotorder = 4;
 
 	version Version;
-	error Error;
+	message Message;
 	input Input;
 	TDMLmath Math;
 	window Window;
@@ -536,6 +536,7 @@ namespace TDML
 	void (*theirexitfunction)();
 	int nexttextureid = 0;
 	GLuint menuvboid = 0;
+	HWND windowhandle;
 
 	void setupMenuVBO()
 	{
@@ -591,6 +592,7 @@ namespace TDML
 
 	void ChannelSpecialKeyboardUpToInput(int key, int x, int y)
 	{
+		Log.output(key); Log.output("\n");
 		Input.SpecialKeyUpFunc(key, x, y);
 	}
 
@@ -646,7 +648,8 @@ namespace TDML
 		}
 		glutInitWindowSize(width, height);
 		glutInitWindowPosition (30, 30);
-		glutCreateWindow(title);
+		glutCreateWindow("TDML_WINDOW");
+		windowhandle = FindWindow(NULL, TEXT("TDML_WINDOW"));
 		glClearColor(SkyRed, SkyGreen, SkyBlue, 1.0);               
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();  
@@ -667,13 +670,17 @@ namespace TDML
 		Window.setPos(30, 30);
 		Window.setSize(width, height);
 		Window.setFullscreen(false);
-		//wstring stemp = wstring(title.begin(), title.end());
-		//windowhandle = FindWindow(NULL, title)
-		//glEnable (GL_LIGHTING);
-		//glEnable(GL_NORMALIZE);
-		//glEnable (GL_LIGHT0);
-		//GLfloat lightpos[] = {0.0, 1.0, 0.0, 0.0};
-		//glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+		glutSetWindowTitle(title);
+		cout << endl << windowhandle << endl;
+
+		/*
+		glEnable (GL_LIGHTING);
+		glEnable(GL_NORMALIZE);
+		glEnable (GL_LIGHT0);
+		glShadeModel(GL_SMOOTH);
+		GLfloat lightpos[] = {0.0, 0.0, 1.0, 0.25};
+		glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+		*/
 	}
 
 	void setupFunctions(void (*displayfunction)(), void (*updatefunction)(), void (*exitfunction)())
@@ -724,6 +731,7 @@ namespace TDML
 		{
 			(*theirupdatefunction)();
 			Input.resetMouseKeyPressed();
+			Input.resetKeysPressed();
 			glutPostRedisplay();
 			//Hook for updates
 		}
@@ -731,13 +739,9 @@ namespace TDML
 
 	void display()
 	{
-		//if(running)
-		//{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			(*theirdisplayfunction)();
-			glutSwapBuffers();
-			//hook for display
-		//}
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		(*theirdisplayfunction)();
+		glutSwapBuffers();
 	}
 
 	void exit()

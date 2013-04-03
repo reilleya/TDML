@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />
-    <ClInclude Include="error.h" />
+    <ClInclude Include="message.h" />
     <ClInclude Include="glew.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="LodePNG.h" />
@@ -121,7 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="config.cpp" />
-    <ClCompile Include="error.cpp" />
+    <ClCompile Include="message.cpp" />
     <ClCompile Include="glew.c" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="LodePNG.cpp" />

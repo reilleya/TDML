@@ -16,6 +16,8 @@ namespace TDML
 		private:
 			bool* keys;
 			bool* specialkeys;
+			bool* keyspressed;
+			bool* specialkeyspressed;
 			bool* mousekeys;
 			bool* mousekeypresses;
 			int xpos;
@@ -25,6 +27,8 @@ namespace TDML
 			input();
 			bool getKeyState(char key);
 			bool getSpecialKeyState(int key);
+			bool getKeyPressed(char key);
+			bool getSpecialKeyPressed(int key);
 			bool getMouseKeyState(int key);
 			bool getMouseKeyPressed(int key);
 			int getMouseX();
@@ -36,6 +40,7 @@ namespace TDML
 			void MouseKeyFunc(int button, int state, int x, int y);
 			void MousePosFunc(int x, int y);
 			void resetMouseKeyPressed();
+			void resetKeysPressed();
 			void setCursorPosition(int x, int y);
 			void centerCursor();
 	};
