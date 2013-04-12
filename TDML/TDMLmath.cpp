@@ -145,7 +145,7 @@ namespace TDML
 		}
 	}
 
-	void TDMLmath::rotate(vector3d& vector, float angleX, float angleY, float angleZ)
+	void TDMLmath::rotate(vector3d& vector, float angleX, float angleY, float angleZ, int order)
 	{
 		matrix3x3 xrot = matrix3x3();
 		xrot.xRotFromAngle(angleX);
@@ -156,7 +156,33 @@ namespace TDML
 		matrix3x3 zrot = matrix3x3();
 		zrot.zRotFromAngle(angleZ);
 
-		matrix3x3 rot = (yrot*xrot) * zrot;
+		matrix3x3 rot;
+		switch(order)
+		{
+			case 0:
+				rot = (xrot*yrot) * zrot;
+				break;
+
+			case 1:
+				rot = (xrot*zrot) * yrot;
+				break;
+
+			case 2:
+				rot = (zrot*yrot) * xrot;
+				break;
+
+			case 3:
+				rot = (zrot*xrot) * yrot;
+				break;
+
+			case 4:
+				rot = (yrot*xrot) * zrot;
+				break;
+
+			case 5:
+				rot = (yrot*zrot) * xrot;
+				break;
+		}
 		vector = rot.apply(vector);
 	}
 

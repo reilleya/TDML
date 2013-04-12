@@ -7,7 +7,6 @@ TDML::world World1;
 TDML::menu MainMenu;
 TDML::terrain Terrain1;
 TDML::object test;
-//TDML::particlesystem ps1;
 TDML::particlesystem crashSmoke;
 
 float speed = 0.032;
@@ -31,16 +30,9 @@ void spin(TDML::object* me)
 
 void load()
 {
-	//ps1 = TDML::particlesystem("smoke", "Resources/Common/Textures/part.png", //image
-	//					   TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//pos
-	//					   TDML::vector3d(0,0.0005,0), TDML::vector3d(-0.001,0,-0.001), TDML::vector3d(0.001,0.0005,0.001),//dir
-	//					   TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//accel
-	//					   3000, 0, 0,//Life
-	//					   1); //Spawn Delay
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
 	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
-	//World1.addParticleSystem(ps1);
 	for(int t = 0; t < 3000; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
@@ -110,7 +102,6 @@ void load()
 		{
 			newrock.setVBOId(rockid);
 		}
-		//newrock.setUpdateFunction(spin);
 		World1.addObject(newrock);
 	}
 }
@@ -151,14 +142,10 @@ void animate()
 	{
 		World1.update();
 		TDML::object& plane = World1.getObjectRef("plane");
-		//TDML::particlesystem& ps1 = World1.getParticleSystemRef("smoke");
-		//plane.setVisible(false);
-
 		if(!dead)
 		{
-			if(World1.getHeightMapAt(plane.getX(),plane.getZ())>plane.getMinY())
+			if(World1.getHeightMapAt(plane.getX(),plane.getZ())>plane.getMinY() || plane.getMinY()<-250)
 			{
-				//TDML::Log.output("Underground!\n");
 				crashSmoke = TDML::particlesystem("smoke", "Resources/Common/Textures/part.png", //image
 				TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//pos
 				TDML::vector3d(0,0.0005,0), TDML::vector3d(-0.0005,0,-0.0005), TDML::vector3d(0.0005,0.0005,0.0005),//dir
@@ -196,11 +183,17 @@ void animate()
 				plane.setXangle(plane.getXangle()-0.02*World1.getTimeDelta());
 			}
 
-			plane.setYangle(plane.getYangle()+((plane.getZangle()/5000)*World1.getTimeDelta()));
+			//plane.setYangle(plane.getYangle()+((plane.getZangle()/5000)*World1.getTimeDelta()));
+			TDML::vector3d forward = TDML::vector3d(0,0,1);
+			TDML::Math.rotate(forward, plane.getXangle(), plane.getYangle(), plane.getZangle(), ZXY);
+			plane.setX(plane.getX()-World1.getAdjustedTime(forward.x, 14));
+			plane.setY(plane.getY()-World1.getAdjustedTime(forward.y, 14));
+			plane.setZ(plane.getZ()-World1.getAdjustedTime(forward.z, 14));
+			/*plane.setYangle(plane.getYangle()+TDML::Math.sin(plane.getZangle()/5000));
 			plane.setX(plane.getX()-World1.getTimeDelta()*speed*TDML::Math.sin(plane.getYangle())*TDML::Math.cos(plane.getXangle()));
 			plane.setZ(plane.getZ()-World1.getTimeDelta()*speed*TDML::Math.cos(plane.getYangle())*TDML::Math.cos(plane.getXangle()));
 			plane.setY(plane.getY()+World1.getTimeDelta()*speed*TDML::Math.sin(plane.getXangle()));
-			plane.setY(plane.getY()-(World1.getTimeDelta()/1000));
+			plane.setY(plane.getY()-(World1.getTimeDelta()/1000));*/
 		}
 		else
 		{
@@ -210,15 +203,21 @@ void animate()
 				respawn();
 			}
 		}
-		World1.setCamX(plane.getX()+zoom*(pow(2, zoomlevel))*TDML::Math.sin(plane.getYangle()));
-		World1.setCamZ(plane.getZ()+zoom*(pow(2, zoomlevel))*TDML::Math.cos(plane.getYangle()));
-		World1.setCamY(plane.getY());
+		//World1.setCamX(plane.getX()+zoom*(pow(2, zoomlevel))*TDML::Math.sin(plane.getYangle()));
+		//World1.setCamZ(plane.getZ()+zoom*(pow(2, zoomlevel))*TDML::Math.cos(plane.getYangle()));
+		//World1.setCamY(plane.getY());
+		TDML::vector3d forward = TDML::vector3d(0,0,1);
+		TDML::Math.rotate(forward, plane.getXangle(), plane.getYangle(), plane.getZangle(), ZXY);
+		World1.setCamX(plane.getX()+(forward.x*zoom*(pow(2, zoomlevel))));
+		World1.setCamY(plane.getY()+(forward.y*zoom*(pow(2, zoomlevel))));
+		World1.setCamZ(plane.getZ()+(forward.z*zoom*(pow(2, zoomlevel))));
+		World1.setCamAngleX(plane.getXangle());
 		World1.setCamAngleY(plane.getYangle());
+		World1.setCamAngleZ(plane.getZangle());
 		if(World1.getHeightMapAt(World1.getCamX(), World1.getCamZ())>World1.getCamY()-0)
 		{
 			World1.setCamY(World1.getHeightMapAt(World1.getCamX(), World1.getCamZ())+0);
 		}
-		//ps1.setPos(TDML::vector3d(plane.getX(), plane.getY(), plane.getZ()));
 	}
 	else
 	{
@@ -233,7 +232,7 @@ void animate()
 int main(int argc, char** argv)
 {
 	//TDML::Log.setDebugMode(true);
-	//TDML::setObjectRotationOrder(YZX);
+	TDML::setObjectRotationOrder(ZXY);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(false);
 	//MainMenu = TDML::loadMenu("Resources/MainMenu/menu.mnu");

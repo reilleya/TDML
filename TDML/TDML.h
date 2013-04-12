@@ -115,6 +115,7 @@ namespace TDML
 	void ChannelSpecialKeyboardUpToInput(int key, int x, int y);
 	void ChannelMouseKeysToInput(int button, int state, int x, int y);
 	void ChannelMouseMotionToInput(int x, int y);
+	void setupShaders();
 	void setupInput();
 	void reshape(int wi, int hi);
 	void setupWindow (int *argc, char **argv, int width, int height, const char * title, float SkyRed, float SkyGreen, float SkyBlue);
