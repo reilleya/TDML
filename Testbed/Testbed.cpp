@@ -17,6 +17,8 @@ void display ()
 
 void animate()
 {
+	TDML::object& tv = world1.getObjectRef("tv");
+	tv.setYangle(tv.getYangle()+world1.getAdjustedTime(0.05, 4));
 	world1.setCamPosition(0, 0, 10);
 	world1.update();
 }

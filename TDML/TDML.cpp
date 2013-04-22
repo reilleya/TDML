@@ -636,7 +636,7 @@ namespace TDML
 		while(finfile>>temp)
 		{
 			fcode.append(temp);
-			if(*(fcode.end()-1) == ';')
+			if(*(fcode.end()-1) == ';' || *(fcode.end()-1) == '{' || *(fcode.end()-1) == '}')
 			{
 				fcode.append("\n");
 			}
@@ -664,6 +664,11 @@ namespace TDML
 
 		glLinkProgram(fullShader);
 		
+		//Setup Inputs
+		glBindAttribLocation(fullShader, 0, "v_pos");
+		glBindAttribLocation(fullShader, 1, "n_dir");
+		glBindAttribLocation(fullShader, 2, "t_coo");
+
 		glUseProgram(fullShader);
 	}
 
