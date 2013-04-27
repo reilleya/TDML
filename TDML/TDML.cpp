@@ -523,6 +523,7 @@ namespace TDML
 
 	int crotorder = 1;
 	int orotorder = 4;
+	bool useShaders = false;
 
 	version Version;
 	message Message;
@@ -733,7 +734,10 @@ namespace TDML
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glEnableClientState(GL_NORMAL_ARRAY);
-		setupShaders();
+		if(useShaders) 
+		{
+			setupShaders();
+		}
 		Window.setPos(30, 30);
 		Window.setSize(width, height);
 		Window.setFullscreen(false);
@@ -829,11 +833,6 @@ namespace TDML
 		}
 	}
 
-	void setPause(bool state)
-	{
-		running = !state;
-	}
-
 	void setCameraRotationOrder(int order)
 	{
 		crotorder = order;
@@ -842,5 +841,15 @@ namespace TDML
 	void setObjectRotationOrder(int order)
 	{
 		orotorder = order;
+	}
+
+	void setUseShaders(bool use)
+	{
+		useShaders = use;
+	}
+	
+	void setPause(bool state)
+	{
+		running = !state;
 	}
 };

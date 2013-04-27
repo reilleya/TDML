@@ -92,6 +92,7 @@ namespace TDML
 
 	extern int crotorder;
 	extern int orotorder;
+	extern bool useShaders;
 
 	extern version Version;
 	extern message Message;
@@ -132,6 +133,7 @@ namespace TDML
 	void enableCulling(bool state);
 	void setCameraRotationOrder(int order);
 	void setObjectRotationOrder(int order);
+	void setUseShaders(bool use);
 
 	void setPause(bool state);
 }

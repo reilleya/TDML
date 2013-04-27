@@ -26,6 +26,7 @@ void animate()
 int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(true);
+	TDML::setUseShaders(true);
 	TDML::enableCulling(false);
 	TDML::Log.output("Hello, Worlds!\n");
 	TDML::Log.output(TDML::Version.getFullVersion());

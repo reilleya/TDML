@@ -188,9 +188,21 @@ namespace TDML
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, vboid);
 		glBindTexture(GL_TEXTURE_2D, texid);
-		glVertexPointer(3, GL_FLOAT, 0, 0);
-		glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 18 * sizeof(GLfloat)));
-		glNormalPointer(GL_FLOAT, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 30 * sizeof(GLfloat)));
+		if(useShaders)
+		{
+			glEnableVertexAttribArray(0);
+			glEnableVertexAttribArray(1);
+			glEnableVertexAttribArray(2);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);  // Position
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 30 * sizeof(GLfloat)));  // Normals
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 18 * sizeof(GLfloat)));  // Texture Coords
+		}
+		else
+		{
+			glVertexPointer(3, GL_FLOAT, 0, 0);
+			glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 18 * sizeof(GLfloat)));
+			glNormalPointer(GL_FLOAT, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 30 * sizeof(GLfloat)));
+		}
 		glDrawArrays(GL_TRIANGLES, 0, (dimensions-1) * (dimensions-1) * 6);
 	}
 }

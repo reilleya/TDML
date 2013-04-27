@@ -6,6 +6,7 @@ in vec2 out_t_coo;
 void main()
 {
     vec4 color = texture2D(tex, out_t_coo);
+    out_n_dir-=vec3(0, 1, 0);
+    color*=vec4(out_n_dir[0],out_n_dir[1],out_n_dir[2],1);
     gl_FragColor = color;
-    //gl_FragColor = vec4(0.4,0.4,0.8,1.0);
 }

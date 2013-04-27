@@ -38,14 +38,22 @@ namespace TDML
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, vboid);
 			glBindTexture(GL_TEXTURE_2D, material.getID(frame));
-			//glVertexPointer(3, GL_FLOAT, 0, 0);
-			//glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat)));
-			//glNormalPointer(GL_FLOAT, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));
-
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);  // Position
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat)));  // Normals
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));  // Texture Coords
-
+			
+			if(useShaders)
+			{
+				glEnableVertexAttribArray(0);
+				glEnableVertexAttribArray(1);
+				glEnableVertexAttribArray(2);
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);  // Position
+				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));  // Normals
+				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat)));  // Texture Coords
+			}
+			else
+			{
+				glVertexPointer(3, GL_FLOAT, 0, 0);
+				glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat)));
+				glNormalPointer(GL_FLOAT, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));
+			}
 			if(wireframe) glDrawArrays(GL_LINE_LOOP, 0, npolys*3);
 			else glDrawArrays(GL_TRIANGLES, 0, npolys*3);
 		}

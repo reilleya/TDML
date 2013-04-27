@@ -46,10 +46,21 @@ namespace TDML
 			//glRotatef(World->getCamAngleZ(), 0, 0, 1);
 			glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
 			glBindTexture(GL_TEXTURE_2D, texid);
-			glVertexPointer(3, GL_FLOAT, 0, 0);
-			glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(12 * sizeof(GLfloat)));
+			if(useShaders)
+			{
+				glEnableVertexAttribArray(0);
+				//glEnableVertexAttribArray(1);
+				glEnableVertexAttribArray(2);
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(12 * sizeof(GLfloat)));
+			}
+			else
+			{
+				glVertexPointer(3, GL_FLOAT, 0, 0);
+				glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(12 * sizeof(GLfloat)));
+			}
 			glDrawArrays(GL_QUADS, 0, 4);
-			glRotatef(-zangle, 0, 0, 1);
+			//glRotatef(-zangle, 0, 0, 1);
 			glRotatef(-World->getCamAngleY(), 0, 1, 0);
 			glRotatef(-World->getCamAngleX(), 1, 0, 0);
 			glRotatef(-World->getCamAngleZ(), 0, 0, 1);
