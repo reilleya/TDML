@@ -20,6 +20,7 @@ Thumbs.db
 obj/
 [Rr]elease*/
 _ReSharper*/
+ipch/
 *.obj
 *.exe
 *.pdb
