@@ -39,7 +39,7 @@ namespace TDML
 			glBindBuffer(GL_ARRAY_BUFFER, vboid);
 			glBindTexture(GL_TEXTURE_2D, material.getID(frame));
 			
-			if(useShaders)
+			if(Shaders.getUseShaders())
 			{
 				glEnableVertexAttribArray(0);
 				glEnableVertexAttribArray(1);

@@ -9,6 +9,7 @@ using namespace std;
 
 #pragma once
 
+//Keyboard Controls
 #define RIGHT 102
 #define LEFT 100
 #define UP 101
@@ -18,18 +19,23 @@ using namespace std;
 #define RSHIFT 113
 #define LCONTROL 114
 
+//Mouse Controls
 #define LEFTMOUSE 0
 #define RIGHTMOUSE 2
 #define MIDDLEMOUSE 1
 #define WHEELUP 3
 #define WHEELDOWN 4
 
+//Rotation Orders
 #define XYZ 0
 #define XZY 1
 #define ZYX 2
 #define ZXY 3
 #define YXZ 4
 #define YZX 5
+
+//Uniform Names
+#define UNI_USELIGHTING 0
 
 #define GLEW_STATIC
 
@@ -50,6 +56,7 @@ using namespace std;
 #include <ostream>
 
 #include "version.h"
+#include "shaders.h"
 #include "message.h"
 #include "point.h"
 #include "vector3d.h"
@@ -92,7 +99,6 @@ namespace TDML
 
 	extern int crotorder;
 	extern int orotorder;
-	extern bool useShaders;
 
 	extern version Version;
 	extern message Message;
@@ -101,6 +107,7 @@ namespace TDML
 	extern window Window;
 	extern log Log;
 	extern config Config;
+	extern shaders Shaders;
 
 	extern void (*theirdisplayfunction)();
 	extern void (*theirupdatefunction)();
@@ -116,7 +123,6 @@ namespace TDML
 	void ChannelSpecialKeyboardUpToInput(int key, int x, int y);
 	void ChannelMouseKeysToInput(int button, int state, int x, int y);
 	void ChannelMouseMotionToInput(int x, int y);
-	void setupShaders();
 	void setupInput();
 	void reshape(int wi, int hi);
 	void setupWindow (int *argc, char **argv, int width, int height, const char * title, float SkyRed, float SkyGreen, float SkyBlue);
@@ -133,7 +139,6 @@ namespace TDML
 	void enableCulling(bool state);
 	void setCameraRotationOrder(int order);
 	void setObjectRotationOrder(int order);
-	void setUseShaders(bool use);
 
 	void setPause(bool state);
 }

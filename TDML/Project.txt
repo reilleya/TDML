@@ -15,7 +15,7 @@ Contact email: areill1337@gmail.com
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-Last Updated: 4/27/2013
+Last Updated: 5/4/2013
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,7 +72,8 @@ Official TODO List:
 		Light Objects:
 			Make a class to store light properties
 			Add an array to worlds to hold lights
-		Implement openGL backend
+		Implement openGL backend:
+			Figure out lighting shaders
 
 	Worlds:
 		Allow for wildcard '*' name searches:
@@ -86,6 +87,7 @@ Official TODO List:
 				Perlin-Noise random terrain generation.
 
 	Particles:
+		Fix crazy spazzing
 		Rotation
 
 	Text Rendering:

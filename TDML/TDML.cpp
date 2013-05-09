@@ -85,7 +85,7 @@ namespace TDML
 			}
 			else
 			{
-				Message.errorMessage("Error loading object file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
+				Message.errorMessage("Error loading object file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
 				object o;
 				return o;
 			
@@ -523,7 +523,6 @@ namespace TDML
 
 	int crotorder = 1;
 	int orotorder = 4;
-	bool useShaders = false;
 
 	version Version;
 	message Message;
@@ -532,6 +531,7 @@ namespace TDML
 	window Window;
 	log Log;
 	config Config;
+	shaders Shaders;
 	void (*theirdisplayfunction)();
 	void (*theirupdatefunction)();
 	void (*theirexitfunction)();
@@ -607,72 +607,6 @@ namespace TDML
 		Input.MousePosFunc(x, y);
 	}
 
-	void setupShaders()
-	{
-		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);	
-		GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-		ifstream vinfile;
-		ifstream finfile;
-		vinfile.open("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/TDML/Shaders/Vertex1.vert", ios::in); //ABSOLUTE PATH ==== BAAAAAD JUJU
-		finfile.open("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/TDML/Shaders/Vertex1.frag", ios::in); //SHIIIIT MAN
-
-		//char* vcode;
-		//char* fcode;
-
-		string vcode;
-		string fcode;
-		string temp;
-
-		while(vinfile>>temp)
-		{
-			vcode.append(temp);
-			if(*(vcode.end()-1) == ';')
-			{
-				vcode.append("\n");
-			}
-			vcode.append(" ");
-		}
-
-		while(finfile>>temp)
-		{
-			fcode.append(temp);
-			if(*(fcode.end()-1) == ';' || *(fcode.end()-1) == '{' || *(fcode.end()-1) == '}')
-			{
-				fcode.append("\n");
-			}
-			fcode.append(" ");
-		}
-
-		//Message.popupMessage(vcode, fcode);
-
-		vinfile.close();
-		finfile.close();
-
-		const GLchar* vvcode = vcode.c_str(); 
-		const GLchar* ffcode = fcode.c_str(); 
-
-		glShaderSource(vertexShader, 1, &vvcode, NULL);
-		glShaderSource(fragmentShader, 1, &ffcode,NULL);
-
-		glCompileShader(vertexShader);
-		glCompileShader(fragmentShader);
-
-		GLuint fullShader = glCreateProgram();
-
-		glAttachShader(fullShader, vertexShader);
-		glAttachShader(fullShader, fragmentShader);
-
-		glLinkProgram(fullShader);
-		
-		//Setup Inputs
-		glBindAttribLocation(fullShader, 0, "v_pos");
-		glBindAttribLocation(fullShader, 1, "n_dir");
-		glBindAttribLocation(fullShader, 2, "t_coo");
-
-		glUseProgram(fullShader);
-	}
-
 	void setupInput()
 	{
 		glutKeyboardFunc(ChannelKeyboardToInput);
@@ -734,9 +668,13 @@ namespace TDML
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glEnableClientState(GL_NORMAL_ARRAY);
-		if(useShaders) 
+		if(Shaders.getUseShaders()) 
 		{
-			setupShaders();
+			Shaders.setupShaders();
+		}
+		if(Shaders.getUseShaders() && Shaders.getUseLighting())
+		{
+			Shaders.setupLighting();
 		}
 		Window.setPos(30, 30);
 		Window.setSize(width, height);
@@ -841,11 +779,6 @@ namespace TDML
 	void setObjectRotationOrder(int order)
 	{
 		orotorder = order;
-	}
-
-	void setUseShaders(bool use)
-	{
-		useShaders = use;
 	}
 	
 	void setPause(bool state)

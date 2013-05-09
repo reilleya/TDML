@@ -26,12 +26,14 @@ void animate()
 int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(true);
-	TDML::setUseShaders(true);
+	TDML::Shaders.setUseShaders(true);
+	TDML::Shaders.setUseLighting(true);
 	TDML::enableCulling(false);
 	TDML::Log.output("Hello, Worlds!\n");
 	TDML::Log.output(TDML::Version.getFullVersion());
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	world1 = TDML::loadWorld("world.wor");
+	TDML::Message.popupMessage("THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! THIS IS A LONG MESSAGE! ", "THIS ISN'T");
 	TDML::start();
 	return 0;
 }

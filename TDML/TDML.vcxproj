@@ -107,6 +107,7 @@
     <ClInclude Include="menuobject.h" />
     <ClInclude Include="particle.h" />
     <ClInclude Include="particlesystem.h" />
+    <ClInclude Include="shaders.h" />
     <ClInclude Include="TDMLmath.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="point.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="menuobject.cpp" />
     <ClCompile Include="particle.cpp" />
     <ClCompile Include="particlesystem.cpp" />
+    <ClCompile Include="shaders.cpp" />
     <ClCompile Include="TDMLmath.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="point.cpp" />
