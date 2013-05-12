@@ -31,7 +31,6 @@ namespace TDML
 		infile.open("config.cfg", ios::in);
 		while (infile >> word) 
 		{
-			std::cout << word << endl;
 			configd.resize(configd.size()+1);
 			configd[configd.size()-1].append(word);
 		}

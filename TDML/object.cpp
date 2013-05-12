@@ -25,11 +25,23 @@ namespace TDML
 	void object::dispInfo()
 	{
 		Log.output("Object:\n");
+		Log.output("\tFilename: "); Log.output(fileName); Log.output("\n");
 		Log.output("\tName: "); Log.output(name); Log.output("\n");
 		Log.output("\tType: "); Log.output(type); Log.output("\n");
 		Log.output("\tPolys: "); Log.output((float)npolys); Log.output("\n");
 		Log.output("\tPosition: "); Log.output(x); Log.output(", "); Log.output(y); Log.output(", "); Log.output(z); Log.output("\n");
-		//Log.output
+		Log.output("\tAngle: "); Log.output(xangle); Log.output(", "); Log.output(yangle); Log.output(", "); Log.output(zangle); Log.output("\n");
+		Log.output("\tScale: "); Log.output(scalex); Log.output(", "); Log.output(scaley); Log.output(", "); Log.output(scalez); Log.output("\n");
+		Log.output("\tRadius: "); Log.output(radius); Log.output("\n");
+		Log.output("\tDimensions: "); Log.output(xsize); Log.output(", "); Log.output(ysize); Log.output(", "); Log.output(zsize); Log.output("\n");
+		Log.output("\tBehaviours: "); Log.output(nbehaviors); Log.output("\n");
+		Log.output("\tAdjust bounding box: "); Log.output(adjustBB); Log.output("\n");
+		Log.output("\tVisible: "); Log.output(visible); Log.output("\n");
+		Log.output("\tWireframe: "); Log.output(wireframe); Log.output("\n");
+		Log.output("\tAnimated Texture framedelay: "); Log.output(framedelay); Log.output("\n");
+		Log.output("\tAnimated Texture frametime: "); Log.output(frametime); Log.output("\n");
+		Log.output("\tUpdate Function Set: "); Log.output(updateFuncSet); Log.output("\n");
+		Log.output("\tVBO ID: "); Log.output(vboid); Log.output("\n");
 	}
 
 	void object::display()

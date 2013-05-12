@@ -19,6 +19,7 @@ namespace TDML
 			bool useShaders;
 			bool shadersInitialized;
 			bool useLighting;
+			bool useTextures;
 			GLuint programID;
 			void populateUniformIDs();
 			GLuint getUniformID(int ID);
@@ -29,12 +30,15 @@ namespace TDML
 
 		public:
 			shaders();
-			void dispinfo();
+			void update();
+			void dispInfo();
 			void setupShaders();
 			void setUseShaders(bool use);
 			bool getUseShaders();
 			void setupLighting();
 			void setUseLighting(bool use);
 			bool getUseLighting();
+			void setUseTextures(bool use);
+			bool getUseTextures();
 	};
 }

@@ -11,6 +11,15 @@ using namespace std;
 
 namespace TDML
 {
+	void terrain::dispInfo()
+	{
+		Log.output("Terrain:\n");
+		Log.output("\tDimensions: "); Log.output(dimensions); Log.output("\n");
+		Log.output("\tScale: "); Log.output(scalexz); Log.output(","); Log.output(scaley); Log.output("\n");
+		Log.output("\tVBO ID: "); Log.output(vboid); Log.output("\n");
+		Log.output("\tTexture ID: "); Log.output(texid); Log.output("\n");
+	}
+
 	void terrain::setHeightMap(std::vector<std::vector<float>> newheightmap)
 	{
 		heightmap = newheightmap;

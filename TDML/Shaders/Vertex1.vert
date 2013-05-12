@@ -16,6 +16,6 @@ void main()
 {
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
 	
-	out_n_dir = n_dir;
+	out_n_dir = n_dir; 
 	out_t_coo = t_coo;
 }

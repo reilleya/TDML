@@ -164,7 +164,7 @@ namespace TDML
 		//
 		for(int obj = 0; obj < (int)nobjs; obj++)
 		{
-			cameraRotate();
+			cameraRotate(); 
 			glTranslatef(-camx, -camy, -camz);
 			glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
 			//objects[obj].drawBB();

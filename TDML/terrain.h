@@ -22,6 +22,7 @@ namespace TDML
 			GLuint texid;
 
 		public:
+			void dispInfo();
 			void setHeightMap(std::vector<std::vector<float>> newheightmap);
 			void setDimensions(int dim);
 			void setTextureId(int textureid);

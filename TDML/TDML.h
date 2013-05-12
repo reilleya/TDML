@@ -36,6 +36,7 @@ using namespace std;
 
 //Uniform Names
 #define UNI_USELIGHTING 0
+#define UNI_USETEXTURES 1
 
 #define GLEW_STATIC
 

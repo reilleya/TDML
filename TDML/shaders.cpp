@@ -17,6 +17,29 @@ namespace TDML
 		useLighting = false;
 		shadersInitialized = false;
 		uniforms.push_back("useLighting");
+		uniforms.push_back("useTextures");
+	}
+
+	void shaders::update()
+	{
+		if(useShaders)
+		{
+			changeUniform(UNI_USELIGHTING, useLighting);
+			changeUniform(UNI_USETEXTURES, useTextures);
+		}
+	}
+
+	void shaders::dispInfo()
+	{
+		Log.output("Shaders: ");
+		Log.output("\tUsing Shaders: "); Log.output(useShaders); Log.output("\n");
+		Log.output("\tUsing Lighting: "); Log.output(useLighting); Log.output("\n");
+		Log.output("\tShaders Initialized: "); Log.output(shadersInitialized); Log.output("\n");
+		Log.output("\tUniforms:\n");
+		for(int uni = 0; uni <uniforms.size(); uni++)
+		{
+			Log.output("\t\t"); Log.output(uniforms[uni]); Log.output(":"); Log.output(uniformIDs[uni]); Log.output("\n");
+		}
 	}
 
 	void shaders::populateUniformIDs()
@@ -103,7 +126,6 @@ namespace TDML
 		GLint vertexCompiled = 0;
 		glCompileShader(vertexShader);
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &vertexCompiled);
-		cout<<endl<<vertexCompiled<<endl;
 		if(vertexCompiled==GL_FALSE)
 		{
 			TDML::Message.errorMessage("Error compiling vertex shader file. Press 'OK' to attempt to continue, or 'Cancel' to exit.", "Shader Error");
@@ -112,7 +134,6 @@ namespace TDML
 		GLint fragmentCompiled = 0;
 		glCompileShader(fragmentShader);
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &fragmentCompiled);
-		cout<<endl<<fragmentCompiled<<endl;
 		if(fragmentCompiled==GL_FALSE)
 		{
 			TDML::Message.errorMessage("Error compiling fragment shader file. Press 'OK' to attempt to continue, or 'Cancel' to exit.", "Shader Error");
@@ -136,6 +157,7 @@ namespace TDML
 		shadersInitialized = true;
 
 		changeUniform(UNI_USELIGHTING, 0);
+		changeUniform(UNI_USETEXTURES, 1);
 	}
 
 	void shaders::setUseShaders(bool use)

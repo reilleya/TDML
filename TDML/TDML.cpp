@@ -313,7 +313,6 @@ namespace TDML
 		infile.open(fileName, ios::in);
 		while (infile >> word) 
 		{
-			std::cout << word << endl;
 			if(word=="[")
 			{
 				//Log.output("Creating MenuOBJ from data file: "); Log.output(menud[0]); Log.output("| Data length: "); Log.output(menu.size()); Log.output(":\n");
@@ -680,7 +679,6 @@ namespace TDML
 		Window.setSize(width, height);
 		Window.setFullscreen(false);
 		glutSetWindowTitle(title);
-		cout << endl << windowhandle << endl;
 		/*
 		glEnable (GL_LIGHTING);
 		glEnable(GL_NORMALIZE);
@@ -737,6 +735,7 @@ namespace TDML
 		//Log.output(appTime); Log.output("\n");
 		if(running)
 		{
+			Shaders.update();
 			(*theirupdatefunction)();
 			Input.resetMouseKeyPressed();
 			Input.resetKeysPressed();
