@@ -32,9 +32,11 @@ namespace TDML
 			float camzangle;
 			void cameraRotate();
 			void objectRotate(float x, float y, float z);
+			matrix4x4 modelMatrix;
 
 		public:
 			world();
+			void dispModelMatInfo();
 			void update();
 			float getTimeDelta();
 			float getAdjustedTime(float value, float targetTimeStep);

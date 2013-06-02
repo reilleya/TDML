@@ -37,6 +37,7 @@ using namespace std;
 //Uniform Names
 #define UNI_USELIGHTING 0
 #define UNI_USETEXTURES 1
+#define UNI_MODELMAT 2
 
 #define GLEW_STATIC
 
@@ -61,7 +62,9 @@ using namespace std;
 #include "message.h"
 #include "point.h"
 #include "vector3d.h"
+#include "matrix4x4.h"
 #include "matrix3x3.h"
+#include "transformation.h"
 #include "texture.h"
 #include "poly.h"
 #include "object.h"

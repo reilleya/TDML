@@ -59,6 +59,10 @@ namespace TDML
 				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);  // Position
 				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));  // Normals
 				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat)));  // Texture Coords
+				//matrix4x4 f = matrix4x4();
+				//f.rotate(0, 90, 0, XYZ);
+				//f.translate(0, 0, -3);
+				//glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, f.glForm());
 			}
 			else
 			{

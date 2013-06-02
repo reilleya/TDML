@@ -13,16 +13,17 @@ namespace TDML
 {
 	matrix3x3::matrix3x3()
 	{
-		p11=1;
-		p12=0;
-		p13=0;
-		p21=0;
-		p22=1;
-		p23=0;
-		p31=0;
-		p32=0;
-		p33=1;
+		p11=1; p12=0; p13=0;
+		p21=0; p22=1; p23=0;
+		p31=0; p32=0; p33=1;
 	}
+
+	/*matrix3x3::matrix3x3(matrix4x4 mat)
+	{
+		p11 = mat.p11; p12 = mat.p12; p13 = mat.p13;
+		p21 = mat.p21; p22 = mat.p22; p23 = mat.p23;
+		p31 = mat.p31; p32 = mat.p32; p33 = mat.p33;
+	}*/
 
 	void matrix3x3::dispInfo()
 	{

@@ -33,7 +33,7 @@ void load()
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
 	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
-	for(int t = 0; t < 5000; t++)
+	for(int t = 0; t < 0; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
 		newtree.setMaterial(TDML::loadTexture("Resources/World1/Tree/material.mdf"));
@@ -69,7 +69,7 @@ void load()
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
 	}
-	for(int t = 0; t < 500; t++)
+	for(int t = 0; t < 0; t++)
 	{
 		TDML::object newrock = TDML::loadObject("Resources/World1/Rock/model.tdm");
 		newrock.setMaterial(TDML::loadTexture("Resources/World1/Rock/material.mdf"));
@@ -154,7 +154,7 @@ void animate()
 				0.25, -0.1, 0.1, //Size
 				1, 15); //Spawn Delay
 				crashSmoke.setPos(TDML::vector3d(plane.getX(), plane.getY(), plane.getZ()));
-				World1.addParticleSystem(crashSmoke);
+				//World1.addParticleSystem(crashSmoke);
 				plane.setVisible(false);
 				dead = true;
 			}
@@ -182,7 +182,14 @@ void animate()
 			{
 				plane.setXangle(plane.getXangle()-0.02*World1.getTimeDelta());
 			}
-
+			if(TDML::Input.getKeyState('q'))
+			{
+				dead = true;
+			}
+			if(TDML::Input.getKeyState('e'))
+			{
+				World1.dispModelMatInfo();
+			}
 			//plane.setYangle(plane.getYangle()+((plane.getZangle()/5000)*World1.getTimeDelta()));
 			TDML::vector3d forward = TDML::vector3d(0,0,1);
 			TDML::Math.rotate(forward, plane.getXangle(), plane.getYangle(), plane.getZangle(), ZXY);
@@ -231,9 +238,10 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	//TDML::Log.setDebugMode(true);
+	TDML::Log.setDebugMode(true);
 	TDML::setObjectRotationOrder(ZXY);
-	TDML::setUseShaders(true);
+	TDML::Shaders.setUseShaders(true);
+	TDML::Shaders.setUseLighting(false);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(false);
 	//MainMenu = TDML::loadMenu("Resources/MainMenu/menu.mnu");

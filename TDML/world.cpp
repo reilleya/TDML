@@ -108,6 +108,12 @@ namespace TDML
 		camyangle=0;
 		camzangle=0;
 		hasterrain = false;
+		modelMatrix = matrix4x4();
+	}
+
+	void world::dispModelMatInfo()
+	{
+		//modelMatrix.dispInfo();
 	}
 
 	void world::update()
@@ -144,13 +150,18 @@ namespace TDML
 
 	void world::draw()
 	{
+		modelMatrix.loadIdentity();
 		//glDrawArrays(GL_LINE_LOOP, 0, 4);
 		//std::cout << camx << endl;
-		cameraRotate();
-		glTranslatef(-camx, -camy, -camz);
+			//cameraRotate();
+			//glTranslatef(-camx, -camy, -camz);
 		if(hasterrain)
 		{
-			glScalef(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
+				//glScalef(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
+			modelMatrix.rotate(-camxangle, -camyangle, -camzangle, crotorder);
+			modelMatrix.translate(-camx, -camy, -camz);
+			modelMatrix.scale(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
+			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
 			map.display();
 		}
 
@@ -158,30 +169,48 @@ namespace TDML
 		GLfloat lightpos[] = {0.0, 0.0, 1.0, 0.25};
 		glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 		*/
-		glLoadIdentity();
+			//glLoadIdentity();
+		modelMatrix.loadIdentity();
+		glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
 		//
 		
 		//
+		
 		for(int obj = 0; obj < (int)nobjs; obj++)
 		{
-			cameraRotate(); 
-			glTranslatef(-camx, -camy, -camz);
-			glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
+				//cameraRotate();
+			modelMatrix.rotate(-camxangle, -camyangle, -camzangle, crotorder);
+				//glTranslatef(-camx, -camy, -camz);
+			modelMatrix.translate(-camx, -camy, -camz);
+				//glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
+			modelMatrix.translate(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
 			//objects[obj].drawBB();
-			glScalef(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
-			objectRotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle());
+				//glScalef(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
+			modelMatrix.scale(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
+				//objectRotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle());
+			modelMatrix.rotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle(), orotorder);
+			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
+			//dispModelMatInfo();
 			objects[obj].display();
-			glLoadIdentity();
+				//glLoadIdentity();
+			modelMatrix.loadIdentity();
+			//dispModelMatInfo();
+			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
 		}
 
 		glDisable(GL_DEPTH_TEST);
 		for(int par = 0; par < (int)nparts; par++)
 		{
-			glLoadIdentity();
-			cameraRotate();
-			glTranslatef(-camx, -camy, -camz);
+				//glLoadIdentity();
+			modelMatrix.loadIdentity();
+				//cameraRotate();
+			modelMatrix.rotate(-camxangle, -camyangle, -camzangle, crotorder);
+				//glTranslatef(-camx, -camy, -camz);
+			modelMatrix.translate(-camx, -camy, -camz);
+			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
 			particlesystems[par].display(this);
-			glLoadIdentity();
+				//glLoadIdentity();
+			modelMatrix.loadIdentity();
 		}
 		glEnable(GL_DEPTH_TEST);
 		//glLoadIdentity();

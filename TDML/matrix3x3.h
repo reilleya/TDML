@@ -6,16 +6,13 @@
 //Contact email: areill1337@gmail.com
 
 #pragma once
-
+#include "matrix4x4.h"
 #include "TDML.h"
 
 namespace TDML
 {
 	class matrix3x3
 	{
-		private:
-			float test;
-			
 		public:
 			float p11;
 			float p12;
@@ -27,6 +24,7 @@ namespace TDML
 			float p32;
 			float p33;
 			matrix3x3();
+			//matrix3x3(matrix4x4 mat);
 			void dispInfo();
 			matrix3x3 operator * (matrix3x3 b);
 			void xRotFromAngle(float angle);

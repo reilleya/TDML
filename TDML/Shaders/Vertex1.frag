@@ -9,19 +9,18 @@ uniform sampler2D tex;
  
 in vec3 out_n_dir;
 in vec2 out_t_coo;
-
-uniform float useLighting; 
-uniform float useTextures;
+in float out_useLighting; 
+in float out_useTextures;
 
 void main()
 {
 	vec4 color = vec4(1.0, 1.0, 1.0, 1.0);
-	if(useTextures==1)
+	if(out_useTextures==1)
 	{
 		color = texture2D(tex, out_t_coo);
 	}
 	float alphaval = color[3];
-	if(useLighting==1)
+	if(out_useLighting==1)
 	{
 		color *= max(dot(normalize(out_n_dir), vec3(-1,0,0)), 0.0);
 		color[3] = alphaval;

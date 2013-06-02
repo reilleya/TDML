@@ -22,7 +22,6 @@ namespace TDML
 			bool useTextures;
 			GLuint programID;
 			void populateUniformIDs();
-			GLuint getUniformID(int ID);
 			void changeUniform(int uniform, float val);
 			void changeUniform(int uniform, float val1, float val2);
 			void changeUniform(int uniform, float val1, float val2, float val3);
@@ -30,6 +29,7 @@ namespace TDML
 
 		public:
 			shaders();
+			GLuint getUniformID(int ID);
 			void update();
 			void dispInfo();
 			void setupShaders();

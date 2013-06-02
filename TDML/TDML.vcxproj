@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />
+    <ClInclude Include="matrix4x4.h" />
     <ClInclude Include="message.h" />
     <ClInclude Include="glew.h" />
     <ClInclude Include="input.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="TDML.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="transformation.h" />
     <ClInclude Include="vector3d.h" />
     <ClInclude Include="version.h" />
     <ClInclude Include="window.h" />
@@ -122,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="config.cpp" />
+    <ClCompile Include="matrix4x4.cpp" />
     <ClCompile Include="message.cpp" />
     <ClCompile Include="glew.c" />
     <ClCompile Include="input.cpp" />
@@ -140,6 +143,7 @@
     <ClCompile Include="TDML.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="transformation.cpp" />
     <ClCompile Include="vector3d.cpp" />
     <ClCompile Include="version.cpp" />
     <ClCompile Include="window.cpp" />

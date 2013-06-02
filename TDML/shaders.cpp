@@ -15,9 +15,11 @@ namespace TDML
 	{
 		useShaders = true;
 		useLighting = false;
+		useTextures = true;
 		shadersInitialized = false;
 		uniforms.push_back("useLighting");
 		uniforms.push_back("useTextures");
+		uniforms.push_back("modelMat");
 	}
 
 	void shaders::update()
@@ -187,5 +189,15 @@ namespace TDML
 	bool shaders::getUseLighting()
 	{
 		return useLighting;
+	}
+
+	void shaders::setUseTextures(bool use)
+	{
+		useTextures = use;
+	}
+
+	bool shaders::getUseTextures()
+	{
+		return useTextures;
 	}
 }
