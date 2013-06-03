@@ -27,8 +27,8 @@ void animate()
 	}
 	TDML::object& tv = world1.getObjectRef("tv");
 	world1.setCamAngleZ(world1.getCamAngleZ()+world1.getAdjustedTime(0.05, 4));
-	tv.setYangle(tv.getYangle()+world1.getAdjustedTime(0.05, 4));
-	tv.setScaleY(abs(TDML::Math.sin(world1.getTimer())));
+	//tv.setYangle(tv.getYangle()+world1.getAdjustedTime(0.05, 4));
+	tv.setScaleY(TDML::Math.larger(0.15, abs(TDML::Math.sin(world1.getTimer()/4.0))));
 	world1.setCamPosition(0, 0, 10);
 	world1.update();
 }

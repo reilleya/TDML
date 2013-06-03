@@ -158,7 +158,7 @@ namespace TDML
 		if(hasterrain)
 		{
 				//glScalef(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
-			modelMatrix.rotate(-camxangle, -camyangle, -camzangle, crotorder);
+			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 			modelMatrix.translate(-camx, -camy, -camz);
 			modelMatrix.scale(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
 			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
@@ -179,7 +179,7 @@ namespace TDML
 		for(int obj = 0; obj < (int)nobjs; obj++)
 		{
 				//cameraRotate();
-			modelMatrix.rotate(-camxangle, -camyangle, -camzangle, crotorder);
+			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 				//glTranslatef(-camx, -camy, -camz);
 			modelMatrix.translate(-camx, -camy, -camz);
 				//glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
@@ -188,7 +188,7 @@ namespace TDML
 				//glScalef(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
 			modelMatrix.scale(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
 				//objectRotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle());
-			modelMatrix.rotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle(), orotorder);
+			modelMatrix.rotate(-objects[obj].getXangle(), -objects[obj].getYangle(), -objects[obj].getZangle(), orotorder);
 			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
 			//dispModelMatInfo();
 			objects[obj].display();
@@ -204,7 +204,7 @@ namespace TDML
 				//glLoadIdentity();
 			modelMatrix.loadIdentity();
 				//cameraRotate();
-			modelMatrix.rotate(-camxangle, -camyangle, -camzangle, crotorder);
+			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 				//glTranslatef(-camx, -camy, -camz);
 			modelMatrix.translate(-camx, -camy, -camz);
 			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());

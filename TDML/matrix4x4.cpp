@@ -41,7 +41,7 @@ namespace TDML
 
 	void matrix4x4::rotate(float x, float y, float z, int order)
 	{
-		matrix3x3 xrot = matrix3x3();
+		/*matrix3x3 xrot = matrix3x3();
 		xrot.xRotFromAngle(x);
 
 		matrix3x3 yrot = matrix3x3();
@@ -50,34 +50,69 @@ namespace TDML
 		matrix3x3 zrot = matrix3x3();
 		zrot.zRotFromAngle(z);
 
-		matrix3x3 rot;
+		matrix3x3 rot;*/
 		switch(order)
 		{
 			case 0:
-				rot = (xrot*yrot) * zrot;
+				rotateAxis(x, X_axis);
+				rotateAxis(y, Y_axis);
+				rotateAxis(z, Z_axis);
 				break;
 
 			case 1:
-				rot = (xrot*zrot) * yrot;
+				rotateAxis(x, X_axis);
+				rotateAxis(z, Z_axis);
+				rotateAxis(y, Y_axis);
 				break;
 
 			case 2:
-				rot = (zrot*yrot) * xrot;
+				rotateAxis(z, Z_axis);
+				rotateAxis(y, Y_axis);
+				rotateAxis(x, X_axis);
 				break;
 
 			case 3:
-				rot = (zrot*xrot) * yrot;
+				rotateAxis(z, Z_axis);
+				rotateAxis(x, X_axis);
+				rotateAxis(y, Y_axis);
 				break;
 
 			case 4:
-				rot = (yrot*xrot) * zrot;
+				rotateAxis(y, Y_axis);
+				rotateAxis(x, X_axis);
+				rotateAxis(z, Z_axis);
 				break;
 
 			case 5:
-				rot = (yrot*zrot) * xrot;
+				rotateAxis(y, Y_axis);
+				rotateAxis(z, Z_axis);
+				rotateAxis(x, X_axis);
+				break;
+		}
+	}
+
+	void matrix4x4::rotateAxis(float degrees, int axis)
+	{
+		matrix3x3 rot = matrix3x3();
+		switch(axis)
+		{
+			case 0:
+				rot.xRotFromAngle(degrees);
+				break;
+
+			case 1:
+				rot.yRotFromAngle(degrees);
+				break;
+
+			case 2:
+				rot.zRotFromAngle(degrees);
 				break;
 		}
 		setRotation(rot);
+		//matrix4x4 temp = matrix4x4();
+		//temp.setRotation(rot);
+		//temp = temp * this;
+		//copy(temp);
 	}
 
 	void matrix4x4::setRotation(matrix3x3 rot)

@@ -35,6 +35,7 @@ namespace TDML
 			void dispInfo();
 			void translate(float x, float y, float z);
 			void rotate(float x, float y, float z, int order);
+			void rotateAxis(float degrees, int axis);
 			void setRotation(matrix3x3 rot);
 			void scale(float x, float y, float z);
 			void loadIdentity();

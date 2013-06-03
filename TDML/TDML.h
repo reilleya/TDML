@@ -34,6 +34,11 @@ using namespace std;
 #define YXZ 4
 #define YZX 5
 
+//Axis Names
+#define X_axis 0
+#define Y_axis 1
+#define Z_axis 2
+
 //Uniform Names
 #define UNI_USELIGHTING 0
 #define UNI_USETEXTURES 1
