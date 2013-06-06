@@ -398,7 +398,7 @@ namespace TDML
 		{
 			for(int p1 = 0; p1<3; p1++)
 			{
-				float dist = sqrt(
+				float dist = sqrtf(
 									(polygons[p].getX(p1)*scalex*polygons[p].getX(p1)*scalex)+
 									(polygons[p].getY(p1)*scaley*polygons[p].getY(p1)*scaley)+
 									(polygons[p].getZ(p1)*scalez*polygons[p].getZ(p1)*scalez)

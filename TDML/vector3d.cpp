@@ -91,7 +91,7 @@ namespace TDML
 
 	float vector3d::magnitude()
 	{
-		return sqrt((x*x)+(y*y)+(z*z));
+		return sqrtf((x*x)+(y*y)+(z*z));
 	}
 
 	float vector3d::angle_to(vector3d v2)

@@ -519,7 +519,7 @@ namespace TDML
 		float xdist = objects[fid].getX()-objects[sid].getX();
 		float ydist = objects[fid].getY()-objects[sid].getY();
 		float zdist = objects[fid].getZ()-objects[sid].getZ();
-		float distance = sqrt((xdist*xdist)+(ydist*ydist)+(zdist*zdist));
+		float distance = sqrtf((xdist*xdist)+(ydist*ydist)+(zdist*zdist));
 		return distance;
 	}
 
