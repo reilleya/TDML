@@ -9,6 +9,9 @@ using namespace std;
 
 #pragma once
 
+//2x2 Matrix Determinant Function
+#define d2x2(a,b,c,d) ((a*c)-(b*d))
+
 //Keyboard Controls
 #define RIGHT 102
 #define LEFT 100
@@ -43,6 +46,8 @@ using namespace std;
 #define UNI_USELIGHTING 0
 #define UNI_USETEXTURES 1
 #define UNI_MODELMAT 2
+#define UNI_NORMALMAT 3
+#define UNI_SUNVEC 4
 
 #define GLEW_STATIC
 
@@ -63,12 +68,12 @@ using namespace std;
 #include <ostream>
 
 #include "version.h"
-#include "shaders.h"
 #include "message.h"
 #include "point.h"
 #include "vector3d.h"
 #include "matrix4x4.h"
 #include "matrix3x3.h"
+#include "shaders.h"
 #include "transformation.h"
 #include "texture.h"
 #include "poly.h"

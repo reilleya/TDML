@@ -27,10 +27,15 @@ namespace TDML
 			//matrix3x3(matrix4x4 mat);
 			void dispInfo();
 			matrix3x3 operator * (matrix3x3 b);
+			matrix3x3 operator * (float b);
 			void xRotFromAngle(float angle);
 			void yRotFromAngle(float angle);
 			void zRotFromAngle(float angle);
+			float determinant();
+			matrix3x3 inverse();
+			matrix3x3 transpose();
 			vector3d apply(vector3d original);
 			point apply(point original);
+			float* glForm();
 	};
 }

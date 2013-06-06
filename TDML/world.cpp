@@ -161,7 +161,11 @@ namespace TDML
 			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 			modelMatrix.translate(-camx, -camy, -camz);
 			modelMatrix.scale(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
-			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
+			matrix3x3 nmat = modelMatrix.rotPart();
+			nmat = nmat.inverse();
+			nmat = nmat.transpose();
+			Shaders.setNormalMat(nmat.glForm());
+			Shaders.setModelMat(modelMatrix.glForm());
 			map.display();
 		}
 
@@ -171,7 +175,7 @@ namespace TDML
 		*/
 			//glLoadIdentity();
 		modelMatrix.loadIdentity();
-		glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
+		Shaders.setModelMat(modelMatrix.glForm());
 		//
 		
 		//
@@ -189,13 +193,22 @@ namespace TDML
 			modelMatrix.scale(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
 				//objectRotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle());
 			modelMatrix.rotate(-objects[obj].getXangle(), -objects[obj].getYangle(), -objects[obj].getZangle(), orotorder);
-			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
+			matrix3x3 nmat = modelMatrix.rotPart();
+			//nmat = nmat.inverse();
+			//nmat = nmat.transpose();
+			/*matrix4x4 nmat = matrix4x4();
+			nmat.rotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle(), orotorder);
+			matrix3x3 nm = nmat.rotPart();
+			nm = nm.inverse();
+			nm = nm.transpose();*/
+			Shaders.setNormalMat(nmat.glForm());
+			Shaders.setModelMat(modelMatrix.glForm());
 			//dispModelMatInfo();
 			objects[obj].display();
 				//glLoadIdentity();
 			modelMatrix.loadIdentity();
 			//dispModelMatInfo();
-			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
+			Shaders.setModelMat(modelMatrix.glForm());
 		}
 
 		glDisable(GL_DEPTH_TEST);
@@ -207,7 +220,7 @@ namespace TDML
 			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 				//glTranslatef(-camx, -camy, -camz);
 			modelMatrix.translate(-camx, -camy, -camz);
-			glUniformMatrix4fv(Shaders.getUniformID(UNI_MODELMAT), 1, false, modelMatrix.glForm());
+			Shaders.setModelMat(modelMatrix.glForm());
 			particlesystems[par].display(this);
 				//glLoadIdentity();
 			modelMatrix.loadIdentity();

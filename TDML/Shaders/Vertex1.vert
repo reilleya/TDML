@@ -6,8 +6,10 @@
 //Contact email: areill1337@gmail.com;
 
 uniform mat4 modelMat; 
+uniform mat3 normalMat;
 uniform float useLighting; 
 uniform float useTextures;
+uniform vec3 sunVec;
 
 in vec3 v_pos;
 in vec3 n_dir;
@@ -17,14 +19,15 @@ out vec3 out_n_dir;
 out vec2 out_t_coo;
 out float out_useLighting; 
 out float out_useTextures;
+out vec3 out_sunVec;
 
 void main()
 {
 	//gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
 	gl_Position = gl_ProjectionMatrix * modelMat * gl_Vertex;
-	
-	out_n_dir = n_dir; 
+	out_n_dir = normalize(n_dir * normalMat);
 	out_t_coo = t_coo;
 	out_useLighting = useLighting;
 	out_useTextures = useTextures;
+	out_sunVec = sunVec;
 }

@@ -41,16 +41,6 @@ namespace TDML
 
 	void matrix4x4::rotate(float x, float y, float z, int order)
 	{
-		/*matrix3x3 xrot = matrix3x3();
-		xrot.xRotFromAngle(x);
-
-		matrix3x3 yrot = matrix3x3();
-		yrot.yRotFromAngle(y);
-
-		matrix3x3 zrot = matrix3x3();
-		zrot.zRotFromAngle(z);
-
-		matrix3x3 rot;*/
 		switch(order)
 		{
 			case 0:
@@ -108,14 +98,10 @@ namespace TDML
 				rot.zRotFromAngle(degrees);
 				break;
 		}
-		setRotation(rot);
-		//matrix4x4 temp = matrix4x4();
-		//temp.setRotation(rot);
-		//temp = temp * this;
-		//copy(temp);
+		applyRotation(rot);
 	}
 
-	void matrix4x4::setRotation(matrix3x3 rot)
+	void matrix4x4::applyRotation(matrix3x3 rot)
 	{
 		matrix4x4 temp = matrix4x4();
 		temp.p11 = rot.p11;
@@ -281,10 +267,6 @@ namespace TDML
 						 p21, p22, p23, p24,
 						 p31, p32, p33, p34,
 						 p41, p42, p43, p44};
-		/*float out[16] = {p11, p21, p31, p41,
-						 p12, p22, p32, p42,
-						 p13, p23, p33, p43,
-						 p14, p24, p34, p44};*/
 		return out;
 	}
 }

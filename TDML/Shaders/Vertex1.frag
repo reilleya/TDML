@@ -11,6 +11,7 @@ in vec3 out_n_dir;
 in vec2 out_t_coo;
 in float out_useLighting; 
 in float out_useTextures;
+in vec3 out_sunVec;
 
 void main()
 {
@@ -22,7 +23,7 @@ void main()
 	float alphaval = color[3];
 	if(out_useLighting==1)
 	{
-		color *= max(dot(normalize(out_n_dir), vec3(-1,0,0)), 0.0);
+		color *= max(dot(normalize(out_n_dir), out_sunVec), 0.0);
 		color[3] = alphaval;
 	}
     gl_FragColor = color;

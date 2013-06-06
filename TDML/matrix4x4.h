@@ -36,9 +36,10 @@ namespace TDML
 			void translate(float x, float y, float z);
 			void rotate(float x, float y, float z, int order);
 			void rotateAxis(float degrees, int axis);
-			void setRotation(matrix3x3 rot);
+			void applyRotation(matrix3x3 rot);
 			void scale(float x, float y, float z);
 			void loadIdentity();
+			matrix3x3 rotPart();
 			matrix4x4 operator * (matrix4x4 b);
 			matrix4x4 operator * (matrix4x4* b);
 			void timesEquals(matrix4x4 b);

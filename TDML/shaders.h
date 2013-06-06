@@ -16,6 +16,7 @@ namespace TDML
 		private:
 			std::vector<std::string> uniforms;
 			std::vector<GLuint> uniformIDs;
+			vector3d sunVec;
 			bool useShaders;
 			bool shadersInitialized;
 			bool useLighting;
@@ -40,5 +41,17 @@ namespace TDML
 			bool getUseLighting();
 			void setUseTextures(bool use);
 			bool getUseTextures();
+			void setModelMat(float mat[]);
+			void setNormalMat(float mat[]);
+			void setSunVector(float x, float y, float z);
+			void setSunVectorX(float val);
+			void setSunVectorY(float val);
+			void setSunVectorZ(float val);
+			void setSunVector(vector3d sunvec);
+			vector3d getSunVector();
+			float getSunVectorX();
+			float getSunVectorY();
+			float getSunVectorZ();
+			void updateSunVector();
 	};
 }

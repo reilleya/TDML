@@ -20,6 +20,8 @@ namespace TDML
 		uniforms.push_back("useLighting");
 		uniforms.push_back("useTextures");
 		uniforms.push_back("modelMat");
+		uniforms.push_back("normalMat");
+		uniforms.push_back("sunVec");
 	}
 
 	void shaders::update()
@@ -199,5 +201,72 @@ namespace TDML
 	bool shaders::getUseTextures()
 	{
 		return useTextures;
+	}
+
+	void shaders::setModelMat(float mat[])
+	{
+		glUniformMatrix4fv(getUniformID(UNI_MODELMAT), 1, false, mat);
+	}
+
+	void shaders::setNormalMat(float mat[])
+	{
+		glUniformMatrix3fv(getUniformID(UNI_NORMALMAT), 1, false, mat);
+	}
+
+	void shaders::setSunVector(float x, float y, float z)
+	{
+		sunVec.x = x;
+		sunVec.y = y;
+		sunVec.z = z;
+		updateSunVector();
+	}
+
+	void shaders::setSunVectorX(float val)
+	{
+		sunVec.x = val;
+		updateSunVector();
+	}
+
+	void shaders::setSunVectorY(float val)
+	{
+		sunVec.y = val;
+		updateSunVector();
+	}
+
+	void shaders::setSunVectorZ(float val)
+	{
+		sunVec.z = val;
+		updateSunVector();
+	}
+
+	void shaders::setSunVector(vector3d sunvec)
+	{
+		sunVec = sunvec;
+		updateSunVector();
+	}
+
+	vector3d shaders::getSunVector()
+	{
+		return sunVec;
+	}
+
+	float shaders::getSunVectorX()
+	{
+		return sunVec.x;
+	}
+
+	float shaders::getSunVectorY()
+	{
+		return sunVec.y;
+	}
+
+	float shaders::getSunVectorZ()
+	{
+		return sunVec.z;
+	}
+
+	void shaders::updateSunVector()
+	{
+		changeUniform(UNI_SUNVEC, sunVec.x, sunVec.y, sunVec.z);
 	}
 }

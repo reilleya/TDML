@@ -33,6 +33,15 @@ namespace TDML
 		Log.output(p31); Log.output(","); Log.output(p32); Log.output(","); Log.output(p33); Log.output("\n");
 	}
 
+	matrix3x3 matrix4x4::rotPart()
+	{
+		matrix3x3 temp = matrix3x3();
+		temp.p11 = p11; temp.p12 = p12; temp.p13 = p13;
+		temp.p21 = p31; temp.p22 = p22; temp.p23 = p23;
+		temp.p31 = p31; temp.p32 = p32; temp.p33 = p33;
+		return temp;
+	}
+
 	matrix3x3 matrix3x3::operator * (matrix3x3 b)
 	{
 		matrix3x3 temp = matrix3x3();
@@ -47,6 +56,15 @@ namespace TDML
 		temp.p31 = (p31*b.p11)+(p32*b.p21)+(p33*b.p31);
 		temp.p32 = (p31*b.p12)+(p32*b.p22)+(p33*b.p32);
 		temp.p33 = (p31*b.p13)+(p32*b.p23)+(p33*b.p33);
+		return temp;
+	}
+
+	matrix3x3 matrix3x3::operator * (float b)
+	{
+		matrix3x3 temp = matrix3x3();
+		temp.p11 = p11*b; temp.p12 = p12*b; temp.p13 = p13*b;
+		temp.p21 = p21*b; temp.p22 = p22*b; temp.p23 = p23*b;
+		temp.p31 = p31*b; temp.p32 = p32*b; temp.p33 = p33*b;
 		return temp;
 	}
 
@@ -95,6 +113,32 @@ namespace TDML
 		p33 = 1;
 	}
 
+	float matrix3x3::determinant()
+	{
+		return ((p11*d2x2(p22,p23,p32,p33))
+			   -(p12*d2x2(p21,p23,p31,p33))
+			   +(p13*d2x2(p21,p22,p31,p32)));
+	}
+
+	matrix3x3 matrix3x3::inverse()
+	{
+		matrix3x3 temp = matrix3x3();
+		temp.p11 = d2x2(p22,p23,p32,p33); temp.p12 = d2x2(p13,p12,p33,p32); temp.p13 = d2x2(p12,p13,p22,p23); 
+		temp.p21 = d2x2(p23,p21,p33,p31); temp.p22 = d2x2(p11,p13,p31,p33); temp.p23 = d2x2(p13,p11,p23,p21); 
+		temp.p31 = d2x2(p21,p22,p31,p32); temp.p32 = d2x2(p12,p11,p32,p31); temp.p33 = d2x2(p11,p12,p21,p22); 
+		temp = temp*(1.0/determinant());
+		return temp;
+	}
+
+	matrix3x3 matrix3x3::transpose()
+	{
+		matrix3x3 temp = matrix3x3();
+		temp.p11 = p11; temp.p12 = p21; temp.p13 = p31;
+		temp.p21 = p12; temp.p22 = p22; temp.p23 = p32;
+		temp.p31 = p13; temp.p32 = p32; temp.p33 = p33;
+		return temp;
+	}
+
 	vector3d matrix3x3::apply(vector3d original)
 	{
 		vector3d temp = vector3d(0,0,0);
@@ -110,6 +154,16 @@ namespace TDML
 		temp.setX((p11*original.getX())+(p12*original.getY())+(p13*original.getZ()));
 		temp.setY((p21*original.getX())+(p22*original.getY())+(p23*original.getZ()));
 		temp.setZ((p31*original.getX())+(p32*original.getY())+(p33*original.getZ()));
+		return temp;
+	}
+
+	float* matrix3x3::glForm()
+	{
+		float temp[9] = {
+						p11, p12, p13,
+						p21, p22, p23,
+						p31, p32, p33
+						};
 		return temp;
 	}
 }

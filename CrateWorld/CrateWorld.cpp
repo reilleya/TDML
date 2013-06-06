@@ -94,7 +94,8 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(true);
+	TDML::Log.setDebugMode(false);
+	TDML::Shaders.setUseLighting(true);
 	TDML::setupAll(&argc, argv, 800, 600, "TDML::Platformer", 0.0, 1.0, 1.0, display, animate, exit);
 	World = TDML::loadWorld("Resources/LevelOne/output.wor");
 	TDML::enableCulling(true);
