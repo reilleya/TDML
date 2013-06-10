@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />
+    <ClInclude Include="file.h" />
     <ClInclude Include="matrix4x4.h" />
     <ClInclude Include="message.h" />
     <ClInclude Include="glew.h" />
@@ -124,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="config.cpp" />
+    <ClCompile Include="file.cpp" />
     <ClCompile Include="matrix4x4.cpp" />
     <ClCompile Include="message.cpp" />
     <ClCompile Include="glew.c" />

@@ -28,6 +28,7 @@ using namespace std;
 #define MIDDLEMOUSE 1
 #define WHEELUP 3
 #define WHEELDOWN 4
+#define WHEELCLICK 
 
 //Rotation Orders
 #define XYZ 0
@@ -69,6 +70,7 @@ using namespace std;
 
 #include "version.h"
 #include "message.h"
+#include "file.h"
 #include "point.h"
 #include "vector3d.h"
 #include "matrix4x4.h"
@@ -106,7 +108,6 @@ namespace TDML
 	menu loadMenu(std::string fileName);
 	int loadTextureData(std::string fileName);
 	texture loadTexture(std::string fileName);
-	bool fileExists(std::string fileName);
 
 	extern bool running;
 	extern HWND windowhandle;
@@ -114,6 +115,7 @@ namespace TDML
 	extern int crotorder;
 	extern int orotorder;
 
+	extern file File;
 	extern version Version;
 	extern message Message;
 	extern input Input;

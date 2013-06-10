@@ -14,9 +14,13 @@ void display ()
 	world1.draw();
 }
 
-
 void animate()
 {
+	//world1.setCamAngleY(world1.getCamAngleY()-(TDML::Input.getMouseX()-(TDML::Window.getWidth()/2)));
+	if(TDML::Input.getKeyPressed('q'))
+	{
+		TDML::stop();
+	}
 	if(TDML::Input.getKeyPressed('l'))
 	{
 		TDML::Shaders.setUseLighting(!TDML::Shaders.getUseLighting());
@@ -27,9 +31,10 @@ void animate()
 	}
 	TDML::object& tv = world1.getObjectRef("tv");
 	//world1.setCamAngleZ(world1.getCamAngleZ()+world1.getAdjustedTime(0.5, 4));
-	//tv.setYangle(tv.getYangle()+world1.getAdjustedTime(0.05, 4));
+	tv.setYangle(tv.getYangle()+world1.getAdjustedTime(0.05, 4));
 	//tv.setScaleY(TDML::Math.larger(0.15, abs(TDML::Math.sin(world1.getTimer()/4.0))));
-	world1.setCamPosition(0, 0, 6);
+	world1.setCamPosition(0, 0, 4);
+	//TDML::Input.centerCursor();
 	world1.update();
 }
 
@@ -42,17 +47,6 @@ int main(int argc, char** argv)
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	world1 = TDML::loadWorld("world.wor");
 	TDML::object& tv = world1.getObjectRef("tv");
-	//tv.dispInfo();
-	//TDML::Shaders.dispInfo();
-	//TDML::matrix4x4 m1 = TDML::matrix4x4();
-	//m1.rotate(90,45,0,XYZ);
-	//m1.translate(10,5,0);
-	//m1.scale(1,5,1);
-	//m1.dispInfo();
-	//m1.rotate(90,0,0,XYZ);
-	//m1.dispInfo();
-	//TDML::Shaders.setSunVector(0,1,0);
 	TDML::start();
-	//system("pause");
 	return 0;
 }

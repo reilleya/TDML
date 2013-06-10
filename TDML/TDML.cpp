@@ -47,7 +47,7 @@ namespace TDML
 		if(cachedFound==false)
 		{
 			Log.output("\t\tNot Found!\n");
-			if(fileExists(fileName))
+			if(File.fileExists(fileName))
 			{
 				object newobj;
 				ifstream infile;
@@ -88,7 +88,6 @@ namespace TDML
 				Message.errorMessage("Error loading object file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
 				object o;
 				return o;
-			
 			}
 		}
 		else
@@ -201,7 +200,7 @@ namespace TDML
 	world loadWorld(string fileName)
 	{
 		Log.output("Loading world from file: "); Log.output(fileName); Log.output(":\n");
-		if(fileExists(fileName))
+		if(File.fileExists(fileName))
 		{
 			world newworld;
 			ifstream infile;
@@ -354,7 +353,7 @@ namespace TDML
 	int loadTextureData(string fileName)
 	{
 		Log.output("\t\t\t\tLoading texture from file: "); Log.output(fileName); Log.output("\n");	
-		if(fileExists(fileName))
+		if(File.fileExists(fileName))
 		{
 			std::vector<unsigned char> image;
 			unsigned width, height;
@@ -414,7 +413,7 @@ namespace TDML
 		ifstream infile;
 		vector<float> texd;
 		string word;
-		if(fileExists(fileName))
+		if(File.fileExists(fileName))
 		{
 			infile.open(fileName, ios::in);
 			GLuint id = 0;
@@ -503,26 +502,12 @@ namespace TDML
 		}
 	}
 
-	bool fileExists(string fileName)
-	{
-		ifstream testfile(fileName);
-		if(testfile) 
-		{
-			testfile.close();
-			return true;
-		}
-		else
-		{
-			testfile.close();
-			return false;
-		}
-	}
-
 	bool running = true;
 
 	int crotorder = 1;
 	int orotorder = 4;
 
+	file File;
 	version Version;
 	message Message;
 	input Input;
