@@ -44,6 +44,7 @@ int main(int argc, char** argv)
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::enableCulling(false);
+	TDML::Message.popupMessage("Press Ok when you have your shit together", "Very Sleepy");
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	world1 = TDML::loadWorld("world.wor");
 	TDML::object& tv = world1.getObjectRef("tv");

@@ -530,9 +530,7 @@ namespace TDML
 		glGenBuffers(1, &menuvboid);
 		GLfloat *geometry;
 		GLfloat *coords;
-		GLuint *indices;
 		geometry = new GLfloat[12];
-		indices = new GLuint[4];
 		coords = new GLfloat[8];
 		geometry[0] = 0;
 		geometry[1] = 0;
@@ -558,6 +556,8 @@ namespace TDML
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*20, NULL, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*12, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*12, sizeof(float)*8, coords);
+		delete geometry;
+		delete coords;
 	}
 
 	void ChannelKeyboardToInput(unsigned char key, int x, int y)

@@ -65,6 +65,7 @@ namespace TDML
 			bool updateFuncSet;
 			void (*updatefunction)(object* me);
 			GLuint vboid;
+			GLuint vaoid;
 			std::string fileName;
 
 		public:

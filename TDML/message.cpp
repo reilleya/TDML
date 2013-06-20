@@ -32,9 +32,7 @@ namespace TDML
 	{
 		wstring mtemp = wstring(MessageText.begin(), MessageText.end());
 		wstring ttemp = wstring(TitleText.begin(), TitleText.end());
-		//LPCWSTR mstr = mtemp.c_str();
 		int output = MessageBox(windowhandle,  mtemp.c_str(), ttemp.c_str(), MB_OKCANCEL | MB_ICONERROR | MB_APPLMODAL); 
-		//Log.output(output); Log.output("\n");
 		if(logErrors)
 		{
 			Log.output(TitleText+":"+MessageText+"\n");

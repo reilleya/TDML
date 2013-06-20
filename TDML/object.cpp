@@ -53,12 +53,12 @@ namespace TDML
 			
 			if(Shaders.getUseShaders())
 			{
-				glEnableVertexAttribArray(0);
-				glEnableVertexAttribArray(1);
-				glEnableVertexAttribArray(2);
-				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);  // Position
-				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));  // Normals
-				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat)));  // Texture Coords
+				glEnableVertexAttribArray(0); // Position
+				glEnableVertexAttribArray(1); // Normals
+				glEnableVertexAttribArray(2); // Texture Coords
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Position
+				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat))); // Normals
+				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat))); // Texture Coords
 			}
 			else
 			{
@@ -593,10 +593,8 @@ namespace TDML
 		GLfloat *geometry;
 		GLfloat *normals;
 		GLfloat *coords;
-		GLuint *indices;
 		geometry = new GLfloat[3*numverts];
 		normals = new GLfloat[3*numverts];
-		indices = new GLuint[npolys];
 		coords = new GLfloat[2*numverts];
 		for(int p = 0; p<(int)npolys-1; p++)
 		{
@@ -632,6 +630,10 @@ namespace TDML
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*3*numverts, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*3*numverts, sizeof(float)*2*numverts, coords);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*5*numverts, sizeof(float)*3*numverts, normals);
+
+		delete geometry;
+		delete normals;
+		delete coords;
 	}
 
 	int object::getVBOId()

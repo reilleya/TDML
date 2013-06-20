@@ -61,8 +61,6 @@ namespace TDML
 			float getCamZ();
 			int getFirstIDByName(std::string name);
 			object getFirstObjByName(std::string name);
-			//vector<int> getIDsByName(std::string name);
-			//vector<object*>* getObjsByName(std::string name);
 			std::vector<object> getObjects();
 			object getObjectById(int id);
 			object& getObjectRef(std::string Name);
