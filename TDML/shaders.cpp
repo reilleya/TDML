@@ -22,6 +22,7 @@ namespace TDML
 		uniforms.push_back("modelMat");
 		uniforms.push_back("normalMat");
 		uniforms.push_back("sunVec");
+		uniforms.push_back("menuItem");
 	}
 
 	void shaders::update()
@@ -268,5 +269,10 @@ namespace TDML
 	void shaders::updateSunVector()
 	{
 		changeUniform(UNI_SUNVEC, sunVec.x, sunVec.y, sunVec.z);
+	}
+
+	void shaders::setMenuObject(bool isObj)
+	{
+		changeUniform(UNI_MENUITEM, isObj);
 	}
 }

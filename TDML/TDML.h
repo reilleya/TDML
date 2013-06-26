@@ -49,6 +49,7 @@ using namespace std;
 #define UNI_MODELMAT 2
 #define UNI_NORMALMAT 3
 #define UNI_SUNVEC 4
+#define UNI_MENUITEM 5
 
 #define GLEW_STATIC
 
@@ -114,6 +115,7 @@ namespace TDML
 
 	extern int crotorder;
 	extern int orotorder;
+	extern matrix4x4 modelMatrix;
 
 	extern file File;
 	extern version Version;

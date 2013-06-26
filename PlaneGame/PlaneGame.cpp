@@ -21,7 +21,7 @@ int treeid;
 bool rockloadedID = false;
 int rockid;
 
-string state = "game";
+string state = "menu";
 
 void spin(TDML::object* me)
 {
@@ -244,9 +244,9 @@ int main(int argc, char** argv)
 	TDML::Shaders.setUseLighting(false);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::enableCulling(false);
-	//MainMenu = TDML::loadMenu("Resources/MainMenu/menu.mnu");
-	load();
-	//TDML::Log.output("Loaded menu\n");
+	MainMenu = TDML::loadMenu("Resources/MainMenu/menu.mnu");
+	//load();
+	TDML::Log.output("Loaded menu\n");
 	TDML::Window.centerWindow();
 	TDML::start();
 	return 0;

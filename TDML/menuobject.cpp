@@ -25,8 +25,14 @@ namespace TDML
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
 		glBindTexture(GL_TEXTURE_2D, texid);
-		glVertexPointer(3, GL_FLOAT, 0, 0);
-		glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(12 * sizeof(GLfloat)));
+
+		glEnableVertexAttribArray(0); // Position
+		glEnableVertexAttribArray(2); // Texture Coords
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Position
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(12 * sizeof(GLfloat))); // Texture Coords
+
+		//glVertexPointer(3, GL_FLOAT, 0, 0);
+		//glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(12 * sizeof(GLfloat)));
 		glDrawArrays(GL_QUADS, 0, 4);
 	}
 

@@ -506,6 +506,7 @@ namespace TDML
 
 	int crotorder = 1;
 	int orotorder = 4;
+	matrix4x4 modelMatrix;
 
 	file File;
 	version Version;

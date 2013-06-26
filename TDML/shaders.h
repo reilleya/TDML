@@ -53,5 +53,6 @@ namespace TDML
 			float getSunVectorY();
 			float getSunVectorZ();
 			void updateSunVector();
+			void setMenuObject(bool isObj);
 	};
 }

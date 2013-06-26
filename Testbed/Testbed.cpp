@@ -3,6 +3,7 @@
 using namespace std;
 
 TDML::world world1;
+TDML::menu menu1;
 
 void exit()
 {
@@ -12,6 +13,7 @@ void exit()
 void display ()
 {
 	world1.draw();
+	menu1.draw();
 }
 
 void animate()
@@ -44,9 +46,9 @@ int main(int argc, char** argv)
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::enableCulling(false);
-	TDML::Message.popupMessage("Press Ok when you have your shit together", "Very Sleepy");
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	world1 = TDML::loadWorld("world.wor");
+	menu1 = TDML::loadMenu("test2.mnu");
 	TDML::object& tv = world1.getObjectRef("tv");
 	TDML::start();
 	return 0;
