@@ -119,7 +119,6 @@ void display ()
 	}
 	else
 	{
-		TDML::Log.output("Darwing\n");
 		MainMenu.draw();
 	}
 }

@@ -25,6 +25,9 @@ namespace TDML
 			float sin(float degrees);
 			float cos(float degrees);
 			float tan(float degrees);
+			float csc(float degrees);
+			float sec(float degrees);
+			float cot(float degrees);
 			float arcsin(float value);
 			float arccos(float value);
 			float arctan(float value);

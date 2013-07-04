@@ -149,6 +149,20 @@ namespace TDML
 		p44=1;
 	}
 
+	void matrix4x4::perspective(float fieldOfView, float aspectRatio, float nearZ, float farZ)
+	{
+		float f = Math.cot(fieldOfView/2.0);
+		p11 = f/aspectRatio; p12 = 0; p13 = 0; p14 = 0;
+		p21 = 0; p22 = f; p23 = 0; p24 = 0;
+		p31 = 0; p32 = 0; p33 = (farZ+nearZ)/(nearZ-farZ); p34 = (2*farZ*nearZ)/(nearZ-farZ);
+		p41 = 0; p42 = 0; p43 = -1; p44 = 0;
+	}
+
+	void matrix4x4::ortho2D(float left, float top, float right, float bottom)
+	{
+
+	}
+
 	matrix4x4 matrix4x4::operator * (matrix4x4 b)
 	{
 		matrix4x4 temp = matrix4x4();

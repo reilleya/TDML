@@ -22,7 +22,7 @@ namespace TDML
 		uniforms.push_back("modelMat");
 		uniforms.push_back("normalMat");
 		uniforms.push_back("sunVec");
-		uniforms.push_back("menuItem");
+		uniforms.push_back("projMat");
 	}
 
 	void shaders::update()
@@ -209,6 +209,11 @@ namespace TDML
 		glUniformMatrix4fv(getUniformID(UNI_MODELMAT), 1, false, mat);
 	}
 
+	void shaders::setProjMat(float mat[])
+	{
+		glUniformMatrix4fv(getUniformID(UNI_PROJMAT), 1, false, mat);
+	}
+
 	void shaders::setNormalMat(float mat[])
 	{
 		glUniformMatrix3fv(getUniformID(UNI_NORMALMAT), 1, false, mat);
@@ -271,8 +276,5 @@ namespace TDML
 		changeUniform(UNI_SUNVEC, sunVec.x, sunVec.y, sunVec.z);
 	}
 
-	void shaders::setMenuObject(bool isObj)
-	{
-		changeUniform(UNI_MENUITEM, isObj);
-	}
+
 }

@@ -14,7 +14,7 @@ namespace TDML
 	version::version()
 	{
 		major = "0.5";
-		build = "0461";
+		build = "0491";
 	}
 
 	string version::getMajorRevision()

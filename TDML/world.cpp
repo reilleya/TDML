@@ -203,7 +203,7 @@ namespace TDML
 			nm = nm.transpose();*/
 			Shaders.setNormalMat(nmat.glForm());
 			Shaders.setModelMat(modelMatrix.glForm());
-			Shaders.setMenuObject(false);
+			Shaders.setProjMat(projMatrix.glForm());
 			//dispModelMatInfo();
 			objects[obj].display();
 				//glLoadIdentity();

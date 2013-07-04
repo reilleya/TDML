@@ -42,6 +42,7 @@ namespace TDML
 			void setUseTextures(bool use);
 			bool getUseTextures();
 			void setModelMat(float mat[]);
+			void setProjMat(float mat[]);
 			void setNormalMat(float mat[]);
 			void setSunVector(float x, float y, float z);
 			void setSunVectorX(float val);
@@ -53,6 +54,6 @@ namespace TDML
 			float getSunVectorY();
 			float getSunVectorZ();
 			void updateSunVector();
-			void setMenuObject(bool isObj);
+			
 	};
 }

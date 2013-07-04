@@ -39,6 +39,8 @@ namespace TDML
 			void applyRotation(matrix3x3 rot);
 			void scale(float x, float y, float z);
 			void loadIdentity();
+			void perspective(float fieldOfView, float aspectRatio, float near, float far);
+			void ortho2D(float left, float top, float right, float bottom);
 			matrix3x3 rotPart();
 			matrix4x4 operator * (matrix4x4 b);
 			matrix4x4 operator * (matrix4x4* b);

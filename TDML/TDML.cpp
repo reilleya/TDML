@@ -507,6 +507,7 @@ namespace TDML
 	int crotorder = 1;
 	int orotorder = 4;
 	matrix4x4 modelMatrix;
+	matrix4x4 projMatrix;
 
 	file File;
 	version Version;
@@ -610,11 +611,13 @@ namespace TDML
 		float h = (float) hi;
 		Window.updateSize(wi, hi);
 		glViewport(0, 0, (GLsizei) w, (GLsizei) h);              
-		glMatrixMode(GL_PROJECTION);
+		/*glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();  
 		gluPerspective(Config.getFOV(), w/h, 1.000f, 1000000.0f);
 		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
+		glLoadIdentity();*/
+		projMatrix.perspective(Config.getFOV(), w/h, 1.000f, 1000000.0f);
+		Shaders.setProjMat(projMatrix.glForm());
 		Window.updatePos(glutGet(GLUT_WINDOW_X), glutGet(GLUT_WINDOW_Y));
 		running = true;
 	}

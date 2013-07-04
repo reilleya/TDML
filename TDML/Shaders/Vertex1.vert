@@ -10,7 +10,7 @@ uniform mat3 normalMat;
 uniform float useLighting; 
 uniform float useTextures;
 uniform vec3 sunVec;
-uniform float menuItem;
+uniform mat4 projMat;
 
 in vec3 v_pos;
 in vec3 n_dir;
@@ -24,15 +24,8 @@ out vec3 out_sunVec;
 
 void main()
 {
-	//gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
-	if(menuItem==0)
-	{
-		gl_Position = gl_ProjectionMatrix * modelMat * gl_Vertex;
-	}
-	else
-	{
-		gl_Position = modelMat * gl_Vertex;
-	}
+	//gl_ProjectionMatrix
+	gl_Position = projMat * modelMat * gl_Vertex;
 	out_n_dir = normalize(n_dir * normalMat);
 	out_t_coo = t_coo;
 	out_useLighting = useLighting;

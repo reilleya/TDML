@@ -80,6 +80,21 @@ namespace TDML
 		return tanf(degreeToRad(degrees));
 	}
 
+	float TDMLmath::csc(float degrees)
+	{
+		return 1/(sin(degrees));
+	}
+
+	float TDMLmath::sec(float degrees)
+	{
+		return 1/(cos(degrees));
+	}
+
+	float TDMLmath::cot(float degrees)
+	{
+		return 1/(tan(degrees));
+	}
+
 	float TDMLmath::arcsin(float value)
 	{
 		return radToDegree(asin(value));
