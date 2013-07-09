@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, easygui
 totlength = 0
 numfiles = 0
 exceptions = ["glew.c", "glew.h", "glxew.h", "LodePNG.cpp", "LodePNG.h", "wglew.h"]
@@ -35,3 +35,4 @@ for (path, dirs, files) in os.walk("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model 
                 
 
 print "Total lines of code: "+str(totlength)
+easygui.msgbox("Total lines of code: "+str(totlength), "Count.py")

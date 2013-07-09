@@ -13,7 +13,7 @@ void exit()
 void display ()
 {
 	world1.draw();
-	menu1.draw();
+	//menu1.draw();
 }
 
 void animate()
