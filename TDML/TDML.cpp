@@ -649,8 +649,6 @@ namespace TDML
 		glDepthFunc(GL_LESS);
 		glEnable(GL_DEPTH_TEST);
 		glDepthMask(GL_TRUE);
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
 		glutReshapeFunc(reshape);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -670,14 +668,6 @@ namespace TDML
 		Window.setSize(width, height);
 		Window.setFullscreen(false);
 		glutSetWindowTitle(title);
-		/*
-		glEnable (GL_LIGHTING);
-		glEnable(GL_NORMALIZE);
-		glEnable (GL_LIGHT0);
-		glShadeModel(GL_SMOOTH);
-		GLfloat lightpos[] = {0.0, 0.0, 1.0, 0.25};
-		glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
-		*/
 	}
 
 	void setupFunctions(void (*displayfunction)(), void (*updatefunction)(), void (*exitfunction)())

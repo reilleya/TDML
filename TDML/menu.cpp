@@ -25,13 +25,16 @@ namespace TDML
 	void menu::draw()
 	{
 		//BEGIN:THIS SECTION IS BAAAAD
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		gluOrtho2D(0, Window.getWidth(), 0, Window.getHeight());
+		//glMatrixMode(GL_PROJECTION);
+		//glLoadIdentity();
+		//gluOrtho2D(0, Window.getWidth(), 0, Window.getHeight());
 		//glMatrixMode(GL_MODELVIEW);
 		//glLoadIdentity();
 		//END:THIS SECTION IS BAAAAD
 		modelMatrix.loadIdentity();
+		projMatrix.loadIdentity();
+		projMatrix.ortho2D(0, 0, Window.getWidth(), Window.getHeight());
+		Shaders.setProjMat(projMatrix.glForm());
 		for(int i = 0; i < nobjs; i++)
 		{
 			//Log.output(i); Log.output("\n");
@@ -44,10 +47,11 @@ namespace TDML
 			objects[i].draw();
 			modelMatrix.loadIdentity();
 		}
-		glMatrixMode(GL_PROJECTION);
+		/*glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluPerspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.0f, 10000.0f);
-		glMatrixMode(GL_MODELVIEW);
+		glMatrixMode(GL_MODELVIEW);*/
+		projMatrix.loadIdentity();
 		projMatrix.perspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.000f, 1000000.0f);
 		Shaders.setProjMat(projMatrix.glForm());
 		//glLoadIdentity();
