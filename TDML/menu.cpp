@@ -33,14 +33,14 @@ namespace TDML
 		//END:THIS SECTION IS BAAAAD
 		modelMatrix.loadIdentity();
 		projMatrix.loadIdentity();
-		projMatrix.ortho2D(0, 0, Window.getWidth(), Window.getHeight());
+		//projMatrix.ortho2D(0, 0, Window.getWidth(), Window.getHeight());
 		Shaders.setProjMat(projMatrix.glForm());
 		for(int i = 0; i < nobjs; i++)
 		{
 			//Log.output(i); Log.output("\n");
-			modelMatrix.translate(objects[i].getPosX(), (-objects[i].getPosY())+Window.getHeight(), 0);//(-objects[i].getPosY())+Window.getHeight(), 0);
+			modelMatrix.translate((objects[i].getPosX()/Window.getWidth())-1.0, 1.0-(objects[i].getPosY()/(Window.getHeight()/2)), 0);
 			//glTranslatef((GLfloat)objects[i].getPosX(), (GLfloat)(-objects[i].getPosY())+Window.getHeight(), 0);
-			modelMatrix.scale(objects[i].getWidth(), -objects[i].getHeight(), 0);
+			modelMatrix.scale(objects[i].getWidth()/(Window.getWidth()/2.0), -objects[i].getHeight()/(Window.getHeight()/2.0), 0);
 			//glScalef((GLfloat)objects[i].getWidth(), (GLfloat)-objects[i].getHeight(), 0);
 			//modelMatrix.dispInfo();
 			Shaders.setModelMat(modelMatrix.glForm());

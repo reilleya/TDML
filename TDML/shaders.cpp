@@ -87,11 +87,8 @@ namespace TDML
 
 		ifstream vinfile;
 		ifstream finfile;
-		vinfile.open("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/TDML/Shaders/Vertex1.vert", ios::in); //ABSOLUTE PATH ==== BAAAAAD JUJU
-		finfile.open("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/TDML/Shaders/Vertex1.frag", ios::in); //SHIIIIT MAN
-
-		//char* vcode;
-		//char* fcode;
+		vinfile.open("E:/TDML/TDML/Shaders/Vertex1.vert", ios::in); //ABSOLUTE PATH ==== BAAAAAD JUJU
+		finfile.open("E:/TDML/TDML/Shaders/Vertex1.frag", ios::in);
 
 		string vcode;
 		string fcode;
@@ -116,8 +113,6 @@ namespace TDML
 			}
 			fcode.append(" ");
 		}
-
-		//Message.popupMessage(vcode, fcode);
 
 		vinfile.close();
 		finfile.close();

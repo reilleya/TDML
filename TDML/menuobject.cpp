@@ -41,22 +41,22 @@ namespace TDML
 		texid = loadTextureData(texname);
 	}
 
-	int menuobject::getPosX()
+	float menuobject::getPosX()
 	{
 		return posx;
 	}
 	
-	int menuobject::getPosY()
+	float menuobject::getPosY()
 	{
 		return posy;
 	}
 	
-	int menuobject::getWidth()
+	float menuobject::getWidth()
 	{
 		return width;
 	}
 	
-	int menuobject::getHeight()
+	float menuobject::getHeight()
 	{
 		return height;
 	}

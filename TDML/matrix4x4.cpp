@@ -160,7 +160,7 @@ namespace TDML
 
 	void matrix4x4::ortho(float left, float top, float right, float bottom, float nearZ, float farZ)
 	{
-		p11 = 2/(right-left); p12 = 0; p13 = 0; p14 = -(right+left)/(right-left);
+		p11 = 2/(right-left); p12 = 0; p13 = 0; p14 = -((right+left)/(right-left));
 		p21 = 0; p22 = 2/(top-bottom); p23 = 0; p24 = -(top+bottom)/(top-bottom);
 		p31 = 0; p32 = 0; p33 = -2/(farZ-nearZ); p34 = -(farZ+nearZ)/(farZ-nearZ);
 		p41 = 0; p42 = 0; p43 = 0; p44 = 1;
@@ -168,7 +168,7 @@ namespace TDML
 
 	void matrix4x4::ortho2D(float left, float top, float right, float bottom)
 	{
-		ortho(left, top, right, bottom, -1, 1);
+		ortho(left, top, right, bottom, 0, 0);
 	}
 
 	matrix4x4 matrix4x4::operator * (matrix4x4 b)

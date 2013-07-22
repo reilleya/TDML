@@ -26,10 +26,10 @@ namespace TDML
 			//void dispInfo();
 			void draw();
 			void loadTexture();
-			int getPosX();
-			int getPosY();
-			int getWidth();
-			int getHeight();
+			float getPosX();
+			float getPosY();
+			float getWidth();
+			float getHeight();
 			void setPosX(int posX);
 			void setPosY(int posY);
 			void setWidth(int newWidth);
