@@ -101,7 +101,7 @@ namespace TDML
 		applyRotation(rot);
 	}
 
-	void matrix4x4::applyRotation(matrix3x3 rot)
+	void matrix4x4::applyRotation(matrix3x3& rot)
 	{
 		matrix4x4 temp = matrix4x4();
 		temp.p11 = rot.p11;
@@ -221,7 +221,7 @@ namespace TDML
 		return temp;
 	}
 
-	void matrix4x4::timesEquals(matrix4x4 b)
+	void matrix4x4::timesEquals(matrix4x4& b)
 	{
 		matrix4x4 temp = matrix4x4();
 		p11 = (p11*b.p11)+(p12*b.p21)+(p13*b.p31)+(p14*b.p41);
@@ -245,7 +245,7 @@ namespace TDML
 		p44 = (p41*b.p14)+(p42*b.p24)+(p43*b.p34)+(p44*b.p44);
 	}
 
-	void matrix4x4::copy(matrix4x4 b)
+	void matrix4x4::copy(matrix4x4& b)
 	{
 		p11=b.p11;
 		p12=b.p12;

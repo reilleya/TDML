@@ -25,6 +25,7 @@ namespace TDML
 
 	void config::reload()
 	{
+		Log.output("Loading Settings!\n");
 		ifstream infile;
 		vector<string> configd(0);
 		string word;
@@ -36,6 +37,7 @@ namespace TDML
 		}
 		multisample = atof(configd[0].c_str())!=0;
 		fov = atof(configd[1].c_str());
+		Shaders.setShaderPath(configd[2].c_str());
 	}
 
 	void config::setAA(bool AA)

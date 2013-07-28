@@ -87,8 +87,8 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>python.exe E:/TDML/Tools/Versionator.py
+</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

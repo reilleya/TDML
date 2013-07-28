@@ -36,7 +36,7 @@ namespace TDML
 			void translate(float x, float y, float z);
 			void rotate(float x, float y, float z, int order);
 			void rotateAxis(float degrees, int axis);
-			void applyRotation(matrix3x3 rot);
+			void applyRotation(matrix3x3& rot);
 			void scale(float x, float y, float z);
 			void loadIdentity();
 			void perspective(float fieldOfView, float aspectRatio, float near, float far);
@@ -45,8 +45,8 @@ namespace TDML
 			matrix3x3 rotPart();
 			matrix4x4 operator * (matrix4x4 b);
 			matrix4x4 operator * (matrix4x4* b);
-			void timesEquals(matrix4x4 b);
-			void copy(matrix4x4 b);
+			void timesEquals(matrix4x4& b);
+			void copy(matrix4x4& b);
 			vector3d apply(vector3d original);
 			point apply(point original);
 			float* glForm(); 

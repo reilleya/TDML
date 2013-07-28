@@ -9,6 +9,8 @@ TDML::terrain Terrain1;
 TDML::object test;
 TDML::particlesystem crashSmoke;
 
+float camy = 0;
+
 float speed = 0.032;
 int framed = 0;
 float zoom = 1.75;
@@ -33,7 +35,7 @@ void load()
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
 	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
-	for(int t = 0; t < 0; t++)
+	for(int t = 0; t < 5000; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
 		newtree.setMaterial(TDML::loadTexture("Resources/World1/Tree/material.mdf"));
@@ -69,7 +71,7 @@ void load()
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
 	}
-	for(int t = 0; t < 0; t++)
+	for(int t = 0; t < 500; t++)
 	{
 		TDML::object newrock = TDML::loadObject("Resources/World1/Rock/model.tdm");
 		newrock.setMaterial(TDML::loadTexture("Resources/World1/Rock/material.mdf"));
@@ -189,6 +191,10 @@ void animate()
 			{
 				World1.dispModelMatInfo();
 			}
+			if(TDML::Input.getKeyState('a'))
+			{
+				camy+=0.05;
+			}
 			//plane.setYangle(plane.getYangle()+((plane.getZangle()/5000)*World1.getTimeDelta()));
 			TDML::vector3d forward = TDML::vector3d(0,0,1);
 			TDML::Math.rotate(forward, plane.getXangle(), plane.getYangle(), plane.getZangle(), ZXY);
@@ -218,7 +224,7 @@ void animate()
 		World1.setCamY(plane.getY()+(forward.y*zoom*(pow(2, zoomlevel))));
 		World1.setCamZ(plane.getZ()+(forward.z*zoom*(pow(2, zoomlevel))));
 		World1.setCamAngleX(plane.getXangle());
-		World1.setCamAngleY(plane.getYangle());
+		World1.setCamAngleY(plane.getYangle()+camy);
 		World1.setCamAngleZ(plane.getZangle());
 		if(World1.getHeightMapAt(World1.getCamX(), World1.getCamZ())>World1.getCamY()-0)
 		{
@@ -237,7 +243,7 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(true);
+	TDML::Log.setDebugMode(false);
 	TDML::setObjectRotationOrder(ZXY);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);

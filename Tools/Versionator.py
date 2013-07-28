@@ -1,7 +1,7 @@
 print "Running Versionator..."
 print "\tIncrementing version number..."
 fileconts=[]
-modfile = open("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/TDML/version.cpp", "r")
+modfile = open("E:/TDML/TDML/version.cpp", "r")
 for line in modfile:
     if "build =" in line:
         oldbuild = str(line[-7:-3])
@@ -20,7 +20,7 @@ for line in modfile:
         print "Build Number: "+newbuild
     fileconts.append(line)
 modfile.close()
-writefile = open("C:/Users/Andrew/Desktop/NCC/OpenGL/3D Model Loader/3D Model Loader/TDML/version.cpp", "w")
+writefile = open("E:/TDML/TDML/version.cpp", "w")
 for liner in fileconts:
 	writefile.write(liner)
 writefile.close()

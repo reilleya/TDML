@@ -87,8 +87,8 @@ namespace TDML
 
 		ifstream vinfile;
 		ifstream finfile;
-		vinfile.open("E:/TDML/TDML/Shaders/Vertex1.vert", ios::in); //ABSOLUTE PATH ==== BAAAAAD JUJU
-		finfile.open("E:/TDML/TDML/Shaders/Vertex1.frag", ios::in);
+		vinfile.open(shaderPath+"/0.vert", ios::in);
+		finfile.open(shaderPath+"/0.frag", ios::in);
 
 		string vcode;
 		string fcode;
@@ -271,5 +271,13 @@ namespace TDML
 		changeUniform(UNI_SUNVEC, sunVec.x, sunVec.y, sunVec.z);
 	}
 
+	void shaders::setShaderPath(std::string path)
+	{
+		shaderPath = path;
+	}
 
+	std::string shaders::getShaderPath()
+	{
+		return shaderPath;
+	}
 }

@@ -653,10 +653,10 @@ namespace TDML
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glewInit();
-		//glSwapInterval(
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glEnableClientState(GL_NORMAL_ARRAY);
+		Config.reload();
 		if(Shaders.getUseShaders()) 
 		{
 			Shaders.setupShaders();

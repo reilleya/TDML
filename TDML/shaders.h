@@ -14,6 +14,7 @@ namespace TDML
 	class shaders
 	{
 		private:
+			std::string shaderPath;
 			std::vector<std::string> uniforms;
 			std::vector<GLuint> uniformIDs;
 			vector3d sunVec;
@@ -54,6 +55,7 @@ namespace TDML
 			float getSunVectorY();
 			float getSunVectorZ();
 			void updateSunVector();
-			
+			void setShaderPath(std::string path);
+			std::string getShaderPath();
 	};
 }
