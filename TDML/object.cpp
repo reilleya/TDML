@@ -50,22 +50,7 @@ namespace TDML
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, vboid);
 			glBindTexture(GL_TEXTURE_2D, material.getID(frame));
-			
-			if(Shaders.getUseShaders())
-			{
-				glEnableVertexAttribArray(0); // Position
-				glEnableVertexAttribArray(1); // Normals
-				glEnableVertexAttribArray(2); // Texture Coords
-				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Position
-				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat))); // Normals
-				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat))); // Texture Coords
-			}
-			else
-			{
-				glVertexPointer(3, GL_FLOAT, 0, 0);
-				glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat)));
-				glNormalPointer(GL_FLOAT, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat)));
-			}
+			glBindVertexArray(vaoid);
 			if(wireframe) glDrawArrays(GL_LINE_LOOP, 0, npolys*3);
 			else glDrawArrays(GL_TRIANGLES, 0, npolys*3);
 		}
@@ -588,6 +573,10 @@ namespace TDML
 	{
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+		glGenVertexArrays(1, &vaoid);
+		glBindVertexArray(vaoid);
+
 		glGenBuffers(1, &vboid);
 		GLuint numverts = npolys*3;
 		GLfloat *geometry;
@@ -630,6 +619,17 @@ namespace TDML
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*3*numverts, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*3*numverts, sizeof(float)*2*numverts, coords);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*5*numverts, sizeof(float)*3*numverts, normals);
+
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Position
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 15 * sizeof(GLfloat))); // Normals
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(npolys * 9 * sizeof(GLfloat))); // Texture Coords
+
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+
+		glBindVertexArray(0);
 
 		delete geometry;
 		delete normals;

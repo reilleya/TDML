@@ -28,6 +28,7 @@ namespace TDML
 		projMatrix.loadIdentity();
 		//projMatrix.ortho2D(0, 0, Window.getWidth(), Window.getHeight());
 		Shaders.setProjMat(projMatrix.glForm());
+		glDisable(GL_DEPTH_TEST);
 		for(int i = 0; i < nobjs; i++)
 		{
 			//Log.output(i); Log.output("\n");
@@ -40,6 +41,7 @@ namespace TDML
 			objects[i].draw();
 			modelMatrix.loadIdentity();
 		}
+		glEnable(GL_DEPTH_TEST);
 		projMatrix.loadIdentity();
 		projMatrix.perspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.000f, 1000000.0f);
 		Shaders.setProjMat(projMatrix.glForm());

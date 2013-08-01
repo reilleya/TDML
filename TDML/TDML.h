@@ -134,6 +134,7 @@ namespace TDML
 	extern int nexttextureid;
 
 	extern GLuint menuvboid;
+	extern GLuint menuvaoid;
 	void setupMenuVBO();
 
 	void ChannelKeyboardToInput(unsigned char key, int x, int y);

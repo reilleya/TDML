@@ -36,37 +36,32 @@ namespace TDML
 	{
 		if(alive)
 		{
+			modelMatrix.loadIdentity();
 			//pos.dispInfo();
-			glTranslatef(pos.x-(size/2), pos.y-(size/2), pos.z-(size/2));
-			glScalef(size, size, size);
-			glRotatef(World->getCamAngleY(), 0, 1, 0);
-			glRotatef(World->getCamAngleX(), 1, 0, 0);
-			glRotatef(World->getCamAngleZ(), 0, 0, 1);
-			glRotatef(zangle, 0, 0, 1);
+			modelMatrix.translate(pos.x-(size/2), pos.y-(size/2), pos.z-(size/2));
+				//glTranslatef(pos.x-(size/2), pos.y-(size/2), pos.z-(size/2));
+			modelMatrix.scale(size, size, size); 
+				//glScalef(size, size, size);
+			modelMatrix.rotate(World->getCamAngleX(), World->getCamAngleY(), World->getCamAngleZ(), crotorder);
+				//glRotatef(World->getCamAngleY(), 0, 1, 0);
+				//glRotatef(World->getCamAngleX(), 1, 0, 0);
+				//glRotatef(World->getCamAngleZ(), 0, 0, 1);
+			//modelMatrix.rotate(0, 0, zangle, crotorder);
+				//glRotatef(zangle, 0, 0, 1);
 			//glRotatef(World->getCamAngleZ(), 0, 0, 1);
 			glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
 			glBindTexture(GL_TEXTURE_2D, texid);
-			if(Shaders.getUseShaders())
-			{
-				glEnableVertexAttribArray(0);
-				//glEnableVertexAttribArray(1);
-				glEnableVertexAttribArray(2);
-				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(12 * sizeof(GLfloat)));
-			}
-			else
-			{
-				glVertexPointer(3, GL_FLOAT, 0, 0);
-				glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)(12 * sizeof(GLfloat)));
-			}
+			glBindVertexArray(menuvaoid);
 			glDrawArrays(GL_QUADS, 0, 4);
 			//glRotatef(-zangle, 0, 0, 1);
-			glRotatef(-World->getCamAngleZ(), 0, 0, 1);
-			glRotatef(-World->getCamAngleX(), 1, 0, 0);
-			glRotatef(-World->getCamAngleY(), 0, 1, 0);
-			
-			glScalef((1/size), (1/size), (1/size));
-			glTranslatef(-(pos.x-(size/2)), -(pos.y-(size/2)), -(pos.z-(size/2)));
+			modelMatrix.rotate(-World->getCamAngleX(), -World->getCamAngleY(), -World->getCamAngleZ(), crotorder);
+				//glRotatef(-World->getCamAngleZ(), 0, 0, 1);
+				//glRotatef(-World->getCamAngleX(), 1, 0, 0);
+				//glRotatef(-World->getCamAngleY(), 0, 1, 0);
+			modelMatrix.scale((1/size), (1/size), (1/size)); 
+				//glScalef((1/size), (1/size), (1/size));
+			modelMatrix.translate(-(pos.x-(size/2)), -(pos.y-(size/2)), -(pos.z-(size/2)));
+				//glTranslatef(-(pos.x-(size/2)), -(pos.y-(size/2)), -(pos.z-(size/2)));
 		}
 	}
 

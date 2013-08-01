@@ -523,12 +523,16 @@ namespace TDML
 	void (*theirexitfunction)();
 	int nexttextureid = 0;
 	GLuint menuvboid = 0;
+	GLuint menuvaoid = 0;
 	HWND windowhandle;
 
 	void setupMenuVBO()
 	{
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		glGenVertexArrays(1, &menuvaoid);
+		glBindVertexArray(menuvaoid);
+
 		glGenBuffers(1, &menuvboid);
 		GLfloat *geometry;
 		GLfloat *coords;
@@ -558,6 +562,16 @@ namespace TDML
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*20, NULL, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*12, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*12, sizeof(float)*8, coords);
+
+		glEnableVertexAttribArray(0); //Position
+		glEnableVertexAttribArray(1); //Normals...
+		glEnableVertexAttribArray(2); //Texture Coords
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); //Position
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0); //...Normals... Shouldn't need these... Dummy Placeholder
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(12 * sizeof(GLfloat))); //Texture Coords
+
+		glBindVertexArray(0);
+
 		delete geometry;
 		delete coords;
 	}
