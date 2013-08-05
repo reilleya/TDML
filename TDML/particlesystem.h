@@ -17,6 +17,7 @@ namespace TDML
 	{
 		private:
 			std::string name;
+			std::string fileName;
 			std::vector<particle> particles;
 			std::vector<int> recyclables;
 			vector3d pos;
@@ -35,6 +36,7 @@ namespace TDML
 			float sizeMin;
 			float sizeMax;
 			int nparts;
+			int nrecyclabes;
 			float timeTo;
 			float spawnDelay;
 			GLuint texid;
@@ -45,7 +47,7 @@ namespace TDML
 		public:
 			particlesystem();
 			particlesystem(
-				std::string name, std::string FileName,
+				std::string Name, std::string FileName,
 				vector3d Pos, vector3d PosMin, vector3d PosMax,
 				vector3d Dir, vector3d DirMin, vector3d DirMax,
 				vector3d Accel, vector3d AccelMin, vector3d AccelMax,
@@ -66,5 +68,6 @@ namespace TDML
 			vector3d getAccelVariation();
 			void markRecyclable(int id);
 			void setSpawning(bool creating);
+			void dispInfo();
 	};
 }

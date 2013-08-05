@@ -111,9 +111,17 @@ namespace TDML
 		modelMatrix = matrix4x4();
 	}
 
-	void world::dispModelMatInfo()
+	void world::dispInfo()
 	{
-		//modelMatrix.dispInfo();
+		Log.output("World:\n");
+		Log.output("\tTime: "); Log.output(timer); Log.output("\n");
+		Log.output("\tTime Since Last Frame: "); Log.output(timeElapsed); Log.output("\n");
+		Log.output("\tTerrain: "); Log.output(hasterrain); Log.output("\n");
+		Log.output("\tObjects: "); Log.output(nobjs); Log.output("\n");
+		Log.output("\tParticle Systems: "); Log.output(nparts); Log.output("\n");
+		Log.output("\tCamera Information:\n");
+		Log.output("\t\tPosition: "); Log.output(camx); Log.output(","); Log.output(camy); Log.output(","); Log.output(camz); Log.output("\n");
+		Log.output("\t\tAngle: "); Log.output(camxangle); Log.output(","); Log.output(camyangle); Log.output(","); Log.output(camzangle); Log.output("\n");
 	}
 
 	void world::update()
@@ -409,8 +417,10 @@ namespace TDML
 		int id = -1;
 		for(int ps = 0; ps < nparts; ps++)
 		{
+			Log.output(particlesystems[ps].getName());
 			if(particlesystems[ps].getName()==Name)
 			{
+				
 				id = ps;
 				break;
 			}
@@ -427,7 +437,7 @@ namespace TDML
 		}
 		else
 		{
-			Message.errorMessage("ERRAR! TRIED TO GIT PARTICL SAYSTEM THAT DUN'T EXIST. YUR FAULT?", "ERRAR");
+			Message.errorMessage("Attempted to reference a particle system that doesn't exist.\nWorld: \tParticle System: "+Name+"\nPossibilities: "+particlesystems[0].getName(), "Particle System Reference Error");
 		}
 	}
 

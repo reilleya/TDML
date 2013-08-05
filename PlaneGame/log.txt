@@ -90,12 +90,68 @@ Loading terrain heightmap from file: Resources/World1/Heightmaps/islandheightsma
 	Generating VBO
 Done Loading Terrain
 
+101
 100
+101
+102
+100
+102
+102
+101
+100
+101
+103
+102
+100
+101
+103
+100
+102
+101
+103
+				Loading texture from file: Resources/Common/Textures/part.png
+Created particle system
+Object:
+	Filename: Resources/World1/Plane/model.tdm 
+	Name: plane
+	Type: plane
+	Polys: 1681
+	Position: 0, 100, 0
+	Angle: 0, 0, 0
+	Scale: 0.1, 0.1, 0.1
+	Radius: 0.863961
+	Dimensions: 15.8418, 2.98788, 9.20473
+	Behaviours: 0
+	Adjust bounding box: 1
+	Visible: 1
+	Wireframe: 0
+	Animated Texture framedelay: 300
+	Animated Texture frametime: 200
+	Update Function Set: 0
+	VBO ID: 2
+100
+100
+100
+100
+100
+101
+103
+100
+102
+100
+101
 102
 100
 102
 100
 101
-100
 103
+101
+100
 102
+103
+100
+				Loading texture from file: Resources/Common/Textures/part.png
+Created particle system
+100
+101

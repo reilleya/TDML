@@ -187,10 +187,6 @@ void animate()
 			{
 				dead = true;
 			}
-			if(TDML::Input.getKeyState('e'))
-			{
-				World1.dispModelMatInfo();
-			}
 			if(TDML::Input.getKeyState('a'))
 			{
 				camy+=0.05;

@@ -19,6 +19,7 @@ namespace TDML
 
 		public:
 			texture();
+			void dispInfo();
 			void addNewId(int newID);
 			int getID(int frame);
 			int getLastID();

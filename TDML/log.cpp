@@ -11,9 +11,10 @@ using namespace std;
 
 namespace TDML
 {
-	void log::setDebugMode(bool debug)
+	void log::setDebugMode(int debug)
 	{
 		debugMode = debug;
+		if(debugMode==4||debugMode==5||debugMode==6) FreeConsole();
 	}
 
 	bool log::getDebugMode()
@@ -23,8 +24,7 @@ namespace TDML
 
 	log::log() : outputfile("log.txt")
 	{
-		debugMode = false;
-		timestamp = true;
+		debugMode = 0;
 	}
 
 	void log::output(std::string Message)
@@ -51,13 +51,17 @@ namespace TDML
 
 	void log::output(float Number)
 	{
-		if(debugMode==true)
+		if(debugMode==0||debugMode==1||debugMode==2||debugMode==3)
 		{
 			outputWindow(Number);
 		}
-		else
+		if(debugMode==1||debugMode==2||debugMode==5||debugMode==6)
 		{
 			outputLog(Number);
+		}
+		if(debugMode==0||debugMode==1||debugMode==2||debugMode==3)
+		{
+			outputBuffer+=Number;
 		}
 	}
 

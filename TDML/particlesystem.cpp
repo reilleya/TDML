@@ -14,10 +14,11 @@ namespace TDML
 	void particlesystem::createParticle()
 	{
 		int id = 0;
-		if(recyclables.size()>0)
+		if(nrecyclabes>0)
 		{
 			id = recyclables[recyclables.size()-1];
 			recyclables.resize(recyclables.size()-1);
+			nrecyclabes--;
 		}
 		else
 		{
@@ -48,7 +49,7 @@ namespace TDML
 		
 	}
 
-	particlesystem::particlesystem(string name, string FileName, 
+	particlesystem::particlesystem(string Name, string FileName, 
 		vector3d Pos, vector3d PosMin,  vector3d PosMax, 
 		vector3d Dir, vector3d DirMin, vector3d DirMax, 
 		vector3d Accel, vector3d AccelMin, vector3d AccelMax, 
@@ -56,6 +57,7 @@ namespace TDML
 		float Size, float SizeMin, float SizeMax,
 		float SpawnDelay, float SpawnQuan)
 	{
+		name = Name;
 		pos = Pos;
 		posMin = PosMin;
 		posMax = PosMax;
@@ -75,8 +77,10 @@ namespace TDML
 		timeTo = SpawnDelay;
 		spawnQuan = SpawnQuan;
 		texid = loadTextureData(FileName);
+		fileName = FileName;
 		Log.output("Created particle system\n");
 		nparts = 0;
+		nrecyclabes = 0;
 		spawning = true;
 	}
 
@@ -101,17 +105,24 @@ namespace TDML
 		{
 			if(particles[n].update(this, timedelta)==false)
 			{
-				markRecyclable(n);
+				/*if(nrecyclabes<(nparts*1.5))*/ markRecyclable(n);
+				/*else
+				{
+					particles.erase(particles.begin()+n);
+					nparts--;
+				}*/
 			}
 		}
 	}
 
 	void particlesystem::display(world* World)
 	{
+		glDisable(GL_DEPTH_TEST);
 		for(int n = 0; n<nparts; n++)
 		{
 			particles[n].display(texid, World);
 		}
+		glEnable(GL_DEPTH_TEST);
 	}
 
 	string particlesystem::getName()
@@ -138,10 +149,20 @@ namespace TDML
 	{
 		recyclables.resize(recyclables.size()+1);
 		recyclables[recyclables.size()-1]=id;
+		nrecyclabes++;
 	}
 
 	void particlesystem::setSpawning(bool creating)
 	{
 		spawning = creating;
+	}
+
+	void particlesystem::dispInfo()
+	{
+		Log.output("Particle System:\n");
+		Log.output("\tName: "); Log.output(name); Log.output("\n");
+		Log.output("\tImage: "); Log.output(fileName); Log.output("\n");
+		Log.output("\tNumber of Particles: "); Log.output(particles.size()); Log.output("\n");
+		Log.output("\tNumber of Particles (Recyclable): "); Log.output(recyclables.size()); Log.output("\n");
 	}
 }

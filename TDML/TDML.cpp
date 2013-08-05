@@ -697,7 +697,6 @@ namespace TDML
 
 	void setupAll(int *argc, char **argv, int width, int height, const char * title, float SkyRed, float SkyGreen, float SkyBlue, void (*displayfunction)(), void (*updatefunction)(), void (*exitfunction)())
 	{
-		if(!Log.getDebugMode()) FreeConsole();
 		setupWindow(argc, argv, width, height, title, SkyRed, SkyGreen, SkyBlue);
 		setupFunctions(displayfunction, updatefunction, exitfunction);
 		Math.setupRandom();

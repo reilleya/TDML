@@ -35,7 +35,7 @@ namespace TDML
 
 		public:
 			world();
-			void dispModelMatInfo();
+			void dispInfo();
 			void update();
 			float getTimeDelta();
 			float getAdjustedTime(float value, float targetTimeStep);

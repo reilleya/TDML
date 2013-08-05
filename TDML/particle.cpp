@@ -49,6 +49,7 @@ namespace TDML
 			//modelMatrix.rotate(0, 0, zangle, crotorder);
 				//glRotatef(zangle, 0, 0, 1);
 			//glRotatef(World->getCamAngleZ(), 0, 0, 1);
+			Shaders.setModelMat(modelMatrix.glForm());
 			glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
 			glBindTexture(GL_TEXTURE_2D, texid);
 			glBindVertexArray(menuvaoid);

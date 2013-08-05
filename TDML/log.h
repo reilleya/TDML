@@ -14,20 +14,22 @@ namespace TDML
 	class log
 	{
 		private:
-			bool debugMode;
-			bool timestamp;
+			int debugMode;
+			std::string outputBuffer;
 			std::ofstream outputfile;
 
 		public:
 			log();
 			void output(std::string Message);
-			void setDebugMode(bool debug);
+			void setDebugMode(int debug);
 			bool getDebugMode();
 			void outputWindow(std::string Message);
 			void outputLog(std::string Message);
+			void outputPopup(std::string Message);
 			void output(float Number);
 			void outputWindow(float Number);
 			void outputLog(float Number);
+			void outputPopup(float Number);
 			void cleanup();
 	};
 }

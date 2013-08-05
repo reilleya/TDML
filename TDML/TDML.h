@@ -51,6 +51,15 @@ using namespace std;
 #define UNI_SUNVEC 4
 #define UNI_PROJMAT 5
 
+//Logging Modes
+#define LOG_CONSOLE 0
+#define LOG_CONSOLEFILE 1
+#define LOG_CONSOLEFILEPOPUP 2
+#define LOG_CONSOLEPOPUP 3
+#define LOG_POPUP 4
+#define LOG_POPUPFILE 5
+#define LOG_FILE 6
+
 #define GLEW_STATIC
 
 #include "LodePNG.h" //Warnings are not my problem...
