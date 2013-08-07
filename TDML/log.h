@@ -20,6 +20,8 @@ namespace TDML
 
 		public:
 			log();
+			void clearOutputBuffer();
+			void sendOutputBuffer();
 			void output(std::string Message);
 			void setDebugMode(int debug);
 			bool getDebugMode();

@@ -27,15 +27,26 @@ namespace TDML
 		debugMode = 0;
 	}
 
-	void log::output(std::string Message)
+	void log::output(std::string strMessage)
 	{
-		if(debugMode==true)
+		if(debugMode==0||debugMode==1||debugMode==2||debugMode==3)
 		{
-			outputWindow(Message);
+			outputWindow(strMessage);
 		}
-		else
+		if(debugMode==1||debugMode==2||debugMode==5||debugMode==6)
 		{
-			outputLog(Message);
+			outputLog(strMessage);
+		}
+		if(debugMode==2||debugMode==3||debugMode==4||debugMode==5)
+		{
+			outputBuffer+=strMessage;
+			cout<<outputBuffer<<endl;
+			cout<<outputBuffer[outputBuffer.back()];
+			if(outputBuffer[outputBuffer.back()]=='t')
+			{
+				Message.popupMessage(outputBuffer, "Logging Output");
+				outputBuffer.clear();
+			}
 		}
 	}
 
@@ -59,7 +70,7 @@ namespace TDML
 		{
 			outputLog(Number);
 		}
-		if(debugMode==0||debugMode==1||debugMode==2||debugMode==3)
+		if(debugMode==2||debugMode==3||debugMode==4||debugMode==5)
 		{
 			outputBuffer+=Number;
 		}

@@ -30,7 +30,7 @@ void animate()
 	}
 	if(TDML::Input.getKeyPressed('e'))
 	{
-		world1.dispInfo();
+		TDML::Log.output("test\n");
 	}
 	if(TDML::Input.getMouseKeyPressed(WHEELUP))
 	{
@@ -51,7 +51,7 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(LOG_CONSOLEFILE);
+	TDML::Log.setDebugMode(LOG_CONSOLEPOPUP);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::enableCulling(false);

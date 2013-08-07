@@ -15,7 +15,6 @@ namespace TDML
 	{
 		multisample = true;
 		fov = 45;
-		reload();
 	}
 
 	void config::save()
@@ -32,6 +31,7 @@ namespace TDML
 		infile.open("config.cfg", ios::in);
 		while (infile >> word) 
 		{
+			cout << word << endl;
 			configd.resize(configd.size()+1);
 			configd[configd.size()-1].append(word);
 		}
