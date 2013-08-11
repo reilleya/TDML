@@ -46,12 +46,13 @@ void animate()
 	//tv.setScaleY(TDML::Math.larger(0.15, abs(TDML::Math.sin(world1.getTimer()/4.0))));
 	
 	//TDML::Input.centerCursor();
+	TDML::Log.sendOutputBuffer();
 	world1.update();
 }
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(LOG_CONSOLEPOPUP);
+	TDML::Log.setDebugMode(LOG_POPUPFILE);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::enableCulling(false);
@@ -68,6 +69,7 @@ int main(int argc, char** argv)
 	world1.addParticleSystem(PS1);
 	TDML::object& tv = world1.getObjectRef("tv");
 	world1.setCamPosition(0, 0, 2);
+	TDML::Log.sendOutputBuffer();
 	TDML::start();
 	return 0;
 }

@@ -11,6 +11,20 @@ using namespace std;
 
 namespace TDML
 {
+	void log::clearOutputBuffer()
+	{
+		outputBuffer="";
+	}
+
+	void log::sendOutputBuffer()
+	{
+		if(outputBuffer!="")
+		{
+			Message.popupMessage(outputBuffer, "Logging Message");
+			clearOutputBuffer();
+		}
+	}
+
 	void log::setDebugMode(int debug)
 	{
 		debugMode = debug;
@@ -39,14 +53,7 @@ namespace TDML
 		}
 		if(debugMode==2||debugMode==3||debugMode==4||debugMode==5)
 		{
-			outputBuffer+=strMessage;
-			cout<<outputBuffer<<endl;
-			cout<<outputBuffer[outputBuffer.back()];
-			if(outputBuffer[outputBuffer.back()]=='t')
-			{
-				Message.popupMessage(outputBuffer, "Logging Output");
-				outputBuffer.clear();
-			}
+			outputPopup(strMessage);
 		}
 	}
 
@@ -58,6 +65,11 @@ namespace TDML
 	void log::outputLog(std::string Message)
 	{
 		outputfile << Message;
+	}
+
+	void log::outputPopup(std::string strMessage)
+	{
+		outputBuffer+=strMessage; 
 	}
 
 	void log::output(float Number)
@@ -72,7 +84,7 @@ namespace TDML
 		}
 		if(debugMode==2||debugMode==3||debugMode==4||debugMode==5)
 		{
-			outputBuffer+=Number;
+			outputPopup(Number);
 		}
 	}
 
@@ -84,6 +96,11 @@ namespace TDML
 	void log::outputLog(float Number)
 	{
 		outputfile << Number;
+	}
+
+	void log::outputPopup(float Number)
+	{
+		outputBuffer+=Number;
 	}
 
 	void log::cleanup()

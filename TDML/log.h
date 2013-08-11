@@ -27,7 +27,7 @@ namespace TDML
 			bool getDebugMode();
 			void outputWindow(std::string Message);
 			void outputLog(std::string Message);
-			void outputPopup(std::string Message);
+			void outputPopup(std::string strMessage);
 			void output(float Number);
 			void outputWindow(float Number);
 			void outputLog(float Number);
