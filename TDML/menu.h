@@ -14,11 +14,13 @@ namespace TDML
 	class menu
 	{
 		private:
+			std::string fileName;
 			std::vector<menuobject> objects;
 			int nobjs;
 
 		public:
 			menu();
+			menu(std::string fileName);
 			void dispInfo();
 			void draw();
 			void loadTextures();

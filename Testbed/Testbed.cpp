@@ -30,7 +30,7 @@ void animate()
 	}
 	if(TDML::Input.getKeyPressed('e'))
 	{
-		TDML::Log.output("test\n");
+		menu1.dispInfo(); TDML::Log.sendOutputBuffer();
 	}
 	if(TDML::Input.getMouseKeyPressed(WHEELUP))
 	{
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
 	world1.addParticleSystem(PS1);
 	TDML::object& tv = world1.getObjectRef("tv");
 	world1.setCamPosition(0, 0, 2);
-	TDML::Log.sendOutputBuffer();
+	TDML::Log.clearOutputBuffer();
 	TDML::start();
 	return 0;
 }

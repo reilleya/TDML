@@ -38,7 +38,7 @@ namespace TDML
 
 	log::log() : outputfile("log.txt")
 	{
-		debugMode = 0;
+		debugMode = 6;
 	}
 
 	void log::output(std::string strMessage)
@@ -100,7 +100,10 @@ namespace TDML
 
 	void log::outputPopup(float Number)
 	{
-		outputBuffer+=Number;
+		//EEEEVIL
+		std::ostringstream toStrStream;
+		toStrStream << Number;
+		outputBuffer+=toStrStream.str();
 	}
 
 	void log::cleanup()

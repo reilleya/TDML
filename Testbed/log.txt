@@ -38,4 +38,31 @@ Done Loading World!
 				Loading texture from file: play.png 
 				Loading texture from file: part.png
 Created particle system
-test
+Menu:
+	Filename: test.mnu
+	Number of Objects: 2
+	Object Information: 
+		Menu Object:
+			Image Name: man.png 
+			Texture ID: 2
+			Position: 0, 0
+			Dimensions: 50, 100
+		Menu Object:
+			Image Name: play.png 
+			Texture ID: 3
+			Position: 100, 100
+			Dimensions: 200, 100
+Menu:
+	Filename: test.mnu
+	Number of Objects: 2
+	Object Information: 
+		Menu Object:
+			Image Name: man.png 
+			Texture ID: 2
+			Position: 0, 0
+			Dimensions: 50, 100
+		Menu Object:
+			Image Name: play.png 
+			Texture ID: 3
+			Position: 100, 100
+			Dimensions: 200, 100

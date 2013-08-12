@@ -33,7 +33,7 @@ void spin(TDML::object* me)
 void load()
 {
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
-	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
+	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightmap.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
 	for(int t = 0; t < 0; t++)
 	{
@@ -129,7 +129,7 @@ void respawn()
 {
 	TDML::object& plane = World1.getObjectRef("plane");
 	dead = false;
-	plane.setPosition(0, 100, 0);
+	plane.setPosition(0, 200, 0);
 	plane.setAngle(0,0,0);
 	plane.setVisible(true);
 	plane.dispInfo();

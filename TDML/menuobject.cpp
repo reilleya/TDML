@@ -21,6 +21,15 @@ namespace TDML
 		texid = 0;
 	}
 
+	void menuobject::dispInfo()
+	{
+		Log.output("\t\tMenu Object:\n");
+		Log.output("\t\t\tImage Name: "+texname+"\n"); 
+		Log.output("\t\t\tTexture ID: "); Log.output(texid); Log.output("\n");
+		Log.output("\t\t\tPosition: "); Log.output(posx); Log.output(", "); Log.output(posy); Log.output("\n");
+		Log.output("\t\t\tDimensions: "); Log.output(width); Log.output(", "); Log.output(height); Log.output("\n");
+	}
+
 	void menuobject::draw()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, menuvboid);

@@ -97,6 +97,24 @@ namespace TDML
 
 	world::world()
 	{
+		fileName = "";
+		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
+		timeElapsed = 0;
+		nobjs=0;
+		nparts=0;
+		camx=0;
+		camy=0;
+		camz=0;
+		camxangle=0;
+		camyangle=0;
+		camzangle=0;
+		hasterrain = false;
+		modelMatrix = matrix4x4();
+	}
+
+	world::world(std::string filename)
+	{
+		fileName = filename;
 		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
 		timeElapsed = 0;
 		nobjs=0;
@@ -114,6 +132,7 @@ namespace TDML
 	void world::dispInfo()
 	{
 		Log.output("World:\n");
+		Log.output("\tFilename: "); Log.output(fileName); Log.output("\n");
 		Log.output("\tTime: "); Log.output(timer); Log.output("\n");
 		Log.output("\tTime Since Last Frame: "); Log.output(timeElapsed); Log.output("\n");
 		Log.output("\tTerrain: "); Log.output(hasterrain); Log.output("\n");

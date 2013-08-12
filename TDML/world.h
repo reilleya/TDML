@@ -15,6 +15,7 @@ namespace TDML
 	class world
 	{
 		private:
+			std::string fileName;
 			bool hasterrain;
 			unsigned int timer;
 			int nobjs;
@@ -35,6 +36,7 @@ namespace TDML
 
 		public:
 			world();
+			world(std::string filename);
 			void dispInfo();
 			void update();
 			float getTimeDelta();

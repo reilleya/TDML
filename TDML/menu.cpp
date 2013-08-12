@@ -17,9 +17,23 @@ namespace TDML
 		nobjs = 0;
 	}
 
+	menu::menu(std::string filename)
+	{
+		fileName = filename;
+		objects.resize(0);
+		nobjs = 0;
+	}
+
 	void menu::dispInfo()
 	{
-		Log.output((float)nobjs); Log.output("\n");
+		Log.output("Menu:\n");
+		Log.output("\tFilename: "+fileName+"\n");
+		Log.output("\tNumber of Objects: " ); Log.output((float)nobjs); Log.output("\n");
+		Log.output("\tObject Information: \n");
+		for(int mniter = 0; mniter<nobjs; mniter++)
+		{
+			objects[mniter].dispInfo();
+		}
 	}
 
 	void menu::draw()

@@ -23,7 +23,7 @@ namespace TDML
 
 		public:
 			menuobject();
-			//void dispInfo();
+			void dispInfo();
 			void draw();
 			void loadTexture();
 			float getPosX();

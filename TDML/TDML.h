@@ -76,7 +76,7 @@ using namespace std;
 #include <iostream>
 #include <time.h>
 #include <fstream>
-#include <ostream>
+#include <sstream>
 
 #include "version.h"
 #include "message.h"

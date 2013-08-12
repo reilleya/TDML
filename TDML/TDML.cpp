@@ -202,7 +202,7 @@ namespace TDML
 		Log.output("Loading world from file: "); Log.output(fileName); Log.output(":\n");
 		if(File.fileExists(fileName))
 		{
-			world newworld;
+			world newworld(fileName);
 			ifstream infile;
 			vector<string> objd(1);
 			vector<object> objs(0);
@@ -297,14 +297,14 @@ namespace TDML
 		else
 		{
 			Message.errorMessage("Error loading world file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
-			world newworld;
+			world newworld(fileName);
 			return newworld;
 		}
 	}
 
 	menu loadMenu(string fileName)
 	{
-		menu newmenu;
+		menu newmenu(fileName);
 		ifstream infile;
 		vector<string> menud(1);
 		vector<menuobject> menus(0);
