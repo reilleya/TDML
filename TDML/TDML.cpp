@@ -317,10 +317,11 @@ namespace TDML
 				//Log.output("Creating MenuOBJ from data file: "); Log.output(menud[0]); Log.output("| Data length: "); Log.output(menu.size()); Log.output(":\n");
 				menus.resize(menus.size()+1);
 				menus[menus.size()-1].setTexture(menud[0]);
-				menus[menus.size()-1].setPosX(atoi(menud[1].c_str()));
-				menus[menus.size()-1].setPosY(atoi(menud[2].c_str()));
-				menus[menus.size()-1].setWidth(atoi(menud[3].c_str()));
-				menus[menus.size()-1].setHeight(atoi(menud[4].c_str()));
+				menus[menus.size()-1].setName(menud[1]);
+				menus[menus.size()-1].setPosX(atoi(menud[2].c_str()));
+				menus[menus.size()-1].setPosY(atoi(menud[3].c_str()));
+				menus[menus.size()-1].setWidth(atoi(menud[4].c_str()));
+				menus[menus.size()-1].setHeight(atoi(menud[5].c_str()));
 				menud[0]="";
 				menud.resize(1);
 				Log.output("\tObject created.\n\n");

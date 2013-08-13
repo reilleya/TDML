@@ -19,10 +19,16 @@ namespace TDML
 			int width;
 			int height;
 			int texid;
+			bool updateFuncSet;
+			void (*updatefunction)(menuobject* me);
 			std::string texname;
+			std::string name;
 
 		public:
 			menuobject();
+			void update();
+			std::string getName();
+			void setName(std::string newName);
 			void dispInfo();
 			void draw();
 			void loadTexture();

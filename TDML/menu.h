@@ -21,6 +21,7 @@ namespace TDML
 		public:
 			menu();
 			menu(std::string fileName);
+			void update();
 			void dispInfo();
 			void draw();
 			void loadTextures();

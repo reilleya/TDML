@@ -48,6 +48,7 @@ void animate()
 	//TDML::Input.centerCursor();
 	TDML::Log.sendOutputBuffer();
 	world1.update();
+	menu1.update();
 }
 
 int main(int argc, char** argv)

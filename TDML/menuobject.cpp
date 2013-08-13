@@ -21,9 +21,25 @@ namespace TDML
 		texid = 0;
 	}
 
+	void menuobject::update()
+	{
+		if(updateFuncSet) updatefunction(this);
+	}
+
+	std::string menuobject::getName()
+	{
+		return name;
+	}
+
+	void menuobject::setName(std::string newName)
+	{
+		name = newName;
+	}
+
 	void menuobject::dispInfo()
 	{
 		Log.output("\t\tMenu Object:\n");
+		Log.output("\t\t\tName: "+name+"\n");
 		Log.output("\t\t\tImage Name: "+texname+"\n"); 
 		Log.output("\t\t\tTexture ID: "); Log.output(texid); Log.output("\n");
 		Log.output("\t\t\tPosition: "); Log.output(posx); Log.output(", "); Log.output(posy); Log.output("\n");
