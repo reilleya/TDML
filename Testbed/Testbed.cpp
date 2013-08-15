@@ -26,7 +26,7 @@ void animate()
 	}
 	if(TDML::Input.getKeyPressed('l'))
 	{
-		TDML::Shaders.setUseLighting(!TDML::Shaders.getUseLighting());
+		world1.getObjectRef("bananannanan");
 	}
 	if(TDML::Input.getKeyPressed('e'))
 	{
@@ -60,6 +60,7 @@ int main(int argc, char** argv)
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	world1 = TDML::loadWorld("world.wor");
 	menu1 = TDML::loadMenu("test.mnu");
+	menu1.dispInfo(); TDML::Log.sendOutputBuffer();
 	PS1 = TDML::particlesystem("ps1", "part.png", //image
 				TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//pos
 				TDML::vector3d(0,0.0000,0), TDML::vector3d(-0.0000,0,-0.0000), TDML::vector3d(0.0000,0.00005,0.0000),//dir

@@ -52,7 +52,7 @@ namespace TDML
 		glDisable(GL_DEPTH_TEST);
 		for(int i = 0; i < nobjs; i++)
 		{
-			modelMatrix.translate((objects[i].getPosX()/Window.getWidth())-1.0, 1.0-(objects[i].getPosY()/(Window.getHeight()/2)), 0);
+			modelMatrix.translate(((objects[i].getPosX()/(Window.getWidth()/2))-1.0), 1.0-(objects[i].getPosY()/(Window.getHeight()/2)), 0);
 			modelMatrix.scale(objects[i].getWidth()/(Window.getWidth()/2.0), -objects[i].getHeight()/(Window.getHeight()/2.0), 0);
 			Shaders.setModelMat(modelMatrix.glForm());
 			objects[i].draw();
@@ -77,5 +77,24 @@ namespace TDML
 		nobjs++;
 		objects.resize(nobjs);
 		objects[nobjs-1] = newobj;
+	}
+
+	menuobject& menu::getObjectRefByName(std::string name)
+	{
+		int id = getObjectIDByName(name);
+		return objects.at(id);
+	}
+
+	int menu::getObjectIDByName(std::string name)
+	{
+		for(int testid = 0; testid < nobjs; testid++)
+		{
+			if(objects[testid].getName()==name)
+			{
+				return testid;
+			}
+		}
+
+		return -1;
 	}
 }

@@ -41,5 +41,6 @@ namespace TDML
 			void setWidth(int newWidth);
 			void setHeight(int newHeight);
 			void setTexture(std::string newTex);
+			void setUpdateFunction(void (*newupdatefunction)(menuobject* me));
 	};
 }

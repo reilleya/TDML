@@ -353,7 +353,6 @@ namespace TDML
 
 	int world::getFirstIDByName(string name)
 	{
-			
 		for(int counter = 0; counter < (int)nobjs; counter++)
 		{
 			if(objects[counter].getName()==name)
@@ -361,6 +360,9 @@ namespace TDML
 				return counter;
 			}
 		}
+
+		Message.errorMessage("World Error:\n\tFound no object with name "+name+" in world loaded from file "+fileName, "World Error"); 
+
 		return -1;
 	}
 

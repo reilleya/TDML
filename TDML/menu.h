@@ -26,5 +26,7 @@ namespace TDML
 			void draw();
 			void loadTextures();
 			void addObject(menuobject newobj);
+			menuobject& getObjectRefByName(std::string name);
+			int getObjectIDByName(std::string name);
 	};
 }

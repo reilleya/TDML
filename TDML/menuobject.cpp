@@ -19,6 +19,7 @@ namespace TDML
 		height = 0;
 		texname = ""; 
 		texid = 0;
+		updateFuncSet = false;
 	}
 
 	void menuobject::update()
@@ -102,5 +103,11 @@ namespace TDML
 	void menuobject::setHeight(int newHeight)
 	{
 		height = newHeight;
+	}
+
+	void menuobject::setUpdateFunction(void (*newupdatefunction)(menuobject* me))
+	{
+		updatefunction = *newupdatefunction;
+		updateFuncSet = true;
 	}
 }
