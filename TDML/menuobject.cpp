@@ -110,4 +110,15 @@ namespace TDML
 		updatefunction = *newupdatefunction;
 		updateFuncSet = true;
 	}
+
+	bool menuobject::pointCollide(float x, float y)
+	{
+		return ((x>posx)&&(x<posx+width))&&((y>posy)&&(y<posy+height));
+	}
+
+	bool menuobject::rectCollide(float x, float y, float w, float h)
+	{
+		//TODO:: Include tests to see if you collide with them, in addition to them colliding with you
+		return pointCollide(x,y)||pointCollide(x+w,y)||pointCollide(x,y+h)||pointCollide(x+w,y+h);
+	}
 }

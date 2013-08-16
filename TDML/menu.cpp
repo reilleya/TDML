@@ -95,6 +95,8 @@ namespace TDML
 			}
 		}
 
+		Message.errorMessage("Found no object with name "+name+" in menu loaded from file "+fileName, "Menu Error"); 
+
 		return -1;
 	}
 }

@@ -6,6 +6,33 @@ TDML::world world1;
 TDML::menu menu1;
 TDML::particlesystem PS1;
 
+//float playVelX=
+
+void playUpdateFunc(TDML::menuobject* me)
+{
+	me->setPosX(me->getPosX()+1);
+	me->setPosY(me->getPosY()+1);
+}
+
+void manUpdateFunc(TDML::menuobject* me)
+{
+	float oldx = me->getPosX();
+	float oldy = me->getPosY();
+	me->setPosX(TDML::Input.getMouseX());
+	me->setPosY(TDML::Input.getMouseY());
+	TDML::menuobject& play = menu1.getObjectRefByName("play");
+	if(me->rectCollide(play.getPosX(), play.getPosY(), play.getWidth(), play.getHeight()))
+	{
+		me->setPosX(oldx);
+		me->setPosY(oldy);
+	}
+	/*if(TDML::Input.getMouseKeyPressed(LEFTMOUSE) && me->pointCollide(TDML::Input.getMouseX(),TDML::Input.getMouseY()))
+	{
+		TDML::menuobject& play = menu1.getObjectRefByName("play");
+		play.setUpdateFunction(playUpdateFunc);
+	}*/
+}
+
 void exit()
 {
 	
@@ -26,7 +53,7 @@ void animate()
 	}
 	if(TDML::Input.getKeyPressed('l'))
 	{
-		world1.getObjectRef("bananannanan");
+		
 	}
 	if(TDML::Input.getKeyPressed('e'))
 	{
@@ -60,7 +87,6 @@ int main(int argc, char** argv)
 	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	world1 = TDML::loadWorld("world.wor");
 	menu1 = TDML::loadMenu("test.mnu");
-	menu1.dispInfo(); TDML::Log.sendOutputBuffer();
 	PS1 = TDML::particlesystem("ps1", "part.png", //image
 				TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//pos
 				TDML::vector3d(0,0.0000,0), TDML::vector3d(-0.0000,0,-0.0000), TDML::vector3d(0.0000,0.00005,0.0000),//dir
@@ -70,6 +96,8 @@ int main(int argc, char** argv)
 				10, 1); //Spawn Delay
 	world1.addParticleSystem(PS1);
 	TDML::object& tv = world1.getObjectRef("tv");
+	TDML::menuobject& man = menu1.getObjectRefByName("man");
+	man.setUpdateFunction(manUpdateFunc);
 	world1.setCamPosition(0, 0, 2);
 	TDML::Log.clearOutputBuffer();
 	TDML::start();

@@ -85,7 +85,7 @@ namespace TDML
 			}
 			else
 			{
-				Message.errorMessage("Error loading object file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
+				Message.errorMessage("Error loading object file: "+fileName+"\nFile not found!", "Loading Error");
 				object o;
 				return o;
 			}
@@ -296,7 +296,7 @@ namespace TDML
 		}
 		else
 		{
-			Message.errorMessage("Error loading world file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.","Loading Error");
+			Message.errorMessage("Error loading world file: "+fileName+"\nFile not found!","Loading Error");
 			world newworld(fileName);
 			return newworld;
 		}
@@ -397,7 +397,7 @@ namespace TDML
 		}
 		else
 		{
-			Message.errorMessage("Error loading texture file: "+fileName+"\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
+			Message.errorMessage("Error loading texture file: "+fileName+"\nFile not found!", "Loading Error");
 			return -1;
 		}
 	}
@@ -497,7 +497,7 @@ namespace TDML
 		}
 		else
 		{
-			Message.errorMessage("Error loading material data file: " + fileName + "\nFile not found!\nPress 'OK' to attempt to continue, or 'Cancel' to exit.", "Loading Error");
+			Message.errorMessage("Error loading material data file: " + fileName + "\nFile not found!", "Loading Error");
 			texture t;
 			return t;
 		}

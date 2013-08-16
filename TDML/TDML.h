@@ -28,7 +28,6 @@ using namespace std;
 #define MIDDLEMOUSE 1
 #define WHEELUP 3
 #define WHEELDOWN 4
-#define WHEELCLICK 
 
 //Rotation Orders
 #define XYZ 0

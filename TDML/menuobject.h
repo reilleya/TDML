@@ -42,5 +42,7 @@ namespace TDML
 			void setHeight(int newHeight);
 			void setTexture(std::string newTex);
 			void setUpdateFunction(void (*newupdatefunction)(menuobject* me));
+			bool pointCollide(float x, float y);
+			bool rectCollide(float x, float y, float w, float h);
 	};
 }

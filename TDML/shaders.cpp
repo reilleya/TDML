@@ -128,7 +128,7 @@ namespace TDML
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &vertexCompiled);
 		if(vertexCompiled==GL_FALSE)
 		{
-			TDML::Message.errorMessage("Error compiling vertex shader file. Press 'OK' to attempt to continue, or 'Cancel' to exit.", "Shader Error");
+			TDML::Message.errorMessage("Error compiling vertex shader file.", "Shader Error");
 		}
 
 		GLint fragmentCompiled = 0;
@@ -136,7 +136,7 @@ namespace TDML
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &fragmentCompiled);
 		if(fragmentCompiled==GL_FALSE)
 		{
-			TDML::Message.errorMessage("Error compiling fragment shader file. Press 'OK' to attempt to continue, or 'Cancel' to exit.", "Shader Error");
+			TDML::Message.errorMessage("Error compiling fragment shader file.", "Shader Error");
 		}
 
 		programID = glCreateProgram();
