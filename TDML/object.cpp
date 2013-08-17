@@ -571,8 +571,8 @@ namespace TDML
 
 	void object::generateVBO()
 	{
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		//glEnableClientState(GL_VERTEX_ARRAY);
+		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 		glGenVertexArrays(1, &vaoid);
 		glBindVertexArray(vaoid);

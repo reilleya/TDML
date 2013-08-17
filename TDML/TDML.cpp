@@ -529,8 +529,8 @@ namespace TDML
 
 	void setupMenuVBO()
 	{
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		//glEnableClientState(GL_VERTEX_ARRAY);
+		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glGenVertexArrays(1, &menuvaoid);
 		glBindVertexArray(menuvaoid);
 
@@ -668,9 +668,9 @@ namespace TDML
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glewInit();
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glEnableClientState(GL_NORMAL_ARRAY);
+		//glEnableClientState(GL_VERTEX_ARRAY);
+		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		//glEnableClientState(GL_NORMAL_ARRAY);
 		Config.reload();
 		if(Shaders.getUseShaders()) 
 		{

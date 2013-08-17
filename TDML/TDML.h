@@ -11,6 +11,7 @@ using namespace std;
 
 //2x2 Matrix Determinant Function
 #define d2x2(a,b,c,d) ((a*c)-(b*d))
+#define pointIn(x1,y1,w,h,x2,y2) (((x2>=x1)&&(x2<=x1+w))&&((y2>=y1)&&(y2<=y1+h)))
 
 //Keyboard Controls
 #define RIGHT 102

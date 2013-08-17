@@ -113,12 +113,12 @@ namespace TDML
 
 	bool menuobject::pointCollide(float x, float y)
 	{
-		return ((x>posx)&&(x<posx+width))&&((y>posy)&&(y<posy+height));
+		return pointIn(posx, posy, width, height, x, y);
 	}
 
 	bool menuobject::rectCollide(float x, float y, float w, float h)
 	{
-		//TODO:: Include tests to see if you collide with them, in addition to them colliding with you
-		return pointCollide(x,y)||pointCollide(x+w,y)||pointCollide(x,y+h)||pointCollide(x+w,y+h);
+		return pointIn(posx, posy, width, height, x, y) || pointIn(posx, posy, width, height, x+w, y) || pointIn(posx, posy, width, height, x, y+h) || pointIn(posx, posy, width, height, x+w, y+h) ||
+			pointIn(x, y, w, h, posx, posy) || pointIn(x, y, w, h, posx+width, posy) || pointIn(x, y, w, h, posx, posy+height) || pointIn(x, y, w, h, posx+width, posy+height);
 	}
 }
