@@ -134,6 +134,7 @@ namespace TDML
 		Log.output("\tGenerating VBO\n");
 		newterrain.generateVBO();
 		Log.output("Done Loading Terrain\n\n");
+		newterrain.dispInfo();
 		return newterrain;
 	}
 

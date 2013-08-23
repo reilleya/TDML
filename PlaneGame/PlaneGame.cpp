@@ -106,6 +106,9 @@ void load()
 		}
 		World1.addObject(newrock);
 	}
+	TDML::object& test = World1.getObjectRef("plane");
+	test.dispInfo();
+	TDML::Log.output("Done Loading!");
 }
 
 void exit()
@@ -205,6 +208,7 @@ void animate()
 		}
 		else
 		{
+			TDML::Log.output("DEAD");
 			if(zoomlevel<4) zoomlevel+=World1.getAdjustedTime(0.0025, 6);
 			if(TDML::Input.getMouseKeyPressed(LEFTMOUSE))
 			{

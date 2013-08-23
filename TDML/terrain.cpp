@@ -5,6 +5,8 @@
 //If you use this library, please credit Andrew Reilley or eggplantanimation.com
 //Contact email: areill1337@gmail.com
 
+//TODO: VAO's plz
+
 #include "TDML.h"
 
 using namespace std;
@@ -17,6 +19,7 @@ namespace TDML
 		Log.output("\tDimensions: "); Log.output(dimensions); Log.output("\n");
 		Log.output("\tScale: "); Log.output(scalexz); Log.output(","); Log.output(scaley); Log.output("\n");
 		Log.output("\tVBO ID: "); Log.output(vboid); Log.output("\n");
+		Log.output("\tVAO ID: "); Log.output(vaoid); Log.output("\n");
 		Log.output("\tTexture ID: "); Log.output(texid); Log.output("\n");
 	}
 
@@ -108,8 +111,9 @@ namespace TDML
 			}
 		}
 
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		glGenVertexArrays(1, &vaoid);
+		glBindVertexArray(vaoid);
+
 		glGenBuffers(1, &vboid);
 		GLuint numverts = (dimensions-1)*(dimensions-1)*6;
 		GLfloat *geometry;
@@ -191,27 +195,29 @@ namespace TDML
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*3*numverts, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*3*numverts, sizeof(float)*2*numverts, coords);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*5*numverts, sizeof(float)*3*numverts, normals);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Position
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 30 * sizeof(GLfloat))); // Normals
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 18 * sizeof(GLfloat))); // Texture Coords
+
+
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+
+		glBindVertexArray(0);
+
+		delete geometry;
+		delete normals;
+		delete coords;
 	}
 			
 	void terrain::display()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, vboid);
 		glBindTexture(GL_TEXTURE_2D, texid);
-		if(Shaders.getUseShaders())
-		{
-			glEnableVertexAttribArray(0);
-			glEnableVertexAttribArray(1);
-			glEnableVertexAttribArray(2);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);  // Position
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 30 * sizeof(GLfloat)));  // Normals
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 18 * sizeof(GLfloat)));  // Texture Coords
-		}
-		else
-		{
-			glVertexPointer(3, GL_FLOAT, 0, 0);
-			glTexCoordPointer(2, GL_FLOAT, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 18 * sizeof(GLfloat)));
-			glNormalPointer(GL_FLOAT, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 30 * sizeof(GLfloat)));
-		}
+		glBindVertexArray(vaoid);
 		glDrawArrays(GL_TRIANGLES, 0, (dimensions-1) * (dimensions-1) * 6);
+		glBindVertexArray(0);
 	}
 }

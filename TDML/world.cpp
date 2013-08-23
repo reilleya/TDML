@@ -188,10 +188,10 @@ namespace TDML
 			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 			modelMatrix.translate(-camx, -camy, -camz);
 			modelMatrix.scale(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
-			matrix3x3 nmat = modelMatrix.rotPart();
-			nmat = nmat.inverse();
-			nmat = nmat.transpose();
-			Shaders.setNormalMat(nmat.glForm());
+			//matrix3x3 nmat = modelMatrix.rotPart();
+			//nmat = nmat.inverse();
+			//nmat = nmat.transpose();
+			//Shaders.setNormalMat(nmat.glForm());
 			Shaders.setModelMat(modelMatrix.glForm());
 			map.display();
 		}

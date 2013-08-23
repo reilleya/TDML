@@ -42,6 +42,7 @@ namespace TDML
 		Log.output("\tAnimated Texture frametime: "); Log.output(frametime); Log.output("\n");
 		Log.output("\tUpdate Function Set: "); Log.output(updateFuncSet); Log.output("\n");
 		Log.output("\tVBO ID: "); Log.output(vboid); Log.output("\n");
+		Log.output("\tVAO ID: "); Log.output(vaoid); Log.output("\n");
 	}
 
 	void object::display()

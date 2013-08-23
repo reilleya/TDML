@@ -19,6 +19,7 @@ namespace TDML
 			float scalexz;
 			float scaley;
 			GLuint vboid;
+			GLuint vaoid;
 			GLuint texid;
 
 		public:
