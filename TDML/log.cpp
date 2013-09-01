@@ -31,7 +31,7 @@ namespace TDML
 		if(debugMode==4||debugMode==5||debugMode==6) FreeConsole();
 	}
 
-	bool log::getDebugMode()
+	int log::getDebugMode()
 	{
 		return debugMode;
 	}

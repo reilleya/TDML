@@ -14,10 +14,10 @@ namespace TDML
 	class menuobject
 	{
 		private:
-			int posx;
-			int posy;
-			int width;
-			int height;
+			float posx;
+			float posy;
+			float width;
+			float height;
 			int texid;
 			bool updateFuncSet;
 			void (*updatefunction)(menuobject* me);
@@ -36,10 +36,10 @@ namespace TDML
 			float getPosY();
 			float getWidth();
 			float getHeight();
-			void setPosX(int posX);
-			void setPosY(int posY);
-			void setWidth(int newWidth);
-			void setHeight(int newHeight);
+			void setPosX(float posX);
+			void setPosY(float posY);
+			void setWidth(float newWidth);
+			void setHeight(float newHeight);
 			void setTexture(std::string newTex);
 			void setUpdateFunction(void (*newupdatefunction)(menuobject* me));
 			bool pointCollide(float x, float y);

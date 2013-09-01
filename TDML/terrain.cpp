@@ -5,8 +5,6 @@
 //If you use this library, please credit Andrew Reilley or eggplantanimation.com
 //Contact email: areill1337@gmail.com
 
-//TODO: VAO's plz
-
 #include "TDML.h"
 
 using namespace std;
@@ -16,11 +14,11 @@ namespace TDML
 	void terrain::dispInfo()
 	{
 		Log.output("Terrain:\n");
-		Log.output("\tDimensions: "); Log.output(dimensions); Log.output("\n");
-		Log.output("\tScale: "); Log.output(scalexz); Log.output(","); Log.output(scaley); Log.output("\n");
-		Log.output("\tVBO ID: "); Log.output(vboid); Log.output("\n");
-		Log.output("\tVAO ID: "); Log.output(vaoid); Log.output("\n");
-		Log.output("\tTexture ID: "); Log.output(texid); Log.output("\n");
+		Log.output("\tDimensions: "); Log.output((float)dimensions); Log.output("\n");
+		Log.output("\tScale: "); Log.output((float)scalexz); Log.output(","); Log.output((float)scaley); Log.output("\n");
+		Log.output("\tVBO ID: "); Log.output((float)vboid); Log.output("\n");
+		Log.output("\tVAO ID: "); Log.output((float)vaoid); Log.output("\n");
+		Log.output("\tTexture ID: "); Log.output((float)texid); Log.output("\n");
 	}
 
 	void terrain::setHeightMap(std::vector<std::vector<float>> newheightmap)
@@ -134,7 +132,7 @@ namespace TDML
 				normals[(p*18)+1] = 1;
 				normals[(p*18)+2] = 0;
 				//coords[(p*12)] = 0;
-				coords[(p*12)] = v1/dimensions;
+				coords[(p*12)] = (GLfloat)v1/dimensions;
 				coords[(p*12)+1] = TDML::Math.smaller(1, (-((points[v1][v2].getY()-128)/256)));
 
 				geometry[(p*18)+3] = points[v1][v2+1].getX();
@@ -144,7 +142,7 @@ namespace TDML
 				normals[(p*18)+4] = 1;
 				normals[(p*18)+5] = 0;
 				//coords[(p*12)+2] = 0;
-				coords[(p*12)+2] = v1/dimensions;
+				coords[(p*12)+2] = (GLfloat)v1/dimensions;
 				coords[(p*12)+3] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
 
 				geometry[(p*18)+6] = points[v1+1][v2].getX();
@@ -154,7 +152,7 @@ namespace TDML
 				normals[(p*18)+7] = 1;
 				normals[(p*18)+8] = 0;
 				//coords[(p*12)+4] = 1;
-				coords[(p*12)+4] = (v1+1)/dimensions;
+				coords[(p*12)+4] = (GLfloat)(v1+1)/dimensions;
 				coords[(p*12)+5] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
 
 				geometry[(p*18)+9] = points[v1+1][v2].getX();
@@ -164,7 +162,7 @@ namespace TDML
 				normals[(p*18)+10] = 1;
 				normals[(p*18)+11] = 0;
 				//coords[(p*12)+6] = 1;
-				coords[(p*12)+6] = (v1+1)/dimensions;
+				coords[(p*12)+6] = (GLfloat)(v1+1)/dimensions;
 				coords[(p*12)+7] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
 
 				geometry[(p*18)+12] = points[v1][v2+1].getX();
@@ -174,7 +172,7 @@ namespace TDML
 				normals[(p*18)+13] = 1;
 				normals[(p*18)+14] = 0;
 				//coords[(p*12)+8] = 0;
-				coords[(p*12)+8] = v1/dimensions;
+				coords[(p*12)+8] = (GLfloat)v1/dimensions;
 				coords[(p*12)+9] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
 
 				geometry[(p*18)+15] = points[v1+1][v2+1].getX();
@@ -184,7 +182,7 @@ namespace TDML
 				normals[(p*18)+16] = 1;
 				normals[(p*18)+17] = 0;
 				//coords[(p*12)+10] = 1;
-				coords[(p*12)+10] = (v1+1)/dimensions;
+				coords[(p*12)+10] = (GLfloat)(v1+1)/dimensions;
 				coords[(p*12)+11] = TDML::Math.larger(0, (-((points[v1+1][v2+1].getY()-128)/256)));
 
 				p++;
@@ -199,7 +197,6 @@ namespace TDML
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Position
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 30 * sizeof(GLfloat))); // Normals
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)((dimensions-1) * (dimensions-1) * 18 * sizeof(GLfloat))); // Texture Coords
-
 
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);

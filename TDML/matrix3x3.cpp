@@ -126,7 +126,7 @@ namespace TDML
 		temp.p11 = d2x2(p22,p23,p32,p33); temp.p12 = d2x2(p13,p12,p33,p32); temp.p13 = d2x2(p12,p13,p22,p23); 
 		temp.p21 = d2x2(p23,p21,p33,p31); temp.p22 = d2x2(p11,p13,p31,p33); temp.p23 = d2x2(p13,p11,p23,p21); 
 		temp.p31 = d2x2(p21,p22,p31,p32); temp.p32 = d2x2(p12,p11,p32,p31); temp.p33 = d2x2(p11,p12,p21,p22); 
-		temp = temp*(1.0/determinant());
+		temp = temp*(1/determinant());
 		return temp;
 	}
 

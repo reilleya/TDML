@@ -36,7 +36,7 @@ namespace TDML
 			configd[configd.size()-1].append(word);
 		}
 		multisample = atof(configd[0].c_str())!=0;
-		fov = atof(configd[1].c_str());
+		fov = (float) atof(configd[1].c_str());
 		Shaders.setShaderPath(configd[2].c_str());
 	}
 

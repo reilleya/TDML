@@ -42,9 +42,9 @@ namespace TDML
 		Log.output("\t\tMenu Object:\n");
 		Log.output("\t\t\tName: "+name+"\n");
 		Log.output("\t\t\tImage Name: "+texname+"\n"); 
-		Log.output("\t\t\tTexture ID: "); Log.output(texid); Log.output("\n");
-		Log.output("\t\t\tPosition: "); Log.output(posx); Log.output(", "); Log.output(posy); Log.output("\n");
-		Log.output("\t\t\tDimensions: "); Log.output(width); Log.output(", "); Log.output(height); Log.output("\n");
+		Log.output("\t\t\tTexture ID: "); Log.output((float)texid); Log.output("\n");
+		Log.output("\t\t\tPosition: "); Log.output((float)posx); Log.output(", "); Log.output((float)posy); Log.output("\n");
+		Log.output("\t\t\tDimensions: "); Log.output((float)width); Log.output(", "); Log.output((float)height); Log.output("\n");
 	}
 
 	void menuobject::draw()
@@ -85,22 +85,22 @@ namespace TDML
 		texname = newTex;
 	}
 
-	void menuobject::setPosX(int newPosX)
+	void menuobject::setPosX(float newPosX)
 	{
 		posx = newPosX;
 	}
 	 
-	void menuobject::setPosY(int newPosY)
+	void menuobject::setPosY(float newPosY)
 	{
 		posy = newPosY;
 	}
 
-	void menuobject::setWidth(int newWidth)
+	void menuobject::setWidth(float newWidth)
 	{
 		width = newWidth;
 	}
 	 
-	void menuobject::setHeight(int newHeight)
+	void menuobject::setHeight(float newHeight)
 	{
 		height = newHeight;
 	}

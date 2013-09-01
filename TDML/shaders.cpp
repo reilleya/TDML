@@ -41,15 +41,15 @@ namespace TDML
 		Log.output("\tUsing Lighting: "); Log.output(useLighting); Log.output("\n");
 		Log.output("\tShaders Initialized: "); Log.output(shadersInitialized); Log.output("\n");
 		Log.output("\tUniforms:\n");
-		for(int uni = 0; uni <uniforms.size(); uni++)
+		for(int uni = 0; uni < (int)uniforms.size(); uni++)
 		{
-			Log.output("\t\t"); Log.output(uniforms[uni]); Log.output(":"); Log.output(uniformIDs[uni]); Log.output("\n");
+			Log.output("\t\t"); Log.output(uniforms[uni]); Log.output(":"); Log.output((float)uniformIDs[uni]); Log.output("\n");
 		}
 	}
 
 	void shaders::populateUniformIDs()
 	{
-		for(int uni = 0; uni < uniforms.size(); uni++)
+		for(int uni = 0; uni < (int)uniforms.size(); uni++)
 		{
 			uniformIDs.push_back(glGetUniformLocation(programID,  uniforms[uni].c_str()));
 		}
@@ -87,8 +87,18 @@ namespace TDML
 
 		ifstream vinfile;
 		ifstream finfile;
-		vinfile.open(shaderPath+"/0.vert", ios::in);
-		finfile.open(shaderPath+"/0.frag", ios::in);
+
+		if(File.fileExists(shaderPath+"/0.vert")) vinfile.open(shaderPath+"/0.vert", ios::in);
+		else
+		{
+			Message.errorMessage("Error loading vertex shader: "+shaderPath+"/0.vert\nFile not found!", "Loading Error");
+		}
+		
+		if(File.fileExists(shaderPath+"/0.frag")) finfile.open(shaderPath+"/0.frag", ios::in);
+		else
+		{
+			Message.errorMessage("Error loading fragment shader: "+shaderPath+"/0.frag\nFile not found!", "Loading Error");
+		}
 
 		string vcode;
 		string fcode;

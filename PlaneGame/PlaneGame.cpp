@@ -35,22 +35,22 @@ void load()
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
 	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightmap.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
-	for(int t = 0; t < 0; t++)
+	for(int t = 0; t < 5000; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
 		newtree.setMaterial(TDML::loadTexture("Resources/World1/Tree/material.mdf"));
-		newtree.setX(TDML::Math.randomRange(-2000, 2000));
-		newtree.setZ(TDML::Math.randomRange(-2000, 2000));
+		newtree.setX(TDML::Math.randomRangeFloat(-2000, 2000));
+		newtree.setZ(TDML::Math.randomRangeFloat(-2000, 2000));
 		newtree.setY(World1.getHeightMapAt(newtree.getX(), newtree.getZ()));
 		while(newtree.getY()<-230 || newtree.getY() > 150)
 		{
-			newtree.setX(TDML::Math.randomRange(-2000, 2000));
-			newtree.setZ(TDML::Math.randomRange(-2000, 2000));
+			newtree.setX(TDML::Math.randomRangeFloat(-2000, 2000));
+			newtree.setZ(TDML::Math.randomRangeFloat(-2000, 2000));
 			newtree.setY(World1.getHeightMapAt(newtree.getX(), newtree.getZ()));
 		}
 		newtree.setAngle(0,0,0);
-		int root = TDML::Math.randomRange(2, 7);
-		float factor = (float)TDML::Math.randomRange(75, 125) / 100.0;
+		int root = TDML::Math.randomRangeInt(2, 7);
+		float factor = TDML::Math.randomRangeFloat(75, 125) / 100.0;
 		newtree.setScale(root,root*factor,root);
 		newtree.setType("tree");
 		newtree.setFrameDelay(0);
@@ -71,22 +71,22 @@ void load()
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
 	}
-	for(int t = 0; t < 0; t++)
+	for(int t = 0; t < 500; t++)
 	{
 		TDML::object newrock = TDML::loadObject("Resources/World1/Rock/model.tdm");
 		newrock.setMaterial(TDML::loadTexture("Resources/World1/Rock/material.mdf"));
-		newrock.setX(TDML::Math.randomRange(-2000, 2000));
-		newrock.setZ(TDML::Math.randomRange(-2000, 2000));
+		newrock.setX(TDML::Math.randomRangeFloat(-2000, 2000));
+		newrock.setZ(TDML::Math.randomRangeFloat(-2000, 2000));
 		newrock.setY(World1.getHeightMapAt(newrock.getX(), newrock.getZ())-2);
 		while(newrock.getY()<-230 || newrock.getY() > 150)
 		{
-			newrock.setX(TDML::Math.randomRange(-2000, 2000));
-			newrock.setZ(TDML::Math.randomRange(-2000, 2000));
+			newrock.setX(TDML::Math.randomRangeFloat(-2000, 2000));
+			newrock.setZ(TDML::Math.randomRangeFloat(-2000, 2000));
 			newrock.setY(World1.getHeightMapAt(newrock.getX(), newrock.getZ())-2);
 		}
-		newrock.setAngle(0,TDML::Math.randomRange(0, 360),0);
-		int root = TDML::Math.randomRange(2, 7);
-		float factor = (float)TDML::Math.randomRange(75, 125) / 100.0;
+		newrock.setAngle(0,TDML::Math.randomRangeFloat(0, 360),0);
+		int root = TDML::Math.randomRangeInt(2, 7);
+		float factor = (float)TDML::Math.randomRangeFloat(75, 125) / 100.0;
 		newrock.setScale(root,root*factor,root);
 		newrock.setType("tree");
 		newrock.setFrameDelay(0);
@@ -150,16 +150,16 @@ void animate()
 		{
 			if(World1.getHeightMapAt(plane.getX(),plane.getZ())>plane.getMinY() || plane.getMinY()<-250)
 			{
-				crashSmoke = TDML::particlesystem("smoke", "Resources/Common/Textures/part.png", //image
-				TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//pos
-				TDML::vector3d(0,0.0005,0), TDML::vector3d(-0.0005,0,-0.0005), TDML::vector3d(0.0005,0.0005,0.0005),//dir
+				crashSmoke = TDML::particlesystem("ps1", "Resources/Common/Textures/part.png", //image
+				TDML::vector3d(0,0,0), TDML::vector3d(-0.5,-0.5,-0.5), TDML::vector3d(0.5,0.5,0.5),//pos
+				TDML::vector3d(0.0000,0.0005,0.0000), TDML::vector3d(-0.00015,-0.0005,-0.00015), TDML::vector3d(0.00015,0.0005,0.00015),//dir
 				TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//accel
-				5000, -1000, 2000,//Life
+				5000, -2500, 5000,//Life
 				0.25, -0.1, 0.1, //Size
-				1, 15); //Spawn Delay
+				1, 20); //Spawn Delay
 				crashSmoke.setPos(TDML::vector3d(plane.getX(), plane.getY(), plane.getZ()));
-				//World1.addParticleSystem(crashSmoke);
-				plane.setVisible(false);
+				World1.addParticleSystem(crashSmoke);
+				//plane.setVisible(false);
 				dead = true;
 			}
 			if(TDML::Input.getMouseKeyPressed(WHEELDOWN))
@@ -243,7 +243,7 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(false);
+	TDML::Log.setDebugMode(LOG_FILE);
 	TDML::setObjectRotationOrder(ZXY);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);

@@ -224,7 +224,7 @@ namespace TDML
 					Log.output("\t\tLoading visible data.\n");
 					objs[objs.size()-1].setVisible(atof(objd[2].c_str())!=0);
 					Log.output("\t\tLoading framedelay data.\n");
-					objs[objs.size()-1].setFrameDelay(atof(objd[3].c_str()));
+					objs[objs.size()-1].setFrameDelay((float)atof(objd[3].c_str()));
 					Log.output("\t\tLoading position data.\n");
 					objs[objs.size()-1].setPosition((float)atof(objd[4].c_str()), (float)atof(objd[5].c_str()), (float)atof(objd[6].c_str()));
 					Log.output("\t\tLoading angle data.\n");
@@ -319,10 +319,10 @@ namespace TDML
 				menus.resize(menus.size()+1);
 				menus[menus.size()-1].setTexture(menud[0]);
 				menus[menus.size()-1].setName(menud[1]);
-				menus[menus.size()-1].setPosX(atoi(menud[2].c_str()));
-				menus[menus.size()-1].setPosY(atoi(menud[3].c_str()));
-				menus[menus.size()-1].setWidth(atoi(menud[4].c_str()));
-				menus[menus.size()-1].setHeight(atoi(menud[5].c_str()));
+				menus[menus.size()-1].setPosX((float)atof(menud[2].c_str()));
+				menus[menus.size()-1].setPosY((float)atof(menud[3].c_str()));
+				menus[menus.size()-1].setWidth((float)atof(menud[4].c_str()));
+				menus[menus.size()-1].setHeight((float)atof(menud[5].c_str()));
 				menud[0]="";
 				menud.resize(1);
 				Log.output("\tObject created.\n\n");
@@ -530,8 +530,6 @@ namespace TDML
 
 	void setupMenuVBO()
 	{
-		//glEnableClientState(GL_VERTEX_ARRAY);
-		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glGenVertexArrays(1, &menuvaoid);
 		glBindVertexArray(menuvaoid);
 
@@ -595,7 +593,6 @@ namespace TDML
 
 	void ChannelSpecialKeyboardUpToInput(int key, int x, int y)
 	{
-		Log.output(key); Log.output("\n");
 		Input.SpecialKeyUpFunc(key, x, y);
 	}
 
@@ -781,6 +778,35 @@ namespace TDML
 	void setObjectRotationOrder(int order)
 	{
 		orotorder = order;
+	}
+
+	int getCameraRotationOrder()
+	{
+		return crotorder;
+	}
+
+	int getObjectRotationOrder()
+	{
+		return orotorder;
+	}
+
+	int invertRotationOrder(int order)
+	{
+		switch(order)
+		{
+		case 0:
+			return 2;
+		case 1:
+			return 5;
+		case 2:
+			return 0;
+		case 3:
+			return 4;
+		case 4:
+			return 3;
+		case 5:
+			return 1;
+		}
 	}
 	
 	void setPause(bool state)

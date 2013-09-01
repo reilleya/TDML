@@ -50,7 +50,9 @@ namespace TDML
 			void setCamAngleY(float newYangle);
 			void setCamAngleZ(float newZangle);
 			void setCamAngle(float newXangle, float newYangle, float newZangle);
+			void setCamAngle(vector3d newAngle);
 			void setCamPosition(float newX, float newY, float newZ);
+			void setCamPosition(vector3d position);
 			float getCamAngleX();
 			float getCamAngleY();
 			float getCamAngleZ();

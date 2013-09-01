@@ -120,12 +120,12 @@ namespace TDML
 		return (((float)rand())/((float)RAND_MAX));
 	}
 
-	int TDMLmath::randomRange(int min, int max)
+	int TDMLmath::randomRangeInt(int min, int max)
 	{
 		return min + (rand()%(max-min));
 	}
 
-	float TDMLmath::randomRange(float min, float max)
+	float TDMLmath::randomRangeFloat(float min, float max)
 	{
 		return min + (randomFloat()*(max-min));
 	}
@@ -137,7 +137,7 @@ namespace TDML
 
 	bool TDMLmath::randomBool(int percentTrue)
 	{
-		if(Math.randomRange(0, 100)<=percentTrue)
+		if(Math.randomRangeInt(0, 100)<=percentTrue)
 		{
 			return true;
 		}
@@ -201,4 +201,27 @@ namespace TDML
 		vector = rot.apply(vector);
 	}
 
+	vector3d TDMLmath::orbit(float x, float y, float z, float distance, float rotation, float inclination)
+	{
+		vector3d out;
+		matrix4x4 rot;
+		out.z-=distance;
+		rot.rotate(inclination, rotation,0,XYZ);
+		out = rot.apply(out);
+		return out + vector3d(x, y, z);
+	}
+
+	vector3d TDMLmath::angleTo(float x1, float y1, float z1, float x2, float y2, float z2)
+	{
+		float dx = x1 - x2;
+		float dy = y1 - y2;
+		float dz = z1 - z2;
+		float xangle;
+		float yangle;
+		if(dy>0) xangle = 270 + arctan(dz/dy);
+		else xangle = 90 + arctan(dz/dy);
+		if(dz<0) yangle = 180 + arctan(dx/dz);
+		else yangle = arctan(dx/dz);
+		return vector3d(xangle, yangle, 0);
+	}
 }

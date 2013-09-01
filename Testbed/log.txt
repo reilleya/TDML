@@ -14,7 +14,7 @@ Loading world from file: world.wor:
 		Loading type.
 		Setting filename
 		Loading behaviors.
-			Loading behaviors from: jiggle.beh
+			Loading behaviors from: null.beh
 		Loaded behavior data. Parsing...
 		Loading texture data.
 		Loading Material Data from file: monkey.mdf

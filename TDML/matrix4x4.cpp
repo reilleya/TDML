@@ -151,7 +151,7 @@ namespace TDML
 
 	void matrix4x4::perspective(float fieldOfView, float aspectRatio, float nearZ, float farZ)
 	{
-		float f = Math.cot(fieldOfView/2.0);
+		float f = Math.cot(fieldOfView/2);
 		p11 = f/aspectRatio; p12 = 0; p13 = 0; p14 = 0;
 		p21 = 0; p22 = f; p23 = 0; p24 = 0;
 		p31 = 0; p32 = 0; p33 = (farZ+nearZ)/(nearZ-farZ); p34 = (2*farZ*nearZ)/(nearZ-farZ);

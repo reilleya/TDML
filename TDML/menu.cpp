@@ -52,8 +52,8 @@ namespace TDML
 		glDisable(GL_DEPTH_TEST);
 		for(int i = 0; i < nobjs; i++)
 		{
-			modelMatrix.translate(((objects[i].getPosX()/(Window.getWidth()/2))-1.0), 1.0-(objects[i].getPosY()/(Window.getHeight()/2)), 0);
-			modelMatrix.scale(objects[i].getWidth()/(Window.getWidth()/2.0), -objects[i].getHeight()/(Window.getHeight()/2.0), 0);
+			modelMatrix.translate(((objects[i].getPosX()/(Window.getWidth()/2))-1), 1-(objects[i].getPosY()/(Window.getHeight()/2)), 0);
+			modelMatrix.scale(objects[i].getWidth()/(Window.getWidth()/2), -objects[i].getHeight()/(Window.getHeight()/2), 0);
 			Shaders.setModelMat(modelMatrix.glForm());
 			objects[i].draw();
 			modelMatrix.loadIdentity();

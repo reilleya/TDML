@@ -132,12 +132,12 @@ namespace TDML
 	void world::dispInfo()
 	{
 		Log.output("World:\n");
-		Log.output("\tFilename: "); Log.output(fileName); Log.output("\n");
-		Log.output("\tTime: "); Log.output(timer); Log.output("\n");
+		Log.output("\tFilename: "+fileName+"\n");
+		Log.output("\tTime: "); Log.output((float)timer); Log.output("\n");
 		Log.output("\tTime Since Last Frame: "); Log.output(timeElapsed); Log.output("\n");
-		Log.output("\tTerrain: "); Log.output(hasterrain); Log.output("\n");
-		Log.output("\tObjects: "); Log.output(nobjs); Log.output("\n");
-		Log.output("\tParticle Systems: "); Log.output(nparts); Log.output("\n");
+		Log.output("\tTerrain: "); Log.output((float)hasterrain); Log.output("\n");
+		Log.output("\tObjects: "); Log.output((float)nobjs); Log.output("\n");
+		Log.output("\tParticle Systems: "); Log.output((float)nparts); Log.output("\n");
 		Log.output("\tCamera Information:\n");
 		Log.output("\t\tPosition: "); Log.output(camx); Log.output(","); Log.output(camy); Log.output(","); Log.output(camz); Log.output("\n");
 		Log.output("\t\tAngle: "); Log.output(camxangle); Log.output(","); Log.output(camyangle); Log.output(","); Log.output(camzangle); Log.output("\n");
@@ -239,7 +239,7 @@ namespace TDML
 			Shaders.setModelMat(modelMatrix.glForm());
 		}
 
-		glDisable(GL_DEPTH_TEST);
+		//glDisable(GL_DEPTH_TEST);
 		for(int par = 0; par < (int)nparts; par++)
 		{
 				//glLoadIdentity();
@@ -253,7 +253,7 @@ namespace TDML
 				//glLoadIdentity();
 			modelMatrix.loadIdentity();
 		}
-		glEnable(GL_DEPTH_TEST);
+		//glEnable(GL_DEPTH_TEST);
 		//glLoadIdentity();
 	}
 
@@ -299,11 +299,25 @@ namespace TDML
 		camzangle = newZangle;
 	}
 
+	void world::setCamAngle(vector3d newAngle)
+	{
+		camxangle = newAngle.x;
+		camyangle = newAngle.y;
+		camzangle = newAngle.z;
+	}
+
 	void world::setCamPosition(float newX, float newY, float newZ)
 	{
 		camx = newX;
 		camy = newY;
 		camz = newZ;
+	}
+
+	void world::setCamPosition(vector3d position)
+	{
+		camx = position.x;
+		camy = position.y;
+		camz = position.z;
 	}
 
 	float world::getCamAngleX()

@@ -28,19 +28,19 @@ namespace TDML
 		}
 		particles[id] = particle(
 			vector3d(
-				pos.x+Math.randomRange(posMin.x, posMax.x), 
-				pos.y+Math.randomRange(posMin.y, posMax.y), 
-				pos.z+Math.randomRange(posMin.z, posMax.z)),
+				pos.x+Math.randomRangeFloat(posMin.x, posMax.x), 
+				pos.y+Math.randomRangeFloat(posMin.y, posMax.y), 
+				pos.z+Math.randomRangeFloat(posMin.z, posMax.z)),
 			vector3d(
-				dir.x+Math.randomRange(dirMin.x, dirMax.x), 
-				dir.y+Math.randomRange(dirMin.y, dirMax.y), 
-				dir.z+Math.randomRange(dirMin.z, dirMax.z)),
+				dir.x+Math.randomRangeFloat(dirMin.x, dirMax.x), 
+				dir.y+Math.randomRangeFloat(dirMin.y, dirMax.y), 
+				dir.z+Math.randomRangeFloat(dirMin.z, dirMax.z)),
 			vector3d(
-				accel.x+Math.randomRange(accelMin.x, accelMax.x), 
-				accel.y+Math.randomRange(accelMin.y, accelMax.y), 
-				accel.z+Math.randomRange(accelMin.z, accelMax.z)),
-				life + Math.randomRange(lifeMin, lifeMax),
-				size + Math.randomRange(sizeMin, sizeMax)
+				accel.x+Math.randomRangeFloat(accelMin.x, accelMax.x), 
+				accel.y+Math.randomRangeFloat(accelMin.y, accelMax.y), 
+				accel.z+Math.randomRangeFloat(accelMin.z, accelMax.z)),
+				life + Math.randomRangeFloat(lifeMin, lifeMax),
+				size + Math.randomRangeFloat(sizeMin, sizeMax)
 			);
 	}
 
@@ -117,12 +117,16 @@ namespace TDML
 
 	void particlesystem::display(world* World)
 	{
-		glDisable(GL_DEPTH_TEST);
+		glDepthMask(false);
 		for(int n = 0; n<nparts; n++)
 		{
+			modelMatrix.loadIdentity();
+			modelMatrix.rotate(World->getCamAngleX(), World->getCamAngleY(), World->getCamAngleZ(), crotorder);
+			modelMatrix.translate(-World->getCamX(), -World->getCamY(), -World->getCamZ());
+			Shaders.setModelMat(modelMatrix.glForm());
 			particles[n].display(texid, World);
 		}
-		glEnable(GL_DEPTH_TEST);
+		glDepthMask(true);
 	}
 
 	string particlesystem::getName()
@@ -162,7 +166,7 @@ namespace TDML
 		Log.output("Particle System:\n");
 		Log.output("\tName: "); Log.output(name); Log.output("\n");
 		Log.output("\tImage: "); Log.output(fileName); Log.output("\n");
-		Log.output("\tNumber of Particles: "); Log.output(particles.size()); Log.output("\n");
-		Log.output("\tNumber of Particles (Recyclable): "); Log.output(recyclables.size()); Log.output("\n");
+		Log.output("\tNumber of Particles: "); Log.output((float)particles.size()); Log.output("\n");
+		Log.output("\tNumber of Particles (Recyclable): "); Log.output((float)recyclables.size()); Log.output("\n");
 	}
 }

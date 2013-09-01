@@ -24,7 +24,7 @@ namespace TDML
 			void sendOutputBuffer();
 			void output(std::string Message);
 			void setDebugMode(int debug);
-			bool getDebugMode();
+			int getDebugMode();
 			void outputWindow(std::string Message);
 			void outputLog(std::string Message);
 			void outputPopup(std::string strMessage);

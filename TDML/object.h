@@ -95,6 +95,7 @@ namespace TDML
 			float getZ();
 			void setZ(float newZ);
 			void setPosition(float newX, float newY, float newZ);
+			void setPosition(vector3d position);
 			float getXangle();
 			void setXangle(float newXangle);
 			float getYangle();
@@ -102,6 +103,7 @@ namespace TDML
 			float getZangle();
 			void setZangle(float newZangle);
 			void setAngle(float newXangle, float newYangle, float newZangle);
+			void setAngle(vector3d newAngle);
 			float getScaleX();
 			void setScaleX(float newScaleX);
 			float getScaleY();

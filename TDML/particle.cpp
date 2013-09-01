@@ -14,11 +14,11 @@ namespace TDML
 	particle::particle()
 	{
 		pos = vector3d(0,0,0);
-		dir = vector3d(0.005,0.005,-0.005);
+		dir = vector3d((float)0.005,(float)0.005,(float)-0.005);
 		accel = vector3d(0,0,0);
 		life = 1000;
 		alive = true;
-		zangle = Math.randomRange(0, 360);
+		zangle = Math.randomRangeFloat(0, 360);
 	}
 
 	particle::particle(vector3d Pos, vector3d Dir, vector3d Accel, float Life, float Size)
@@ -29,40 +29,23 @@ namespace TDML
 		life = Life;
 		size = Size;
 		alive = true;
-		zangle = Math.randomRange(0, 360);
+		zangle = Math.randomRangeFloat(0, 360);
 	}
 
 	void particle::display(GLuint texid, world* World)
 	{
 		if(alive)
 		{
-			modelMatrix.loadIdentity();
-			//pos.dispInfo();
 			modelMatrix.translate(pos.x-(size/2), pos.y-(size/2), pos.z-(size/2));
-				//glTranslatef(pos.x-(size/2), pos.y-(size/2), pos.z-(size/2));
 			modelMatrix.scale(size, size, size); 
-				//glScalef(size, size, size);
-			modelMatrix.rotate(World->getCamAngleX(), World->getCamAngleY(), World->getCamAngleZ(), crotorder);
-				//glRotatef(World->getCamAngleY(), 0, 1, 0);
-				//glRotatef(World->getCamAngleX(), 1, 0, 0);
-				//glRotatef(World->getCamAngleZ(), 0, 0, 1);
-			//modelMatrix.rotate(0, 0, zangle, crotorder);
-				//glRotatef(zangle, 0, 0, 1);
-			//glRotatef(World->getCamAngleZ(), 0, 0, 1);
+			modelMatrix.rotate(-World->getCamAngleX(), -World->getCamAngleY(), -World->getCamAngleZ(), invertRotationOrder(crotorder));
+			modelMatrix.rotate(0, 0, zangle, crotorder);
 			Shaders.setModelMat(modelMatrix.glForm());
 			glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
 			glBindTexture(GL_TEXTURE_2D, texid);
 			glBindVertexArray(menuvaoid);
 			glDrawArrays(GL_QUADS, 0, 4);
-			//glRotatef(-zangle, 0, 0, 1);
-			modelMatrix.rotate(-World->getCamAngleX(), -World->getCamAngleY(), -World->getCamAngleZ(), crotorder);
-				//glRotatef(-World->getCamAngleZ(), 0, 0, 1);
-				//glRotatef(-World->getCamAngleX(), 1, 0, 0);
-				//glRotatef(-World->getCamAngleY(), 0, 1, 0);
-			modelMatrix.scale((1/size), (1/size), (1/size)); 
-				//glScalef((1/size), (1/size), (1/size));
-			modelMatrix.translate(-(pos.x-(size/2)), -(pos.y-(size/2)), -(pos.z-(size/2)));
-				//glTranslatef(-(pos.x-(size/2)), -(pos.y-(size/2)), -(pos.z-(size/2)));
+			glBindVertexArray(0);
 		}
 	}
 

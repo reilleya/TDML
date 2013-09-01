@@ -34,15 +34,15 @@ namespace TDML
 		Log.output("\tScale: "); Log.output(scalex); Log.output(", "); Log.output(scaley); Log.output(", "); Log.output(scalez); Log.output("\n");
 		Log.output("\tRadius: "); Log.output(radius); Log.output("\n");
 		Log.output("\tDimensions: "); Log.output(xsize); Log.output(", "); Log.output(ysize); Log.output(", "); Log.output(zsize); Log.output("\n");
-		Log.output("\tBehaviours: "); Log.output(nbehaviors); Log.output("\n");
+		Log.output("\tBehaviours: "); Log.output((float)nbehaviors); Log.output("\n");
 		Log.output("\tAdjust bounding box: "); Log.output(adjustBB); Log.output("\n");
 		Log.output("\tVisible: "); Log.output(visible); Log.output("\n");
 		Log.output("\tWireframe: "); Log.output(wireframe); Log.output("\n");
 		Log.output("\tAnimated Texture framedelay: "); Log.output(framedelay); Log.output("\n");
 		Log.output("\tAnimated Texture frametime: "); Log.output(frametime); Log.output("\n");
 		Log.output("\tUpdate Function Set: "); Log.output(updateFuncSet); Log.output("\n");
-		Log.output("\tVBO ID: "); Log.output(vboid); Log.output("\n");
-		Log.output("\tVAO ID: "); Log.output(vaoid); Log.output("\n");
+		Log.output("\tVBO ID: "); Log.output((float)vboid); Log.output("\n");
+		Log.output("\tVAO ID: "); Log.output((float)vaoid); Log.output("\n");
 	}
 
 	void object::display()
@@ -460,6 +460,13 @@ namespace TDML
 		z=newZ;
 	}
 
+	void object::setPosition(vector3d position)
+	{
+		x = position.x;
+		y = position.y;
+		z = position.z;
+	}
+
 	float object::getXangle()
 	{
 		return xangle;
@@ -509,6 +516,17 @@ namespace TDML
 			xangle = newXangle;
 			yangle = newYangle;
 			zangle = newZangle;
+			if(adjustBB)recalcBoundingBox();
+		}
+	}
+
+	void object::setAngle(vector3d newAngle)
+	{
+		if(newAngle.x!=xangle || newAngle.y!=yangle || newAngle.z!=zangle)
+		{
+			xangle = newAngle.x;
+			yangle = newAngle.y;
+			zangle = newAngle.z;
 			if(adjustBB)recalcBoundingBox();
 		}
 	}
@@ -572,9 +590,6 @@ namespace TDML
 
 	void object::generateVBO()
 	{
-		//glEnableClientState(GL_VERTEX_ARRAY);
-		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
 		glGenVertexArrays(1, &vaoid);
 		glBindVertexArray(vaoid);
 
