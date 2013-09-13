@@ -11,6 +11,7 @@ uniform float useLighting;
 uniform float useTextures;
 uniform vec3 sunVec;
 uniform mat4 projMat;
+uniform vec4 diffuseColor;
 
 in vec3 v_pos;
 in vec3 n_dir;
@@ -21,6 +22,7 @@ out vec2 out_t_coo;
 out float out_useLighting; 
 out float out_useTextures;
 out vec3 out_sunVec;
+out vec4 out_diffuseColor;
 
 void main()
 {
@@ -31,4 +33,5 @@ void main()
 	out_useLighting = useLighting;
 	out_useTextures = useTextures;
 	out_sunVec = sunVec;
+	out_diffuseColor = diffuseColor;
 }

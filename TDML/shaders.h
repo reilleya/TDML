@@ -45,6 +45,7 @@ namespace TDML
 			void setModelMat(float mat[]);
 			void setProjMat(float mat[]);
 			void setNormalMat(float mat[]);
+			void setDiffuseColor(float r, float g, float b, float a);
 			void setSunVector(float x, float y, float z);
 			void setSunVectorX(float val);
 			void setSunVectorY(float val);

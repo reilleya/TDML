@@ -224,4 +224,12 @@ namespace TDML
 		else yangle = arctan(dx/dz);
 		return vector3d(xangle, yangle, 0);
 	}
+
+	float TDMLmath::angleBetween(float x1, float y1, float x2, float y2)
+	{
+		float dx = x2-x1;
+		float dy = y2-y1;
+		if(dy>=0) return 180+arctan(dx/dy);
+		else return arctan(dx/dy);
+	}
 }

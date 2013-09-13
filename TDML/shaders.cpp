@@ -23,6 +23,7 @@ namespace TDML
 		uniforms.push_back("normalMat");
 		uniforms.push_back("sunVec");
 		uniforms.push_back("projMat");
+		uniforms.push_back("diffuseColor");
 	}
 
 	void shaders::update()
@@ -30,7 +31,6 @@ namespace TDML
 		if(useShaders)
 		{
 			changeUniform(UNI_USELIGHTING, useLighting);
-			changeUniform(UNI_USETEXTURES, useTextures);
 		}
 	}
 
@@ -43,7 +43,7 @@ namespace TDML
 		Log.output("\tUniforms:\n");
 		for(int uni = 0; uni < (int)uniforms.size(); uni++)
 		{
-			Log.output("\t\t"); Log.output(uniforms[uni]); Log.output(":"); Log.output((float)uniformIDs[uni]); Log.output("\n");
+			Log.output("\t\t"); Log.output(uniforms[uni]); Log.output(": "); Log.output((float)uniformIDs[uni]); Log.output("\n");
 		}
 	}
 
@@ -168,6 +168,7 @@ namespace TDML
 
 		changeUniform(UNI_USELIGHTING, 0);
 		changeUniform(UNI_USETEXTURES, 1);
+		setDiffuseColor(1.0, 1.0, 1.0, 1.0);
 	}
 
 	void shaders::setUseShaders(bool use)
@@ -202,6 +203,7 @@ namespace TDML
 	void shaders::setUseTextures(bool use)
 	{
 		useTextures = use;
+		changeUniform(UNI_USETEXTURES, useTextures);
 	}
 
 	bool shaders::getUseTextures()
@@ -222,6 +224,11 @@ namespace TDML
 	void shaders::setNormalMat(float mat[])
 	{
 		glUniformMatrix3fv(getUniformID(UNI_NORMALMAT), 1, false, mat);
+	}
+
+	void shaders::setDiffuseColor(float r,float g,float b,float a)
+	{
+		changeUniform(UNI_DIFFCOLOR, r, g, b, a);
 	}
 
 	void shaders::setSunVector(float x, float y, float z)

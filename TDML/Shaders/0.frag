@@ -12,6 +12,7 @@ in vec2 out_t_coo;
 in float out_useLighting; 
 in float out_useTextures;
 in vec3 out_sunVec;
+in vec4 out_diffuseColor;
 
 void main()
 {
@@ -26,5 +27,12 @@ void main()
 		color *= max(dot(normalize(out_n_dir), out_sunVec), 0.0);
 		color[3] = alphaval;
 	}
-    gl_FragColor = color;
+	if(out_useTextures==1)
+	{
+		gl_FragColor = color;
+	}
+	else
+	{
+		gl_FragColor = out_diffuseColor;
+	}
 }

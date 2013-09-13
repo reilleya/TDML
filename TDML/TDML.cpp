@@ -520,6 +520,7 @@ namespace TDML
 	log Log;
 	config Config;
 	shaders Shaders;
+	draw2D Draw2D;
 	void (*theirdisplayfunction)();
 	void (*theirupdatefunction)();
 	void (*theirexitfunction)();

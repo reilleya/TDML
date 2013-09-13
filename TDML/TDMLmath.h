@@ -41,5 +41,6 @@ namespace TDML
 			void rotate(vector3d& vector, float angleX, float angleY, float angleZ, int order);
 			vector3d orbit(float x, float y, float z, float distance, float rotation, float inclination);
 			vector3d angleTo(float x1, float y1, float z1, float x2, float y2, float z2);
+			float angleBetween(float x1, float y1, float x2, float y2);
 	};
 }

@@ -50,6 +50,7 @@ using namespace std;
 #define UNI_NORMALMAT 3
 #define UNI_SUNVEC 4
 #define UNI_PROJMAT 5
+#define UNI_DIFFCOLOR 6
 
 //Logging Modes
 #define LOG_CONSOLE 0
@@ -92,6 +93,7 @@ using namespace std;
 #include "object.h"
 #include "terrain.h"
 #include "world.h"
+#include "draw2D.h"
 #include "particle.h"
 #include "particlesystem.h"
 #include "log.h"
@@ -136,6 +138,7 @@ namespace TDML
 	extern log Log;
 	extern config Config;
 	extern shaders Shaders;
+	extern draw2D Draw2D;
 
 	extern void (*theirdisplayfunction)();
 	extern void (*theirupdatefunction)();
