@@ -24,9 +24,9 @@ namespace TDML
 			vector3d operator + (vector3d v2);
 			void operator += (vector3d v2);
 			vector3d operator - (vector3d v2);
-			float operator * (vector3d v2);
-			vector3d operator * (float s);
-			vector3d operator ^ (vector3d v2);
+			float operator * (vector3d v2); //Dot Product
+			vector3d operator * (float s); //Scalar Product
+			vector3d operator ^ (vector3d v2); //Cross Product
 			float magnitude();
 			float angle_to(vector3d v2);
 			void normalize();

@@ -228,7 +228,7 @@ namespace TDML
 
 	void shaders::setDiffuseColor(float r,float g,float b,float a)
 	{
-		changeUniform(UNI_DIFFCOLOR, r, g, b, a);
+		changeUniform(UNI_DIFFCOLOR, r/255, g/255, b/255, a/255);
 	}
 
 	void shaders::setSunVector(float x, float y, float z)

@@ -14,7 +14,9 @@ namespace TDML
 	class terrain
 	{
 		private:
+			std::vector<std::vector<point> > points;
 			std::vector<std::vector<float>> heightmap;
+			std::vector<std::vector<vector3d>> anglemap;
 			int dimensions;
 			float scalexz;
 			float scaley;
@@ -31,6 +33,7 @@ namespace TDML
 			float getScaleXZ();
 			float getScaleY();
 			float getHeightMapAt(float x, float z);
+			vector3d getAngleAd(float x, float z);
 			void generateVBO();
 			void display();
 	};

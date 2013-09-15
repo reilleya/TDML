@@ -59,9 +59,7 @@ namespace TDML
 			modelMatrix.loadIdentity();
 		}
 		glEnable(GL_DEPTH_TEST);
-		projMatrix.loadIdentity();
-		projMatrix.perspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.000f, 1000000.0f);
-		Shaders.setProjMat(projMatrix.glForm());
+		resetProjection();
 	}
 
 	void menu::loadTextures()

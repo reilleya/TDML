@@ -95,7 +95,6 @@ namespace TDML
 
 	void terrain::generateVBO()
 	{
-		std::vector<std::vector<point> > points;
 		points.resize(dimensions+1);
 		for(int q = 0; q < dimensions+1; q++)
 		{
@@ -108,6 +107,24 @@ namespace TDML
 				points[v][v0].setPos((float)(v-(dimensions/2))/(dimensions/2), (float)heightmap[v][v0]-128, (float)(v0-(dimensions/2))/(dimensions/2));
 			}
 		}
+		//Anglemap stuff
+		vector3d vec1;
+		vector3d vec2;
+		vector3d cross;
+		for(int v1 = 0; v1 < dimensions-1; v1++)
+		{
+			for(int v2 = 0; v2 < dimensions-1; v2++)
+			{
+				vec1 = vector3d(points[v1+1][v2].getX()-points[v1][v2].getX(), points[v1+1][v2].getY()-points[v1][v2].getY(), points[v1+1][v2].getZ()-points[v1][v2].getZ());
+				vec2 = vector3d(points[v1][v2+1].getX()-points[v1][v2].getX(), points[v1][v2+1].getY()-points[v1][v2].getY(), points[v1][v2+1].getZ()-points[v1][v2].getZ());
+				cross = vec1^vec2;
+				
+				vec1 = vector3d(points[v1+1][v2].getX()-points[v1][v2].getX(), points[v1+1][v2].getY()-points[v1][v2].getY(), points[v1+1][v2].getZ()-points[v1][v2].getZ());
+				vec2 = vector3d(points[v1][v2+1].getX()-points[v1][v2].getX(), points[v1][v2+1].getY()-points[v1][v2].getY(), points[v1][v2+1].getZ()-points[v1][v2].getZ());
+				cross = vec1^vec2;
+			}
+		}
+		//end anglemap stuff
 
 		glGenVertexArrays(1, &vaoid);
 		glBindVertexArray(vaoid);
@@ -131,7 +148,6 @@ namespace TDML
 				normals[(p*18)] = 0;
 				normals[(p*18)+1] = 1;
 				normals[(p*18)+2] = 0;
-				//coords[(p*12)] = 0;
 				coords[(p*12)] = (GLfloat)v1/dimensions;
 				coords[(p*12)+1] = TDML::Math.smaller(1, (-((points[v1][v2].getY()-128)/256)));
 
@@ -141,7 +157,6 @@ namespace TDML
 				normals[(p*18)+3] = 0;
 				normals[(p*18)+4] = 1;
 				normals[(p*18)+5] = 0;
-				//coords[(p*12)+2] = 0;
 				coords[(p*12)+2] = (GLfloat)v1/dimensions;
 				coords[(p*12)+3] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
 
@@ -151,7 +166,6 @@ namespace TDML
 				normals[(p*18)+6] = 0;
 				normals[(p*18)+7] = 1;
 				normals[(p*18)+8] = 0;
-				//coords[(p*12)+4] = 1;
 				coords[(p*12)+4] = (GLfloat)(v1+1)/dimensions;
 				coords[(p*12)+5] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
 
@@ -161,7 +175,6 @@ namespace TDML
 				normals[(p*18)+9] = 0;
 				normals[(p*18)+10] = 1;
 				normals[(p*18)+11] = 0;
-				//coords[(p*12)+6] = 1;
 				coords[(p*12)+6] = (GLfloat)(v1+1)/dimensions;
 				coords[(p*12)+7] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
 
@@ -171,7 +184,6 @@ namespace TDML
 				normals[(p*18)+12] = 0;
 				normals[(p*18)+13] = 1;
 				normals[(p*18)+14] = 0;
-				//coords[(p*12)+8] = 0;
 				coords[(p*12)+8] = (GLfloat)v1/dimensions;
 				coords[(p*12)+9] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
 
@@ -181,7 +193,6 @@ namespace TDML
 				normals[(p*18)+15] = 0;
 				normals[(p*18)+16] = 1;
 				normals[(p*18)+17] = 0;
-				//coords[(p*12)+10] = 1;
 				coords[(p*12)+10] = (GLfloat)(v1+1)/dimensions;
 				coords[(p*12)+11] = TDML::Math.larger(0, (-((points[v1+1][v2+1].getY()-128)/256)));
 

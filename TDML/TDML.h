@@ -174,6 +174,7 @@ namespace TDML
 	int getCameraRotationOrder();
 	int getObjectRotationOrder();
 	int invertRotationOrder(int order);
+	void resetProjection();
 
 	void setPause(bool state);
 }

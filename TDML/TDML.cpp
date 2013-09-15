@@ -625,13 +625,7 @@ namespace TDML
 		float h = (float) hi;
 		Window.updateSize(wi, hi);
 		glViewport(0, 0, (GLsizei) w, (GLsizei) h);              
-		/*glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();  
-		gluPerspective(Config.getFOV(), w/h, 1.000f, 1000000.0f);
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();*/
-		projMatrix.perspective(Config.getFOV(), w/h, 1.000f, 1000.0f);
-		Shaders.setProjMat(projMatrix.glForm());
+		resetProjection();
 		Window.updatePos(glutGet(GLUT_WINDOW_X), glutGet(GLUT_WINDOW_Y));
 		running = true;
 	}
@@ -654,11 +648,6 @@ namespace TDML
 		glutCreateWindow("TDML_WINDOW");
 		windowhandle = FindWindow(NULL, TEXT("TDML_WINDOW"));
 		glClearColor(SkyRed, SkyGreen, SkyBlue, 1.0);               
-		/*glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();  
-		gluPerspective(Config.getFOV(), w/h, 1.0f, 10000.0f);*/
-		//projMatrix.perspective(Config.getFOV(), w/h, 1.000f, 1000.0f);
-		//Shaders.setProjMat(projMatrix.glForm());
 		glClearDepth(1.0f);
 		glDepthFunc(GL_LESS);
 		glEnable(GL_DEPTH_TEST);
@@ -667,9 +656,6 @@ namespace TDML
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glewInit();
-		//glEnableClientState(GL_VERTEX_ARRAY);
-		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		//glEnableClientState(GL_NORMAL_ARRAY);
 		Config.reload();
 		if(Shaders.getUseShaders()) 
 		{
@@ -707,12 +693,7 @@ namespace TDML
 	void start()
 	{
 		//Hook for start
-
-		//DON'T DO THIS HERE!!!
-		projMatrix.perspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.000f, 1000000.0f);
-		Shaders.setProjMat(projMatrix.glForm());
-
-
+		resetProjection(); //DON'T DO THIS HERE!!!
 		glutMainLoop();
 	}
 
@@ -808,6 +789,13 @@ namespace TDML
 		case 5:
 			return 1;
 		}
+	}
+
+	void resetProjection()
+	{
+		projMatrix.loadIdentity();
+		projMatrix.perspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.000f, 1000000.0f);
+		Shaders.setProjMat(projMatrix.glForm());
 	}
 	
 	void setPause(bool state)
