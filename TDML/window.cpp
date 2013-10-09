@@ -18,12 +18,12 @@ namespace TDML
 		if(fullscreen) glutFullScreen();
 	}
 
-	int window::getWidth()
+	float window::getWidth()
 	{
 		return width;
 	}
 
-	int window::getHeight()
+	float window::getHeight()
 	{
 		return height;
 	}

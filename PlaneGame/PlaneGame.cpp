@@ -20,8 +20,10 @@ bool dead = false;
 
 bool treeloadedID = false;
 int treeid;
+int treevao;
 bool rockloadedID = false;
 int rockid;
+int rockvao;
 
 string state = "menu";
 
@@ -62,11 +64,13 @@ void load()
 		{
 			newtree.generateVBO();
 			treeid = newtree.getVBOId();
+			treevao = newtree.getVAOId();
 			treeloadedID = true;
 		}
 		else
 		{
 			newtree.setVBOId(treeid);
+			newtree.setVAOId(treevao);
 		}
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
@@ -98,11 +102,13 @@ void load()
 		{
 			newrock.generateVBO();
 			rockid = newrock.getVBOId();
+			rockvao = newrock.getVAOId();
 			rockloadedID = true;
 		}
 		else
 		{
 			newrock.setVBOId(rockid);
+			newrock.setVAOId(rockvao);
 		}
 		World1.addObject(newrock);
 	}

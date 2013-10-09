@@ -662,6 +662,16 @@ namespace TDML
 		vboid = newId;
 	}
 
+	int object::getVAOId()
+	{
+		return vaoid;
+	}
+
+	void object::setVAOId(int newId)
+	{
+		vaoid = newId;
+	}
+
 	float object::getMaxX()
 	{
 		return x+(adjustedmaxx*scalex);

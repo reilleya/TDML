@@ -83,6 +83,7 @@ void animate()
 	//world1.setCamAngle(TDML::Math.angleTo(0,0,0,world1.getCamX(), world1.getCamY(), world1.getCamZ())); 
 	//world1.setCamAngleZ(720*((float)TDML::Input.getMouseX()/(float)TDML::Window.getWidth()));
 	tv.setZangle(TDML::Math.angleBetween(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY()));
+	tv.setXangle(TDML::Math.angleBetween(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY()));
 	TDML::Log.sendOutputBuffer();
 	world1.update();
 	menu1.update();

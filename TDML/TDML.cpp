@@ -22,15 +22,6 @@ namespace TDML
 	unsigned int applastTime = 0;
 	unsigned int apptimeElapsed = 0;
 
-	/*struct behavior
-	{
-		string type;
-		float min;
-		float max;
-		bool repeat;
-		float speed;
-	};*/
-
 	object loadObject(string fileName)
 	{
 		bool cachedFound = false;

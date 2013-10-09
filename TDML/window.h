@@ -22,8 +22,8 @@ namespace TDML
 			void correct();
 
 		public:
-			int getWidth();
-			int getHeight();
+			float getWidth();
+			float getHeight();
 			void setSize(int newWidth, int newHeight);
 			void updateSize(int newWidth, int newHeight);
 			int getXPos();

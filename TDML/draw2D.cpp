@@ -18,13 +18,20 @@ namespace TDML
 		glDisable(GL_DEPTH_TEST);
 
 		projMatrix.loadIdentity();
+		projMatrix.ortho2D(0,0,Window.getWidth(),Window.getHeight());
 		Shaders.setProjMat(projMatrix.glForm());
 
 		modelMatrix.loadIdentity();
+		//modelMatrix.rotate(0, 0, 180+Math.angleBetween(y1/(Window.getHeight()),x1/(Window.getWidth()),y2/(Window.getHeight()),x2/(Window.getWidth())), XYZ);
+		//modelMatrix.scale(Math.distance(x1,y1,0,x2,y2,0)/(Window.getWidth()/2), w/(Window.getHeight()/2), 0);
+		//modelMatrix.translate(((x1/(Window.getWidth()/2))-1), 1-(y1/(Window.getHeight()/2)), 0);
 		modelMatrix.rotate(0, 0, 180+Math.angleBetween(y1/(Window.getHeight()),x1/(Window.getWidth()),y2/(Window.getHeight()),x2/(Window.getWidth())), XYZ);
-		modelMatrix.scale(Math.distance(x1,y1,0,x2,y2,0)/(Window.getWidth()/2), w/(Window.getHeight()/2), 0);
-		modelMatrix.translate(((x1/(Window.getWidth()/2))-1), 1-(y1/(Window.getHeight()/2)), 0);
+		modelMatrix.scale(Math.distance(x1,y1,0,x2,y2,0), w, 0);
+		modelMatrix.translate(x1,y1,0);
 		Shaders.setModelMat(modelMatrix.glForm());
+		/*Log.output(w); Log.output("\n");
+		Log.output((Window.getHeight()/2)); Log.output("\n");
+		Log.output(w/(Window.getHeight()/2)); Log.output("\n");*/
 
 		glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
 		glBindVertexArray(menuvaoid);

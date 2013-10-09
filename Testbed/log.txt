@@ -1,0 +1,40 @@
+Loading Settings!
+Loading world from file: world.wor:
+	Creating OBJ from data file: monkey.tdm | Data length: 18:
+		Loading point data.
+		Not Found!
+			Number of Polys: 3937
+		Loading wireframe data.
+		Loading visible data.
+		Loading framedelay data.
+		Loading position data.
+		Loading angle data.
+		Loading scale data.
+		Loading name.
+		Loading type.
+		Setting filename
+		Loading behaviors.
+			Loading behaviors from: null.beh
+		Loaded behavior data. Parsing...
+		Loading texture data.
+		Loading Material Data from file: monkey.mdf
+			Loading texture image...
+				Checking Cache...
+					Not Found...
+				Loading texture from file: monkey.png
+			Loaded texture image, TexID is 1
+		Object created.
+
+	Adding Object: tv
+		Checking Cache...
+			Not Found...
+Done Loading World!
+
+	Object created.
+
+	Object created.
+
+				Loading texture from file: man.png 
+				Loading texture from file: play.png 
+				Loading texture from file: part.png
+Created particle system

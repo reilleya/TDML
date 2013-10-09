@@ -116,6 +116,8 @@ namespace TDML
 			void generateVBO();
 			int getVBOId();
 			void setVBOId(int newId);
+			int getVAOId();
+			void setVAOId(int newId);
 			std::string& getName();
 			std::string& getType();
 			float getMaxX();
