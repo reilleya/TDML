@@ -49,9 +49,9 @@ namespace TDML
 
 	void menuobject::draw()
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
-		glBindTexture(GL_TEXTURE_2D, texid);
-		glBindVertexArray(menuvaoid);
+		bindBuffer(VBO, menuvboid);
+		bindBuffer(TEX, texid);
+		bindBuffer(VAO, menuvaoid);
 		glDrawArrays(GL_QUADS, 0, 4);
 	}
 

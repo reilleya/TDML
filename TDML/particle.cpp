@@ -41,11 +41,11 @@ namespace TDML
 			modelMatrix.rotate(-World->getCamAngleX(), -World->getCamAngleY(), -World->getCamAngleZ(), invertRotationOrder(crotorder));
 			modelMatrix.rotate(0, 0, zangle, crotorder);
 			Shaders.setModelMat(modelMatrix.glForm());
-			glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
-			glBindTexture(GL_TEXTURE_2D, texid);
-			glBindVertexArray(menuvaoid);
+			bindBuffer(VBO, menuvboid);
+			bindBuffer(TEX, texid);
+			bindBuffer(VAO, menuvaoid);
 			glDrawArrays(GL_QUADS, 0, 4);
-			glBindVertexArray(0);
+			bindBuffer(VAO, 0);
 		}
 	}
 

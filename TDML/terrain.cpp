@@ -93,6 +93,33 @@ namespace TDML
 		}
 	}
 
+	vector3d terrain::getAngleAt(float x, float z)
+	{
+		float nx = x/scalexz;
+		float nz = z/scalexz;
+		nx++;
+		nz++;
+		nx/=2;
+		nz/=2;
+		nx*=dimensions;
+		nz*=dimensions;
+		int roundedNewX = (int)Math.simpleRoundDown(nx);
+		int roundedNewZ = (int)Math.simpleRoundDown(nz);
+		float partx = nx-roundedNewX;
+		float partz = nz-roundedNewZ;
+		if(nx>0 && nx + 1 < dimensions && nz>0 && nz+1 < dimensions)
+		{
+			if(partx+partz>1)
+			{
+				return anglemap[nx][nz][0];
+			}
+			else
+			{
+				return anglemap[nx][nz][1];
+			}
+		}
+	}
+
 	void terrain::generateVBO()
 	{
 		points.resize(dimensions+1);
@@ -107,27 +134,27 @@ namespace TDML
 				points[v][v0].setPos((float)(v-(dimensions/2))/(dimensions/2), (float)heightmap[v][v0]-128, (float)(v0-(dimensions/2))/(dimensions/2));
 			}
 		}
-		//Anglemap stuff
+
 		vector3d vec1;
 		vector3d vec2;
-		vector3d cross;
 		for(int v1 = 0; v1 < dimensions-1; v1++)
 		{
+			anglemap.resize(anglemap.size()+1);
 			for(int v2 = 0; v2 < dimensions-1; v2++)
 			{
+				anglemap[v1].resize(anglemap[v1].size()+1);
 				vec1 = vector3d(points[v1+1][v2].getX()-points[v1][v2].getX(), points[v1+1][v2].getY()-points[v1][v2].getY(), points[v1+1][v2].getZ()-points[v1][v2].getZ());
 				vec2 = vector3d(points[v1][v2+1].getX()-points[v1][v2].getX(), points[v1][v2+1].getY()-points[v1][v2].getY(), points[v1][v2+1].getZ()-points[v1][v2].getZ());
-				cross = vec1^vec2;
+				anglemap[v1][v2].push_back(vec1^vec2);
 				
 				vec1 = vector3d(points[v1+1][v2].getX()-points[v1][v2].getX(), points[v1+1][v2].getY()-points[v1][v2].getY(), points[v1+1][v2].getZ()-points[v1][v2].getZ());
 				vec2 = vector3d(points[v1][v2+1].getX()-points[v1][v2].getX(), points[v1][v2+1].getY()-points[v1][v2].getY(), points[v1][v2+1].getZ()-points[v1][v2].getZ());
-				cross = vec1^vec2;
+				anglemap[v1][v2].push_back(vec1^vec2);
 			}
 		}
-		//end anglemap stuff
 
 		glGenVertexArrays(1, &vaoid);
-		glBindVertexArray(vaoid);
+		bindBuffer(VAO, vaoid);
 
 		glGenBuffers(1, &vboid);
 		GLuint numverts = (dimensions-1)*(dimensions-1)*6;
@@ -199,7 +226,7 @@ namespace TDML
 				p++;
 			}
 		}
-		glBindBuffer(GL_ARRAY_BUFFER, vboid);
+		bindBuffer(VBO, vboid);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*8*numverts, NULL, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*3*numverts, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*3*numverts, sizeof(float)*2*numverts, coords);
@@ -213,7 +240,7 @@ namespace TDML
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
 
-		glBindVertexArray(0);
+		bindBuffer(VAO, 0);
 
 		delete geometry;
 		delete normals;
@@ -222,10 +249,10 @@ namespace TDML
 			
 	void terrain::display()
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, vboid);
-		glBindTexture(GL_TEXTURE_2D, texid);
-		glBindVertexArray(vaoid);
+		bindBuffer(VBO, vboid);
+		bindBuffer(TEX, texid);
+		bindBuffer(VAO, vaoid);
 		glDrawArrays(GL_TRIANGLES, 0, (dimensions-1) * (dimensions-1) * 6);
-		glBindVertexArray(0);
+		bindBuffer(VAO, 0);
 	}
 }

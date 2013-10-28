@@ -33,8 +33,8 @@ namespace TDML
 		Log.output((Window.getHeight()/2)); Log.output("\n");
 		Log.output(w/(Window.getHeight()/2)); Log.output("\n");*/
 
-		glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
-		glBindVertexArray(menuvaoid);
+		bindBuffer(VBO, menuvboid);
+		bindBuffer(VAO, menuvaoid);
 		glDrawArrays(GL_QUADS, 0, 4);
 
 		resetProjection();

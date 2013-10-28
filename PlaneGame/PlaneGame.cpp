@@ -11,6 +11,10 @@ TDML::particlesystem crashSmoke;
 
 float camy = 0;
 
+float camyrot = 0;
+float camxrot = 0;
+bool previouslypressed = false;
+
 float speed = 0.032;
 int framed = 0;
 float zoom = 1.75;
@@ -35,9 +39,9 @@ void spin(TDML::object* me)
 void load()
 {
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
-	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightmap.hgt", "Resources/Common/Textures/height.png", 2500, 2);
+	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
-	for(int t = 0; t < 5000; t++)
+	for(int t = 0; t < 000; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
 		newtree.setMaterial(TDML::loadTexture("Resources/World1/Tree/material.mdf"));
@@ -75,7 +79,7 @@ void load()
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
 	}
-	for(int t = 0; t < 500; t++)
+	for(int t = 0; t < 00; t++)
 	{
 		TDML::object newrock = TDML::loadObject("Resources/World1/Rock/model.tdm");
 		newrock.setMaterial(TDML::loadTexture("Resources/World1/Rock/material.mdf"));
@@ -229,9 +233,32 @@ void animate()
 		World1.setCamX(plane.getX()+(forward.x*zoom*(pow(2, zoomlevel))));
 		World1.setCamY(plane.getY()+(forward.y*zoom*(pow(2, zoomlevel))));
 		World1.setCamZ(plane.getZ()+(forward.z*zoom*(pow(2, zoomlevel))));
-		World1.setCamAngleX(plane.getXangle());
-		World1.setCamAngleY(plane.getYangle()+camy);
+
+		World1.setCamAngleX(plane.getXangle()+camxrot);
+		World1.setCamAngleY(plane.getYangle()+camy+camyrot);
 		World1.setCamAngleZ(plane.getZangle());
+		if(TDML::Input.getMouseKeyState(RIGHTMOUSE))
+		{
+			TDML::Window.hideCursor();
+			TDML::Input.setCenterCursor(true);
+			if(previouslypressed)
+			{
+				camyrot = camyrot+(TDML::Input.getMouseX()-(TDML::Window.getWidth())/2);
+				camxrot = camxrot+(TDML::Input.getMouseY()-(TDML::Window.getHeight())/2);
+			}
+			else
+			{
+				previouslypressed = true;
+				TDML::Input.centerCursor();
+			}
+		}
+		else 
+		{
+			TDML::Input.setCenterCursor(false);
+			TDML::Window.showCursor();
+			previouslypressed = false;
+		}
+
 		if(World1.getHeightMapAt(World1.getCamX(), World1.getCamZ())>World1.getCamY()-0)
 		{
 			World1.setCamY(World1.getHeightMapAt(World1.getCamX(), World1.getCamZ())+0);
@@ -249,7 +276,7 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(LOG_FILE);
+	TDML::Log.setDebugMode(LOG_CONSOLE);
 	TDML::setObjectRotationOrder(ZXY);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);

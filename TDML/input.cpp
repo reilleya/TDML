@@ -27,6 +27,22 @@ namespace TDML
 		for(int mkp = 0; mkp < 5; mkp++) mousekeypresses[mkp] = false;
 		xpos=0;
 		ypos=0;
+		centerPerFrame = false;
+		centerThisFrame = true;
+	}
+
+	void input::update()
+	{
+		Input.resetMouseKeyPressed();
+		Input.resetKeysPressed();
+		if(centerPerFrame)
+		{
+			if(centerThisFrame)
+			{
+				centerCursor();
+			}
+			centerThisFrame = !centerThisFrame;
+		}
 	}
 
 	bool input::getKeyState(char key)
@@ -139,6 +155,16 @@ namespace TDML
 
 	void input::centerCursor()
 	{
-		glutWarpPointer(Window.getWidth()/2, Window.getHeight()/2);
+			glutWarpPointer(Window.getWidth()/2, Window.getHeight()/2);
+	}
+
+	void input::setCenterCursor(bool center)
+	{
+		centerPerFrame = center;
+	}
+
+	bool input::getCenterCursor()
+	{
+		return centerPerFrame;
 	}
 }

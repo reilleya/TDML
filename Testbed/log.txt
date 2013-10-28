@@ -38,3 +38,21 @@ Done Loading World!
 				Loading texture from file: play.png 
 				Loading texture from file: part.png
 Created particle system
+Loading terrain heightmap from file: islandheightsmall.hgt
+	Loading height data
+	Setting properties
+		Setting heightmap
+		Setting dimensions
+		Setting texture
+			Loading texture image
+				Loading texture from file: height.png
+		Setting scale
+	Generating VBO
+Done Loading Terrain
+
+Terrain:
+	Dimensions: 128
+	Scale: 2500,2
+	VBO ID: 3
+	VAO ID: 3
+	Texture ID: 5

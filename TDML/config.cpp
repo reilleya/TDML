@@ -24,20 +24,23 @@ namespace TDML
 
 	void config::reload()
 	{
-		Log.output("Loading Settings!\n");
+		Log.output("Loading Settings...\n");
 		ifstream infile;
 		vector<string> configd(0);
 		string word;
 		infile.open("config.cfg", ios::in);
 		while (infile >> word) 
 		{
-			cout << word << endl;
 			configd.resize(configd.size()+1);
 			configd[configd.size()-1].append(word);
 		}
 		multisample = atof(configd[0].c_str())!=0;
+		Log.output("\tMultisampling: "); Log.output(configd[0]); Log.output("\n");
 		fov = (float) atof(configd[1].c_str());
+		Log.output("\tField of View: "); Log.output(configd[1]); Log.output("\n");
 		Shaders.setShaderPath(configd[2].c_str());
+		Log.output("\tShader Path: "); Log.output(configd[2]); Log.output("\n");
+		Log.output("Loaded Settings!\n");
 	}
 
 	void config::setAA(bool AA)

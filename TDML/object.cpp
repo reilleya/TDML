@@ -49,9 +49,9 @@ namespace TDML
 	{
 		if(visible)
 		{
-			glBindBuffer(GL_ARRAY_BUFFER, vboid);
-			glBindTexture(GL_TEXTURE_2D, material.getID(frame));
-			glBindVertexArray(vaoid);
+			bindBuffer(VBO, vboid);
+			bindBuffer(TEX, material.getID(frame));
+			bindBuffer(VAO, vaoid);
 			if(wireframe) glDrawArrays(GL_LINE_LOOP, 0, npolys*3);
 			else glDrawArrays(GL_TRIANGLES, 0, npolys*3);
 		}
@@ -591,7 +591,7 @@ namespace TDML
 	void object::generateVBO()
 	{
 		glGenVertexArrays(1, &vaoid);
-		glBindVertexArray(vaoid);
+		bindBuffer(VAO, vaoid);
 
 		glGenBuffers(1, &vboid);
 		GLuint numverts = npolys*3;
@@ -630,7 +630,7 @@ namespace TDML
 			coords[(p*6)+4] = material.coords[p][2][0];
 			coords[(p*6)+5] = material.coords[p][2][1];
 		}
-		glBindBuffer(GL_ARRAY_BUFFER, vboid);
+		bindBuffer(VBO, vboid);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*8*numverts, NULL, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*3*numverts, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*3*numverts, sizeof(float)*2*numverts, coords);
@@ -645,7 +645,7 @@ namespace TDML
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
 
-		glBindVertexArray(0);
+		bindBuffer(VAO, 0);
 
 		delete geometry;
 		delete normals;

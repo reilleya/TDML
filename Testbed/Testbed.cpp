@@ -5,9 +5,15 @@ using namespace std;
 TDML::world world1;
 TDML::menu menu1;
 TDML::particlesystem PS1;
+TDML::terrain terrain;
 
 float angy = 0;
 float angx = 0;
+
+float camX = 0;
+float camZ = 0;
+
+bool centering = false;
 //float playVelX=
 
 void playUpdateFunc(TDML::menuobject* me)
@@ -43,47 +49,55 @@ void exit()
 void display ()
 {
 	world1.draw();
-	menu1.draw();
-	TDML::Draw2D.line(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY(), 25, 255,128,0,255);
+	//menu1.draw();
+	//TDML::Draw2D.line(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY(), 25, 255,128,0,255);
 }
 
 void animate()
 {
-	angy+=5;
-	angx+=2.5;
-	//world1.setCamAngleY(world1.getCamAngleY()-(TDML::Input.getMouseX()-(TDML::Window.getWidth()/2)));
+	TDML::Window.hideCursor();
+
 	if(TDML::Input.getKeyPressed('q'))
 	{
 		TDML::stop();
 	}
 	if(TDML::Input.getKeyPressed('l'))
 	{
-		
+		TDML::Window.showCursor();
 	}
 	if(TDML::Input.getKeyPressed('e'))
 	{
 		menu1.dispInfo(); TDML::Log.sendOutputBuffer();
 	}
-	if(TDML::Input.getMouseKeyPressed(WHEELUP))
+
+	if(TDML::Input.getKeyState('w'))
 	{
-		world1.setCamPosition(0, 0, world1.getCamZ()-0.5);
+		camZ+=world1.getAdjustedTime(0.5, 10);
 	}
-	if(TDML::Input.getMouseKeyPressed(WHEELDOWN))
+
+	if(TDML::Input.getKeyState('s'))
 	{
-		world1.setCamPosition(0, 0, world1.getCamZ()+0.5);
+		camZ-=world1.getAdjustedTime(0.5, 10);
 	}
+
+	if(TDML::Input.getKeyState('a'))
+	{
+		camX+=world1.getAdjustedTime(0.5, 10);
+	}
+
+	if(TDML::Input.getKeyState('d'))
+	{
+		camX-=world1.getAdjustedTime(0.5, 10);
+	}
+
 	TDML::object& tv = world1.getObjectRef("tv");
-	//world1.setCamAngleZ(world1.getCamAngleZ()+world1.getAdjustedTime(0.5, 4));
-	//tv.setYangle(tv.getYangle()+world1.getAdjustedTime(0.05, 4));
-	//tv.setScaleY(TDML::Math.larger(0.15, abs(TDML::Math.sin(world1.getTimer()/4.0))));
-	//tv.setPosition(TDML::Math.orbit(0, 0, 0, 3, 720*((float)TDML::Input.getMouseX()/(float)TDML::Window.getWidth()), 720*((float)TDML::Input.getMouseY()/(float)TDML::Window.getHeight())));
-	//tv.setAngle(TDML::Math.angleTo(0,0,0,tv.getX(), tv.getY(), tv.getZ()));
-	//TDML::Input.centerCursor();
-	//world1.setCamPosition(TDML::Math.orbit(0, 0, 0, 3, 720*((float)TDML::Input.getMouseX()/(float)TDML::Window.getWidth()), 0));//720*((float)TDML::Input.getMouseY()/(float)TDML::Window.getHeight())));
-	//world1.setCamAngle(TDML::Math.angleTo(0,0,0,world1.getCamX(), world1.getCamY(), world1.getCamZ())); 
-	//world1.setCamAngleZ(720*((float)TDML::Input.getMouseX()/(float)TDML::Window.getWidth()));
-	tv.setZangle(TDML::Math.angleBetween(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY()));
-	tv.setXangle(TDML::Math.angleBetween(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY()));
+	tv.setPosition(tv.getX(), world1.getHeightMapAt(tv.getX(), tv.getZ()), tv.getZ());
+
+	world1.setCamAngleY(world1.getCamAngleY()+(TDML::Input.getMouseX()-(TDML::Window.getWidth())/2));
+	world1.setCamAngleX(world1.getCamAngleX()+(TDML::Input.getMouseY()-(TDML::Window.getHeight())/2));
+
+	world1.setCamPosition(camX, world1.getHeightMapAt(camX, camZ)+5, camZ);
+
 	TDML::Log.sendOutputBuffer();
 	world1.update();
 	menu1.update();
@@ -92,7 +106,7 @@ void animate()
 int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(LOG_POPUPFILE);
-	TDML::setupAll(&argc, argv, 500, 500, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
+	TDML::setupAll(&argc, argv, 1024, 768, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::Shaders.setUseTextures(true);
@@ -107,13 +121,18 @@ int main(int argc, char** argv)
 				0.25, -0.1, 0.1, //Size
 				1, 20); //Spawn Delay
 	//world1.addParticleSystem(PS1);
+	terrain = TDML::loadTerrain("islandheightsmall.hgt", "height.png", 2500, 2);
+	world1.setTerrain(terrain);
+
 	TDML::object& tv = world1.getObjectRef("tv");
 	//tv.setVisible(false);
 	TDML::menuobject& man = menu1.getObjectRefByName("man");
 	man.setUpdateFunction(manUpdateFunc);
 	world1.setCamPosition(0, 0, 10);
 	//TDML::Shaders.setSunVector(TDML::vector3d(
+	TDML::Input.setCenterCursor(true);
 	TDML::Log.clearOutputBuffer();
+	
 	TDML::start();
 	return 0;
 }

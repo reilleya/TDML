@@ -22,9 +22,12 @@ namespace TDML
 			bool* mousekeypresses;
 			int xpos;
 			int ypos;
+			bool centerPerFrame;
+			bool centerThisFrame;
 
 		public:
 			input();
+			void update();
 			bool getKeyState(char key);
 			bool getSpecialKeyState(int key);
 			bool getKeyPressed(char key);
@@ -43,5 +46,7 @@ namespace TDML
 			void resetKeysPressed();
 			void setCursorPosition(int x, int y);
 			void centerCursor();
+			void setCenterCursor(bool center);
+			bool getCenterCursor();
 	};
 }

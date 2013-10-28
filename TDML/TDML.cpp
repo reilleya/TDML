@@ -377,11 +377,9 @@ namespace TDML
 			unsigned int id = 0;
 			glEnable(GL_TEXTURE_2D);
 			glGenTextures(1, &id);
-			glBindTexture(GL_TEXTURE_2D, id);
+			bindBuffer(TEX, id);
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); //GL_NEAREST = no smoothing
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-			//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 			glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 			glTexImage2D(GL_TEXTURE_2D, 0, 4, u2, v2, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image2[0]);
 			int intid = (int) id; 
@@ -502,6 +500,10 @@ namespace TDML
 	matrix4x4 modelMatrix;
 	matrix4x4 projMatrix;
 
+	int boundVBO;
+	int boundVAO;
+	int boundTex;
+
 	file File;
 	version Version;
 	message Message;
@@ -523,7 +525,7 @@ namespace TDML
 	void setupMenuVBO()
 	{
 		glGenVertexArrays(1, &menuvaoid);
-		glBindVertexArray(menuvaoid);
+		bindBuffer(VAO, menuvaoid);
 
 		glGenBuffers(1, &menuvboid);
 		GLfloat *geometry;
@@ -550,7 +552,7 @@ namespace TDML
 		geometry[11] = 0;
 		coords[6] = 1;
 		coords[7] = 0;
-		glBindBuffer(GL_ARRAY_BUFFER, menuvboid);
+		bindBuffer(VBO, menuvboid);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*20, NULL, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*12, geometry);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(float)*12, sizeof(float)*8, coords);
@@ -562,7 +564,7 @@ namespace TDML
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0); //...Normals... Shouldn't need these... Dummy Placeholder
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(12 * sizeof(GLfloat))); //Texture Coords
 
-		glBindVertexArray(0);
+		bindBuffer(VAO, 0);
 
 		delete geometry;
 		delete coords;
@@ -710,8 +712,7 @@ namespace TDML
 		{
 			Shaders.update();
 			(*theirupdatefunction)();
-			Input.resetMouseKeyPressed();
-			Input.resetKeysPressed();
+			Input.update();
 			glutPostRedisplay();
 			//Hook for updates
 		}
@@ -787,6 +788,50 @@ namespace TDML
 		projMatrix.loadIdentity();
 		projMatrix.perspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.000f, 1000000.0f);
 		Shaders.setProjMat(projMatrix.glForm());
+	}
+
+	void bindBuffer(int type, int id)
+	{
+		switch(type)
+		{
+			case VBO:
+				if(id != boundVBO)
+				{
+					boundVBO = id;
+					glBindBuffer(GL_ARRAY_BUFFER, id);
+				}
+				break;
+			case VAO:
+				if(id != boundVAO)
+				{
+					boundVAO = id;
+					glBindVertexArray(id);
+				}
+				break;
+			case TEX:
+				if(id != boundTex)
+				{
+					boundTex = id;
+					glBindTexture(GL_TEXTURE_2D, id);
+				}
+				break;
+		}
+	}
+
+	int getBoundBuffer(int type)
+	{
+		switch(type)
+		{
+			case VBO:
+				return boundVBO;
+				break;
+			case VAO:
+				return boundVAO;
+				break;
+			case TEX:
+				return boundTex;
+				break;
+		}
 	}
 	
 	void setPause(bool state)

@@ -61,6 +61,11 @@ using namespace std;
 #define LOG_POPUPFILE 5
 #define LOG_FILE 6
 
+//Binds
+#define VBO 0
+#define VAO 1
+#define TEX 2
+
 #define GLEW_STATIC
 
 #include "LodePNG.h" //Warnings are not my problem...
@@ -124,6 +129,10 @@ namespace TDML
 	extern bool running;
 	extern HWND windowhandle;
 
+	extern int boundVBO;
+	extern int boundVAO;
+	extern int boundTex;
+
 	extern int crotorder;
 	extern int orotorder;
 	extern matrix4x4 modelMatrix;
@@ -175,6 +184,9 @@ namespace TDML
 	int getObjectRotationOrder();
 	int invertRotationOrder(int order);
 	void resetProjection();
+
+	void bindBuffer(int type, int id);
+	int getBoundBuffer(int type);
 
 	void setPause(bool state);
 }
