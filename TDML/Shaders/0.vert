@@ -26,7 +26,6 @@ out vec4 out_diffuseColor;
 
 void main()
 {
-	//gl_ProjectionMatrix;
 	gl_Position = projMat * modelMat * gl_Vertex;
 	out_n_dir = normalize(n_dir * normalMat);
 	out_t_coo = t_coo;

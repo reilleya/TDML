@@ -11,7 +11,10 @@ float angy = 0;
 float angx = 0;
 
 float camX = 0;
+float camY = 0;
+float velY = 0;
 float camZ = 0;
+
 
 bool centering = false;
 //float playVelX=
@@ -72,31 +75,49 @@ void animate()
 
 	if(TDML::Input.getKeyState('w'))
 	{
-		camZ+=world1.getAdjustedTime(0.5, 10);
+		camX-=world1.getAdjustedTime(TDML::Math.sin(world1.getCamAngleY()), 10);
+		camZ-=world1.getAdjustedTime(TDML::Math.cos(world1.getCamAngleY()), 10);
 	}
 
 	if(TDML::Input.getKeyState('s'))
 	{
-		camZ-=world1.getAdjustedTime(0.5, 10);
+		camX+=world1.getAdjustedTime(TDML::Math.sin(world1.getCamAngleY()), 10);
+		camZ+=world1.getAdjustedTime(TDML::Math.cos(world1.getCamAngleY()), 10);
 	}
 
 	if(TDML::Input.getKeyState('a'))
 	{
-		camX+=world1.getAdjustedTime(0.5, 10);
+		camX-=world1.getAdjustedTime(TDML::Math.cos(world1.getCamAngleY()), 10);
+		camZ+=world1.getAdjustedTime(TDML::Math.sin(world1.getCamAngleY()), 10);
 	}
 
 	if(TDML::Input.getKeyState('d'))
 	{
-		camX-=world1.getAdjustedTime(0.5, 10);
+		camX+=world1.getAdjustedTime(TDML::Math.cos(world1.getCamAngleY()), 10);
+		camZ-=world1.getAdjustedTime(TDML::Math.sin(world1.getCamAngleY()), 10);
+	}
+
+	if(TDML::Input.getKeyPressed(SPACE))
+	{
+		TDML::Log.output("JUMP\n");
+		velY = 1;
 	}
 
 	TDML::object& tv = world1.getObjectRef("tv");
 	tv.setPosition(tv.getX(), world1.getHeightMapAt(tv.getX(), tv.getZ()), tv.getZ());
 
-	world1.setCamAngleY(world1.getCamAngleY()+(TDML::Input.getMouseX()-(TDML::Window.getWidth())/2));
-	world1.setCamAngleX(world1.getCamAngleX()+(TDML::Input.getMouseY()-(TDML::Window.getHeight())/2));
+	world1.setCamAngleY(world1.getCamAngleY()-(TDML::Input.getMouseX()-(TDML::Window.getWidth())/2));
+	world1.setCamAngleX(world1.getCamAngleX()-(TDML::Input.getMouseY()-(TDML::Window.getHeight())/2));
 
-	world1.setCamPosition(camX, world1.getHeightMapAt(camX, camZ)+5, camZ);
+	velY -= world1.getAdjustedTime(0.05, 10);
+	camY += velY;
+	if(camY-1<world1.getHeightMapAt(camX, camZ))
+	{
+		velY = 0;
+		camY = world1.getHeightMapAt(camX, camZ)+1;
+	}
+
+	world1.setCamPosition(camX, camY, camZ);
 
 	TDML::Log.sendOutputBuffer();
 	world1.update();
@@ -105,23 +126,23 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(LOG_POPUPFILE);
-	TDML::setupAll(&argc, argv, 1024, 768, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
+	TDML::Log.setDebugMode(LOG_CONSOLEFILE);
+	TDML::setupAll(&argc, argv, 1920, 1080, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::Shaders.setUseTextures(true);
 	TDML::enableCulling(false);
 	world1 = TDML::loadWorld("world.wor");
 	menu1 = TDML::loadMenu("test.mnu");
-	PS1 = TDML::particlesystem("ps1", "part.png", //image
+	PS1 = TDML::particlesystem("ps1", "newsmoke.png", //image
 				TDML::vector3d(0,0,0), TDML::vector3d(-0.5,-0.5,-0.5), TDML::vector3d(0.5,0.5,0.5),//pos
 				TDML::vector3d(0.0000,0.0005,0.0000), TDML::vector3d(-0.00015,-0.0005,-0.00015), TDML::vector3d(0.00015,0.0005,0.00015),//dir
 				TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//accel
 				5000, -2500, 5000,//Life
-				0.25, -0.1, 0.1, //Size
-				1, 20); //Spawn Delay
-	//world1.addParticleSystem(PS1);
-	terrain = TDML::loadTerrain("islandheightsmall.hgt", "height.png", 2500, 2);
+				0.15, -0.05, 0.05, //Size
+				1, 50); //Spawn Delay
+	world1.addParticleSystem(PS1);
+	terrain = TDML::loadTerrain("islandheightsmall.hgt", "height.png", 2500, 0.5);
 	world1.setTerrain(terrain);
 
 	TDML::object& tv = world1.getObjectRef("tv");
@@ -132,7 +153,7 @@ int main(int argc, char** argv)
 	//TDML::Shaders.setSunVector(TDML::vector3d(
 	TDML::Input.setCenterCursor(true);
 	TDML::Log.clearOutputBuffer();
-	
+	TDML::Window.setFullscreen(true);
 	TDML::start();
 	return 0;
 }

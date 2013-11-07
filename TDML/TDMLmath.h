@@ -14,6 +14,7 @@ namespace TDML
 	class TDMLmath
 	{
 		public:
+			TDMLmath();
 			float simpleRoundUp(float value);
 			float simpleRoundDown(float value);
 			float round(float value, float interval, float offset);
@@ -31,7 +32,7 @@ namespace TDML
 			float arcsin(float value);
 			float arccos(float value);
 			float arctan(float value);
-			float pi();
+			float pi;
 			void setupRandom();
 			float randomFloat();
 			int randomRangeInt(int min, int max);

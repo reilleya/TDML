@@ -11,6 +11,11 @@ using namespace std;
 
 namespace TDML
 {
+	TDMLmath::TDMLmath()
+	{
+		pi = (float)3.14159265359;
+	}
+
 	float TDMLmath::simpleRoundUp(float value)
 	{
 		return value+(1-fmodf(value,1));
@@ -57,12 +62,12 @@ namespace TDML
 
 	float TDMLmath::radToDegree(float radians)
 	{
-		return (radians*180)/pi();
+		return (radians*180)/pi;
 	}
 
 	float TDMLmath::degreeToRad(float degrees)
 	{
-		return (degrees*pi())/180;
+		return (degrees*pi)/180;
 	}
 
 	float TDMLmath::sin(float degrees)
@@ -108,11 +113,6 @@ namespace TDML
 	float TDMLmath::arctan(float value)
 	{
 		return radToDegree(atan(value));
-	}
-
-	float TDMLmath::pi()
-	{
-		return (float)3.14159265359;
 	}
 
 	float TDMLmath::randomFloat()

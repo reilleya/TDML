@@ -1,4 +1,8 @@
-Loading Settings!
+Loading Settings...
+	Multisampling: 1
+	Field of View: 30
+	Shader Path: E:/TDML/TDML/Shaders
+Loaded Settings!
 Loading world from file: world.wor:
 	Creating OBJ from data file: monkey.tdm | Data length: 18:
 		Loading point data.
@@ -36,7 +40,7 @@ Done Loading World!
 
 				Loading texture from file: man.png 
 				Loading texture from file: play.png 
-				Loading texture from file: part.png
+				Loading texture from file: newsmoke.png
 Created particle system
 Loading terrain heightmap from file: islandheightsmall.hgt
 	Loading height data
@@ -52,7 +56,7 @@ Done Loading Terrain
 
 Terrain:
 	Dimensions: 128
-	Scale: 2500,2
+	Scale: 2500,0.5
 	VBO ID: 3
 	VAO ID: 3
 	Texture ID: 5
