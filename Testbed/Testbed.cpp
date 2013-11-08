@@ -62,7 +62,7 @@ void animate()
 
 	if(TDML::Input.getKeyPressed('q'))
 	{
-		TDML::stop();
+		TDML::exit();
 	}
 	if(TDML::Input.getKeyPressed('l'))
 	{
@@ -127,7 +127,7 @@ void animate()
 int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(LOG_CONSOLEFILE);
-	TDML::setupAll(&argc, argv, 1920, 1080, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
+	TDML::setupAll(&argc, argv, 1280, 720, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
 	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::Shaders.setUseTextures(true);
@@ -153,7 +153,7 @@ int main(int argc, char** argv)
 	//TDML::Shaders.setSunVector(TDML::vector3d(
 	TDML::Input.setCenterCursor(true);
 	TDML::Log.clearOutputBuffer();
-	TDML::Window.setFullscreen(true);
+	//TDML::Window.setFullscreen(true);
 	TDML::start();
 	return 0;
 }

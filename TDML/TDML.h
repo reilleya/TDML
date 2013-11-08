@@ -129,6 +129,10 @@ namespace TDML
 	extern bool running;
 	extern HWND windowhandle;
 
+	extern std::vector<GLuint> allVBO;
+	extern std::vector<GLuint> allVAO;
+	extern std::vector<GLuint> allTex;
+
 	extern int boundVBO;
 	extern int boundVAO;
 	extern int boundTex;
@@ -185,6 +189,7 @@ namespace TDML
 	int invertRotationOrder(int order);
 	void resetProjection();
 
+	int requestBuffer(int type);
 	void bindBuffer(int type, int id);
 	int getBoundBuffer(int type);
 

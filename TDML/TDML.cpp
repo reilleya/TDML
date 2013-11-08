@@ -376,7 +376,7 @@ namespace TDML
 			}
 			unsigned int id = 0;
 			glEnable(GL_TEXTURE_2D);
-			glGenTextures(1, &id);
+			id = requestBuffer(TEX);
 			bindBuffer(TEX, id);
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); //GL_NEAREST = no smoothing
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -500,6 +500,10 @@ namespace TDML
 	matrix4x4 modelMatrix;
 	matrix4x4 projMatrix;
 
+	vector<GLuint> allVBO;
+	vector<GLuint> allVAO;
+	vector<GLuint> allTex;
+
 	int boundVBO;
 	int boundVAO;
 	int boundTex;
@@ -524,10 +528,10 @@ namespace TDML
 
 	void setupMenuVBO()
 	{
-		glGenVertexArrays(1, &menuvaoid);
+		menuvaoid = requestBuffer(VAO);
 		bindBuffer(VAO, menuvaoid);
 
-		glGenBuffers(1, &menuvboid);
+		menuvboid = requestBuffer(VBO);
 		GLfloat *geometry;
 		GLfloat *coords;
 		geometry = new GLfloat[12];
@@ -690,18 +694,6 @@ namespace TDML
 		glutMainLoop();
 	}
 
-	void stop()
-	{
-		//glutDestroyWindow(0);
-		for(unsigned int buf = 0; buf < cachedVBOId.size(); buf++)
-		{
-			glDeleteBuffers(1, &cachedVBOId[buf]);
-		}
-		glutLeaveMainLoop();
-		
-		exit();
-	}
-
 	void update()
 	{
 		apptimeElapsed = glutGet(GLUT_ELAPSED_TIME)-applastTime;
@@ -728,6 +720,24 @@ namespace TDML
 	void exit()
 	{
 		(*theirexitfunction)();
+
+		Shaders.cleanup();
+
+		for(unsigned int clearVBO = 0; clearVBO < allVBO.size(); clearVBO++)
+		{
+			glDeleteBuffers(1, &allVBO[clearVBO]);
+		}
+		for(unsigned int clearVAO = 0; clearVAO < allVAO.size(); clearVAO++)
+		{
+			glDeleteVertexArrays(1, &allVAO[clearVAO]);
+		}
+		for(unsigned int clearTex = 0; clearTex < allTex.size(); clearTex++)
+		{
+			glDeleteTextures(1, &allTex[clearTex]);
+		}
+
+		glutLeaveMainLoop();
+		
 		Log.cleanup();
 	}
 
@@ -788,6 +798,29 @@ namespace TDML
 		projMatrix.loadIdentity();
 		projMatrix.perspective(Config.getFOV(), (float)Window.getWidth()/(float)Window.getHeight(), 1.000f, 1000000.0f);
 		Shaders.setProjMat(projMatrix.glForm());
+	}
+
+	int requestBuffer(int type)
+	{
+		GLuint id;
+		switch(type)
+		{
+			case VBO:
+				glGenBuffers(1, &id);
+				allVBO.push_back(id);
+			break;
+
+			case VAO:
+				glGenVertexArrays(1, &id);
+				allVAO.push_back(id);
+			break;
+
+			case TEX:
+				glGenTextures(1, &id);
+				allTex.push_back(id);
+			break;
+		}
+		return id;
 	}
 
 	void bindBuffer(int type, int id)

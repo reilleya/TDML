@@ -153,10 +153,10 @@ namespace TDML
 			}
 		}
 
-		glGenVertexArrays(1, &vaoid);
+		vaoid = requestBuffer(VAO);
 		bindBuffer(VAO, vaoid);
 
-		glGenBuffers(1, &vboid);
+		vboid = requestBuffer(VBO);
 		GLuint numverts = (dimensions-1)*(dimensions-1)*6;
 		GLfloat *geometry;
 		GLfloat *normals;

@@ -58,5 +58,6 @@ namespace TDML
 			void updateSunVector();
 			void setShaderPath(std::string path);
 			std::string getShaderPath();
+			void cleanup();
 	};
 }

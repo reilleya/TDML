@@ -590,10 +590,10 @@ namespace TDML
 
 	void object::generateVBO()
 	{
-		glGenVertexArrays(1, &vaoid);
+		vaoid = requestBuffer(VAO);
 		bindBuffer(VAO, vaoid);
 
-		glGenBuffers(1, &vboid);
+		vboid = requestBuffer(VBO);
 		GLuint numverts = npolys*3;
 		GLfloat *geometry;
 		GLfloat *normals;

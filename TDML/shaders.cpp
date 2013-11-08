@@ -155,6 +155,10 @@ namespace TDML
 		glAttachShader(programID, fragmentShader);
 
 		glLinkProgram(programID);
+		glDetachShader(programID, vertexShader);
+		glDetachShader(programID, fragmentShader);
+		glDeleteShader(vertexShader);
+		glDeleteShader(fragmentShader);
 		
 		glBindAttribLocation(programID, 0, "v_pos");
 		glBindAttribLocation(programID, 1, "n_dir");
@@ -296,5 +300,10 @@ namespace TDML
 	std::string shaders::getShaderPath()
 	{
 		return shaderPath;
+	}
+
+	void shaders::cleanup()
+	{
+		glDeleteProgram(programID);
 	}
 }
