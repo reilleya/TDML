@@ -181,6 +181,7 @@ namespace TDML
 	void display();
 	void exit();
 
+	extern bool useCulling;
 	void enableCulling(bool state);
 	void setCameraRotationOrder(int order);
 	void setObjectRotationOrder(int order);

@@ -45,7 +45,6 @@ namespace TDML
 			bindBuffer(TEX, texid);
 			bindBuffer(VAO, menuvaoid);
 			glDrawArrays(GL_QUADS, 0, 4);
-			bindBuffer(VAO, 0);
 		}
 	}
 

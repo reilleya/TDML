@@ -52,7 +52,7 @@ namespace TDML
 			bindBuffer(VBO, vboid);
 			bindBuffer(TEX, material.getID(frame));
 			bindBuffer(VAO, vaoid);
-			if(wireframe) glDrawArrays(GL_LINE_LOOP, 0, npolys*3);
+			if(wireframe) glDrawArrays(GL_LINES, 0, npolys*3);
 			else glDrawArrays(GL_TRIANGLES, 0, npolys*3);
 		}
 	}

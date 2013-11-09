@@ -118,15 +118,21 @@ namespace TDML
 	void particlesystem::display(world* World)
 	{
 		glDepthMask(false);
+		glDisable(GL_CULL_FACE);
 		for(int n = 0; n<nparts; n++)
 		{
 			modelMatrix.loadIdentity();
 			modelMatrix.rotate(World->getCamAngleX(), World->getCamAngleY(), World->getCamAngleZ(), crotorder);
 			modelMatrix.translate(-World->getCamX(), -World->getCamY(), -World->getCamZ());
-			Shaders.setModelMat(modelMatrix.glForm());
+			//Shaders.setModelMat(modelMatrix.glForm());
 			particles[n].display(texid, World);
 		}
 		glDepthMask(true);
+		if(useCulling)
+		{
+			glEnable(GL_CULL_FACE);
+			glCullFace(GL_BACK);
+		}
 	}
 
 	string particlesystem::getName()

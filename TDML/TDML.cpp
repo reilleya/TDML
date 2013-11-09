@@ -741,8 +741,10 @@ namespace TDML
 		Log.cleanup();
 	}
 
+	bool useCulling = false;
 	void enableCulling(bool state)
 	{
+		useCulling = state;
 		if(state)
 		{
 			glEnable(GL_CULL_FACE);

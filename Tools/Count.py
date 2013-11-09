@@ -35,5 +35,5 @@ for (path, dirs, files) in os.walk("E:/TDML/TDML/Shaders"):
                 
 
 print "Total lines of code: "+str(totlength)
-input()
+raw_input()
 #easygui.msgbox("Total lines of code: "+str(totlength), "Count.py")

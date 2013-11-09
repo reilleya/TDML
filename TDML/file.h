@@ -18,5 +18,6 @@ namespace TDML
 
 		public:
 			bool fileExists(std::string fileName);
+			void takeScreenshot();
 	};
 }
