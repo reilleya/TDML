@@ -13,7 +13,6 @@ namespace TDML
 {
 	shaders::shaders()
 	{
-		useShaders = true;
 		useLighting = false;
 		useTextures = true;
 		shadersInitialized = false;
@@ -28,16 +27,12 @@ namespace TDML
 
 	void shaders::update()
 	{
-		if(useShaders)
-		{
-			changeUniform(UNI_USELIGHTING, useLighting);
-		}
+		changeUniform(UNI_USELIGHTING, useLighting);
 	}
 
 	void shaders::dispInfo()
 	{
 		Log.output("Shaders: ");
-		Log.output("\tUsing Shaders: "); Log.output(useShaders); Log.output("\n");
 		Log.output("\tUsing Lighting: "); Log.output(useLighting); Log.output("\n");
 		Log.output("\tShaders Initialized: "); Log.output(shadersInitialized); Log.output("\n");
 		Log.output("\tUniforms:\n");
@@ -175,16 +170,6 @@ namespace TDML
 		setDiffuseColor(1.0, 1.0, 1.0, 1.0);
 	}
 
-	void shaders::setUseShaders(bool use)
-	{
-		useShaders = use;
-	}
-
-	bool shaders::getUseShaders()
-	{
-		return useShaders;
-	}
-
 	void shaders::setupLighting()
 	{
 		changeUniform(UNI_USELIGHTING, 1);
@@ -193,10 +178,6 @@ namespace TDML
 	void shaders::setUseLighting(bool use)
 	{
 		useLighting = use;
-		if(use)
-		{
-			useShaders = true;
-		}
 	}
 
 	bool shaders::getUseLighting()

@@ -54,6 +54,7 @@ void exit()
 void display ()
 {
 	world1.draw();
+	//TDML::Draw3D.cube(0, 0, -10, 0, 0, 0, 4, 4, 4, 255, 0, 0, 255);
 	//menu1.draw();
 	//TDML::Draw2D.line(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY(), 25, 255,128,0,255);
 }
@@ -112,6 +113,7 @@ void animate()
 	}
 
 	TDML::object& tv = world1.getObjectRef("tv");
+	tv.setYangle(tv.getYangle()+0.5);
 	tv.setPosition(tv.getX(), world1.getHeightMapAt(tv.getX(), tv.getZ())+0.5, tv.getZ());
 
 	if(!TDML::Input.getKeyState('n'))
@@ -155,7 +157,6 @@ int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(LOG_CONSOLEFILE);
 	TDML::setupAll(&argc, argv, 1280, 720, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
-	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::Shaders.setUseTextures(true);
 	TDML::enableCulling(true);
@@ -173,6 +174,7 @@ int main(int argc, char** argv)
 	world1.setTerrain(terrain);
 
 	TDML::object& tv = world1.getObjectRef("tv");
+	//tv.set
 	//tv.setWireframe(true);
 	//tv.setVisible(false);
 	TDML::menuobject& man = menu1.getObjectRefByName("man");

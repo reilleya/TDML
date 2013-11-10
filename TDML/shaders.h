@@ -18,7 +18,6 @@ namespace TDML
 			std::vector<std::string> uniforms;
 			std::vector<GLuint> uniformIDs;
 			vector3d sunVec;
-			bool useShaders;
 			bool shadersInitialized;
 			bool useLighting;
 			bool useTextures;
@@ -35,8 +34,6 @@ namespace TDML
 			void update();
 			void dispInfo();
 			void setupShaders();
-			void setUseShaders(bool use);
-			bool getUseShaders();
 			void setupLighting();
 			void setUseLighting(bool use);
 			bool getUseLighting();

@@ -39,9 +39,9 @@ void spin(TDML::object* me)
 void load()
 {
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
-	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/islandheightsmall.hgt", "Resources/Common/Textures/height.png", 2500, 2);
+	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/Smooth.hgt", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
-	for(int t = 0; t < 5000; t++)
+	for(int t = 0; t < 000; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Resources/World1/Tree/model.tdm");
 		newtree.setMaterial(TDML::loadTexture("Resources/World1/Tree/material.mdf"));
@@ -79,7 +79,7 @@ void load()
 		newtree.setUpdateFunction(spin);
 		World1.addObject(newtree);
 	}
-	for(int t = 0; t < 500; t++)
+	for(int t = 0; t < 00; t++)
 	{
 		TDML::object newrock = TDML::loadObject("Resources/World1/Rock/model.tdm");
 		newrock.setMaterial(TDML::loadTexture("Resources/World1/Rock/material.mdf"));
@@ -164,9 +164,9 @@ void animate()
 				TDML::vector3d(0,0,0), TDML::vector3d(-0.5,-0.5,-0.5), TDML::vector3d(0.5,0.5,0.5),//pos
 				TDML::vector3d(0.0000,0.0005,0.0000), TDML::vector3d(-0.00015,-0.0005,-0.00015), TDML::vector3d(0.00015,0.0005,0.00015),//dir
 				TDML::vector3d(0,0,0), TDML::vector3d(0,0,0), TDML::vector3d(0,0,0),//accel
-				5000, -2500, 5000,//Life
+				7500, -2500, 5000,//Life
 				0.25, -0.1, 0.1, //Size
-				1, 20); //Spawn Delay
+				1, 10); //Spawn Delay
 				crashSmoke.setPos(TDML::vector3d(plane.getX(), plane.getY(), plane.getZ()));
 				World1.addParticleSystem(crashSmoke);
 				//plane.setVisible(false);
@@ -276,12 +276,11 @@ void animate()
 
 int main(int argc, char** argv)
 {
-	TDML::Log.setDebugMode(LOG_CONSOLE);
+	TDML::Log.setDebugMode(LOG_FILE);
 	TDML::setObjectRotationOrder(ZXY);
-	TDML::Shaders.setUseShaders(true);
 	TDML::Shaders.setUseLighting(false);
 	TDML::setupAll(&argc, argv, 1024, 600, "TDML::Airplane", 0.5, 0.8, 1.0, display, animate, exit);
-	TDML::enableCulling(false);
+	TDML::enableCulling(true);
 	MainMenu = TDML::loadMenu("Resources/MainMenu/menu.mnu");
 	//load();
 	TDML::Log.output("Loaded menu\n");

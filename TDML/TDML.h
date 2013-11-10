@@ -99,6 +99,7 @@ using namespace std;
 #include "terrain.h"
 #include "world.h"
 #include "draw2D.h"
+#include "draw3D.h"
 #include "particle.h"
 #include "particlesystem.h"
 #include "log.h"
@@ -152,6 +153,7 @@ namespace TDML
 	extern config Config;
 	extern shaders Shaders;
 	extern draw2D Draw2D;
+	extern draw3D Draw3D;
 
 	extern void (*theirdisplayfunction)();
 	extern void (*theirupdatefunction)();

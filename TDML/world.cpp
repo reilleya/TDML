@@ -11,90 +11,6 @@ using namespace std;
 
 namespace TDML
 {
-	void world::cameraRotate()
-	{
-		switch(crotorder)
-			{
-				case 0:
-					glRotatef(-camxangle, 1, 0, 0);
-					glRotatef(-camyangle, 0, 1, 0);
-					glRotatef(-camzangle, 0, 0, 1);
-					break;
-
-				case 1:
-					glRotatef(-camxangle, 1, 0, 0);
-					glRotatef(-camzangle, 0, 0, 1);
-					glRotatef(-camyangle, 0, 1, 0);
-					break;
-
-				case 2:
-					glRotatef(-camzangle, 0, 0, 1);
-					glRotatef(-camyangle, 0, 1, 0);
-					glRotatef(-camxangle, 1, 0, 0);
-					break;
-
-				case 3:
-					glRotatef(-camzangle, 0, 0, 1);
-					glRotatef(-camxangle, 1, 0, 0);
-					glRotatef(-camyangle, 0, 1, 0);
-					break;
-
-				case 4:
-					glRotatef(-camyangle, 0, 1, 0);
-					glRotatef(-camxangle, 1, 0, 0);
-					glRotatef(-camzangle, 0, 0, 1);
-					break;
-
-				case 5:
-					glRotatef(-camyangle, 0, 1, 0);
-					glRotatef(-camzangle, 0, 0, 1);
-					glRotatef(-camxangle, 1, 0, 0);
-					break;
-			}
-	}
-
-	void world::objectRotate(float x, float y, float z)
-	{
-		switch(orotorder)
-			{
-				case 0:
-					glRotatef(x, 1, 0, 0);
-					glRotatef(y, 0, 1, 0);
-					glRotatef(z, 0, 0, 1);
-					break;
-
-				case 1:
-					glRotatef(x, 1, 0, 0);
-					glRotatef(z, 0, 0, 1);
-					glRotatef(y, 0, 1, 0);
-					break;
-
-				case 2:
-					glRotatef(z, 0, 0, 1);
-					glRotatef(y, 0, 1, 0);
-					glRotatef(x, 1, 0, 0);
-					break;
-
-				case 3:
-					glRotatef(z, 0, 0, 1);
-					glRotatef(x, 1, 0, 0);
-					glRotatef(y, 0, 1, 0);
-					break;
-
-				case 4:
-					glRotatef(y, 0, 1, 0);
-					glRotatef(x, 1, 0, 0);
-					glRotatef(z, 0, 0, 1);
-					break;
-
-				case 5:
-					glRotatef(y, 0, 1, 0);
-					glRotatef(z, 0, 0, 1);
-					glRotatef(x, 1, 0, 0);
-					break;
-			}
-	}
-
 	world::world()
 	{
 		fileName = "";
@@ -178,13 +94,8 @@ namespace TDML
 	void world::draw()
 	{
 		modelMatrix.loadIdentity();
-		//glDrawArrays(GL_LINE_LOOP, 0, 4);
-		//std::cout << camx << endl;
-			//cameraRotate();
-			//glTranslatef(-camx, -camy, -camz);
 		if(hasterrain)
 		{
-				//glScalef(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
 			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 			modelMatrix.translate(-camx, -camy, -camz);
 			modelMatrix.scale(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
@@ -195,12 +106,6 @@ namespace TDML
 			Shaders.setModelMat(modelMatrix.glForm());
 			map.display();
 		}
-
-		/*
-		GLfloat lightpos[] = {0.0, 0.0, 1.0, 0.25};
-		glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
-		*/
-			//glLoadIdentity();
 		modelMatrix.loadIdentity();
 		Shaders.setModelMat(modelMatrix.glForm());
 		//
@@ -209,52 +114,36 @@ namespace TDML
 		
 		for(int obj = 0; obj < (int)nobjs; obj++)
 		{
-				//cameraRotate();
 			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
-				//glTranslatef(-camx, -camy, -camz);
 			modelMatrix.translate(-camx, -camy, -camz);
-				//glTranslatef(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
 			modelMatrix.translate(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
-			//objects[obj].drawBB();
-				//glScalef(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
 			modelMatrix.scale(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
-				//objectRotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle());
 			modelMatrix.rotate(-objects[obj].getXangle(), -objects[obj].getYangle(), -objects[obj].getZangle(), orotorder);
 			matrix3x3 nmat = modelMatrix.rotPart();
-			//nmat = nmat.inverse();
-			//nmat = nmat.transpose();
-			/*matrix4x4 nmat = matrix4x4();
+			/*nmat = nmat.inverse();
+			nmat = nmat.transpose();
+			matrix4x4 nmat = matrix4x4();
 			nmat.rotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle(), orotorder);
 			matrix3x3 nm = nmat.rotPart();
 			nm = nm.inverse();
-			nm = nm.transpose();*/
-			Shaders.setNormalMat(nmat.glForm());
+			nm = nm.transpose();
+			Shaders.setNormalMat(nmat.glForm());*/
 			Shaders.setModelMat(modelMatrix.glForm());
 			Shaders.setProjMat(projMatrix.glForm());
-			//dispModelMatInfo();
 			objects[obj].display();
-				//glLoadIdentity();
+			objects[obj].drawBB();
 			modelMatrix.loadIdentity();
-			//dispModelMatInfo();
-			Shaders.setModelMat(modelMatrix.glForm());
 		}
 
-		//glDisable(GL_DEPTH_TEST);
 		for(int par = 0; par < (int)nparts; par++)
 		{
-				//glLoadIdentity();
 			modelMatrix.loadIdentity();
-				//cameraRotate();
 			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
-				//glTranslatef(-camx, -camy, -camz);
 			modelMatrix.translate(-camx, -camy, -camz);
 			Shaders.setModelMat(modelMatrix.glForm());
 			particlesystems[par].display(this);
-				//glLoadIdentity();
 			modelMatrix.loadIdentity();
 		}
-		//glEnable(GL_DEPTH_TEST);
-		//glLoadIdentity();
 	}
 
 	void world::addObject(object Obj)

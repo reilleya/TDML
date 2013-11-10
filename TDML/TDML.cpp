@@ -518,6 +518,7 @@ namespace TDML
 	config Config;
 	shaders Shaders;
 	draw2D Draw2D;
+	draw3D Draw3D;
 	void (*theirdisplayfunction)();
 	void (*theirupdatefunction)();
 	void (*theirexitfunction)();
@@ -536,26 +537,14 @@ namespace TDML
 		GLfloat *coords;
 		geometry = new GLfloat[12];
 		coords = new GLfloat[8];
-		geometry[0] = 0;
-		geometry[1] = 0;
-		geometry[2] = 0;
-		coords[0] = 0;
-		coords[1] = 0;
-		geometry[3] = 0;
-		geometry[4] = 1;
-		geometry[5] = 0;
-		coords[2] = 0;
-		coords[3] = 1;
-		geometry[6] = 1;
-		geometry[7] = 1;
-		geometry[8] = 0;
-		coords[4] = 1;
-		coords[5] = 1;
-		geometry[9] = 1;
-		geometry[10] = 0;
-		geometry[11] = 0;
-		coords[6] = 1;
-		coords[7] = 0;
+		geometry[0] = 0; geometry[1] = 0; geometry[2] = 0;
+		coords[0] = 0; coords[1] = 0;
+		geometry[3] = 0; geometry[4] = 1; geometry[5] = 0;
+		coords[2] = 0; coords[3] = 1;
+		geometry[6] = 1; geometry[7] = 1; geometry[8] = 0;
+		coords[4] = 1; coords[5] = 1;
+		geometry[9] = 1; geometry[10] = 0; geometry[11] = 0;
+		coords[6] = 1; coords[7] = 0;
 		bindBuffer(VBO, menuvboid);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*20, NULL, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*12, geometry);
@@ -567,8 +556,6 @@ namespace TDML
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); //Position
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0); //...Normals... Shouldn't need these... Dummy Placeholder
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(12 * sizeof(GLfloat))); //Texture Coords
-
-		bindBuffer(VAO, 0);
 
 		delete geometry;
 		delete coords;
@@ -654,11 +641,8 @@ namespace TDML
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glewInit();
 		Config.reload();
-		if(Shaders.getUseShaders()) 
-		{
-			Shaders.setupShaders();
-		}
-		if(Shaders.getUseShaders() && Shaders.getUseLighting())
+		Shaders.setupShaders();
+		if(Shaders.getUseLighting())
 		{
 			Shaders.setupLighting();
 		}
@@ -685,6 +669,7 @@ namespace TDML
 		Math.setupRandom();
 		setupInput();
 		setupMenuVBO();
+		Draw3D.setup();
 	}
 
 	void start()

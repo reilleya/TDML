@@ -98,6 +98,7 @@
   <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="draw2D.h" />
+    <ClInclude Include="draw3D.h" />
     <ClInclude Include="file.h" />
     <ClInclude Include="matrix4x4.h" />
     <ClInclude Include="message.h" />
@@ -127,6 +128,7 @@
   <ItemGroup>
     <ClCompile Include="config.cpp" />
     <ClCompile Include="draw2D.cpp" />
+    <ClCompile Include="draw3D.cpp" />
     <ClCompile Include="file.cpp" />
     <ClCompile Include="matrix4x4.cpp" />
     <ClCompile Include="message.cpp" />

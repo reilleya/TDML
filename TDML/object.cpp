@@ -59,33 +59,10 @@ namespace TDML
 
 	void object::drawBB()
 	{
-		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedminz*scalez);
-			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
-		glEnd();
-
-		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedminz*scalez);
-			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
-		glEnd();
-
-		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedmaxx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
-			glVertex3f(adjustedminx*scalex, adjustedmaxy*scaley, adjustedminz*scalez);
-		glEnd();
-
-		glBegin(GL_LINE_LOOP);
-			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedmaxz*scalez);
-			glVertex3f(adjustedmaxx*scalex, adjustedminy*scaley, adjustedminz*scalez);
-			glVertex3f(adjustedminx*scalex, adjustedminy*scaley, adjustedminz*scalez);
-		glEnd();
+		Draw3D.cube(adjustedmaxx+adjustedminx, adjustedmaxy+adjustedminy, adjustedmaxz+adjustedminz,
+			xangle, yangle, zangle, 
+			adjustedmaxx-adjustedminx, adjustedmaxy-adjustedminy, adjustedmaxz-adjustedminz, 
+			255, 0, 0, 255);
 	}
 
 	void object::update(int time, int timedelta)
