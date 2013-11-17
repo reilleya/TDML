@@ -13,6 +13,7 @@ namespace TDML
 {
 	void draw3D::setup()
 	{
+		//Cube Setup
 		cubeVAO = requestBuffer(VAO);
 		bindBuffer(VAO, cubeVAO);
 
@@ -65,25 +66,105 @@ namespace TDML
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
+		//End cube setup
+		//*****************************************************************
+		//Sphere setup -FIX
+		ballVAO = requestBuffer(VAO);
+		bindBuffer(VAO, ballVAO);
+
+		ballVBO = requestBuffer(VBO);
+		geometry = new GLfloat[468];
+
+		point p = point(0, -1, 0);
+		matrix4x4 rotMat = matrix4x4();
+		for(int rZ = 0; rZ < 1; rZ++)
+		{
+			rotMat.rotate(0,0,(rZ+1)*15,XYZ);
+			p = rotMat.apply(p);
+			geometry[rZ*39] = p.getX(); geometry[(rZ*39)+1] = p.getY(); geometry[(rZ*39)+2] = p.getZ();
+			rotMat.loadIdentity();
+			for(int rY = 1; rY<13; rY++)
+			{
+				rotMat.rotate(0, rY*30, 0, XYZ);
+				p = rotMat.apply(p);
+				geometry[(rZ*39)+(rY*3)] = p.getX(); geometry[(rZ*39)+(rY*3)+1] = p.getY(); geometry[(rZ*39)+(rY*3)+2] = p.getZ();
+				rotMat.loadIdentity();
+			}
+		}
+		bindBuffer(VBO, ballVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*468, geometry, GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); 
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
 		delete geometry;
 	}
 
-	void draw3D::cube(float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a)
+	void draw3D::cube(float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill)
 	{
 		glDisable(GL_CULL_FACE);
-		//modelMatrix.loadIdentity();
+
 		modelMatrix.translate(x,y,z);
-		modelMatrix.scale(xSize, ySize, zSize);
 		modelMatrix.rotate(xAngle, yAngle, zAngle, orotorder);
+		modelMatrix.scale(xSize, ySize, zSize);
+		
 		Shaders.setModelMat(modelMatrix.glForm());
 		Shaders.setUseTextures(false);
 		Shaders.setDiffuseColor(r,g,b,a);
 
 		bindBuffer(VAO, cubeVAO);
 		bindBuffer(VBO, cubeVBO);
-		glDrawArrays(GL_LINES, 0, 24);
+		if(fill) glDrawArrays(GL_TRIANGLE_STRIP, 0, 24);
+		else glDrawArrays(GL_LINES, 0, 24);
 
 		Shaders.setUseTextures(true);
 		glEnable(GL_CULL_FACE);
+	}
+
+	void draw3D::cube(world& World, float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill)
+	{
+		modelMatrix.loadIdentity();
+		modelMatrix.rotate(World.getCamAngleX(), World.getCamAngleY(), World.getCamAngleZ(), crotorder);
+		modelMatrix.translate(-World.getCamX(), -World.getCamY(), -World.getCamZ());
+		modelMatrix.translate(x, y, z);
+		modelMatrix.scale(xSize, ySize, zSize);
+		modelMatrix.rotate(-xAngle, -yAngle, -zAngle, orotorder);
+		cube(0, 0, 0, 0, 0, 0, 1, 1, 1, r, g, b, a, fill);
+	}
+
+	void draw3D::ball(float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill)
+	{
+		glDisable(GL_CULL_FACE);
+
+		modelMatrix.translate(x,y,z);
+		modelMatrix.rotate(xAngle, yAngle, zAngle, orotorder);
+		modelMatrix.scale(xSize, ySize, zSize);
+		
+		Shaders.setModelMat(modelMatrix.glForm());
+		Shaders.setUseTextures(false);
+		Shaders.setDiffuseColor(r,g,b,a);
+
+		bindBuffer(VAO, ballVAO);
+		bindBuffer(VBO, ballVBO);
+		if(fill) glDrawArrays(GL_TRIANGLE_STRIP, 0, 156);
+		else glDrawArrays(GL_LINES, 0, 156);
+
+		Shaders.setUseTextures(true);
+		glEnable(GL_CULL_FACE);
+	}
+
+	void draw3D::ball(world& World, float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill)
+	{
+		modelMatrix.loadIdentity();
+		modelMatrix.rotate(World.getCamAngleX(), World.getCamAngleY(), World.getCamAngleZ(), crotorder);
+		modelMatrix.translate(-World.getCamX(), -World.getCamY(), -World.getCamZ());
+		modelMatrix.translate(x, y, z);
+		modelMatrix.scale(xSize, ySize, zSize);
+		modelMatrix.rotate(-xAngle, -yAngle, -zAngle, orotorder);
+		ball(0, 0, 0, 0, 0, 0, 1, 1, 1, r, g, b, a, fill);
 	}
 }

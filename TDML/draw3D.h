@@ -16,9 +16,14 @@ namespace TDML
 		private:
 			int cubeVBO;
 			int cubeVAO;
+			int ballVBO;
+			int ballVAO;
 
 		public:
 			void setup();
-			void cube(float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a);
+			void cube(float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill);
+			void cube(world& World, float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill);
+			void ball(float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill);
+			void ball(world& World, float x, float y, float z, float xAngle, float yAngle, float zAngle, float xSize, float ySize, float zSize, float r, float g, float b, float a, bool fill);
 	};
 }

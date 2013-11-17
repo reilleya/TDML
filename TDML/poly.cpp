@@ -34,9 +34,7 @@ namespace TDML
 
 	void poly::addPoint(float x,float y,float z, float Nx,float Ny,float Nz)
 	{
-		points[npoints] = new point;
-		points[npoints]->setPos(x,y,z);
-		points[npoints]->setNormals(Nx,Ny,Nz);
+		points[npoints] = new point(x, y, z, Nx, Ny, Nz);
 		npoints++;
 	}
 

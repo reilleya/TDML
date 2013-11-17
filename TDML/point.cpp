@@ -11,16 +11,48 @@ using namespace std;
 
 namespace TDML
 {
+	point::point()
+	{
+		x = 0;
+		y = 0;
+		z = 0;
+		normalx = 0;
+		normaly = 0;
+		normalz = 0;
+	}
+
+	point::point(float nX, float nY, float nZ)
+	{
+		x = nX;
+		y = nY;
+		z = nZ;
+		normalx = 0;
+		normaly = 0;
+		normalz = 0;
+	}
+
+	point::point(float nX, float nY, float nZ, float nnX, float nnY, float nnZ)
+	{
+		x = nX;
+		y = nY;
+		z = nZ;
+		normalx = nnX;
+		normaly = nnY;
+		normalz = nnZ;
+	}
+
 	void point::dispInfo()
 	{
 		Log.output("Point:\n");
 		Log.output("\tCoordinates: "); Log.output(x); Log.output(", "); Log.output(y); Log.output(", "); Log.output(z); Log.output(";\n");
 		Log.output("\tNormal: "); Log.output(normalx); Log.output(", "); Log.output(normaly); Log.output(", "); Log.output(normalz); Log.output(";\n");
 	}
+
 	float point::getX()
 	{
 		return x;
 	}
+
 	void point::setX(float newX)
 	{
 		x = newX;

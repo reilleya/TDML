@@ -54,7 +54,8 @@ void exit()
 void display ()
 {
 	world1.draw();
-	//TDML::Draw3D.cube(0, 0, -10, 0, 0, 0, 4, 4, 4, 255, 0, 0, 255);
+	//TDML::Draw3D.ball(0, 0, -10, 0, 0, 0, 4, 4, 4, 255, 0, 0, 255, false);
+	TDML::Draw3D.cube(world1, 0, -5, -10, 0, 0, 0, 4, 4, 4, 255, 255, 128, 255, true);
 	//menu1.draw();
 	//TDML::Draw2D.line(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY(), 25, 255,128,0,255);
 }
@@ -116,6 +117,15 @@ void animate()
 	tv.setYangle(tv.getYangle()+0.5);
 	tv.setPosition(tv.getX(), world1.getHeightMapAt(tv.getX(), tv.getZ())+0.5, tv.getZ());
 
+	if(TDML::Input.getKeyState('y'))
+	{
+		tv.setDrawBB(true);
+	}
+	else
+	{
+		tv.setDrawBB(false);
+	}
+
 	if(!TDML::Input.getKeyState('n'))
 	{
 		world1.setCamAngleY(world1.getCamAngleY()-(TDML::Input.getMouseX()-(TDML::Window.getWidth())/2));
@@ -132,8 +142,6 @@ void animate()
 
 	velX*=0.90;
 	velZ*=0.90;
-
-	TDML::Log.output(velX); TDML::Log.output(", "); TDML::Log.output(velZ); TDML::Log.output("\n");
 
 	camX+=world1.getAdjustedTime(velX, 10);
 	camZ+=world1.getAdjustedTime(velZ, 10);
@@ -169,7 +177,7 @@ int main(int argc, char** argv)
 				5000, -2500, 5000,//Life
 				0.25, -0.15, 0.15, //Size
 				1, 20); //Spawn Delay
-	world1.addParticleSystem(PS1);
+	//world1.addParticleSystem(PS1);
 	terrain = TDML::loadTerrain("islandheightsmall.hgt", "height.png", 2500, 0.5);
 	world1.setTerrain(terrain);
 

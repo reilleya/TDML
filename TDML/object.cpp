@@ -20,6 +20,7 @@ namespace TDML
 		visible = true;
 		updateFuncSet = false;
 		adjustBB = true;
+		drawingBB = false;
 	}
 
 	void object::dispInfo()
@@ -36,6 +37,7 @@ namespace TDML
 		Log.output("\tDimensions: "); Log.output(xsize); Log.output(", "); Log.output(ysize); Log.output(", "); Log.output(zsize); Log.output("\n");
 		Log.output("\tBehaviours: "); Log.output((float)nbehaviors); Log.output("\n");
 		Log.output("\tAdjust bounding box: "); Log.output(adjustBB); Log.output("\n");
+		Log.output("\tDraw bounding box: "); Log.output(drawingBB); Log.output("\n");
 		Log.output("\tVisible: "); Log.output(visible); Log.output("\n");
 		Log.output("\tWireframe: "); Log.output(wireframe); Log.output("\n");
 		Log.output("\tAnimated Texture framedelay: "); Log.output(framedelay); Log.output("\n");
@@ -62,7 +64,7 @@ namespace TDML
 		Draw3D.cube(adjustedmaxx+adjustedminx, adjustedmaxy+adjustedminy, adjustedmaxz+adjustedminz,
 			xangle, yangle, zangle, 
 			adjustedmaxx-adjustedminx, adjustedmaxy-adjustedminy, adjustedmaxz-adjustedminz, 
-			255, 0, 0, 255);
+			255, 0, 0, 255, false);
 	}
 
 	void object::update(int time, int timedelta)
@@ -262,45 +264,14 @@ namespace TDML
 	void object::recalcBoundingBox()
 	{
 		point* points[8];
-		points[0] = new point();
-		points[0]->setX(maxx);
-		points[0]->setY(maxy);
-		points[0]->setZ(maxz);
-
-		points[1] = new point();
-		points[1]->setX(maxx);
-		points[1]->setY(maxy);
-		points[1]->setZ(minz);
-
-		points[2] = new point();
-		points[2]->setX(maxx);
-		points[2]->setY(miny);
-		points[2]->setZ(maxz);
-
-		points[3] = new point();
-		points[3]->setX(maxx);
-		points[3]->setY(miny);
-		points[3]->setZ(minz);
-
-		points[4] = new point();
-		points[4]->setX(minx);
-		points[4]->setY(maxy);
-		points[4]->setZ(maxz);
-
-		points[5] = new point();
-		points[5]->setX(minx);
-		points[5]->setY(maxy);
-		points[5]->setZ(minz);
-
-		points[6] = new point();
-		points[6]->setX(minx);
-		points[6]->setY(miny);
-		points[6]->setZ(maxz);
-
-		points[7] = new point();
-		points[7]->setX(minx);
-		points[7]->setY(miny);
-		points[7]->setZ(minz);
+		points[0] = new point(maxx, maxy, maxz);
+		points[1] = new point(maxx, maxy, minz);
+		points[2] = new point(maxx, miny, maxz);
+		points[3] = new point(maxx, miny, minz);
+		points[4] = new point(minx, maxy, maxz);
+		points[5] = new point(minx, maxy, minz);
+		points[6] = new point(minx, miny, maxz);
+		points[7] = new point(minx, miny, minz);
 
 		matrix3x3 xrot = matrix3x3();
 		xrot.xRotFromAngle(xangle);
@@ -348,6 +319,16 @@ namespace TDML
 	bool object::getAdjustBB()
 	{
 		return adjustBB;
+	}
+
+	void object::setDrawBB(bool draw)
+	{
+		drawingBB = draw;
+	}
+
+	bool object::getDrawBB()
+	{
+		return drawingBB;
 	}
 
 	void object::createBoundingSphere()

@@ -131,22 +131,10 @@ namespace TDML
 
 	void matrix4x4::loadIdentity()
 	{
-		p11=1;
-		p12=0;
-		p13=0;
-		p14=0;
-		p21=0;
-		p22=1;
-		p23=0;
-		p24=0;
-		p31=0;
-		p32=0;
-		p33=1;
-		p34=0;
-		p41=0;
-		p42=0;
-		p43=0;
-		p44=1;
+		p11=1; p12=0; p13=0; p14=0;
+		p21=0; p22=1; p23=0; p24=0;
+		p31=0; p32=0; p33=1; p34=0;
+		p41=0; p42=0; p43=0; p44=1;
 	}
 
 	void matrix4x4::perspective(float fieldOfView, float aspectRatio, float nearZ, float farZ)
@@ -247,22 +235,10 @@ namespace TDML
 
 	void matrix4x4::copy(matrix4x4& b)
 	{
-		p11=b.p11;
-		p12=b.p12;
-		p13=b.p13;
-		p14=b.p14;
-		p21=b.p21;
-		p22=b.p22;
-		p23=b.p23;
-		p24=b.p24;
-		p31=b.p31;
-		p32=b.p32;
-		p33=b.p33;
-		p34=b.p34;
-		p41=b.p41;
-		p42=b.p42;
-		p43=b.p43;
-		p44=b.p44;
+		p11=b.p11; p12=b.p12; p13=b.p13; p14=b.p14;
+		p21=b.p21; p22=b.p22; p23=b.p23; p24=b.p24;
+		p31=b.p31; p32=b.p32; p33=b.p33; p34=b.p34;
+		p41=b.p41; p42=b.p42; p43=b.p43; p44=b.p44;
 	}
 
 	vector3d matrix4x4::apply(vector3d original)
@@ -276,10 +252,10 @@ namespace TDML
 
 	point matrix4x4::apply(point original)
 	{
-		point temp;
-		temp.setX((p11*original.getX())+(p12*original.getY())+(p13*original.getZ()));
-		temp.setY((p21*original.getX())+(p22*original.getY())+(p23*original.getZ()));
-		temp.setZ((p31*original.getX())+(p32*original.getY())+(p33*original.getZ()));
+		point temp(
+		(p11*original.getX())+(p12*original.getY())+(p13*original.getZ()),
+		(p21*original.getX())+(p22*original.getY())+(p23*original.getZ()),
+		(p31*original.getX())+(p32*original.getY())+(p33*original.getZ()));
 		return temp;
 	}
 

@@ -150,10 +150,10 @@ namespace TDML
 
 	point matrix3x3::apply(point original)
 	{
-		point temp;
-		temp.setX((p11*original.getX())+(p12*original.getY())+(p13*original.getZ()));
-		temp.setY((p21*original.getX())+(p22*original.getY())+(p23*original.getZ()));
-		temp.setZ((p31*original.getX())+(p32*original.getY())+(p33*original.getZ()));
+		point temp(
+		(p11*original.getX())+(p12*original.getY())+(p13*original.getZ()),
+		(p21*original.getX())+(p22*original.getY())+(p23*original.getZ()),
+		(p31*original.getX())+(p32*original.getY())+(p33*original.getZ()));
 		return temp;
 	}
 

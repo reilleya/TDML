@@ -411,40 +411,27 @@ namespace TDML
 			bool textureline = true;
 			while (infile >> word) 
 			{
-				//std::cout << word << endl;
 				if(word=="[")
 				{
-					//std::cout << "\t Expanding Polygon table" << endl;
 					coords.resize(coords.size()+1);
 					coords[coords.size()-1].resize(1);
 				}
 				else if(word=="?")
 				{
-					//std::cout << pointd[0]<<","<<pointd[1]<<","<<pointd[2]<<","<<pointd[3]<<","<<pointd[4]<<","<<pointd[5]<<endl;
-				
 					if(textureline)
 					{
-						//std::cout << "\t Read image file name, setting" << endl;
 						texd.resize(0);
 						textureline = false;
 					}
 					else
 					{
-						//std::cout << "\t Adding point to polygon table" << endl;
-						//std::cout << "\t" << texd[0] << "," << texd[1] << endl;
 						coords[coords.size()-1][coords[coords.size()-1].size()-1].resize(2);
-						//std::cout << "\t\t Resized" << endl;
 						coords[coords.size()-1][coords[coords.size()-1].size()-1][0] = texd[0];
-						//std::cout << "\t\t Added 1" << endl;
 						coords[coords.size()-1][coords[coords.size()-1].size()-1][1] = texd[1];
-						//std::cout << "\t\t Added 2" << endl;
 						coords[coords.size()-1].resize(coords[coords.size()-1].size()+1);
-						//std::cout << "\t Resized point table" << endl;
 						texd.resize(0);
-						//std::cout << "\t Reset coordinate buffer" << endl;
 					}
 					line++;
-					//std::cout << "out" << endl;
 				}
 				else
 				{
@@ -481,7 +468,6 @@ namespace TDML
 					}
 				}
 			}
-			//std::cout << imname << endl;
 			t.coords = coords;
 			return t;
 		}

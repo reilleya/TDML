@@ -22,6 +22,9 @@ namespace TDML
 			float normalz;
 
 		public:
+			point();
+			point(float nX, float nY, float nZ);
+			point(float nX, float nY, float nZ, float nnX, float nnY, float nnZ);
 			void dispInfo();
 			float getX();
 			void setX(float newX);

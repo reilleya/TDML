@@ -131,7 +131,7 @@ namespace TDML
 			Shaders.setModelMat(modelMatrix.glForm());
 			Shaders.setProjMat(projMatrix.glForm());
 			objects[obj].display();
-			objects[obj].drawBB();
+			if(objects[obj].getDrawBB()) objects[obj].drawBB();
 			modelMatrix.loadIdentity();
 		}
 
