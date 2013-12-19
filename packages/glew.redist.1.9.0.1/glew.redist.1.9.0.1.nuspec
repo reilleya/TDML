@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>glew.redist</id>
+    <version>1.9.0.1</version>
+    <title>glew Redist</title>
+    <authors>glew contributors,  Garrett Serack</authors>
+    <owners>glew contributors,  Garrett Serack</owners>
+    <licenseUrl>https://github.com/coapp-packages/glew/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/coapp-packages/glew</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Redistributable components for package 'glew'. This package should only be installed as a dependency. 
+(This is not the package you are looking for).</description>
+    <summary>Redistributable components for for package 'glew'</summary>
+    <releaseNotes />
+    <copyright>Copyright 2013</copyright>
+    <tags>glew native CoApp nativepackage</tags>
+  </metadata>
+</package>

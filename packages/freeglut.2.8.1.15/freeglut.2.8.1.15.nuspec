@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>freeglut</id>
+    <version>2.8.1.15</version>
+    <title>freeglut</title>
+    <authors>freeglut contributors,  Garrett Serack</authors>
+    <owners>freeglut contributors,  Garrett Serack</owners>
+    <licenseUrl>https://github.com/coapp-packages/freeglut/blob/master/COPYING</licenseUrl>
+    <projectUrl>https://github.com/coapp-packages/freeglut</projectUrl>
+    <iconUrl>http://freeglut.sourceforge.net/images/freeglut_logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Freeglut, the Free openGL Utility Toolkit, is meant to be a free alter-
+    native to Mark Kilgard's GLUT library. It is distributed under an X-Consor-
+    tium style license (see COPYING for details), to offer you a chance to use
+    and/or modify the source.
+
+    It makes use of OpenGL, GLU, and pthreads-win32 libraries. The library does
+    not make use of any GLUT code and is not 100% compatible. Code recompilation
+    and/or slight modifications might be required for your applications to work
+    with freeglut.
+	
+	Original Project Location: http://freeglut.sourceforge.net/</description>
+    <summary>Freeglut, the Free openGL Utility Toolkit, is meant to be a free alternative to Mark Kilgard's GLUT library</summary>
+    <releaseNotes />
+    <copyright>Copyright 2013</copyright>
+    <language />
+    <tags>freeglut native CoApp nativepackage</tags>
+    <dependencies>
+      <dependency id="freeglut.redist" version="2.8.1.15" />
+    </dependencies>
+  </metadata>
+</package>

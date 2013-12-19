@@ -89,11 +89,12 @@ namespace TDML
 		}
 		else
 		{
+			Message.errorMessage("Attempted to read terrain height outside of the range of the heightmap.", "Terrain Height Error");
 			return 0;
 		}
 	}
 
-	vector3d terrain::getAngleAt(float x, float z)
+	vector3d& terrain::getAngleAt(float x, float z)
 	{
 		float nx = x/scalexz;
 		float nz = z/scalexz;
@@ -117,6 +118,10 @@ namespace TDML
 			{
 				return anglemap[nx][nz][1];
 			}
+		}
+		else
+		{
+			Message.errorMessage("Attempted to read terrain angle outside of the range of the anglemap.", "Terrain Angle Error");
 		}
 	}
 

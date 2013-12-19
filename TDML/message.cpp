@@ -30,7 +30,7 @@ namespace TDML
 
 	void message::errorMessage(string MessageText, string TitleText)
 	{
-		MessageText+="\nPress 'Cancel' to exit, or 'OK' to attempt to continue.";
+		MessageText+="\n\nPress 'Cancel' to exit, or 'OK' to attempt to continue.";
 		wstring mtemp = wstring(MessageText.begin(), MessageText.end());
 		wstring ttemp = wstring(TitleText.begin(), TitleText.end());
 		int output = MessageBox(windowhandle,  mtemp.c_str(), ttemp.c_str(), MB_OKCANCEL | MB_ICONERROR | MB_APPLMODAL); 

@@ -67,13 +67,14 @@ using namespace std;
 #define TEX 2
 
 #define GLEW_STATIC
+#define FREEGLUT_STATIC
 
 #include "LodePNG.h" //Warnings are not my problem...
 
-#include <glew.h>
-#include <Gl/freeglut.h>
+#include "GL/glew.h"
+#include "GL/freeglut.h"
 #include <gl/gl.h>
-#include <gl/glu.h> 
+#include <gl/glu.h>
 #include <windows.h>
 #include <WinUser.h>
 #include <vector>
@@ -92,7 +93,6 @@ using namespace std;
 #include "matrix4x4.h"
 #include "matrix3x3.h"
 #include "shaders.h"
-#include "transformation.h"
 #include "texture.h"
 #include "poly.h"
 #include "object.h"

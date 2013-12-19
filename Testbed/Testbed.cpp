@@ -107,6 +107,11 @@ void animate()
 	}
 	else TDML::Input.setCenterCursor(true);
 
+	if (TDML::Input.getKeyPressed('l'))
+	{
+		world1.getAngleMapAt(camX, camZ).dispInfo();
+	}
+
 	if(TDML::Input.getKeyPressed(SPACE))
 	{
 		TDML::Log.output("JUMP\n");

@@ -373,7 +373,21 @@ namespace TDML
 		}
 		else
 		{
+			Message.errorMessage("Attempted to read terrain height from a world that doesn't have a terrain object.\n\tWorld: " + fileName, "Terrain Height Error");
 			return 0;
+		}
+	}
+
+	vector3d& world::getAngleMapAt(float x, float z)
+	{
+		if(hasterrain)
+		{
+			return map.getAngleAt(x, z);
+		}
+		else
+		{
+			Message.errorMessage("Attempted to read terrain angle from a world that doesn't have a terrain object.\n\tWorld: " + fileName, "Terrain Angle Error");
+			return vector3d(0, 0, 0);
 		}
 	}
 

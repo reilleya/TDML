@@ -33,7 +33,7 @@ namespace TDML
 			float getScaleXZ();
 			float getScaleY();
 			float getHeightMapAt(float x, float z);
-			vector3d getAngleAt(float x, float z);
+			vector3d& getAngleAt(float x, float z);
 			void generateVBO();
 			void display();
 	};

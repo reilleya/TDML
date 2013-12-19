@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>freeglut.redist</id>
+    <version>2.8.1.15</version>
+    <title>freeglut Redist</title>
+    <authors>freeglut contributors,  Garrett Serack</authors>
+    <owners>freeglut contributors,  Garrett Serack</owners>
+    <licenseUrl>https://github.com/coapp-packages/freeglut/blob/master/COPYING</licenseUrl>
+    <projectUrl>https://github.com/coapp-packages/freeglut</projectUrl>
+    <iconUrl>http://freeglut.sourceforge.net/images/freeglut_logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Redistributable components for package 'freeglut'. This package should only be installed as a dependency. 
+(This is not the package you are looking for).</description>
+    <summary>Redistributable components for for package 'freeglut'</summary>
+    <releaseNotes />
+    <copyright>Copyright 2013</copyright>
+    <tags>freeglut native CoApp nativepackage</tags>
+  </metadata>
+</package>

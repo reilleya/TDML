@@ -1,19 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3D Model Loader", "3D Model Loader\3D Model Loader.vcxproj", "{BC25B0CB-4B3C-4A8B-89C5-F79DA135192C}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TDML", "TDML\TDML.vcxproj", "{43E1D362-D5F4-4F65-9C58-C0C8A574245D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testbed", "Testbed\Testbed.vcxproj", "{E2D50702-478B-462B-BA36-49C3981581F9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneGame", "PlaneGame\PlaneGame.vcxproj", "{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crocodile Game", "Crocodile Game\Crocodile Game.vcxproj", "{3C58DE6D-0C9E-4C61-80CC-8A9035DFF850}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Collision", "Collision\Collision.vcxproj", "{47ADC520-0A45-463C-A186-F6E203C086E0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrateWorld", "CrateWorld\CrateWorld.vcxproj", "{3F41F544-A877-4686-9C93-6985EBF76E09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +15,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BC25B0CB-4B3C-4A8B-89C5-F79DA135192C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{BC25B0CB-4B3C-4A8B-89C5-F79DA135192C}.Debug|Win32.Build.0 = Debug|Win32
-		{BC25B0CB-4B3C-4A8B-89C5-F79DA135192C}.Release|Win32.ActiveCfg = Release|Win32
-		{BC25B0CB-4B3C-4A8B-89C5-F79DA135192C}.Release|Win32.Build.0 = Release|Win32
 		{43E1D362-D5F4-4F65-9C58-C0C8A574245D}.Debug|Win32.ActiveCfg = Debug|Win32
 		{43E1D362-D5F4-4F65-9C58-C0C8A574245D}.Debug|Win32.Build.0 = Debug|Win32
 		{43E1D362-D5F4-4F65-9C58-C0C8A574245D}.Release|Win32.ActiveCfg = Release|Win32
@@ -37,18 +27,6 @@ Global
 		{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}.Debug|Win32.Build.0 = Debug|Win32
 		{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}.Release|Win32.ActiveCfg = Release|Win32
 		{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}.Release|Win32.Build.0 = Release|Win32
-		{3C58DE6D-0C9E-4C61-80CC-8A9035DFF850}.Debug|Win32.ActiveCfg = Debug|Win32
-		{3C58DE6D-0C9E-4C61-80CC-8A9035DFF850}.Debug|Win32.Build.0 = Debug|Win32
-		{3C58DE6D-0C9E-4C61-80CC-8A9035DFF850}.Release|Win32.ActiveCfg = Release|Win32
-		{3C58DE6D-0C9E-4C61-80CC-8A9035DFF850}.Release|Win32.Build.0 = Release|Win32
-		{47ADC520-0A45-463C-A186-F6E203C086E0}.Debug|Win32.ActiveCfg = Debug|Win32
-		{47ADC520-0A45-463C-A186-F6E203C086E0}.Debug|Win32.Build.0 = Debug|Win32
-		{47ADC520-0A45-463C-A186-F6E203C086E0}.Release|Win32.ActiveCfg = Release|Win32
-		{47ADC520-0A45-463C-A186-F6E203C086E0}.Release|Win32.Build.0 = Release|Win32
-		{3F41F544-A877-4686-9C93-6985EBF76E09}.Debug|Win32.ActiveCfg = Debug|Win32
-		{3F41F544-A877-4686-9C93-6985EBF76E09}.Debug|Win32.Build.0 = Debug|Win32
-		{3F41F544-A877-4686-9C93-6985EBF76E09}.Release|Win32.ActiveCfg = Release|Win32
-		{3F41F544-A877-4686-9C93-6985EBF76E09}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

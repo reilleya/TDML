@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>glew</id>
+    <version>1.9.0.1</version>
+    <title>glew</title>
+    <authors>glew contributors,  Garrett Serack</authors>
+    <owners>glew contributors,  Garrett Serack</owners>
+    <licenseUrl>https://github.com/coapp-packages/glew/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/coapp-packages/glew</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library. GLEW provides efficient run-time mechanisms for determining which OpenGL extensions are supported on the target platform. OpenGL core and extension functionality is exposed in a single header file. 
+	
+	Original Project Location: http://glew.sourceforge.net/</description>
+    <summary>The OpenGL Extension Wrangler Library (GLEW)</summary>
+    <releaseNotes />
+    <copyright>Copyright 2013</copyright>
+    <language />
+    <tags>glew native CoApp nativepackage</tags>
+    <dependencies>
+      <dependency id="glew.redist" version="1.9.0.1" />
+    </dependencies>
+  </metadata>
+</package>

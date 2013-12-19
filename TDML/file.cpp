@@ -28,8 +28,9 @@ namespace TDML
 
 	void file::takeScreenshot()
 	{
+		/*
 		GLuint* pixdata;
 		glReadPixels(0, 0, Window.getWidth(), Window.getHeight(), GL_RGBA, GL_INT, (GLvoid*) *pixdata);
-		cout << pixdata << endl;
+		cout << pixdata << endl;*/
 	}
 }
