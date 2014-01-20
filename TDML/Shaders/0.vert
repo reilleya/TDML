@@ -27,10 +27,10 @@ out vec4 out_diffuseColor;
 void main()
 {
 	gl_Position = projMat * modelMat * gl_Vertex;
-	out_n_dir = normalize(n_dir * normalMat);
+	out_n_dir = normalize(normalMat * n_dir);
 	out_t_coo = t_coo;
 	out_useLighting = useLighting;
 	out_useTextures = useTextures;
-	out_sunVec = sunVec;
+	out_sunVec = (sunVec);
 	out_diffuseColor = diffuseColor;
 }

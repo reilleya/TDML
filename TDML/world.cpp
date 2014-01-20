@@ -99,18 +99,14 @@ namespace TDML
 			modelMatrix.rotate(camxangle, camyangle, camzangle, crotorder);
 			modelMatrix.translate(-camx, -camy, -camz);
 			modelMatrix.scale(map.getScaleXZ(), map.getScaleY(), map.getScaleXZ());
-			//matrix3x3 nmat = modelMatrix.rotPart();
+			matrix3x3 nmat;
 			//nmat = nmat.inverse();
 			//nmat = nmat.transpose();
-			//Shaders.setNormalMat(nmat.glForm());
+			Shaders.setNormalMat(nmat.glForm());
 			Shaders.setModelMat(modelMatrix.glForm());
 			map.display();
+			modelMatrix.loadIdentity();
 		}
-		modelMatrix.loadIdentity();
-		Shaders.setModelMat(modelMatrix.glForm());
-		//
-		
-		//
 		
 		for(int obj = 0; obj < (int)nobjs; obj++)
 		{
@@ -119,15 +115,18 @@ namespace TDML
 			modelMatrix.translate(objects[obj].getX(), objects[obj].getY(), objects[obj].getZ());
 			modelMatrix.scale(objects[obj].getScaleX(), objects[obj].getScaleY(), objects[obj].getScaleZ());
 			modelMatrix.rotate(-objects[obj].getXangle(), -objects[obj].getYangle(), -objects[obj].getZangle(), orotorder);
-			matrix3x3 nmat = modelMatrix.rotPart();
-			/*nmat = nmat.inverse();
-			nmat = nmat.transpose();
+			//matrix3x3 nmat = modelMatrix.rotPart();
+			//nmat = nmat.inverse();
+			//nmat = nmat.transpose();
+
 			matrix4x4 nmat = matrix4x4();
-			nmat.rotate(objects[obj].getXangle(), objects[obj].getYangle(), objects[obj].getZangle(), orotorder);
+			nmat.rotate(-objects[obj].getXangle(), -objects[obj].getYangle(), -objects[obj].getZangle(), orotorder);
+			nmat.rotate(-camxangle, -camyangle, -camzangle, crotorder);
 			matrix3x3 nm = nmat.rotPart();
-			nm = nm.inverse();
-			nm = nm.transpose();
-			Shaders.setNormalMat(nmat.glForm());*/
+			//nm = nm.inverse();
+			//nm = nm.transpose();
+			Shaders.setNormalMat(nm.glForm());
+
 			Shaders.setModelMat(modelMatrix.glForm());
 			Shaders.setProjMat(projMatrix.glForm());
 			objects[obj].display();
@@ -365,6 +364,19 @@ namespace TDML
 		}
 	}
 
+	terrain& world::getTerrainRef()
+	{
+		if (hasterrain)
+		{
+			return map;
+		}
+		else
+		{
+			Message.errorMessage("Attempted to get terrain reference from a world that doesn't have a terrain object.\n\tWorld: " + fileName, "Terrain Reference Error");
+			return terrain();
+		}
+	}
+
 	float world::getHeightMapAt(float x, float z)
 	{
 		if(hasterrain)
@@ -388,6 +400,19 @@ namespace TDML
 		{
 			Message.errorMessage("Attempted to read terrain angle from a world that doesn't have a terrain object.\n\tWorld: " + fileName, "Terrain Angle Error");
 			return vector3d(0, 0, 0);
+		}
+	}
+
+	float world::getInclinationAt(float x, float z)
+	{
+		if (hasterrain)
+		{
+			return map.getInclinationAt(x, z);
+		}
+		else
+		{
+			Message.errorMessage("Attempted to read terrain inclination from a world that doesn't have a terrain object.\n\tWorld: " + fileName, "Terrain Inclination Error");
+			return 0;
 		}
 	}
 

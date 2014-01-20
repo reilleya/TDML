@@ -24,7 +24,7 @@ void main()
 	float alphaval = color[3];
 	if(out_useLighting==1)
 	{
-		color *= max(dot(normalize(out_n_dir), out_sunVec), 0.0);
+		color *= max(dot(out_n_dir, out_sunVec), 0.0);
 		color[3] = alphaval;
 	}
 	if(out_useTextures==1)

@@ -73,8 +73,10 @@ namespace TDML
 			void removeParticleSystemById(int id);
 			void removeParticleSystemByName(std::string Name);
 			//vector<object*>* getObjectsById(int* ids);
+			terrain& getTerrainRef();
 			float getHeightMapAt(float x, float z);
 			vector3d& getAngleMapAt(float x, float z);
+			float getInclinationAt(float x, float z);
 			float getObjAttribute(std::string name, std::string attr);
 			void setObjAttribute(std::string name, std::string attr, float value);
 			float getDistance(std::string firstName, std::string secondName);

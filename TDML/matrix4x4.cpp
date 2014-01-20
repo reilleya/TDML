@@ -39,6 +39,15 @@ namespace TDML
 		copy(temp);
 	}
 
+	matrix3x3 matrix4x4::rotPart()
+	{
+		matrix3x3 temp = matrix3x3();
+		temp.p11 = p11; temp.p12 = p12; temp.p13 = p13;
+		temp.p21 = p31; temp.p22 = p22; temp.p23 = p23;
+		temp.p31 = p31; temp.p32 = p32; temp.p33 = p33;
+		return temp;
+	}
+
 	void matrix4x4::rotate(float x, float y, float z, int order)
 	{
 		switch(order)

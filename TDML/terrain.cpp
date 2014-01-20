@@ -125,6 +125,17 @@ namespace TDML
 		}
 	}
 
+	float terrain::getInclinationAt(float x, float z)
+	{
+		vector3d anglem = getAngleAt(x, z);
+		vector3d anglet = vector3d(anglem.x, 0, anglem.z);
+		anglem.dispInfo();
+		anglet.dispInfo();
+		Log.output(anglem*anglet); Log.output("\n");
+		Log.output(anglem.angle_to(anglet)); Log.output("\n");
+		return Math.arccos(((anglem*anglet)/(anglem.magnitude()*anglet.magnitude())));
+	}
+
 	void terrain::generateVBO()
 	{
 		points.resize(dimensions+1);

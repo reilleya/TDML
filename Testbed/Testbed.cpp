@@ -19,6 +19,7 @@ float velZ = 0;
 
 
 bool centering = false;
+bool canJump = true;
 //float playVelX=
 
 void playUpdateFunc(TDML::menuobject* me)
@@ -109,18 +110,27 @@ void animate()
 
 	if (TDML::Input.getKeyPressed('l'))
 	{
-		world1.getAngleMapAt(camX, camZ).dispInfo();
+		TDML::Log.output(world1.getInclinationAt(camX, camZ)); TDML::Log.output("\n");
 	}
 
 	if(TDML::Input.getKeyPressed(SPACE))
 	{
-		TDML::Log.output("JUMP\n");
-		velY = 0.75;
+		if(canJump)
+		{
+			TDML::Log.output("JUMP\n");
+			velY = 0.75;
+			canJump = false;
+		}
 	}
 
 	TDML::object& tv = world1.getObjectRef("tv");
 	tv.setYangle(tv.getYangle()+0.5);
 	tv.setPosition(tv.getX(), world1.getHeightMapAt(tv.getX(), tv.getZ())+0.5, tv.getZ());
+
+	TDML::object& thing = world1.getObjectRef("thing");
+	thing.setZangle(thing.getZangle() + 0.25);
+	thing.setPosition(thing.getX(), world1.getHeightMapAt(thing.getX(), thing.getZ()) + 0.5, thing.getZ());
+
 
 	if(TDML::Input.getKeyState('y'))
 	{
@@ -155,6 +165,7 @@ void animate()
 	camY += velY;
 	if(camY-1<world1.getHeightMapAt(camX, camZ))
 	{
+		canJump = true;
 		velY = 0;
 		camY = world1.getHeightMapAt(camX, camZ)+1;
 	}
@@ -170,7 +181,8 @@ int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(LOG_CONSOLEFILE);
 	TDML::setupAll(&argc, argv, 1280, 720, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
-	TDML::Shaders.setUseLighting(false);
+	TDML::Shaders.setUseLighting(true);
+	TDML::Shaders.setSunVector(TDML::vector3d(0, 1, 0));
 	TDML::Shaders.setUseTextures(true);
 	TDML::enableCulling(true);
 	world1 = TDML::loadWorld("world.wor");
@@ -183,10 +195,18 @@ int main(int argc, char** argv)
 				0.25, -0.15, 0.15, //Size
 				1, 20); //Spawn Delay
 	//world1.addParticleSystem(PS1);
-	terrain = TDML::loadTerrain("islandheightsmall.hgt", "height.png", 2500, 0.5);
+	terrain = TDML::loadTerrain("bump.hgt", "height.png", 2500, 0.5);
 	world1.setTerrain(terrain);
-
+	TDML::matrix3x3 tm = TDML::matrix3x3();
+	tm.p11 = 1; tm.p12 = 4; tm.p13 = 2;
+	tm.p21 = 6; tm.p22 = 2; tm.p23 = 5;
+	tm.p31 = 2; tm.p32 = 4; tm.p33 = 2;
+	tm.dispInfo();
+	TDML::Log.output(tm.determinant()); TDML::Log.output("\n");
+	tm.inverse().dispInfo();
 	TDML::object& tv = world1.getObjectRef("tv");
+	TDML::object& thing = world1.getObjectRef("thing");
+	thing.setY(world1.getTerrainRef().getHeightMapAt(thing.getX(), thing.getZ()));
 	//tv.set
 	//tv.setWireframe(true);
 	//tv.setVisible(false);

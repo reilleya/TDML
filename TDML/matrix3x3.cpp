@@ -33,15 +33,6 @@ namespace TDML
 		Log.output(p31); Log.output(","); Log.output(p32); Log.output(","); Log.output(p33); Log.output("\n");
 	}
 
-	matrix3x3 matrix4x4::rotPart()
-	{
-		matrix3x3 temp = matrix3x3();
-		temp.p11 = p11; temp.p12 = p12; temp.p13 = p13;
-		temp.p21 = p31; temp.p22 = p22; temp.p23 = p23;
-		temp.p31 = p31; temp.p32 = p32; temp.p33 = p33;
-		return temp;
-	}
-
 	matrix3x3 matrix3x3::operator * (matrix3x3 b)
 	{
 		matrix3x3 temp = matrix3x3();
@@ -115,7 +106,7 @@ namespace TDML
 
 	float matrix3x3::determinant()
 	{
-		return ((p11*d2x2(p22,p23,p32,p33))
+		return ((p11*d2x2(p22, p23, p32, p33))
 			   -(p12*d2x2(p21,p23,p31,p33))
 			   +(p13*d2x2(p21,p22,p31,p32)));
 	}
