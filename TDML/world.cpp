@@ -14,8 +14,6 @@ namespace TDML
 	world::world()
 	{
 		fileName = "";
-		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
-		timeElapsed = 0;
 		nobjs=0;
 		nparts=0;
 		camx=0;
@@ -31,8 +29,6 @@ namespace TDML
 	world::world(std::string filename)
 	{
 		fileName = filename;
-		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
-		timeElapsed = 0;
 		nobjs=0;
 		nparts=0;
 		camx=0;
@@ -49,8 +45,6 @@ namespace TDML
 	{
 		Log.output("World:\n");
 		Log.output("\tFilename: "+fileName+"\n");
-		Log.output("\tTime: "); Log.output((float)timer); Log.output("\n");
-		Log.output("\tTime Since Last Frame: "); Log.output(timeElapsed); Log.output("\n");
 		Log.output("\tTerrain: "); Log.output((float)hasterrain); Log.output("\n");
 		Log.output("\tObjects: "); Log.output((float)nobjs); Log.output("\n");
 		Log.output("\tParticle Systems: "); Log.output((float)nparts); Log.output("\n");
@@ -61,34 +55,15 @@ namespace TDML
 
 	void world::update()
 	{
-		timeElapsed = glutGet(GLUT_ELAPSED_TIME)-lastTime;
-		lastTime=(float)glutGet(GLUT_ELAPSED_TIME);
-		timer+=(int)timeElapsed;
-		
 		for(int updater = 0; updater < nparts; updater++)
 		{
-			particlesystems[updater].update(timeElapsed);
+			particlesystems[updater].update();
 		}
 
 		for(int updater = 0; updater < nobjs; updater++)
 		{
-			objects[updater].update(timer, (int)timeElapsed);
+			objects[updater].update();
 		}
-	}
-
-	float world::getTimeDelta()
-	{
-		return timeElapsed;
-	}
-
-	float world::getAdjustedTime(float value, float targetTimeStep)
-	{
-		return value*(timeElapsed/targetTimeStep);
-	}
-
-	unsigned int world::getTimer()
-	{
-		return timer;
 	}
 
 	void world::draw()

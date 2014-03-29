@@ -67,12 +67,12 @@ namespace TDML
 			255, 0, 0, 255, false);
 	}
 
-	void object::update(int time, int timedelta)
+	void object::update()
 	{
 		if(updateFuncSet) updatefunction(this);
 		if(framedelay!=0)
 		{
-			frametime -= timedelta;
+			frametime -= Clock.getTimeDelta();
 			if(frametime <= 0)
 			{
 				if(frame < material.getLastID())
@@ -92,23 +92,23 @@ namespace TDML
 			{
 				if(behaviors[b].repeat)
 				{
-					x = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					x = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					x += behaviors[b].speed * timedelta;
+					x += behaviors[b].speed * Clock.getTimeDelta();
 				}
 			}
 			if(behaviors[b].type=="y")
 			{
 				if(behaviors[b].repeat)
 				{
-					if(!behaviors[b].relative) y = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
-					if(behaviors[b].relative) y += behaviors[b].max * sin(behaviors[b].speed * (float)0.01745 * time);
+					if (!behaviors[b].relative) y = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
+					if (behaviors[b].relative) y += behaviors[b].max * sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer());
 				}
 				else 
 				{
-					y += behaviors[b].speed * timedelta;
+					y += behaviors[b].speed * Clock.getTimeDelta();
 				}
 
 			}
@@ -116,82 +116,82 @@ namespace TDML
 			{
 				if(behaviors[b].repeat)
 				{
-					z = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					z = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					z += behaviors[b].speed * timedelta;
+					z += behaviors[b].speed * Clock.getTimeDelta();
 				}
 			}
 			if(behaviors[b].type=="xangle")
 			{
 				if(behaviors[b].repeat)
 				{
-					xangle = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					xangle = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					xangle += behaviors[b].speed * timedelta;
+					xangle += behaviors[b].speed * Clock.getTimeDelta();
 				}
 				}
 			if(behaviors[b].type=="yangle")
 			{
 				if(behaviors[b].repeat)
 				{
-					yangle = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					yangle = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					yangle += behaviors[b].speed * timedelta;
+					yangle += behaviors[b].speed * Clock.getTimeDelta();
 				}
 			}
 			if(behaviors[b].type=="zangle")
 			{
 				if(behaviors[b].repeat)
 				{
-					zangle = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					zangle = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					zangle += behaviors[b].speed * timedelta;
+					zangle += behaviors[b].speed * Clock.getTimeDelta();
 				}
 			}
 			if(behaviors[b].type=="scalex")
 			{
 				if(behaviors[b].repeat)
 				{
-					scalex = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					scalex = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					scalex += behaviors[b].speed * timedelta;
+					scalex += behaviors[b].speed * Clock.getTimeDelta();
 				}
 			}
 			if(behaviors[b].type=="scaley")
 			{
 				if(behaviors[b].repeat)
 				{
-					scaley = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					scaley = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					scaley += behaviors[b].speed * timedelta;
+					scaley += behaviors[b].speed * Clock.getTimeDelta();
 				}
 			}
 			if(behaviors[b].type=="scalez")
 			{
 				if(behaviors[b].repeat)
 				{
-					scalez = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * time));
+					scalez = behaviors[b].min + behaviors[b].max * abs(sin(behaviors[b].speed * (float)0.01745 * Clock.getTimer()));
 				}
 				else 
 				{
-					scalez += behaviors[b].speed * timedelta;
+					scalez += behaviors[b].speed * Clock.getTimeDelta();
 				}
 			}
 			if(behaviors[b].type=="wireframe")
 			{
-				if(behaviors[b].min>0) behaviors[b].min-=timedelta;
+				if (behaviors[b].min>0) behaviors[b].min -= Clock.getTimeDelta();
 				else
 				{
 					behaviors[b].min = behaviors[b].max;
@@ -200,7 +200,7 @@ namespace TDML
 			}
 			if(behaviors[b].type=="visible")
 			{
-				if(behaviors[b].min>0) behaviors[b].min-=timedelta;
+				if (behaviors[b].min>0) behaviors[b].min -= Clock.getTimeDelta();
 				else
 				{
 						

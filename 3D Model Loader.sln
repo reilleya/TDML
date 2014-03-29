@@ -9,6 +9,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testbed", "Testbed\Testbed.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneGame", "PlaneGame\PlaneGame.vcxproj", "{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bears", "Bears\Bears.vcxproj", "{50AA6ECB-FC0C-4F5D-BE4F-839B51005623}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43E1D362-D5F4-4F65-9C58-C0C8A574245D} = {43E1D362-D5F4-4F65-9C58-C0C8A574245D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +32,10 @@ Global
 		{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}.Debug|Win32.Build.0 = Debug|Win32
 		{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}.Release|Win32.ActiveCfg = Release|Win32
 		{2B3DF93B-91E4-4341-930A-1F3F5E73F01F}.Release|Win32.Build.0 = Release|Win32
+		{50AA6ECB-FC0C-4F5D-BE4F-839B51005623}.Debug|Win32.ActiveCfg = Debug|Win32
+		{50AA6ECB-FC0C-4F5D-BE4F-839B51005623}.Debug|Win32.Build.0 = Debug|Win32
+		{50AA6ECB-FC0C-4F5D-BE4F-839B51005623}.Release|Win32.ActiveCfg = Release|Win32
+		{50AA6ECB-FC0C-4F5D-BE4F-839B51005623}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -88,6 +88,8 @@ using namespace std;
 #include "version.h"
 #include "message.h"
 #include "file.h"
+#include "clock.h"
+#include "frameanimation.h"
 #include "point.h"
 #include "vector3d.h"
 #include "matrix4x4.h"
@@ -154,6 +156,7 @@ namespace TDML
 	extern shaders Shaders;
 	extern draw2D Draw2D;
 	extern draw3D Draw3D;
+	extern clock Clock;
 
 	extern void (*theirdisplayfunction)();
 	extern void (*theirupdatefunction)();

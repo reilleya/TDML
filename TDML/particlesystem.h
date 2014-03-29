@@ -55,7 +55,7 @@ namespace TDML
 				float Size, float SizeMin, float SizeMax,
 				float SpawnDelay, float SpawnQuan
 				);
-			void update(float timedelta);
+			void update();
 			void display(world* World);
 			std::string getName();
 			void setName(std::string Name);

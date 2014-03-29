@@ -17,11 +17,8 @@ namespace TDML
 		private:
 			std::string fileName;
 			bool hasterrain;
-			unsigned int timer;
 			int nobjs;
 			int nparts;
-			float lastTime;
-			float timeElapsed;
 			std::vector<object> objects;
 			std::vector<particlesystem> particlesystems;
 			terrain map;
@@ -37,9 +34,6 @@ namespace TDML
 			world(std::string filename);
 			void dispInfo();
 			void update();
-			float getTimeDelta();
-			float getAdjustedTime(float value, float targetTimeStep);
-			unsigned int getTimer();
 			void draw();
 			void addObject(object Obj);
 			void setTerrain(terrain newterrain);

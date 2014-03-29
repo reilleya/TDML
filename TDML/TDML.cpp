@@ -18,10 +18,6 @@ namespace TDML
 	vector<object> cachedObjs;
 	vector<string> cachedObjName;
 
-	unsigned int appTime = 0;
-	unsigned int applastTime = 0;
-	unsigned int apptimeElapsed = 0;
-
 	object loadObject(string fileName)
 	{
 		bool cachedFound = false;
@@ -505,6 +501,7 @@ namespace TDML
 	shaders Shaders;
 	draw2D Draw2D;
 	draw3D Draw3D;
+	clock Clock;
 	void (*theirdisplayfunction)();
 	void (*theirupdatefunction)();
 	void (*theirexitfunction)();
@@ -667,9 +664,6 @@ namespace TDML
 
 	void update()
 	{
-		apptimeElapsed = glutGet(GLUT_ELAPSED_TIME)-applastTime;
-		applastTime=glutGet(GLUT_ELAPSED_TIME);
-		appTime+=apptimeElapsed;
 		//Log.output(appTime); Log.output("\n");
 		if(running)
 		{
@@ -679,10 +673,12 @@ namespace TDML
 			glutPostRedisplay();
 			//Hook for updates
 		}
+		Clock.update();
 	}
 
 	void display()
 	{
+		Clock.newFrame();
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		(*theirdisplayfunction)();
 		glutSwapBuffers();

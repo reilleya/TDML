@@ -1,5 +1,5 @@
 #include "TDML.h"
-#include <math.h>
+//#include <math.h>
 
 using namespace std;
 
@@ -182,19 +182,19 @@ void animate()
 			}
 			if(TDML::Input.getSpecialKeyState(LEFT)) 
 			{
-				plane.setZangle(plane.getZangle()+0.025*World1.getTimeDelta());
+				plane.setZangle(plane.getZangle()+0.025*TDML::Clock.getTimeDelta());
 			}
 			if(TDML::Input.getSpecialKeyState(RIGHT))
 			{
-				plane.setZangle(plane.getZangle()-0.025*World1.getTimeDelta());
+				plane.setZangle(plane.getZangle() - 0.025*TDML::Clock.getTimeDelta());
 			}
 			if(TDML::Input.getSpecialKeyState(UP))
 			{
-				plane.setXangle(plane.getXangle()+0.02*World1.getTimeDelta());
+				plane.setXangle(plane.getXangle() + 0.02*TDML::Clock.getTimeDelta());
 			}
 			if(TDML::Input.getSpecialKeyState(DOWN))
 			{
-				plane.setXangle(plane.getXangle()-0.02*World1.getTimeDelta());
+				plane.setXangle(plane.getXangle() - 0.02*TDML::Clock.getTimeDelta());
 			}
 			if(TDML::Input.getKeyState('q'))
 			{
@@ -207,9 +207,9 @@ void animate()
 			//plane.setYangle(plane.getYangle()+((plane.getZangle()/5000)*World1.getTimeDelta()));
 			TDML::vector3d forward = TDML::vector3d(0,0,1);
 			TDML::Math.rotate(forward, plane.getXangle(), plane.getYangle(), plane.getZangle(), ZXY);
-			plane.setX(plane.getX()-World1.getAdjustedTime(forward.x, 14));
-			plane.setY(plane.getY()-World1.getAdjustedTime(forward.y, 14));
-			plane.setZ(plane.getZ()-World1.getAdjustedTime(forward.z, 14));
+			plane.setX(plane.getX()-TDML::Clock.getAdjustedTime(forward.x, 14));
+			plane.setY(plane.getY()-TDML::Clock.getAdjustedTime(forward.y, 14));
+			plane.setZ(plane.getZ()-TDML::Clock.getAdjustedTime(forward.z, 14));
 			/*plane.setYangle(plane.getYangle()+TDML::Math.sin(plane.getZangle()/5000));
 			plane.setX(plane.getX()-World1.getTimeDelta()*speed*TDML::Math.sin(plane.getYangle())*TDML::Math.cos(plane.getXangle()));
 			plane.setZ(plane.getZ()-World1.getTimeDelta()*speed*TDML::Math.cos(plane.getYangle())*TDML::Math.cos(plane.getXangle()));
@@ -219,7 +219,7 @@ void animate()
 		else
 		{
 			TDML::Log.output("DEAD");
-			if(zoomlevel<4) zoomlevel+=World1.getAdjustedTime(0.0025, 6);
+			if(zoomlevel<4) zoomlevel+=TDML::Clock.getAdjustedTime(0.0025, 6);
 			if(TDML::Input.getMouseKeyPressed(LEFTMOUSE))
 			{
 				respawn();

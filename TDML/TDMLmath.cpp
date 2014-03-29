@@ -132,7 +132,7 @@ namespace TDML
 
 	void TDMLmath::setupRandom()
 	{
-		srand((unsigned int)time(NULL));
+		srand((unsigned int) time(NULL));
 	}
 
 	bool TDMLmath::randomBool(int percentTrue)

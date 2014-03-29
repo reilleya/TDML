@@ -74,7 +74,7 @@ namespace TDML
 			void dispInfo();
 			void display();
 			void drawBB();
-			void update(int time, int timedelta);
+			void update();
 			void addBehavior(behavior newBehavior);
 			void setMaterial(texture newTexture);
 			void addPoly(poly Polygon);

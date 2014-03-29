@@ -84,11 +84,11 @@ namespace TDML
 		spawning = true;
 	}
 
-	void particlesystem::update(float timedelta)
+	void particlesystem::update()
 	{
-		if(timedelta>=0)
+		if(Clock.getTimeDelta()>=0)
 		{
-			timeTo -= timedelta;
+			timeTo -= Clock.getTimeDelta();
 		}
 		if(timeTo<=0)
 		{
@@ -103,7 +103,7 @@ namespace TDML
 		}
 		for(int n = 0; n<nparts; n++)
 		{
-			if(particles[n].update(this, timedelta)==false)
+			if (particles[n].update(this, Clock.getTimeDelta()) == false)
 			{
 				/*if(nrecyclabes<(nparts*1.5))*/ markRecyclable(n);
 				/*else

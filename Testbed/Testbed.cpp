@@ -158,11 +158,11 @@ void animate()
 	velX*=0.90;
 	velZ*=0.90;
 
-	camX+=world1.getAdjustedTime(velX, 10);
-	camZ+=world1.getAdjustedTime(velZ, 10);
+	camX+=TDML::Clock.getAdjustedTime(velX, 10);
+	camZ+=TDML::Clock.getAdjustedTime(velZ, 10);
 
-	velY -= world1.getAdjustedTime(0.025, 10);
-	camY += velY;
+	velY -= TDML::Clock.getAdjustedTime(0.025, 10);
+	camY += TDML::Clock.getAdjustedTime(velY, 10);
 	if(camY-1<world1.getHeightMapAt(camX, camZ))
 	{
 		canJump = true;
@@ -181,7 +181,7 @@ int main(int argc, char** argv)
 {
 	TDML::Log.setDebugMode(LOG_CONSOLEFILE);
 	TDML::setupAll(&argc, argv, 1280, 720, "3D Model Loader - Shader Testbed", 0.5, 0.8, 1.0, display, animate, exit);
-	TDML::Shaders.setUseLighting(true);
+	TDML::Shaders.setUseLighting(false);
 	TDML::Shaders.setSunVector(TDML::vector3d(0, 1, 0));
 	TDML::Shaders.setUseTextures(true);
 	TDML::enableCulling(true);

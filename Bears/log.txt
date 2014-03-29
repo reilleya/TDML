@@ -1,0 +1,133 @@
+Loading Settings...
+	Multisampling: 1
+	Field of View: 30
+	Shader Path: E:/TDML/TDML/Shaders
+Loaded Settings!
+Loading world from file: world.wor:
+Done Loading World!
+
+Loading terrain heightmap from file: bump.hgt
+	Loading height data
+	Setting properties
+		Setting heightmap
+		Setting dimensions
+		Setting texture
+			Loading texture image
+				Loading texture from file: height.png
+		Setting scale
+	Generating VBO
+Done Loading Terrain
+
+Terrain:
+	Dimensions: 128
+	Scale: 2500,0.5
+	VBO ID: 4
+	VAO ID: 4
+	Texture ID: 1
+JUMP
+JUMP
+JUMP
+JUMP
+60.024
+59.988
+59.952
+59.988
+59.988
+59.952
+59.988
+59.988
+59.988
+60.024
+60.0601
+59.988
+59.952
+59.988
+59.988
+59.988
+59.988
+JUMP
+59.988
+60.0601
+60.0601
+JUMP
+59.988
+59.988
+60.024
+JUMP
+59.988
+59.988
+59.988
+JUMP
+59.988
+60.024
+60.0601
+JUMP
+59.988
+59.988
+59.952
+JUMP
+59.988
+59.952
+59.988
+59.988
+59.988
+59.952
+59.988
+59.952
+59.952
+59.952
+59.952
+59.9161
+59.952
+59.952
+59.988
+59.952
+59.952
+59.952
+59.952
+59.952
+59.952
+59.952
+59.9161
+59.952
+59.952
+59.952
+59.9161
+59.988
+59.952
+59.952
+59.952
+59.9161
+59.952
+59.8802
+59.952
+59.9161
+59.952
+59.9161
+59.988
+59.988
+59.988
+59.988
+59.988
+59.988
+59.988
+59.952
+59.988
+59.988
+59.988
+59.988
+59.952
+59.988
+59.988
+59.988
+59.988
+59.988
+60.0601
+60.024
+60.024
+60.024
+59.988
+59.988
+60.024
+59.988
+59.988
