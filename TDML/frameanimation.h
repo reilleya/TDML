@@ -13,16 +13,24 @@ namespace TDML
 {
 	struct framesequence
 	{
-		
+		std::vector<int> frameIDs;
+		int nFrames;
+		std::string name;
 	};
 
 	class frameanimation
 	{
 		private:
-			int nFrames;
-			std::vector<int> frameIDs;
-
+			std::string filename;
+			std::vector<framesequence> sequences;
+			std::vector<int> texIDs;
+			int currFrame;
+			
 		public:
-			int getFrames();
+			frameanimation();
+			frameanimation(std::string filename);
+			void setSequence(std::string sequence);
+			int getFrame();
+			void update();
 	};
 }

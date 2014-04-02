@@ -60,7 +60,7 @@ namespace TDML
 						pointd[pointd.size()-1] = (float)atof(word.c_str());
 					}
 				}
-				for(int polyg = 0; polyg < (int)polys.size(); polyg++)
+				for(int polyg = 0; polyg < (int)polys.size()-1; polyg++) //-1 is from the "special" poly... let's just load obj's in the future
 				{
 					newobj.addPoly(polys[polyg]);
 				}
@@ -351,33 +351,14 @@ namespace TDML
 			{
 				Log.output("PNG Loading error: "); Log.output(lodepng_error_text(error)); Log.output("\n");
 			}
-			size_t u2 = 1; 
-			while(u2 < width) u2 *= 2;
-			size_t v2 = 1; 
-			while(v2 < height) v2 *= 2;
-		
-			double u3 = (double)width / u2;
-			double v3 = (double)height / v2;
-
-			std::vector<unsigned char> image2(u2 * v2 * 4);
-			for(size_t y = 0; y < height; y++)
-			{
-				for(size_t x = 0; x < width; x++)
-				{
-					for(size_t c = 0; c < 4; c++)
-					{
-						image2[4 * u2 * y + 4 * x + c] = image[4 * width * y + 4 * x + c];
-					}
-				}
-			}
 			unsigned int id = 0;
 			glEnable(GL_TEXTURE_2D);
 			id = requestBuffer(TEX);
 			bindBuffer(TEX, id);
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); //GL_NEAREST = no smoothing
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-			glTexImage2D(GL_TEXTURE_2D, 0, 4, u2, v2, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image2[0]);
+			glTexImage2D(GL_TEXTURE_2D, 0, 4, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image[0]);
 			int intid = (int) id; 
 			return id;
 		}
@@ -817,7 +798,7 @@ namespace TDML
 					glBindTexture(GL_TEXTURE_2D, id);
 				}
 				break;
-		}
+																																				}
 	}
 
 	int getBoundBuffer(int type)
@@ -839,5 +820,36 @@ namespace TDML
 	void setPause(bool state)
 	{
 		running = !state;
+	}
+
+	std::vector<std::string> splitString(std::string str, char split)
+	{
+		std::vector<std::string> splitVec;
+		std::vector<int> startStop;
+		startStop.push_back(0);
+		for (int strpos = 0; strpos < str.length(); strpos++)
+		{
+			if (str[strpos] == split) startStop.push_back(strpos+1);
+		}
+		startStop.push_back(str.length()+1);
+		std::string part;
+		for (int strppos = 0; strppos < startStop.size() - 1; strppos++)
+		{
+			part = "";
+			for (int instrpos = startStop[strppos]; instrpos < startStop[strppos + 1]-1; instrpos++) part += str[instrpos];
+			splitVec.push_back(part);
+		}
+		return splitVec;
+	}
+
+	float strToFloat(std::string str)
+	{
+		return (float)atof(str.c_str());
+	}
+
+	int strToInt(std::string str)
+	{
+		return (int)atoi(str.c_str());
+
 	}
 };

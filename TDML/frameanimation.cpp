@@ -11,5 +11,36 @@
 
 namespace TDML
 {
+	frameanimation::frameanimation()
+	{
+		currFrame = 0;
+	}
 
+	frameanimation::frameanimation(std::string filename)
+	{
+		if (File.fileExists(filename))
+		{
+			ifstream infile;
+			string word;
+			infile.open(filename, ios::in);
+			while (infile >> word)
+			{
+				if (word[0] == '+')
+				{
+					Log.output(word + "\n");
+					Log.output("Sequence!\n");
+					std::vector<std::string> seqPart = splitString(word, '*');
+					Log.output(seqPart[1]+"\n");
+				}
+				else
+				{
+					texIDs.push_back(loadTextureData(word));
+				}
+			}
+		}
+		else
+		{
+			Message.errorMessage("Unable to load animation file with name: "+filename+".", "Animation Error");
+		}
+	}
 }

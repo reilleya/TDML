@@ -57,7 +57,7 @@ void display ()
 	world1.draw();
 	//TDML::Draw3D.ball(0, 0, -10, 0, 0, 0, 4, 4, 4, 255, 0, 0, 255, false);
 	TDML::Draw3D.cube(world1, 0, -5, -10, 0, 0, 0, 4, 4, 4, 255, 255, 128, 255, true);
-	//menu1.draw();
+	menu1.draw();
 	//TDML::Draw2D.line(((float)TDML::Window.getWidth())/2,((float)TDML::Window.getHeight())/2, TDML::Input.getMouseX(), TDML::Input.getMouseY(), 25, 255,128,0,255);
 }
 

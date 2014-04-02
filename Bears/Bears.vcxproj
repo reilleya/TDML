@@ -70,6 +70,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>../TDML;../packages/freeglut.2.8.1.15/build/native/lib/v110/Win32/Release/static;../packages/glew.1.9.0.1/build/native/lib/v110/Win32/Release/static;%(AdditionalLibraryDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

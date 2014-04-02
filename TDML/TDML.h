@@ -200,4 +200,8 @@ namespace TDML
 	int getBoundBuffer(int type);
 
 	void setPause(bool state);
+
+	std::vector<std::string> splitString(std::string str, char split);
+	float strToFloat(std::string str);
+	int strToInt(std::string str);
 }

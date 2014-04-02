@@ -185,59 +185,59 @@ namespace TDML
 		{
 			for(int v2 = 0; v2 < dimensions-1; v2++)
 			{
-				geometry[(p*18)] = points[v1][v2].getX();
-				geometry[(p*18)+1] = points[v1][v2].getY();
-				geometry[(p*18)+2] = points[v1][v2].getZ();
-				normals[(p*18)] = 0;
-				normals[(p*18)+1] = 1;
-				normals[(p*18)+2] = 0;
-				coords[(p*12)] = (GLfloat)v1/dimensions;
-				coords[(p*12)+1] = TDML::Math.smaller(1, (-((points[v1][v2].getY()-128)/256)));
+				geometry[(p * 18)] = points[v1][v2].getX();
+				geometry[(p * 18) + 1] = points[v1][v2].getY();
+				geometry[(p * 18) + 2] = points[v1][v2].getZ();
+				normals[(p * 18)] = 0;
+				normals[(p * 18) + 1] = 1;
+				normals[(p * 18) + 2] = 0;
+				coords[(p * 12)] = (GLfloat)v1 / dimensions;
+				coords[(p * 12) + 1] = TDML::Math.smaller(1, (-((points[v1][v2].getY() - 128) / 256)));
 
-				geometry[(p*18)+3] = points[v1][v2+1].getX();
-				geometry[(p*18)+4] = points[v1][v2+1].getY();
-				geometry[(p*18)+5] = points[v1][v2+1].getZ();
-				normals[(p*18)+3] = 0;
-				normals[(p*18)+4] = 1;
-				normals[(p*18)+5] = 0;
-				coords[(p*12)+2] = (GLfloat)v1/dimensions;
-				coords[(p*12)+3] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
+				geometry[(p * 18) + 3] = points[v1][v2 + 1].getX();
+				geometry[(p * 18) + 4] = points[v1][v2 + 1].getY();
+				geometry[(p * 18) + 5] = points[v1][v2 + 1].getZ();
+				normals[(p * 18) + 3] = 0;
+				normals[(p * 18) + 4] = 1;
+				normals[(p * 18) + 5] = 0;
+				coords[(p * 12) + 2] = (GLfloat)v1 / dimensions;
+				coords[(p * 12) + 3] = TDML::Math.larger(0, (-((points[v1][v2 + 1].getY() - 128) / 256)));
 
-				geometry[(p*18)+6] = points[v1+1][v2].getX();
-				geometry[(p*18)+7] = points[v1+1][v2].getY();
-				geometry[(p*18)+8] = points[v1+1][v2].getZ();
-				normals[(p*18)+6] = 0;
-				normals[(p*18)+7] = 1;
-				normals[(p*18)+8] = 0;
-				coords[(p*12)+4] = (GLfloat)(v1+1)/dimensions;
-				coords[(p*12)+5] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
+				geometry[(p * 18) + 6] = points[v1 + 1][v2].getX();
+				geometry[(p * 18) + 7] = points[v1 + 1][v2].getY();
+				geometry[(p * 18) + 8] = points[v1 + 1][v2].getZ();
+				normals[(p * 18) + 6] = 0;
+				normals[(p * 18) + 7] = 1;
+				normals[(p * 18) + 8] = 0;
+				coords[(p * 12) + 4] = (GLfloat)(v1 + 1) / dimensions;
+				coords[(p * 12) + 5] = TDML::Math.smaller(1, (-((points[v1 + 1][v2].getY() - 128) / 256)));
 
-				geometry[(p*18)+9] = points[v1+1][v2].getX();
-				geometry[(p*18)+10] = points[v1+1][v2].getY();
-				geometry[(p*18)+11] = points[v1+1][v2].getZ();
-				normals[(p*18)+9] = 0;
-				normals[(p*18)+10] = 1;
-				normals[(p*18)+11] = 0;
-				coords[(p*12)+6] = (GLfloat)(v1+1)/dimensions;
-				coords[(p*12)+7] = TDML::Math.smaller(1, (-((points[v1+1][v2].getY()-128)/256)));
+				geometry[(p * 18) + 9] = points[v1 + 1][v2].getX();
+				geometry[(p * 18) + 10] = points[v1 + 1][v2].getY();
+				geometry[(p * 18) + 11] = points[v1 + 1][v2].getZ();
+				normals[(p * 18) + 9] = 0;
+				normals[(p * 18) + 10] = 1;
+				normals[(p * 18) + 11] = 0;
+				coords[(p * 12) + 6] = (GLfloat)(v1 + 1) / dimensions;
+				coords[(p * 12) + 7] = TDML::Math.smaller(1, (-((points[v1 + 1][v2].getY() - 128) / 256)));
 
-				geometry[(p*18)+12] = points[v1][v2+1].getX();
-				geometry[(p*18)+13] = points[v1][v2+1].getY();
-				geometry[(p*18)+14] = points[v1][v2+1].getZ();
-				normals[(p*18)+12] = 0;
-				normals[(p*18)+13] = 1;
-				normals[(p*18)+14] = 0;
-				coords[(p*12)+8] = (GLfloat)v1/dimensions;
-				coords[(p*12)+9] = TDML::Math.larger(0, (-((points[v1][v2+1].getY()-128)/256)));
+				geometry[(p * 18) + 12] = points[v1][v2 + 1].getX();
+				geometry[(p * 18) + 13] = points[v1][v2 + 1].getY();
+				geometry[(p * 18) + 14] = points[v1][v2 + 1].getZ();
+				normals[(p * 18) + 12] = 0;
+				normals[(p * 18) + 13] = 1;
+				normals[(p * 18) + 14] = 0;
+				coords[(p * 12) + 8] = (GLfloat)v1 / dimensions;
+				coords[(p * 12) + 9] = TDML::Math.larger(0, (-((points[v1][v2 + 1].getY() - 128) / 256)));
 
-				geometry[(p*18)+15] = points[v1+1][v2+1].getX();
-				geometry[(p*18)+16] = points[v1+1][v2+1].getY();
-				geometry[(p*18)+17] = points[v1+1][v2+1].getZ();
-				normals[(p*18)+15] = 0;
-				normals[(p*18)+16] = 1;
-				normals[(p*18)+17] = 0;
-				coords[(p*12)+10] = (GLfloat)(v1+1)/dimensions;
-				coords[(p*12)+11] = TDML::Math.larger(0, (-((points[v1+1][v2+1].getY()-128)/256)));
+				geometry[(p * 18) + 15] = points[v1 + 1][v2 + 1].getX();
+				geometry[(p * 18) + 16] = points[v1 + 1][v2 + 1].getY();
+				geometry[(p * 18) + 17] = points[v1 + 1][v2 + 1].getZ();
+				normals[(p * 18) + 15] = 0;
+				normals[(p * 18) + 16] = 1;
+				normals[(p * 18) + 17] = 0;
+				coords[(p * 12) + 10] = (GLfloat)(v1 + 1) / dimensions;
+				coords[(p * 12) + 11] = TDML::Math.larger(0, (-((points[v1 + 1][v2 + 1].getY() - 128) / 256)));
 
 				p++;
 			}
