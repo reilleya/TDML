@@ -149,16 +149,16 @@ int main(int argc, char** argv)
 		newtree.setMaterial(TDML::loadTexture("Tree/wintertree.mdf"));
 		newtree.setX(TDML::Math.randomRangeFloat(-495, 495));
 		newtree.setZ(TDML::Math.randomRangeFloat(-495, 495));
-		newtree.setY(world1.getHeightMapAt(newtree.getX(), newtree.getZ())+0.5);
+		newtree.setY(world1.getHeightMapAt(newtree.getX(), newtree.getZ())+0.4);
 		//while (newtree.getY()<-230 || newtree.getY() > 150)
 		//{
 		//	newtree.setX(TDML::Math.randomRangeFloat(-2000, 2000));
 		//	newtree.setZ(TDML::Math.randomRangeFloat(-2000, 2000));
 		//	newtree.setY(World1.getHeightMapAt(newtree.getX(), newtree.getZ()));
 		//}
-		newtree.setAngle(0, TDML::Math.randomRangeFloat(0, 360), 0);
-		int root = TDML::Math.randomRangeInt(2, 7);
-		float factor = TDML::Math.randomRangeFloat(75, 125) / 100.0;
+		newtree.setAngle(TDML::Math.randomRangeFloat(-7.5, 7.5), TDML::Math.randomRangeFloat(0, 360), TDML::Math.randomRangeFloat(-7.5, 7.5));
+		int root = TDML::Math.randomRangeInt(3, 8);
+		float factor = TDML::Math.randomRangeFloat(90, 130) / 100.0;
 		newtree.setScale(root, root*factor, root);
 		newtree.setType("tree");
 		newtree.setFrameDelay(0);

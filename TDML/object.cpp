@@ -559,7 +559,7 @@ namespace TDML
 		geometry = new GLfloat[3*numverts];
 		normals = new GLfloat[3*numverts];
 		coords = new GLfloat[2*numverts];
-		for(int p = 0; p<(int)npolys-1; p++)
+		for(int p = 0; p<(int)npolys; p++)
 		{
 			geometry[(p*9)] = polygons[p].getX(0);
 			geometry[(p*9)+1] = polygons[p].getY(0);
