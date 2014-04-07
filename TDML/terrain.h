@@ -23,12 +23,13 @@ namespace TDML
 			GLuint vboid;
 			GLuint vaoid;
 			GLuint texid;
+			GLuint noisetexid;
 
 		public:
 			void dispInfo();
 			void setHeightMap(std::vector<std::vector<float>> newheightmap);
 			void setDimensions(int dim);
-			void setTextureId(int textureid);
+			void setTextureIds(int textureid, int noisetextureid);
 			void setScale(float xz, float y);
 			float getScaleXZ();
 			float getScaleY();

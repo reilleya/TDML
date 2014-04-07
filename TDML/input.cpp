@@ -28,7 +28,7 @@ namespace TDML
 		xpos=0;
 		ypos=0;
 		centerPerFrame = false;
-		centerThisFrame = true;
+		centerNextFrame = true;
 	}
 
 	void input::update()
@@ -37,11 +37,11 @@ namespace TDML
 		Input.resetKeysPressed();
 		if(centerPerFrame)
 		{
-			if(centerThisFrame)
+			if(centerNextFrame)
 			{
 				centerCursor();
 			}
-			centerThisFrame = !centerThisFrame;
+			centerNextFrame = !centerNextFrame;
 		}
 	}
 
@@ -83,6 +83,30 @@ namespace TDML
 	int input::getMouseY()
 	{
 		return ypos;
+	}
+
+	int input::getMouseXCenterDiff()
+	{
+		if (centerNextFrame)
+		{
+			return xpos - (Window.getWidth() / 2);
+		}
+		else
+		{
+			return lxpos - (Window.getWidth() / 2);
+		}
+	}
+
+	int input::getMouseYCenterDiff()
+	{
+		if (centerNextFrame)
+		{
+			return ypos - (Window.getHeight() / 2);
+		}
+		else
+		{
+			return lypos - (Window.getHeight() / 2);
+		}
 	}
 
 	void input::KeyDownFunc(unsigned char key, int x, int y)
@@ -127,8 +151,10 @@ namespace TDML
 
 	void input::MousePosFunc(int x, int y)
 	{
-		xpos=x;
-		ypos=y;
+		lxpos = xpos;
+		lypos = ypos;
+		xpos = x;
+		ypos = y;
 	}
 
 	void input::resetMouseKeyPressed()
@@ -155,7 +181,7 @@ namespace TDML
 
 	void input::centerCursor()
 	{
-			glutWarpPointer(Window.getWidth()/2, Window.getHeight()/2);
+		glutWarpPointer(Window.getWidth()/2, Window.getHeight()/2);
 	}
 
 	void input::setCenterCursor(bool center)

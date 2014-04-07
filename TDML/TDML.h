@@ -51,6 +51,9 @@ using namespace std;
 #define UNI_SUNVEC 4
 #define UNI_PROJMAT 5
 #define UNI_DIFFCOLOR 6
+#define UNI_TEXUNITBASE 7
+#define UNI_TEXUNITNOISE 8
+#define UNI_USENOISE 9
 
 //Logging Modes
 #define LOG_CONSOLE 0
@@ -65,6 +68,10 @@ using namespace std;
 #define VBO 0
 #define VAO 1
 #define TEX 2
+
+//Texture Units
+#define TU_BASE GL_TEXTURE0
+#define TU_NOISE GL_TEXTURE1
 
 #define GLEW_STATIC
 #define FREEGLUT_STATIC
@@ -122,7 +129,7 @@ namespace TDML
 	extern std::vector<std::string> cachedObjName;
 
 	object loadObject(std::string fileName);
-	terrain loadTerrain(std::string imageName, std::string textureName, float scaleXZ, float scaleY);
+	terrain loadTerrain(std::string imageName, std::string textureName, std::string noiseTextureName, float scaleXZ, float scaleY);
 	std::vector<behavior> loadBehaviors(std::string fileName);
 	world loadWorld(std::string fileName);
 	menu loadMenu(std::string fileName);

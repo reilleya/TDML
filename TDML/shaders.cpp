@@ -16,6 +16,7 @@ namespace TDML
 		useLighting = false;
 		useTextures = true;
 		shadersInitialized = false;
+		useNoise = false;
 		uniforms.push_back("useLighting");
 		uniforms.push_back("useTextures");
 		uniforms.push_back("modelMat");
@@ -23,6 +24,9 @@ namespace TDML
 		uniforms.push_back("sunVec");
 		uniforms.push_back("projMat");
 		uniforms.push_back("diffuseColor");
+		uniforms.push_back("tex");
+		uniforms.push_back("noise");
+		uniforms.push_back("useNoise");
 	}
 
 	void shaders::update()
@@ -167,7 +171,11 @@ namespace TDML
 
 		changeUniform(UNI_USELIGHTING, 0);
 		changeUniform(UNI_USETEXTURES, 1);
+		changeUniform(UNI_USENOISE, 0);
 		setDiffuseColor(1.0, 1.0, 1.0, 1.0);
+		glUniform1i(getUniformID(UNI_TEXUNITBASE), 0);
+		glUniform1i(getUniformID(UNI_TEXUNITNOISE), 1);
+		glActiveTexture(TU_BASE);
 	}
 
 	void shaders::setupLighting()
@@ -194,6 +202,17 @@ namespace TDML
 	bool shaders::getUseTextures()
 	{
 		return useTextures;
+	}
+
+	void shaders::setUseNoise(bool use)
+	{
+		useNoise = use;
+		changeUniform(UNI_USENOISE, useNoise);
+	}
+
+	bool shaders::getUseNoise()
+	{
+		return useNoise;
 	}
 
 	void shaders::setModelMat(float mat[])

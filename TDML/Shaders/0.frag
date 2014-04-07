@@ -6,6 +6,8 @@
 //Contact email: areill1337@gmail.com;
 
 uniform sampler2D tex;
+uniform sampler2D noise;
+uniform float useNoise;
  
 in vec3 out_n_dir;
 in vec2 out_t_coo;
@@ -19,7 +21,14 @@ void main()
 	vec4 color = vec4(1.0, 1.0, 1.0, 1.0);
 	if(out_useTextures==1)
 	{
-		color = texture2D(tex, out_t_coo);
+		if(useNoise==0)
+		{
+			color = texture2D(tex, out_t_coo);
+		}
+		else
+		{
+			color = (0.01*texture2D(noise, out_t_coo))+(0.99*texture2D(tex, out_t_coo));
+		}
 	}
 	float alphaval = color[3];
 	if(out_useLighting==1)

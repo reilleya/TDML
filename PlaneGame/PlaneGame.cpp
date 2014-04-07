@@ -243,8 +243,8 @@ void animate()
 			TDML::Input.setCenterCursor(true);
 			if(previouslypressed)
 			{
-				camyrot = camyrot+(TDML::Input.getMouseX()-(TDML::Window.getWidth())/2);
-				camxrot = camxrot+(TDML::Input.getMouseY()-(TDML::Window.getHeight())/2);
+				camyrot = camyrot + (0.125*TDML::Input.getMouseXCenterDiff());
+				camxrot = camxrot + (0.125*TDML::Input.getMouseYCenterDiff());
 			}
 			else
 			{

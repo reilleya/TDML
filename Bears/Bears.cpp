@@ -76,6 +76,7 @@ void animate()
 	if (TDML::Input.getKeyPressed('t'))
 	{
 		TDML::Log.output(TDML::Clock.getFramerate()); TDML::Log.output("\n");
+		TDML::Shaders.dispInfo();
 	}
 
 	if (TDML::Input.getKeyState('n'))
@@ -85,13 +86,13 @@ void animate()
 	else
 	{
 		TDML::Input.setCenterCursor(true);
-		world1.setCamAngleY(world1.getCamAngleY() - 0.25*(TDML::Input.getMouseX() - (TDML::Window.getWidth()) / 2));
-		world1.setCamAngleX(world1.getCamAngleX() - 0.25*(TDML::Input.getMouseY() - (TDML::Window.getHeight()) / 2));
+		world1.setCamAngleY(world1.getCamAngleY() - 0.125*TDML::Input.getMouseXCenterDiff());
+		world1.setCamAngleX(world1.getCamAngleX() - 0.125*TDML::Input.getMouseYCenterDiff());
 	}
 
 	if (TDML::Input.getKeyPressed(SPACE))
 	{
-		if (canJump)
+		if (canJump==canJump)
 		{
 			TDML::Log.output("JUMP\n");
 			velY = 0.75;
@@ -139,14 +140,15 @@ int main(int argc, char** argv)
 	TDML::enableCulling(true);
 	FA1 = TDML::frameanimation("BallTest/animation.fam");
 	world1 = TDML::loadWorld("world.wor");
-	terrain = TDML::loadTerrain("newmap.hgt", "height.png", 500, 0.2);
+	terrain = TDML::loadTerrain("newmap.hgt", "height.png", "height.png", 500, 0.2);
 	world1.setTerrain(terrain);
 	world1.setCamPosition(0, 0, 10);
 
-	for (int t = 0; t < 500; t++)
+	for (int t = 0; t < 250; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Tree/wintertree.tdm");
-		newtree.setMaterial(TDML::loadTexture("Tree/wintertree.mdf"));
+		if (TDML::Math.randomRangeInt(0, 2) == 0) newtree.setMaterial(TDML::loadTexture("Tree/wintertree.mdf"));
+		else newtree.setMaterial(TDML::loadTexture("Tree/wintertree2.mdf"));
 		newtree.setX(TDML::Math.randomRangeFloat(-495, 495));
 		newtree.setZ(TDML::Math.randomRangeFloat(-495, 495));
 		newtree.setY(world1.getHeightMapAt(newtree.getX(), newtree.getZ())+0.4);
@@ -183,26 +185,28 @@ int main(int argc, char** argv)
 		newtree.dispInfo();
 	}
 
-	for (int t = 0; t < 0; t++)
+	for (int t = 0; t < 250; t++)
 	{
-		TDML::object newtree = TDML::loadObject("Pinetree/pinetree.tdm");
-		newtree.setMaterial(TDML::loadTexture("Pinetree/pinetree.mdf"));
+		TDML::object newtree = TDML::loadObject("Tree2/tree2.tdm");
+		if(TDML::Math.randomRangeInt(0,2)==0) newtree.setMaterial(TDML::loadTexture("Tree2/tree2.mdf"));
+		else newtree.setMaterial(TDML::loadTexture("Tree2/tree22.mdf"));
 		newtree.setX(TDML::Math.randomRangeFloat(-495, 495));
 		newtree.setZ(TDML::Math.randomRangeFloat(-495, 495));
-		newtree.setY(world1.getHeightMapAt(newtree.getX(), newtree.getZ()) + 0.5);
+		newtree.setY(world1.getHeightMapAt(newtree.getX(), newtree.getZ()) - 1.8);
 		//while (newtree.getY()<-230 || newtree.getY() > 150)
 		//{
 		//	newtree.setX(TDML::Math.randomRangeFloat(-2000, 2000));
 		//	newtree.setZ(TDML::Math.randomRangeFloat(-2000, 2000));
 		//	newtree.setY(World1.getHeightMapAt(newtree.getX(), newtree.getZ()));
 		//}
-		newtree.setAngle(0, TDML::Math.randomRangeFloat(0, 360), 0);
-		int root = TDML::Math.randomRangeInt(2, 7);
-		float factor = TDML::Math.randomRangeFloat(75, 125) / 100.0;
+		newtree.setAngle(TDML::Math.randomRangeFloat(-7.5, 7.5), TDML::Math.randomRangeFloat(0, 360), TDML::Math.randomRangeFloat(-7.5, 7.5));
+		int root = TDML::Math.randomRangeInt(3, 6);
+		float factor = TDML::Math.randomRangeFloat(90, 130) / 100.0;
 		newtree.setScale(root, root*factor, root);
 		newtree.setType("tree");
 		newtree.setFrameDelay(0);
-		newtree.setFileName("Pinetree/pinetree.tdm");
+		newtree.createBoundingBox();
+		newtree.setFileName("Tree2/tree2.tdm");
 		newtree.setWireframe(false);
 		newtree.setVisible(true);
 		newtree.setAdjustBB(false);

@@ -21,6 +21,7 @@ namespace TDML
 			bool shadersInitialized;
 			bool useLighting;
 			bool useTextures;
+			bool useNoise;
 			GLuint programID;
 			void populateUniformIDs();
 			void changeUniform(int uniform, float val);
@@ -39,6 +40,8 @@ namespace TDML
 			bool getUseLighting();
 			void setUseTextures(bool use);
 			bool getUseTextures();
+			void setUseNoise(bool use);
+			bool getUseNoise();
 			void setModelMat(float mat[]);
 			void setProjMat(float mat[]);
 			void setNormalMat(float mat[]);

@@ -22,8 +22,10 @@ namespace TDML
 			bool* mousekeypresses;
 			int xpos;
 			int ypos;
+			int lxpos;
+			int lypos;
 			bool centerPerFrame;
-			bool centerThisFrame;
+			bool centerNextFrame;
 
 		public:
 			input();
@@ -36,6 +38,8 @@ namespace TDML
 			bool getMouseKeyPressed(int key);
 			int getMouseX();
 			int getMouseY();
+			int getMouseXCenterDiff();
+			int getMouseYCenterDiff();
 			void KeyDownFunc(unsigned char key, int x, int y);
 			void KeyUpFunc(unsigned char key, int x, int y);
 			void SpecialKeyDownFunc(int key, int x, int y);

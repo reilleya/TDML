@@ -31,9 +31,10 @@ namespace TDML
 		dimensions = dim;
 	}
 
-	void terrain::setTextureId(int textureid)
+	void terrain::setTextureIds(int textureid, int noisetextureid)
 	{
 		texid = textureid;
+		noisetexid = noisetextureid;
 	}
 	
 	void terrain::setScale(float xz, float y)
@@ -265,10 +266,18 @@ namespace TDML
 			
 	void terrain::display()
 	{
+		Shaders.setUseNoise(true);
 		bindBuffer(VBO, vboid);
 		bindBuffer(TEX, texid);
+
+		glActiveTexture(TU_NOISE);
+		bindBuffer(TEX, noisetexid);
+		
+
 		bindBuffer(VAO, vaoid);
 		glDrawArrays(GL_TRIANGLES, 0, (dimensions-1) * (dimensions-1) * 6);
 		bindBuffer(VAO, 0);
+		Shaders.setUseNoise(false);
+		glActiveTexture(TU_BASE);
 	}
 }

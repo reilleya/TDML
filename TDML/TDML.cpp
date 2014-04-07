@@ -83,7 +83,7 @@ namespace TDML
 		}
 	}
 
-	terrain loadTerrain(std::string fileName, std::string textureName, float scaleXZ, float scaleY)
+	terrain loadTerrain(std::string fileName, std::string textureName, std::string noiseTextureName, float scaleXZ, float scaleY)
 	{
 		terrain newterrain;
 		ifstream infile;
@@ -115,7 +115,7 @@ namespace TDML
 		newterrain.setDimensions(heightmap.size());
 		Log.output("\t\tSetting texture\n");
 		Log.output("\t\t\tLoading texture image\n");
-		newterrain.setTextureId(loadTextureData(textureName));
+		newterrain.setTextureIds(loadTextureData(textureName), loadTextureData(noiseTextureName));
 		Log.output("\t\tSetting scale\n");
 		newterrain.setScale(scaleXZ, scaleY);
 		Log.output("\tGenerating VBO\n");
