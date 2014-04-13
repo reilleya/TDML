@@ -29,3 +29,4 @@ ipch/
 *.lib
 [Tt]est[Rr]esult*
 packages/*
+packages/
