@@ -113,11 +113,11 @@ namespace TDML
 		{
 			if(partx+partz>1)
 			{
-				return anglemap[nx][nz][0];
+				return anglemap[(unsigned int)nx][(unsigned int)nz][0];
 			}
 			else
 			{
-				return anglemap[nx][nz][1];
+				return anglemap[(unsigned int)nx][(unsigned int)nz][1];
 			}
 		}
 		else

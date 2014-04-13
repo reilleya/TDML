@@ -79,13 +79,13 @@ namespace TDML
 		matrix4x4 rotMat = matrix4x4();
 		for(int rZ = 0; rZ < 1; rZ++)
 		{
-			rotMat.rotate(0,0,(rZ+1)*15,XYZ);
+			rotMat.rotate(0,0,(float)(rZ+1)*15,XYZ);
 			p = rotMat.apply(p);
 			geometry[rZ*39] = p.getX(); geometry[(rZ*39)+1] = p.getY(); geometry[(rZ*39)+2] = p.getZ();
 			rotMat.loadIdentity();
 			for(int rY = 1; rY<13; rY++)
 			{
-				rotMat.rotate(0, rY*30, 0, XYZ);
+				rotMat.rotate(0, (float)rY*30, 0, XYZ);
 				p = rotMat.apply(p);
 				geometry[(rZ*39)+(rY*3)] = p.getX(); geometry[(rZ*39)+(rY*3)+1] = p.getY(); geometry[(rZ*39)+(rY*3)+2] = p.getZ();
 				rotMat.loadIdentity();

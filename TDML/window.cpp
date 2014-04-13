@@ -20,12 +20,12 @@ namespace TDML
 
 	float window::getWidth()
 	{
-		return width;
+		return (float)width;
 	}
 
 	float window::getHeight()
 	{
-		return height;
+		return (float)height;
 	}
 
 	void window::setSize(int newWidth, int newHeight)

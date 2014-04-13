@@ -39,7 +39,7 @@ void spin(TDML::object* me)
 void load()
 {
 	World1 = TDML::loadWorld("Resources/World1/world.wor");
-	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/Smooth.hgt", "Resources/Common/Textures/height.png", 2500, 2);
+	Terrain1 = TDML::loadTerrain("Resources/World1/Heightmaps/Smooth.hgt", "Resources/Common/Textures/height.png", "Resources/Common/Textures/height.png", 2500, 2);
 	World1.setTerrain(Terrain1);
 	for(int t = 0; t < 000; t++)
 	{

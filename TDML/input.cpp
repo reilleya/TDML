@@ -89,11 +89,11 @@ namespace TDML
 	{
 		if (centerNextFrame)
 		{
-			return xpos - (Window.getWidth() / 2);
+			return xpos - (int)(Window.getWidth() / 2);
 		}
 		else
 		{
-			return lxpos - (Window.getWidth() / 2);
+			return lxpos - (int)(Window.getWidth() / 2);
 		}
 	}
 
@@ -101,11 +101,11 @@ namespace TDML
 	{
 		if (centerNextFrame)
 		{
-			return ypos - (Window.getHeight() / 2);
+			return ypos - (int)(Window.getHeight() / 2);
 		}
 		else
 		{
-			return lypos - (Window.getHeight() / 2);
+			return lypos - (int)(Window.getHeight() / 2);
 		}
 	}
 
@@ -181,7 +181,7 @@ namespace TDML
 
 	void input::centerCursor()
 	{
-		glutWarpPointer(Window.getWidth()/2, Window.getHeight()/2);
+		glutWarpPointer((int)Window.getWidth() / 2, (int)Window.getHeight() / 2);
 	}
 
 	void input::setCenterCursor(bool center)

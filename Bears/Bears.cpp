@@ -29,6 +29,29 @@ bool tree2loadedID = false;
 int tree2id;
 int tree2vao;
 
+vector<float> treex;
+vector<float> treez;
+vector<float> treer;
+
+bool hitTree(float xPos, float zPos)
+{
+	for (int treeID = 0; treeID < 500; treeID++)
+	{
+		if (treex[treeID] - treer[treeID]<xPos && treex[treeID] + treer[treeID]>xPos)
+		{
+			if (treez[treeID] - treer[treeID]<zPos && treez[treeID] + treer[treeID]>zPos)
+			{
+				if (sqrt(((xPos - treex[treeID])*(xPos - treex[treeID])) + ((zPos - treez[treeID])*(zPos - treez[treeID]))) < treer[treeID])
+				{
+					return true;
+				}	
+			}
+		}
+
+	}
+	return false;
+}
+
 void exit()
 {
 
@@ -92,12 +115,21 @@ void animate()
 
 	if (TDML::Input.getKeyPressed(SPACE))
 	{
-		if (canJump==canJump)
+		if (canJump)
 		{
 			TDML::Log.output("JUMP\n");
 			velY = 0.75;
 			canJump = false;
 		}
+	}
+
+	if (TDML::Input.getKeyPressed('j'))
+	{
+		for (int treeID = 0; treeID < 10; treeID++)
+		{
+			TDML::Log.output(treeID); TDML::Log.output("-"); TDML::Log.output(treex[treeID]); TDML::Log.output(":"); TDML::Log.output(treez[treeID]); TDML::Log.output(":"); TDML::Log.output(treer[treeID]); TDML::Log.output("\n");
+		}
+		TDML::Log.output(camX); TDML::Log.output(":"); TDML::Log.output(camY); TDML::Log.output("\n\n");
 	}
 
 	//if (abs(velX) + abs(velZ)>15)
@@ -115,6 +147,14 @@ void animate()
 
 	camX += TDML::Clock.getAdjustedTime(velX, 10);
 	camZ += TDML::Clock.getAdjustedTime(velZ, 10);
+
+	if (hitTree(camX, camZ))
+	{
+		camX -= TDML::Clock.getAdjustedTime(velX, 10);
+		camZ -= TDML::Clock.getAdjustedTime(velZ, 10);
+		velX = -0.05*velX;
+		velY = -0.05*velY;
+	}
 
 	velY -= TDML::Clock.getAdjustedTime(0.025, 10);
 	camY += TDML::Clock.getAdjustedTime(velY, 10);
@@ -143,7 +183,6 @@ int main(int argc, char** argv)
 	terrain = TDML::loadTerrain("newmap.hgt", "height.png", "height.png", 500, 0.2);
 	world1.setTerrain(terrain);
 	world1.setCamPosition(0, 0, 10);
-
 	for (int t = 0; t < 250; t++)
 	{
 		TDML::object newtree = TDML::loadObject("Tree/wintertree.tdm");
@@ -183,6 +222,9 @@ int main(int argc, char** argv)
 		}
 		world1.addObject(newtree);
 		newtree.dispInfo();
+		treex.push_back(newtree.getX());
+		treez.push_back(newtree.getZ());
+		treer.push_back(5);
 	}
 
 	for (int t = 0; t < 250; t++)
@@ -192,7 +234,7 @@ int main(int argc, char** argv)
 		else newtree.setMaterial(TDML::loadTexture("Tree2/tree22.mdf"));
 		newtree.setX(TDML::Math.randomRangeFloat(-495, 495));
 		newtree.setZ(TDML::Math.randomRangeFloat(-495, 495));
-		newtree.setY(world1.getHeightMapAt(newtree.getX(), newtree.getZ()) - 1.8);
+		newtree.setY(world1.getHeightMapAt(newtree.getX(), newtree.getZ()) - 3);
 		//while (newtree.getY()<-230 || newtree.getY() > 150)
 		//{
 		//	newtree.setX(TDML::Math.randomRangeFloat(-2000, 2000));
@@ -224,6 +266,9 @@ int main(int argc, char** argv)
 		}
 		world1.addObject(newtree);
 		newtree.dispInfo();
+		treex.push_back(newtree.getX());
+		treez.push_back(newtree.getZ());
+		treer.push_back(5);
 	}
 
 	TDML::Input.setCenterCursor(true);

@@ -740,6 +740,8 @@ namespace TDML
 			return 3;
 		case 5:
 			return 1;
+		default:
+			return -1;
 		}
 	}
 
@@ -827,13 +829,13 @@ namespace TDML
 		std::vector<std::string> splitVec;
 		std::vector<int> startStop;
 		startStop.push_back(0);
-		for (int strpos = 0; strpos < str.length(); strpos++)
+		for (unsigned int strpos = 0; strpos < str.length(); strpos++)
 		{
 			if (str[strpos] == split) startStop.push_back(strpos+1);
 		}
 		startStop.push_back(str.length()+1);
 		std::string part;
-		for (int strppos = 0; strppos < startStop.size() - 1; strppos++)
+		for (unsigned int strppos = 0; strppos < startStop.size() - 1; strppos++)
 		{
 			part = "";
 			for (int instrpos = startStop[strppos]; instrpos < startStop[strppos + 1]-1; instrpos++) part += str[instrpos];

@@ -35,8 +35,8 @@ namespace TDML
 
 	void clock::newFrame()
 	{
-		frameTimes.push_back(glutGet(GLUT_ELAPSED_TIME) - lastFrame);
-		lastFrame = glutGet(GLUT_ELAPSED_TIME);
+		frameTimes.push_back(glutGet(GLUT_ELAPSED_TIME) - (int)lastFrame);
+		lastFrame = (float)glutGet(GLUT_ELAPSED_TIME);
 		nFrames++;
 		if (nFrames > 100)
 		{
@@ -67,6 +67,6 @@ namespace TDML
 		{
 			tot += frameTimes[frameTimeID];
 		}
-		return 1000/(tot/nFrames);
+		return 1000 / (tot / nFrames);
 	}
 }

@@ -195,7 +195,7 @@ int main(int argc, char** argv)
 				0.25, -0.15, 0.15, //Size
 				1, 20); //Spawn Delay
 	//world1.addParticleSystem(PS1);
-	terrain = TDML::loadTerrain("bump.hgt", "height.png", 2500, 0.5);
+	terrain = TDML::loadTerrain("bump.hgt", "height.png", "height.png", 2500, 0.5);
 	world1.setTerrain(terrain);
 	TDML::matrix3x3 tm = TDML::matrix3x3();
 	tm.p11 = 1; tm.p12 = 4; tm.p13 = 2;
